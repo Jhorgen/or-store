@@ -42,3 +42,29 @@ export const subShipping=(id)=>{
         id
     }
 }
+
+export const requestItem = () => {
+  return { type: 'REQUESTED_ITEM' }
+};
+
+export const requestItemSuccess = (data) => {
+  return { type: 'REQUESTED_ITEM_SUCCEEDED', testerr: data }
+};
+
+const requestItemError = (err) => {
+  return { type: 'REQUESTED_ITEM_FAILED', payload: err }
+};
+
+export const loadItemData = () => {
+  return (dispatch) => {
+    dispatch(requestItem());
+    fetch(`https://jsonplaceholder.typicode.com/todos/1`)
+      .then(res => res.json())
+      .then(
+        data => { console.log('data', data);
+        dispatch(requestItemSuccess(data))},
+        err => console.log('error', err),
+        dispatch(requestItemError())
+      );
+  }
+}

@@ -5,6 +5,20 @@ import { removeItem,addQuantity,subtractQuantity} from './../actions/cartActions
 import Recipe from './Recipe'
 
 class Cart extends Component{
+  constructor(props){
+    super(props)
+      this.state = {
+        tester: []
+      }
+
+  }
+
+  componentDidMount = () => {
+    const rememberMe = localStorage.getItem('storeObj')
+    console.log(rememberMe);
+
+    this.state.tester.push(rememberMe)
+    }
 
   //to remove the item completely
   handleRemove = (id)=>{
@@ -18,6 +32,8 @@ class Cart extends Component{
   handleSubtractQuantity = (id)=>{
     this.props.subtractQuantity(id);
   }
+
+
 
   render(){
 
@@ -52,7 +68,11 @@ class Cart extends Component{
     ):
 
     (
+      <div>
       <p>Nothing.</p>
+      <span onClick={() => this.testerTest()}>{this.state.tester}</span>
+
+      </div>
     )
     return(
       <div className="container">
@@ -67,7 +87,6 @@ class Cart extends Component{
     )
   }
 }
-
 
 const mapStateToProps = (state)=>{
   return{

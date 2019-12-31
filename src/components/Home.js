@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Row, Col } from 'reactstrap';
-import {addToCart} from './../actions/cartActions.js';
+import {addToCart, loadItemData} from './../actions/cartActions.js';
 
 class Home extends Component {
 
-  handleAddClick = (id) => {
+  handleAddClick = (id, item) => {
     this.props.addToCart(id);
+
+  localStorage.setItem('storeObj', JSON.parse(item));
+
+  console.log(localStorage);
   }
+
 
   render() {
 
@@ -17,7 +22,7 @@ class Home extends Component {
           <div className="card-image">
             <img style={{height: '13rem'}} src={item.img} alt={item.title}/>
             <span className="card-title">{item.title}</span>
-            <span to="/" className="btn-floating halfway-fab waves-effect waves-light red"><i onClick={() => this.handleAddClick(item.id)} className="material-icons">add</i></span>
+            <span to="/" className="btn-floating halfway-fab waves-effect waves-light red"><i onClick={() => this.handleAddClick(item.id, item)} className="material-icons">add</i></span>
           </div>
           <div className="card-content">
             <p>{item.desc}</p>

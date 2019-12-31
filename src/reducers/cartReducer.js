@@ -16,11 +16,14 @@ const initState = {
         {id:6, quantity: 3, title:'Blues', desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.",price:90,img: Item6}
     ],
     addedItems:[],
-    total: 0
+    total: 0,
+    testerr: []
 
 }
 
+
 const cartReducer= (state = initState,action)=>{
+
 
     //INSIDE HOME COMPONENT
     if(action.type === ADD_TO_CART){
@@ -48,6 +51,7 @@ const cartReducer= (state = initState,action)=>{
 
         }
     }
+
     if(action.type === REMOVE_ITEM){
         let itemToRemove= state.addedItems.find(item=> action.id === item.id)
         let new_items = state.addedItems.filter(item=> action.id !== item.id)
