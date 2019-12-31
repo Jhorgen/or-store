@@ -48,7 +48,7 @@ export const requestItem = () => {
 };
 
 export const requestItemSuccess = (data) => {
-  return { type: 'REQUESTED_ITEM_SUCCEEDED', testerr: data }
+  return { type: 'REQUESTED_ITEM_SUCCEEDED', items: data }
 };
 
 const requestItemError = (err) => {
@@ -58,7 +58,7 @@ const requestItemError = (err) => {
 export const loadItemData = () => {
   return (dispatch) => {
     dispatch(requestItem());
-    fetch(`https://jsonplaceholder.typicode.com/todos/1`)
+    fetch(`http://localhost:3000/api/v1/products`)
       .then(res => res.json())
       .then(
         data => { console.log('data', data);

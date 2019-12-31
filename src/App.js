@@ -1,7 +1,7 @@
 import React from 'react';
-import './App.css';
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import Navbar from './components/Navbar'
+import Footer from './components/Footer'
 import Home from './components/Home'
 import Cart from './components/Cart'
 import CategorySelect from './components/CategorySelect'
@@ -10,8 +10,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-          <div className="App">
-
+          <div>
             <Navbar/>
               <Switch>
                   <Route exact path="/" component={CategorySelect}/>
@@ -20,7 +19,7 @@ function App() {
                 </Switch>
            </div>
      </BrowserRouter>
-      <p>test</p>
+      <Footer/>
     </div>
   );
 }

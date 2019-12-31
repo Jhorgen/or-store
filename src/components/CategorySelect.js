@@ -7,27 +7,32 @@ import axios from 'axios'
 
 class CategorySelect extends Component {
 
-  componentWillMount() {
-    axios.get('http://localhost:3000/api/v1/products')
-    .then(response => {
-      console.log(response);
-    })
-    .catch(error => console.log(error))
+  componentDidMount() {
+    this.props.loadItemData();
   }
 
   callData = () => {
-    this.props.loadItemData();
+
+      this.props.loadItemData();
+
+console.log('items:', this.props.items);
   }
 
   render() {
   return (
     <div>
-    <li onClick={() => {this.callData()}}><Link to="/shop">Shop</Link></li>
+      <span onClick={() => this.callData()}>testerTest</span>
+    <li><Link to="/shop">Shop</Link></li>
     </div>
   )
 }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    items: state.items
+  }
+}
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -35,4 +40,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(CategorySelect);
+export default connect(mapStateToProps, mapDispatchToProps)(CategorySelect);
