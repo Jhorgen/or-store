@@ -20,6 +20,7 @@ function App() {
                 </Switch>
            </div>
      </BrowserRouter>
+      <p>test</p>
     </div>
   );
 }

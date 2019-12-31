@@ -7,8 +7,8 @@ import axios from 'axios'
 
 class CategorySelect extends Component {
 
-  componentDidMount() {
-    axios.get('https://murmuring-shore-14390.herokuapp.com/api/v1/ideas')
+  componentWillMount() {
+    axios.get('http://localhost:3000/api/v1/products')
     .then(response => {
       console.log(response);
     })
