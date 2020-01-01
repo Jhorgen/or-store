@@ -8,31 +8,48 @@ import axios from 'axios'
 class CategorySelect extends Component {
 
   componentDidMount() {
+
     this.props.loadItemData();
+
+    setTimeout( () => {
+  console.log(this.props.items);
+}, 300);
   }
 
   callData = () => {
 
-      this.props.loadItemData();
 
-console.log('items:', this.props.items);
+
+    console.log('items:', this.props.items);
   }
 
   render() {
-  return (
-    <div>
-      <span onClick={() => this.callData()}>testerTest</span>
-    <li><Link to="/shop">Shop</Link></li>
-    </div>
-  )
-}
-}
+    return (
+      <div>
+        <span onClick={() => this.callData()}>testerTest</span>
+        <Link
+          to={{
+            pathname: "/shop",
+            state: { category: "Grips" }
+          }}
+          >
+          grips
+        </Link>
 
-const mapStateToProps = (state) => {
-  return {
-    items: state.items
+        <Link
+          to={{
+            pathname: "/shop",
+            state: { category: "Pedals" }
+          }}
+          >
+          pedals
+        </Link>
+      </div>
+    )
   }
 }
+
+
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -40,4 +57,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CategorySelect);
+export default connect(state => state, mapDispatchToProps)(CategorySelect);

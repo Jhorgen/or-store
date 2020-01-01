@@ -68,3 +68,18 @@ export const loadItemData = () => {
       );
   }
 }
+
+
+export const loadSelectedItemData = (category) => {
+  return (dispatch) => {
+    dispatch(requestItem());
+    fetch(`http://localhost:3000/api/v1/products/?category=${category}`)
+      .then(res => res.json())
+      .then(
+        data => { console.log('data', data);
+        dispatch(requestItemSuccess(data))},
+        err => console.log('error', err),
+        dispatch(requestItemError())
+      );
+  }
+}

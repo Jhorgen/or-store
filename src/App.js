@@ -14,7 +14,7 @@ function App() {
             <Navbar/>
               <Switch>
                   <Route exact path="/" component={CategorySelect}/>
-                  <Route path="/shop" component={Home}/>
+                  <Route render={props => ( <Home category={props.location.state.category}/>)} path="/shop"/>
                   <Route path="/cart" component={Cart}/>
                 </Switch>
            </div>
