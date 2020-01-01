@@ -20,10 +20,11 @@ class Home extends Component {
   this.setState({array: this.props.items.map(item=>{
    return (
      <div className="card" key={item.id}>
-       <div className="card-image">
+       <div className="card-image text-center">
          <img style={{height: '13rem'}} src={ require(`./../images/${item.image1}.jpg`)} alt={item.title}/>
-         <span className="card-title">{item.title}</span>
-         <span to="/" className="btn-floating halfway-fab waves-effect waves-light red"><i onClick={() => this.handleAddClick(item.id)} className="material-icons">add</i></span>
+         <div><span className="card-title">{item.title}</span></div>
+         <span to="/" className="btn-floating halfway-fab waves-effect waves-light red"><i onClick={() => this.handleAddClick(item.id)} className="text-info">Add to cart</i></span>
+         <hr/>
        </div>
        <div className="card-content">
          <p>{item.description}</p>

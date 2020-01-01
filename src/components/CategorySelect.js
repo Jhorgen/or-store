@@ -27,18 +27,20 @@ class CategorySelect extends Component {
   render() {
     return (
       <div>
-        <span onClick={() => this.callData()}>testerTest</span>
-        <Row className="justify-content-around">
+        <span onClick={() => this.callData()}>.</span>
+        <Row className="justify-content-around m-3">
           <Link
-            to="/Grips"
+            to="/grips"
             >
-            Gripsss
+            <div class="text-center category-select">Grips</div>
+            <img style={{height: '13rem'}} src={ require(`./../images/bars.jpg`)} alt={"bars"}/>
+
           </Link>
-
         <Link
-          to="/Pedals"
+          to="/pedals"
           >
-          Pedals
+          <div class="text-center category-select">Grips</div>
+         <img style={{height: '13rem'}} src={ require(`./../images/bars.jpg`)} alt={"bars"}/>
         </Link>
         <Link
           to={{
@@ -46,7 +48,8 @@ class CategorySelect extends Component {
             state: { category: "Grips" }
           }}
           >
-          Grips
+          <div class="text-center category-select">Grips</div>
+             <img style={{height: '13rem'}} src={ require(`./../images/bars.jpg`)} alt={"bars"}/>
         </Link>
 
         <Link
@@ -55,7 +58,8 @@ class CategorySelect extends Component {
             state: { category: "Pedals" }
           }}
           >
-          Pedals
+          <div class="text-center category-select">Grips</div>
+             <img style={{height: '13rem'}} src={ require(`./../images/bars.jpg`)} alt={"bars"}/>
         </Link>
         <Link
           to={{
@@ -63,7 +67,9 @@ class CategorySelect extends Component {
             state: { category: "Grips" }
           }}
           >
-          Grips
+          <div class="text-center category-select">Grips</div>
+             <img style={{height: '13rem'}} src={ require(`./../images/bars.jpg`)} alt={"bars"}/>
+
         </Link>
 
         <Link
@@ -72,7 +78,8 @@ class CategorySelect extends Component {
             state: { category: "Pedals" }
           }}
           >
-          Pedals
+          <div class="text-center category-select">Grips</div>
+             <img style={{height: '13rem'}} src={ require(`./../images/bars.jpg`)} alt={"bars"}/>
         </Link>
         <Link
           to={{
@@ -80,7 +87,8 @@ class CategorySelect extends Component {
             state: { category: "Grips" }
           }}
           >
-          Grips
+          <div class="text-center category-select">Grips</div>
+             <img style={{height: '13rem'}} src={ require(`./../images/bars.jpg`)} alt={"bars"}/>
         </Link>
 
         <Link
@@ -89,7 +97,8 @@ class CategorySelect extends Component {
             state: { category: "Pedals" }
           }}
           >
-          Pedals
+          <div class="text-center category-select">Grips</div>
+             <img style={{height: '13rem'}} src={ require(`./../images/bars.jpg`)} alt={"bars"}/>
         </Link>
         <Link
           to={{
@@ -97,7 +106,8 @@ class CategorySelect extends Component {
             state: { category: "Grips" }
           }}
           >
-          Grips
+          <div class="text-center category-select">Grips</div>
+             <img style={{height: '13rem'}} src={ require(`./../images/bars.jpg`)} alt={"bars"}/>
         </Link>
 
         <Link
@@ -106,7 +116,8 @@ class CategorySelect extends Component {
             state: { category: "Pedals" }
           }}
           >
-          Pedals
+          <div class="text-center category-select">Grips</div>
+             <img style={{height: '13rem'}} src={ require(`./../images/bars.jpg`)} alt={"bars"}/>
         </Link>
         <Link
           to={{
@@ -114,7 +125,8 @@ class CategorySelect extends Component {
             state: { category: "Grips" }
           }}
           >
-          Grips
+          <div class="text-center category-select">Grips</div>
+             <img style={{height: '13rem'}} src={ require(`./../images/bars.jpg`)} alt={"bars"}/>
         </Link>
 
         <Link
@@ -123,7 +135,8 @@ class CategorySelect extends Component {
             state: { category: "Pedals" }
           }}
           >
-          Pedals
+          <div class="text-center category-select">Grips</div>
+             <img style={{height: '13rem'}} src={ require(`./../images/bars.jpg`)} alt={"bars"}/>
         </Link>
         <Link
           to={{
@@ -131,7 +144,8 @@ class CategorySelect extends Component {
             state: { category: "Grips" }
           }}
           >
-          Grips
+          <div class="text-center category-select">Grips</div>
+             <img style={{height: '13rem'}} src={ require(`./../images/bars.jpg`)} alt={"bars"}/>
         </Link>
 
         <Link
@@ -140,7 +154,8 @@ class CategorySelect extends Component {
             state: { category: "Pedals" }
           }}
           >
-          Pedals
+          <div class="text-center category-select">Grips</div>
+             <img style={{height: '13rem'}} src={ require(`./../images/bars.jpg`)} alt={"bars"}/>
         </Link>
         <Link
           to={{
@@ -148,7 +163,8 @@ class CategorySelect extends Component {
             state: { category: "Grips" }
           }}
           >
-          Grips
+          <div class="text-center category-select">Grips</div>
+             <img style={{height: '13rem'}} src={ require(`./../images/bars.jpg`)} alt={"bars"}/>
         </Link>
 
         <Link
@@ -157,7 +173,8 @@ class CategorySelect extends Component {
             state: { category: "Pedals" }
           }}
           >
-          Pedals
+          <div class="text-center category-select">Grips</div>
+             <img style={{height: '13rem'}} src={ require(`./../images/bars.jpg`)} alt={"bars"}/>
         </Link>
         <Link
           to={{
@@ -165,7 +182,8 @@ class CategorySelect extends Component {
             state: { category: "Grips" }
           }}
           >
-          Grips
+          <div class="text-center category-select">Grips</div>
+             <img style={{height: '13rem'}} src={ require(`./../images/bars.jpg`)} alt={"bars"}/>
         </Link>
 
         <Link
@@ -174,7 +192,8 @@ class CategorySelect extends Component {
             state: { category: "Pedals" }
           }}
           >
-          Pedals
+          <div class="text-center category-select">Grips</div>
+             <img style={{height: '13rem'}} src={ require(`./../images/bars.jpg`)} alt={"bars"}/>
         </Link>
         <Link
           to={{
@@ -182,7 +201,8 @@ class CategorySelect extends Component {
             state: { category: "Grips" }
           }}
           >
-          Grips
+          <div class="text-center category-select">Grips</div>
+             <img style={{height: '13rem'}} src={ require(`./../images/bars.jpg`)} alt={"bars"}/>
         </Link>
 
         <Link
@@ -191,7 +211,8 @@ class CategorySelect extends Component {
             state: { category: "Pedals" }
           }}
           >
-          Pedals
+          <div class="text-center category-select">Grips</div>
+             <img style={{height: '13rem'}} src={ require(`./../images/bars.jpg`)} alt={"bars"}/>
         </Link>
       </Row>
       </div>
