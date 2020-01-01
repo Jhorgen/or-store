@@ -14,14 +14,14 @@ class Home extends Component {
     }
   }
 
-  componentDidMount = () => {
-    this.props.loadSelectedItemData(this.props.category);
+  componentDidMount = (props) => {
+    this.props.loadSelectedItemData(this.props.name);
     setTimeout( () => {
   this.setState({array: this.props.items.map(item=>{
    return (
      <div className="card" key={item.id}>
        <div className="card-image">
-         <img style={{height: '13rem'}} src={item.image1} alt={item.title}/>
+         <img style={{height: '13rem'}} src={ require(`./../images/${item.image1}.jpg`)} alt={item.title}/>
          <span className="card-title">{item.title}</span>
          <span to="/" className="btn-floating halfway-fab waves-effect waves-light red"><i onClick={() => this.handleAddClick(item.id)} className="material-icons">add</i></span>
        </div>
@@ -44,18 +44,22 @@ class Home extends Component {
     console.log(id);
   }
 
+  findCat = () => {
+    console.log(this.props.name);
+  }
+
   render() {
 
     return(
       <div className="container">
-        <h3 className="text-center">Our items</h3>
+        <h3 className="text-center" onClick={() => this.findCat()}>{this.props.name}</h3>
         <div>
-        <Row className="justify-content-center">
+        <div>
           { this.state.tester
           ? null
-          : <div>{this.state.array}</div>
+          : <Row className="justify-content-center">{this.state.array}</Row>
           }
-        </Row>
+        </div>
         </div>
       </div>
     );

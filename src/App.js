@@ -7,6 +7,10 @@ import Cart from './components/Cart'
 import CategorySelect from './components/CategorySelect'
 
 function App() {
+
+  const grips = "Grips";
+  const pedals = "Pedals";
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -14,7 +18,8 @@ function App() {
             <Navbar/>
               <Switch>
                   <Route exact path="/" component={CategorySelect}/>
-                  <Route render={props => ( <Home category={props.location.state.category}/>)} path="/shop"/>
+                  <Route render={props => ( <Home name={grips}/>)} path="/Grips"/>
+                  <Route render={props => ( <Home name={pedals}/>)} path="/Pedals"/>
                   <Route path="/cart" component={Cart}/>
                 </Switch>
            </div>

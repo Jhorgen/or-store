@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { loadItemData } from './../actions/cartActions.js'
+import {Row, Col} from 'reactstrap'
 import axios from 'axios'
 
 
@@ -27,13 +28,25 @@ class CategorySelect extends Component {
     return (
       <div>
         <span onClick={() => this.callData()}>testerTest</span>
+        <Row className="justify-content-around">
+          <Link
+            to="/Grips"
+            >
+            Gripsss
+          </Link>
+
+        <Link
+          to="/Pedals"
+          >
+          Pedals
+        </Link>
         <Link
           to={{
             pathname: "/shop",
             state: { category: "Grips" }
           }}
           >
-          grips
+          Grips
         </Link>
 
         <Link
@@ -42,8 +55,145 @@ class CategorySelect extends Component {
             state: { category: "Pedals" }
           }}
           >
-          pedals
+          Pedals
         </Link>
+        <Link
+          to={{
+            pathname: "/shop",
+            state: { category: "Grips" }
+          }}
+          >
+          Grips
+        </Link>
+
+        <Link
+          to={{
+            pathname: "/shop",
+            state: { category: "Pedals" }
+          }}
+          >
+          Pedals
+        </Link>
+        <Link
+          to={{
+            pathname: "/shop",
+            state: { category: "Grips" }
+          }}
+          >
+          Grips
+        </Link>
+
+        <Link
+          to={{
+            pathname: "/shop",
+            state: { category: "Pedals" }
+          }}
+          >
+          Pedals
+        </Link>
+        <Link
+          to={{
+            pathname: "/shop",
+            state: { category: "Grips" }
+          }}
+          >
+          Grips
+        </Link>
+
+        <Link
+          to={{
+            pathname: "/shop",
+            state: { category: "Pedals" }
+          }}
+          >
+          Pedals
+        </Link>
+        <Link
+          to={{
+            pathname: "/shop",
+            state: { category: "Grips" }
+          }}
+          >
+          Grips
+        </Link>
+
+        <Link
+          to={{
+            pathname: "/shop",
+            state: { category: "Pedals" }
+          }}
+          >
+          Pedals
+        </Link>
+        <Link
+          to={{
+            pathname: "/shop",
+            state: { category: "Grips" }
+          }}
+          >
+          Grips
+        </Link>
+
+        <Link
+          to={{
+            pathname: "/shop",
+            state: { category: "Pedals" }
+          }}
+          >
+          Pedals
+        </Link>
+        <Link
+          to={{
+            pathname: "/shop",
+            state: { category: "Grips" }
+          }}
+          >
+          Grips
+        </Link>
+
+        <Link
+          to={{
+            pathname: "/shop",
+            state: { category: "Pedals" }
+          }}
+          >
+          Pedals
+        </Link>
+        <Link
+          to={{
+            pathname: "/shop",
+            state: { category: "Grips" }
+          }}
+          >
+          Grips
+        </Link>
+
+        <Link
+          to={{
+            pathname: "/shop",
+            state: { category: "Pedals" }
+          }}
+          >
+          Pedals
+        </Link>
+        <Link
+          to={{
+            pathname: "/shop",
+            state: { category: "Grips" }
+          }}
+          >
+          Grips
+        </Link>
+
+        <Link
+          to={{
+            pathname: "/shop",
+            state: { category: "Pedals" }
+          }}
+          >
+          Pedals
+        </Link>
+      </Row>
       </div>
     )
   }

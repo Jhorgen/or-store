@@ -30,7 +30,7 @@ export const addQuantity=(id)=>{
 }
 
 export const addShipping=(id)=>{
-    return{
+    return{ 
         type: ADD_SHIPPING,
         id
     }
