@@ -1,8 +1,8 @@
 import React from 'react';
-import {BrowserRouter, Route, Switch} from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
-import Home from './components/Home'
+import Shop from './components/Shop'
 import Cart from './components/Cart'
 import CategorySelect from './components/CategorySelect'
 
@@ -14,16 +14,16 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-          <div>
-            <Navbar/>
-              <Switch>
-                  <Route exact path="/" component={CategorySelect}/>
-                  <Route render={props => ( <Home name={grips}/>)} path="/grips"/>
-                  <Route render={props => ( <Home name={pedals}/>)} path="/pedals"/>
-                  <Route path="/cart" component={Cart}/>
-                </Switch>
-           </div>
-     </BrowserRouter>
+        <div>
+          <Navbar/>
+          <Switch>
+            <Route exact path="/" component={CategorySelect}/>
+            <Route render={props => ( <Shop name={grips}/>)} path="/grips"/>
+            <Route render={props => ( <Shop name={pedals}/>)} path="/pedals"/>
+            <Route path="/cart" component={Cart}/>
+          </Switch>
+        </div>
+      </BrowserRouter>
       <Footer/>
     </div>
   );

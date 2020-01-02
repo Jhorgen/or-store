@@ -49,3 +49,11 @@ code {
 .item-desc{
     align-self:center;
 }
+
+.category-select:hover {
+  text-decoration: none;
+}
+
+.test-hover:hover {
+  box-shadow: 1px 1px 1px coral;
+}
