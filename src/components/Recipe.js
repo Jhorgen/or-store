@@ -23,7 +23,7 @@ class Recipe extends Component{
                 <div className="collection">
                     <li className="collection-item">
                             <label>
-                                <input type="checkbox" ref="shipping" onChange= {this.handleChecked} />
+                                <input type="checkbox" ref="shipping" onChange={this.handleChecked} />
                                 <span>Shipping(+6$)</span>
                             </label>
                         </li>

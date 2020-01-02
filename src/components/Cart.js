@@ -1,10 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { removeItem,addQuantity,subtractQuantity} from './../actions/cartActions.js'
+import { removeItem,addQuantity,subtractQuantity, loadItemData} from './../actions/cartActions.js'
 import Recipe from './Recipe'
 
 class Cart extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      changeBlah: ''
+    }
+  }
+
+  componentWillMount = () => {
+   localStorage.setItem('storeObj', JSON.stringify(this.props.addedItems));
+ }
+
 
   //to remove the item completely
   handleRemove = (id) => {
@@ -19,17 +30,18 @@ class Cart extends Component {
     this.props.subtractQuantity(id);
   }
 
-  testerTest = () => {
-    console.log(this.props.items);
+  testerTest = (addedItems) => {
+    console.log(addedItems);
   }
 
 
 
   render(){
-
-    let addedItems = this.props.items ?
+    const rememberMe = localStorage.getItem('storeObj')
+    let tester = JSON.parse(rememberMe)
+    let addedItems = tester ?
     (
-      this.props.items.map(item=>{
+      tester.map(item=>{
         return(
 
           <li className="collection-item avatar" key={item.id}>
@@ -46,7 +58,7 @@ class Cart extends Component {
               </p>
               <div className="add-remove">
                 <Link to="/cart"><i className="material-icons" onClick={()=>{this.handleAddQuantity(item.id)}}>arrow_drop_up</i></Link>
-                <Link to="/cart"><i className="material-icons" onClick={()=>{this.handleSubtractQuantity(item.id)}}>arrow_drop_down</i></Link>
+                <Link to="/cart"><i className="material-icons" onClick={()=>{this.handleSubtractQuantity(item.id, item.price)}}>arrow_drop_down</i></Link>
               </div>
               <button className="waves-effect waves-light btn pink remove" onClick={()=>{this.handleRemove(item.id)}}>Remove</button>
             </div>
@@ -66,9 +78,9 @@ class Cart extends Component {
     return(
       <div className="container">
         <div className="cart">
-          <h5 onClick={() => this.testerTest()}>You have ordered:</h5>
+          <h5 onClick={() => this.testerTest(addedItems)}>You have ordered:</h5>
           <ul className="collection">
-            {addedItems}
+              {addedItems}
           </ul>
         </div>
         <Recipe />
@@ -77,17 +89,13 @@ class Cart extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return{
-    items: state.addedItems,
-    //addedItems: state.addedItems
-  }
-}
+
 const mapDispatchToProps = (dispatch)=>{
   return{
-    removeItem: (id)=>{dispatch(removeItem(id))},
+    removeItem: (id, price)=>{dispatch(removeItem(id, price))},
     addQuantity: (id)=>{dispatch(addQuantity(id))},
-    subtractQuantity: (id)=>{dispatch(subtractQuantity(id))}
+    subtractQuantity: (id)=>{dispatch(subtractQuantity(id))},
+
   }
 }
-export default connect(mapStateToProps,mapDispatchToProps)(Cart)
+export default connect((state)=>state,mapDispatchToProps)(Cart)

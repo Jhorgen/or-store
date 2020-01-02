@@ -9,11 +9,16 @@ import axios from 'axios'
 class CategorySelect extends Component {
 
   componentDidMount() {
-
+    console.log(localStorage);
+    const rememberMe = localStorage.getItem('storeObj')
+    let tester = JSON.parse(rememberMe)
     this.props.loadItemData();
+    console.log(tester);
+    console.log(this.props.addedItems);
 
     setTimeout( () => {
   console.log(this.props.items);
+
 }, 300);
   }
 

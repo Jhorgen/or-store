@@ -1,17 +1,18 @@
 import { ADD_TO_CART, REMOVE_ITEM, SUB_QUANTITY, ADD_QUANTITY, SUB_SHIPPING, ADD_SHIPPING } from './action-types/cart-actions.js'
 
 //add cart action
-export const addToCart= (id)=>{
+export const addToCart = (id) => {
     return{
         type: ADD_TO_CART,
         id
     }
 }
 //remove item action
-export const removeItem=(id)=>{
+export const removeItem = (id, price) => {
     return{
         type: REMOVE_ITEM,
-        id
+        id,
+        price
     }
 }
 //subtract qt action
@@ -22,21 +23,21 @@ export const subtractQuantity=(id)=>{
     }
 }
 //add qt action
-export const addQuantity=(id)=>{
+export const addQuantity = (id) => {
     return{
         type: ADD_QUANTITY,
         id
     }
 }
 
-export const addShipping=(id)=>{
-    return{ 
+export const addShipping=(id) => {
+    return{
         type: ADD_SHIPPING,
         id
     }
 }
 
-export const subShipping=(id)=>{
+export const subShipping = (id) => {
     return{
         type: SUB_SHIPPING,
         id
@@ -48,7 +49,7 @@ export const requestItem = () => {
 };
 
 export const requestItemSuccess = (data) => {
-  return { type: 'REQUESTED_ITEM_SUCCEEDED', items: data }
+  return { type: 'REQUESTED_ITEM_SUCCEEDED', items: data}
 };
 
 const requestItemError = (err) => {

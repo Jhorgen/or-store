@@ -8,7 +8,7 @@ const Footer = () => {
         <img className="mb-n4" style={{height: '13rem'}} src={ require(`./../images/orb-logo-footer.webp`)} alt={"The Oter Rim Bicycle Shop"}/>
         <p className="text-white">(503) 278-3235</p>
         <p className="text-white">10625 NE Halsey. Portland, OR 97220</p>
-        image
+      
         <br/>
         <br/>
       </div>

@@ -67,11 +67,7 @@ class Home extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    items: state.items,
-  }
-}
+
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -80,4 +76,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect((state)=>state, mapDispatchToProps)(Home);

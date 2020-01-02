@@ -11,9 +11,34 @@ const initState = {
 
 const cartReducer = (state = initState, action)=>{
 
+  switch (action.type) {
+    case 'REQUESTED_ITEM':
+      return {
+        ...state,
+        items: '',
+        loading: true,
+        error: false,
+      };
+    case 'REQUESTED_ITEM_SUCCEEDED':
+      return {
+        ...state,
+        items: action.items,
+        loading: false,
+        error: false,
+        addedItems: []
+      };
+    case 'REQUESTED_ITEM_FAILED':
+      return {
+        items: '',
+        loading: false,
+        error: true,
+      };
+  }
+
     //INSIDE HOME COMPONENT
     if(action.type === ADD_TO_CART){
-          let addedItem = state.items.find(item => item.id === action.id)
+
+         let addedItem = state.items.find(item => item.id === action.id)
          let existed_item = state.addedItems.find(item => action.id === item.id)
          if(existed_item)
          {
@@ -96,28 +121,10 @@ const cartReducer = (state = initState, action)=>{
         }
   }
 
-    switch (action.type) {
-      case 'REQUESTED_ITEM':
-        return {
-          items: '',
-          loading: true,
-          error: false,
-        };
-      case 'REQUESTED_ITEM_SUCCEEDED':
-        return {
-          items: action.items,
-          loading: false,
-          error: false,
-        };
-      case 'REQUESTED_ITEM_FAILED':
-        return {
-          items: '',
-          loading: false,
-          error: true,
-        };
-      default:
-        return state;
-    }
+  else {
+    return state
+  }
+
 }
 
 
