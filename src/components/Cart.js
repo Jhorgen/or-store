@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { removeItem,addQuantity,subtractQuantity, loadItemData, sendStorageData } from './../actions/cartActions.js'
+import { removeItem, addQuantity, subtractQuantity } from './../actions/cartActions.js'
 import Recipe from './Recipe'
-import Item1 from './../images/item1.jpg'
 
 
 class Cart extends Component {
@@ -12,16 +11,6 @@ class Cart extends Component {
     this.state = {
       changeBlah: ''
     }
-  }
-
-  componentWillMount = () => {
-    localStorage.setItem('storeObj', JSON.stringify(this.props.addedItems));
-    const rememberMe = localStorage.getItem('storeObj')
-    let userCart = JSON.parse(rememberMe)
-    this.props.sendStorageData(userCart);
-    console.log(userCart);
-
-    //pass loaded data to global state
   }
 
   handleRemove = (id) => {
@@ -95,7 +84,6 @@ const mapDispatchToProps = (dispatch) => {
     removeItem: (id) => {dispatch(removeItem(id))},
     addQuantity: (id) => {dispatch(addQuantity(id))},
     subtractQuantity: (id) => {dispatch(subtractQuantity(id))},
-    sendStorageData: (userCart) => {dispatch(sendStorageData(userCart))}
   }
 }
 

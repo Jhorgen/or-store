@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Row, Col } from 'reactstrap'
-import { addToCart, loadItemData, loadSelectedItemData } from './../actions/cartActions.js'
-import Item1 from './../images/item1.jpg'
+import { Row } from 'reactstrap'
+import { addToCart, loadSelectedItemData, saveSelectedItemData } from './../actions/cartActions.js'
 
 
 class Shop extends Component {
@@ -14,8 +13,16 @@ class Shop extends Component {
     }
   }
 
-  componentDidMount = (props) => {
-    this.props.loadSelectedItemData(this.props.name);
+  componentDidMount = () => {
+    if(this.props.addedItems.length > 0) {
+      console.log("shop:", 'length');
+      let saveCartFromShop = this.props.addedItems
+      this.props.saveSelectedItemData(this.props.name, saveCartFromShop)
+    } else {
+      console.log("shop:", 'no length');
+      this.props.loadSelectedItemData(this.props.name)
+    }
+
     setTimeout( () => {
       this.setState({array: this.props.items.map(item=>{
         return (
@@ -35,7 +42,7 @@ class Shop extends Component {
       })})
       this.setState({changed: false})
       console.log(this.state.changed);
-    }, 400);
+    }, 500);
     console.log('items:', this.props.items);
   }
 
@@ -71,7 +78,9 @@ class Shop extends Component {
 const mapDispatchToProps = (dispatch) => {
   return {
     addToCart: (id) => {(dispatch(addToCart(id)))},
+    saveSelectedItemData: (category, saveCartFromShop) => {(dispatch(saveSelectedItemData(category, saveCartFromShop)))},
     loadSelectedItemData: (category) => {(dispatch(loadSelectedItemData(category)))}
+
   }
 }
 

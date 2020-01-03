@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { addShipping } from './../actions/cartActions.js'
 
 class Recipe extends Component{
 

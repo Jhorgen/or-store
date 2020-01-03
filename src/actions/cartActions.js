@@ -8,11 +8,10 @@ export const addToCart = (id) => {
   }
 }
 //remove item action
-export const removeItem = (id, price) => {
+export const removeItem = (id) => {
   return{
     type: REMOVE_ITEM,
-    id,
-    price
+    id
   }
 }
 //subtract qt action
@@ -56,12 +55,12 @@ export const requestItemError = (err) => {
   return { type: 'REQUESTED_ITEM_FAILED', payload: err }
 };
 
-export const sendStorageData = (userCart) => {
-  return { type: 'SEND_STORAGE_DATA', addedItems: userCart }
-}
-
 export const loadItemDataCheck1 = (data, check) => {
   return { type: 'CHECK', items: data, addedItems: check}
+}
+
+export const saveSelectedItemDataShop = (data, saveCartFromShop) => {
+  return { type: 'CHECK', items: data, addedItems: saveCartFromShop}
 }
 
 export const loadItemData = () => {
@@ -94,11 +93,26 @@ export const loadSelectedItemData = (category) => {
 
 export const loadItemDataCheck = (check) => {
   return (dispatch) => {
+    dispatch(requestItem());
     fetch(`http://localhost:3000/api/v1/products`)
     .then(res => res.json())
     .then(
       data => { console.log('data', data);
       dispatch(loadItemDataCheck1(data, check))},
+      err => console.log('error', err),
+      dispatch(requestItemError())
+    );
+  }
+}
+
+export const saveSelectedItemData = (category, saveCartFromShop) => {
+  return (dispatch) => {
+    dispatch(requestItem());
+    fetch(`http://localhost:3000/api/v1/products/?category=${category}`)
+    .then(res => res.json())
+    .then(
+      data => { console.log('data', data);
+      dispatch(saveSelectedItemDataShop(data, saveCartFromShop))},
       err => console.log('error', err),
       dispatch(requestItemError())
     );
