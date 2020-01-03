@@ -60,6 +60,10 @@ export const sendStorageData = (userCart) => {
   return { type: 'SEND_STORAGE_DATA', addedItems: userCart }
 }
 
+export const loadItemDataCheck1 = (data, check) => {
+  return { type: 'CHECK', items: data, addedItems: check}
+}
+
 export const loadItemData = () => {
   return (dispatch) => {
     dispatch(requestItem());
@@ -82,6 +86,19 @@ export const loadSelectedItemData = (category) => {
     .then(
       data => { console.log('data', data);
       dispatch(requestItemSuccess(data))},
+      err => console.log('error', err),
+      dispatch(requestItemError())
+    );
+  }
+}
+
+export const loadItemDataCheck = (check) => {
+  return (dispatch) => {
+    fetch(`http://localhost:3000/api/v1/products`)
+    .then(res => res.json())
+    .then(
+      data => { console.log('data', data);
+      dispatch(loadItemDataCheck1(data, check))},
       err => console.log('error', err),
       dispatch(requestItemError())
     );

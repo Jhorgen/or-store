@@ -42,11 +42,10 @@ class Cart extends Component {
 
 
   render() {
-    const rememberMe = localStorage.getItem('storeObj')
-    let tester = JSON.parse(rememberMe)
-    let addedItems = tester ?
+
+    let addedItems = this.props.addedItems.length ?
     (
-      tester.map(item => {
+      this.props.addedItems.map(item => {
         return (
           <li className="collection-item avatar" key={item.id}>
             <div className="item-img">

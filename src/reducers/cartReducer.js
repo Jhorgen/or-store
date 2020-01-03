@@ -36,6 +36,14 @@ const cartReducer = (state = initState, action) => {
     case 'SEND_STORAGE_DATA':
     return {
       addedItems: action.addedItems,
+    };
+    case 'CHECK':
+    return {
+      ...state,
+      items: action.items,
+      loading: false,
+      error: false,
+      addedItems: action.addedItems
     }
   }
 

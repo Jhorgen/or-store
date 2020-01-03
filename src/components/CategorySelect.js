@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { loadItemData } from './../actions/cartActions.js'
+import { loadItemData, loadItemDataCheck } from './../actions/cartActions.js'
 import { Row, Col } from 'reactstrap'
 import axios from 'axios'
 
@@ -9,9 +9,15 @@ import axios from 'axios'
 class CategorySelect extends Component {
 
   componentDidMount() {
-    console.log(localStorage);
+    if(this.props.addedItems.length > 0) {
+      let check = this.props.addedItems;
+    this.props.loadItemDataCheck(check);
+    console.log('length');
+    console.log(this.props.addedItems);
+  } else {
     this.props.loadItemData();
-
+    console.log('no length');
+  }
 
     console.log('check new action:', this.props.addedItems);
 
@@ -265,7 +271,8 @@ class CategorySelect extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    loadItemData: () => {(dispatch(loadItemData()))}
+    loadItemData: () => {(dispatch(loadItemData()))},
+    loadItemDataCheck: (check) => {(dispatch(loadItemDataCheck(check)))}
   }
 }
 
