@@ -63,6 +63,7 @@ export const saveSelectedItemDataShop = (data, saveCartFromShop, saveTotalFromSh
   return { type: 'CHECK', items: data, addedItems: saveCartFromShop, total: saveTotalFromShop}
 }
 
+
 export const loadItemData = () => {
   return (dispatch) => {
     dispatch(requestItem());

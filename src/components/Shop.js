@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Row } from 'reactstrap'
+import { Link } from 'react-router-dom'
 import { addToCart, loadSelectedItemData, saveSelectedItemData } from './../actions/cartActions.js'
 
 
@@ -11,6 +12,10 @@ class Shop extends Component {
       changed: true,
       array: ''
     }
+  }
+
+  checkLink = (item) => {
+    console.log(item);
   }
 
   componentDidMount = () => {
@@ -30,7 +35,9 @@ class Shop extends Component {
         return (
           <div className="card" key={item.id}>
             <div className="card-image text-center">
+              <Link to="/item" onClick={() => {this.checkLink(item)}}>
               <img style={{height: '13rem'}} src={ require(`./../images/${item.image1}.jpg`)} alt={item.title}/>
+              </Link>
               <div><span className="card-title">{item.title}</span></div>
               <span to="/" className="btn-floating halfway-fab waves-effect waves-light red"><i onClick={() => this.handleAddClick(item.id)} className="text-info">Add to cart</i></span>
               <hr/>
