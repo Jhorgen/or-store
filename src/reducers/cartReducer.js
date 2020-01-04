@@ -25,7 +25,8 @@ const cartReducer = (state = initState, action) => {
       items: action.items,
       loading: false,
       error: false,
-      addedItems:[]
+      addedItems:[],
+      total: 0
     };
     case 'REQUESTED_ITEM_FAILED':
     return {
@@ -39,7 +40,8 @@ const cartReducer = (state = initState, action) => {
       items: action.items,
       loading: false,
       error: false,
-      addedItems: action.addedItems
+      addedItems: action.addedItems,
+      total: action.total
     }
     case 'SHOP_CHECK':
     return {
@@ -47,7 +49,8 @@ const cartReducer = (state = initState, action) => {
       items: action.items,
       loading: false,
       error: false,
-      addedItems: action.addedItems
+      addedItems: action.addedItems,
+      total: action.total
     }
   }
 

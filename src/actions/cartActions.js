@@ -55,12 +55,12 @@ export const requestItemError = (err) => {
   return { type: 'REQUESTED_ITEM_FAILED', payload: err }
 };
 
-export const loadItemDataCheck1 = (data, check) => {
-  return { type: 'CHECK', items: data, addedItems: check}
+export const loadItemDataCheck1 = (data, check, saveTotal) => {
+  return { type: 'CHECK', items: data, addedItems: check, total: saveTotal}
 }
 
-export const saveSelectedItemDataShop = (data, saveCartFromShop) => {
-  return { type: 'CHECK', items: data, addedItems: saveCartFromShop}
+export const saveSelectedItemDataShop = (data, saveCartFromShop, saveTotalFromShop) => {
+  return { type: 'CHECK', items: data, addedItems: saveCartFromShop, total: saveTotalFromShop}
 }
 
 export const loadItemData = () => {
@@ -91,28 +91,28 @@ export const loadSelectedItemData = (category) => {
   }
 }
 
-export const loadItemDataCheck = (check) => {
+export const loadItemDataCheck = (check, saveTotal) => {
   return (dispatch) => {
     dispatch(requestItem());
     fetch(`http://localhost:3000/api/v1/products`)
     .then(res => res.json())
     .then(
       data => { console.log('data', data);
-      dispatch(loadItemDataCheck1(data, check))},
+      dispatch(loadItemDataCheck1(data, check, saveTotal))},
       err => console.log('error', err),
       dispatch(requestItemError())
     );
   }
 }
 
-export const saveSelectedItemData = (category, saveCartFromShop) => {
+export const saveSelectedItemData = (category, saveCartFromShop, saveTotalFromShop) => {
   return (dispatch) => {
     dispatch(requestItem());
     fetch(`http://localhost:3000/api/v1/products/?category=${category}`)
     .then(res => res.json())
     .then(
       data => { console.log('data', data);
-      dispatch(saveSelectedItemDataShop(data, saveCartFromShop))},
+      dispatch(saveSelectedItemDataShop(data, saveCartFromShop, saveTotalFromShop))},
       err => console.log('error', err),
       dispatch(requestItemError())
     );

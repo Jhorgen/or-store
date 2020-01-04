@@ -3,7 +3,8 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { removeItem, addQuantity, subtractQuantity } from './../actions/cartActions.js'
 import Recipe from './Recipe'
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons'
 
 class Cart extends Component {
   constructor(props) {
@@ -13,12 +14,23 @@ class Cart extends Component {
     }
   }
 
+  componentDidMount = () => {
+    if(this.props.addedItems.length > 0) {
+      console.log("cart checkoutquantity:", this.props.addedItems.checkoutquantity)
+    } else {
+      console.log('nada');
+    }
+
+  }
+
   handleRemove = (id) => {
     this.props.removeItem(id);
   }
 
   handleAddQuantity = (id) => {
     this.props.addQuantity(id);
+    console.log(id);
+
   }
 
   handleSubtractQuantity = (id) => {
@@ -48,8 +60,9 @@ class Cart extends Component {
                 <b>Quantity: {item.checkoutquantity}</b>
               </p>
               <div className="add-remove">
-                <Link to="/cart"><i className="material-icons" onClick={()=>{this.handleAddQuantity(item.id)}}>arrow_drop_up</i></Link>
-                <Link to="/cart"><i className="material-icons" onClick={()=>{this.handleSubtractQuantity(item.id, item.price)}}>arrow_drop_down</i></Link>
+                <span className="material-icons pr-3" onClick={()=>{this.handleAddQuantity(item.id)}}><FontAwesomeIcon icon={faArrowUp} />
+                </span>
+                <span className="material-icons" onClick={()=>{this.handleSubtractQuantity(item.id, item.price)}}><FontAwesomeIcon icon={faArrowDown} /></span>
               </div>
               <button className="waves-effect waves-light btn pink remove" onClick={()=>{this.handleRemove(item.id)}}>Remove</button>
             </div>

@@ -17,7 +17,9 @@ class Shop extends Component {
     if(this.props.addedItems.length > 0) {
       console.log("shop:", 'length');
       let saveCartFromShop = this.props.addedItems
-      this.props.saveSelectedItemData(this.props.name, saveCartFromShop)
+      let saveTotalFromShop = Math.floor(this.props.total)
+      console.log(saveTotalFromShop);
+      this.props.saveSelectedItemData(this.props.name, saveCartFromShop, saveTotalFromShop)
     } else {
       console.log("shop:", 'no length');
       this.props.loadSelectedItemData(this.props.name)
@@ -78,7 +80,7 @@ class Shop extends Component {
 const mapDispatchToProps = (dispatch) => {
   return {
     addToCart: (id) => {(dispatch(addToCart(id)))},
-    saveSelectedItemData: (category, saveCartFromShop) => {(dispatch(saveSelectedItemData(category, saveCartFromShop)))},
+    saveSelectedItemData: (category, saveCartFromShop, saveTotalFromShop) => {(dispatch(saveSelectedItemData(category, saveCartFromShop, saveTotalFromShop)))},
     loadSelectedItemData: (category) => {(dispatch(loadSelectedItemData(category)))}
 
   }
