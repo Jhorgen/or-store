@@ -5,13 +5,12 @@ import { loadItemData, loadItemDataCheck } from './../actions/cartActions.js'
 import { Row } from 'reactstrap'
 
 
-class CategorySelect extends Component {
+class BrandSelect extends Component {
 
   componentDidMount() {
     if(this.props.addedItems.length > 0) {
       let saveTotal = Math.floor(this.props.total);
       let check = this.props.addedItems;
-      console.log('category:', this.props.addedItems[0].checkoutquantity);
     this.props.loadItemDataCheck(check, saveTotal);
     console.log('length');
     console.log(this.props.addedItems);
@@ -272,4 +271,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect((state) => state, mapDispatchToProps)(CategorySelect);
+export default connect((state) => state, mapDispatchToProps)(BrandSelect);

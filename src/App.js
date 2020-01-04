@@ -7,6 +7,7 @@ import Cart from './components/Cart'
 import CategorySelect from './components/CategorySelect'
 import ItemView from './components/ItemView'
 import ShopByBrand from './components/ShopByBrand'
+import BrandSelect from './components/BrandSelect'
 
 function App() {
 
@@ -23,9 +24,12 @@ function App() {
             <Route exact path="/" component={CategorySelect}/>
             <Route render={props => ( <Shop name={grips}/>)} path="/grips"/>
             <Route render={props => ( <Shop name={pedals}/>)} path="/pedals"/>
-            <Route path="/brands" component={ShopByBrand}/>
+
+            <Route path="/brands" component={BrandSelect}/>
             <Route render={props => ( <ShopByBrand brand={fox}/>)} path="/fox"/>
-            <Route path="/item" component={ItemView}/>
+
+            <Route path="/item/:title/" component={ItemView}/>
+
             <Route path="/cart" component={Cart}/>
           </Switch>
         </div>

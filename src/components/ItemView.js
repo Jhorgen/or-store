@@ -12,13 +12,12 @@ class ItemView extends Component {
   }
 
   componentDidMount = () => {
-    let id = 2;
-    axios.get(`http://localhost:3000/api/v1/products/${id}`)
-    .then(response => {
-      console.log(response.data);
-      this.setState({itemView: [response.data]})
-    })
-    .catch(error => console.log(error))
+      let title = this.props.match.params.title
+    fetch(`http://localhost:3000/api/v1/products/?title=${title}`)
+    .then(res => res.json())
+    .then(
+      data => this.setState({itemView: data})
+    )
   }
 
   test = ()=> {
@@ -34,7 +33,6 @@ class ItemView extends Component {
         return (
           <li className="collection-item avatar" key={item.id}>
             <div className="item-img">
-              <img src={ require(`./../images/${item.image1}.jpg`)} alt={item.image}/>
             </div>
             <div className="item-desc">
               <span className="title">{item.title}</span>
@@ -48,7 +46,6 @@ class ItemView extends Component {
               </span>
               <span className="material-icons" onClick={()=>{this.handleSubtractQuantity(item.id, item.price)}}><FontAwesomeIcon icon={faArrowDown} /></span>
             </div>
-            <button className="waves-effect waves-light btn pink remove" onClick={()=>{this.handleRemove(item.id)}}>Remove</button>
           </div>
         </li>
       )

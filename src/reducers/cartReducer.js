@@ -5,7 +5,8 @@ const initState = {
   addedItems: [],
   total: 0,
   loading: false,
-  error: false
+  error: false,
+  itemView: []
 }
 
 
@@ -95,11 +96,11 @@ const cartReducer = (state = initState, action) => {
 
     //calculating the total
     let newTotal = state.total - (itemToRemove.price * itemToRemove.checkoutquantity )
-    console.log(itemToRemove)
+
     return {
       ...state,
       addedItems: new_items,
-      total: newTotal
+      total: newTotal < 0 ? Math.round(newTotal) : newTotal
     }
   }
   //INSIDE CART COMPONENT

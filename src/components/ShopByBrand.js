@@ -24,8 +24,6 @@ class ShopByBrand extends Component {
     }
   }
 
-
-
   handleAddClick = (id) => {
     this.props.addToCart(id);
     console.log(this.props.test);

@@ -15,8 +15,9 @@ class Cart extends Component {
   }
 
   componentDidMount = () => {
+
     if(this.props.addedItems.length > 0) {
-      console.log("cart checkoutquantity:", this.props.addedItems.checkoutquantity)
+      console.log('cart checkout:', this.props.addedItems[0].checkoutquantity);
     } else {
       console.log('nada');
     }
@@ -27,9 +28,11 @@ class Cart extends Component {
     this.props.removeItem(id);
   }
 
-  handleAddQuantity = (id) => {
+  handleAddQuantity = (id, checkoutquantity) => {
     this.props.addQuantity(id);
     console.log(id);
+    console.log("cart checkoutquantity:", checkoutquantity)
+
 
   }
 
@@ -50,17 +53,19 @@ class Cart extends Component {
         return (
           <li className="collection-item avatar" key={item.id}>
             <div className="item-img">
+              <Link to={'/item/' + item.title}>
               <img src={ require(`./../images/${item.image1}.jpg`)} alt={item.image}/>
+              </Link>
             </div>
             <div className="item-desc">
               <span className="title">{item.title}</span>
               <p>{item.description}</p>
               <p><b>Price: ${item.price}</b></p>
               <p>
-                <b>Quantity: {item.checkoutquantity}</b>
+              <b>Quantity: {item.checkoutquantity}</b>
               </p>
               <div className="add-remove">
-                <span className="material-icons pr-3" onClick={()=>{this.handleAddQuantity(item.id)}}><FontAwesomeIcon icon={faArrowUp} />
+                <span className="material-icons pr-3" onClick={()=>{this.handleAddQuantity(item.id, item.checkoutquantity)}}><FontAwesomeIcon icon={faArrowUp} />
                 </span>
                 <span className="material-icons" onClick={()=>{this.handleSubtractQuantity(item.id, item.price)}}><FontAwesomeIcon icon={faArrowDown} /></span>
               </div>
