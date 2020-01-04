@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Row } from 'reactstrap'
 import { Link } from 'react-router-dom'
-import { addToCart, loadSelectedItemData, saveSelectedItemData } from './../actions/cartActions.js'
+import { addToCart, loadSelectedBrandData, saveSelectedBrandData } from './../actions/cartActions.js'
 
 
-class Shop extends Component {
+class ShopByBrand extends Component {
 
   checkLink = (item) => {
     console.log(item);
@@ -14,13 +14,13 @@ class Shop extends Component {
   componentDidMount = () => {
     if(this.props.addedItems.length > 0) {
       console.log("shop:", 'length');
-      let saveCartFromShop = this.props.addedItems
-      let saveTotalFromShop = Math.floor(this.props.total)
-      console.log(saveTotalFromShop);
-      this.props.saveSelectedItemData(this.props.name, saveCartFromShop, saveTotalFromShop)
+      let saveCartFromBrand = this.props.addedItems
+      let saveTotalFromBrand = Math.floor(this.props.total)
+      console.log(saveTotalFromBrand);
+      this.props.saveSelectedItemData(this.props.brand, saveCartFromBrand, saveTotalFromBrand)
     } else {
       console.log("shop:", 'no length');
-      this.props.loadSelectedItemData(this.props.name)
+      this.props.loadSelectedBrandData(this.props.brand)
     }
   }
 
@@ -33,7 +33,7 @@ class Shop extends Component {
   }
 
   findCat = () => {
-    console.log(this.props.name);
+    console.log(this.props.brand);
   }
 
   render() {
@@ -67,7 +67,7 @@ class Shop extends Component {
 
     return (
       <div className="container">
-        <h3 className="text-center" onClick={() => this.findCat()}>{this.props.name}</h3>
+        <h3 className="text-center" onClick={() => this.findCat()}>{this.props.brand}</h3>
         <div>
           <div>
         <Row className="justify-content-center mt-4">{items}</Row>
@@ -82,10 +82,10 @@ class Shop extends Component {
 const mapDispatchToProps = (dispatch) => {
   return {
     addToCart: (id) => {(dispatch(addToCart(id)))},
-    saveSelectedItemData: (category, saveCartFromShop, saveTotalFromShop) => {(dispatch(saveSelectedItemData(category, saveCartFromShop, saveTotalFromShop)))},
-    loadSelectedItemData: (category) => {(dispatch(loadSelectedItemData(category)))}
+    saveSelectedBrandData: (brand, saveCartFromBrand, saveTotalFromBrand) => {(dispatch(saveSelectedBrandData(brand, saveCartFromBrand, saveTotalFromBrand)))},
+    loadSelectedBrandData: (brand) => {(dispatch(loadSelectedBrandData(brand)))}
 
   }
 }
 
-export default connect((state) => state, mapDispatchToProps)(Shop);
+export default connect((state) => state, mapDispatchToProps)(ShopByBrand);

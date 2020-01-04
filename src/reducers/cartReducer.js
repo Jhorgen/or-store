@@ -52,6 +52,15 @@ const cartReducer = (state = initState, action) => {
       addedItems: action.addedItems,
       total: action.total
     }
+    case 'BRANDS':
+    return {
+      ...state,
+      items: action.items,
+      loading: false,
+      error: false,
+      addedItems: action.addedItems,
+      total: action.total
+    }
   }
 
   //INSIDE HOME COMPONENT

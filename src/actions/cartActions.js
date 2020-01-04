@@ -63,25 +63,15 @@ export const saveSelectedItemDataShop = (data, saveCartFromShop, saveTotalFromSh
   return { type: 'CHECK', items: data, addedItems: saveCartFromShop, total: saveTotalFromShop}
 }
 
+export const saveSelectedItemDataBrands = (data, saveCartFromBrands, saveTotalFromBrands) => {
+  return { type: 'BRANDS', items: data, addedItems: saveCartFromBrands, total: saveTotalFromBrands}
+}
+
 
 export const loadItemData = () => {
   return (dispatch) => {
     dispatch(requestItem());
     fetch(`http://localhost:3000/api/v1/products`)
-    .then(res => res.json())
-    .then(
-      data => { console.log('data', data);
-      dispatch(requestItemSuccess(data))},
-      err => console.log('error', err),
-      dispatch(requestItemError())
-    );
-  }
-}
-
-export const loadSelectedItemData = (category) => {
-  return (dispatch) => {
-    dispatch(requestItem());
-    fetch(`http://localhost:3000/api/v1/products/?category=${category}`)
     .then(res => res.json())
     .then(
       data => { console.log('data', data);
@@ -106,6 +96,21 @@ export const loadItemDataCheck = (check, saveTotal) => {
   }
 }
 
+export const loadSelectedItemData = (category) => {
+  return (dispatch) => {
+    dispatch(requestItem());
+    fetch(`http://localhost:3000/api/v1/products/?category=${category}`)
+    .then(res => res.json())
+    .then(
+      data => { console.log('data', data);
+      dispatch(requestItemSuccess(data))},
+      err => console.log('error', err),
+      dispatch(requestItemError())
+    );
+  }
+}
+
+
 export const saveSelectedItemData = (category, saveCartFromShop, saveTotalFromShop) => {
   return (dispatch) => {
     dispatch(requestItem());
@@ -114,6 +119,35 @@ export const saveSelectedItemData = (category, saveCartFromShop, saveTotalFromSh
     .then(
       data => { console.log('data', data);
       dispatch(saveSelectedItemDataShop(data, saveCartFromShop, saveTotalFromShop))},
+      err => console.log('error', err),
+      dispatch(requestItemError())
+    );
+  }
+}
+
+export const loadSelectedBrandData = (brand) => {
+  return (dispatch) => {
+    dispatch(requestItem());
+    fetch(`http://localhost:3000/api/v1/products/?brand=${brand}`)
+    .then(res => res.json())
+    .then(
+      data => { console.log('data', data);
+      dispatch(requestItemSuccess(data))},
+      err => console.log('error', err),
+      dispatch(requestItemError())
+    );
+  }
+}
+
+
+export const saveSelectedBrandData = (brand, saveCartFromBrands, saveTotalFromBrands) => {
+  return (dispatch) => {
+    dispatch(requestItem());
+    fetch(`http://localhost:3000/api/v1/products/?brand=${brand}`)
+    .then(res => res.json())
+    .then(
+      data => { console.log('data', data);
+      dispatch(saveSelectedItemDataShop(data, saveCartFromBrands, saveTotalFromBrands))},
       err => console.log('error', err),
       dispatch(requestItemError())
     );

@@ -6,11 +6,13 @@ import Shop from './components/Shop'
 import Cart from './components/Cart'
 import CategorySelect from './components/CategorySelect'
 import ItemView from './components/ItemView'
+import ShopByBrand from './components/ShopByBrand'
 
 function App() {
 
   const grips = "Grips";
   const pedals = "Pedals";
+  const fox = "Fox";
 
   return (
     <div className="App">
@@ -21,6 +23,8 @@ function App() {
             <Route exact path="/" component={CategorySelect}/>
             <Route render={props => ( <Shop name={grips}/>)} path="/grips"/>
             <Route render={props => ( <Shop name={pedals}/>)} path="/pedals"/>
+            <Route path="/brands" component={ShopByBrand}/>
+            <Route render={props => ( <ShopByBrand brand={fox}/>)} path="/fox"/>
             <Route path="/item" component={ItemView}/>
             <Route path="/cart" component={Cart}/>
           </Switch>

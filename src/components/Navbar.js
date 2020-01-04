@@ -12,6 +12,7 @@ const Navbar = () => {
       </Row>
       <Row className="justify-content-around m-5">
       <Link to="/">Categories</Link>
+      <Link to="/brands">Brands</Link>
          <Link to="/cart"><span>Cart</span></Link>
          <Link to="/cart"><i>Search</i></Link>
          <div>
