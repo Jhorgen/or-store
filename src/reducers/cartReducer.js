@@ -6,7 +6,6 @@ const initState = {
   total: 0,
   loading: false,
   error: false,
-  itemView: []
 }
 
 
@@ -100,7 +99,7 @@ const cartReducer = (state = initState, action) => {
     return {
       ...state,
       addedItems: new_items,
-      total: newTotal < 0 ? Math.round(newTotal) : newTotal
+      total: newTotal <= 0 ? Math.round(newTotal) : newTotal
     }
   }
   //INSIDE CART COMPONENT

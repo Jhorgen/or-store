@@ -43,7 +43,7 @@ class Shop extends Component {
     return (
       <div className="card" key={item.id}>
         <div className="card-image text-center">
-          <Link to={'/item/' + item.title} onClick={() => {this.checkLink(item)}}>
+          <Link to={'/item/' + item.title.split(' ').join('')} onClick={() => {this.checkLink(item)}}>
           <img style={{height: '13rem'}} src={ require(`./../images/${item.image1}.jpg`)} alt={item.title}/>
           </Link>
           <div><span className="card-title">{item.title}</span></div>
