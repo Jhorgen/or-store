@@ -8,6 +8,7 @@ import CategorySelect from './components/CategorySelect'
 import ItemView from './components/ItemView'
 import ShopByBrand from './components/ShopByBrand'
 import BrandSelect from './components/BrandSelect'
+import Admin from './components/Admin'
 
 function App() {
 
@@ -31,6 +32,8 @@ function App() {
             <Route path="/item/:title/" component={ItemView}/>
 
             <Route path="/cart" component={Cart}/>
+
+            <Route path="/admin" component={Admin}/>
           </Switch>
         </div>
       </BrowserRouter>
