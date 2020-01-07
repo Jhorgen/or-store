@@ -1,6 +1,6 @@
 import { ADD_TO_CART, REMOVE_ITEM, SUB_QUANTITY, ADD_QUANTITY, ADD_SHIPPING, SUB_SHIPPING } from './../actions/action-types/cart-actions.js'
 
-const initState = {
+ const initState = {
   items: [],
   addedItems: [],
   total: 0,
@@ -15,7 +15,6 @@ const cartReducer = (state = initState, action) => {
     case 'REQUESTED_ITEM':
     return {
       ...state,
-      items: '',
       loading: true,
       error: false,
     };
@@ -25,12 +24,12 @@ const cartReducer = (state = initState, action) => {
       items: action.items,
       loading: false,
       error: false,
-      addedItems:[],
-      total: 0
+      addedItems:action.addedItems,
+      total: action.total
     };
     case 'REQUESTED_ITEM_FAILED':
     return {
-      items: '',
+      ...state,
       loading: false,
       error: true,
     };
@@ -42,6 +41,7 @@ const cartReducer = (state = initState, action) => {
       error: false,
       addedItems: action.addedItems,
       total: action.total
+
     }
     case 'SHOP_CHECK':
     return {
@@ -61,6 +61,23 @@ const cartReducer = (state = initState, action) => {
       addedItems: action.addedItems,
       total: action.total
     }
+    case 'CORRECT_TOTAL':
+    return {
+      ...state,
+      total: action.total
+    }
+      case 'QUANTITY_ADJUST':
+      let addedItem = state.items.find(item=> item.id === action.id)
+      addedItem.checkoutquantity = action.input
+      let newTotal = state.total + addedItem.price * addedItem.checkoutquantity
+      const updatedItems = state.addedItems.map(item =>
+       item.id === action.id ? { ...item, checkoutquantity: item.checkoutquantity = action.input } : item
+      );
+      return{
+        ...state,
+        addedItems: updatedItems,
+        total: newTotal
+      }
   }
 
   //INSIDE HOME COMPONENT
@@ -69,10 +86,12 @@ const cartReducer = (state = initState, action) => {
     let existed_item = state.addedItems.find(item => action.id === item.id)
     if(existed_item)
     {
+
       addedItem.checkoutquantity += 1
       return {
         ...state,
         total: state.total + addedItem.price
+
       }
     }
     else {
@@ -93,8 +112,9 @@ const cartReducer = (state = initState, action) => {
     let itemToRemove= state.addedItems.find(item=> action.id === item.id)
     let new_items = state.addedItems.filter(item=> action.id !== item.id)
 
+    let newTotal
     //calculating the total
-    let newTotal = state.total - (itemToRemove.price * itemToRemove.checkoutquantity )
+    action.items.length === 1 ? newTotal = 0 : newTotal = state.total - (itemToRemove.price * itemToRemove.checkoutquantity )
 
     return {
       ...state,
@@ -102,16 +122,22 @@ const cartReducer = (state = initState, action) => {
       total: newTotal <= 0 ? Math.round(newTotal) : newTotal
     }
   }
+
   //INSIDE CART COMPONENT
   if(action.type === ADD_QUANTITY){
     let addedItem = state.items.find(item=> item.id === action.id)
-    addedItem.checkoutquantity += 1
+    addedItem.checkoutquantity = action.input
     let newTotal = state.total + addedItem.price
+    const updatedItems = state.addedItems.map(item =>
+     item.id === action.id ? { ...item, checkoutquantity: item.checkoutquantity = action.input } : item
+   );
     return{
       ...state,
+      addedItems: updatedItems,
       total: newTotal
     }
   }
+
   if(action.type === SUB_QUANTITY){
     let addedItem = state.items.find(item=> item.id === action.id)
     //if the qt == 0 then it should be removed
