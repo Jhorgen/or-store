@@ -8,10 +8,11 @@ export const addToCart = (id) => {
   }
 }
 //remove item action
-export const removeItem = (id) => {
+export const removeItem = (id, items) => {
   return{
     type: REMOVE_ITEM,
-    id
+    id,
+    items
   }
 }
 //subtract qt action
@@ -43,12 +44,20 @@ export const subShipping = (id) => {
   }
 }
 
+export const correctTotalOnEmpty = () => {
+  return { type: 'CORRECT_TOTAL', total: 0 }
+}
+
+export const quantityAdjust = (input, id) => {
+  return {type: 'QUANTITY_ADJUST', input, id }
+}
+
 export const requestItem = () => {
   return { type: 'REQUESTED_ITEM' }
 };
 
 export const requestItemSuccess = (data) => {
-  return { type: 'REQUESTED_ITEM_SUCCEEDED', items: data}
+  return { type: 'REQUESTED_ITEM_SUCCEEDED', items: data, addedItems: [], total: 0}
 };
 
 export const requestItemError = (err) => {
@@ -70,7 +79,7 @@ export const saveSelectedItemDataBrands = (data, saveCartFromBrands, saveTotalFr
 
 export const loadItemData = () => {
   return (dispatch) => {
-    dispatch(requestItem());
+    dispatch(requestItem())
     fetch(`http://localhost:3000/api/v1/products`)
     .then(res => res.json())
     .then(
@@ -84,7 +93,6 @@ export const loadItemData = () => {
 
 export const loadItemDataCheck = (check, saveTotal) => {
   return (dispatch) => {
-    dispatch(requestItem());
     fetch(`http://localhost:3000/api/v1/products`)
     .then(res => res.json())
     .then(
@@ -98,7 +106,6 @@ export const loadItemDataCheck = (check, saveTotal) => {
 
 export const loadSelectedItemData = (category) => {
   return (dispatch) => {
-    dispatch(requestItem());
     fetch(`http://localhost:3000/api/v1/products/?category=${category}`)
     .then(res => res.json())
     .then(
@@ -113,7 +120,6 @@ export const loadSelectedItemData = (category) => {
 
 export const saveSelectedItemData = (category, saveCartFromShop, saveTotalFromShop) => {
   return (dispatch) => {
-    dispatch(requestItem());
     fetch(`http://localhost:3000/api/v1/products/?category=${category}`)
     .then(res => res.json())
     .then(
@@ -127,7 +133,6 @@ export const saveSelectedItemData = (category, saveCartFromShop, saveTotalFromSh
 
 export const loadSelectedBrandData = (brand) => {
   return (dispatch) => {
-    dispatch(requestItem());
     fetch(`http://localhost:3000/api/v1/products/?brand=${brand}`)
     .then(res => res.json())
     .then(
@@ -142,7 +147,6 @@ export const loadSelectedBrandData = (brand) => {
 
 export const saveSelectedBrandData = (brand, saveCartFromBrands, saveTotalFromBrands) => {
   return (dispatch) => {
-    dispatch(requestItem());
     fetch(`http://localhost:3000/api/v1/products/?brand=${brand}`)
     .then(res => res.json())
     .then(
