@@ -15,7 +15,7 @@ class ShopByBrand extends Component {
     if(this.props.addedItems.length > 0) {
       console.log("shop:", 'length');
       let saveCartFromBrand = this.props.addedItems
-      let saveTotalFromBrand = Math.floor(this.props.total)
+      let saveTotalFromBrand = this.props.total
       console.log(saveTotalFromBrand);
       this.props.saveSelectedItemData(this.props.brand, saveCartFromBrand, saveTotalFromBrand)
     } else {

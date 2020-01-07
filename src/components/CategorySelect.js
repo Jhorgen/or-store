@@ -7,29 +7,40 @@ import { Row } from 'reactstrap'
 
 class CategorySelect extends Component {
 
-  componentDidMount() {
-    if(this.props.addedItems.length > 0) {
-      let saveTotal = Math.floor(this.props.total);
-      let check = this.props.addedItems;
-      console.log('category:', this.props.addedItems[0].checkoutquantity);
-    this.props.loadItemDataCheck(check, saveTotal);
-    console.log('length');
-    console.log(this.props.addedItems);
-  } else {
-    this.props.loadItemData();
-    console.log('no length');
-  }
+    componentDidMount() {
+      if(this.props.form.addedItems.length > 0) {
+        let saveTotal = this.props.form.total;
+        let check = this.props.form.addedItems;
+        console.log('category:', this.props.form.addedItems[0].checkoutquantity);
+      this.props.loadItemDataCheck(check, saveTotal);
+      console.log('length');
+      console.log(this.props.form.addedItems);
+    } else {
+      this.props.loadItemData();
+      console.log('no length');
+    }
 
-    console.log('check new action:', this.props.addedItems);
+      console.log('check new action:', this.props.form.addedItems);
 
-    setTimeout( () => {
-      console.log(this.props.items);
-    }, 300);
+      setTimeout( () => {
+        console.log(this.props.form.items);
+      }, 300);
+    }
+  
+
+  componentWillReceiveProps(nextProps) {
+    console.log('updated props: ', nextProps)
+}
+
+  testthis = () => {
+    console.log(this.props.items);
+    console.log(this.props.form.addedItems);
   }
 
   render() {
     return (
       <div>
+        <p onClick={() => this.testthis()}>asa</p>
         <br/>
         <Row className="justify-content-around m-3">
           <div className="test-hover">

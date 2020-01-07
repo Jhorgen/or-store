@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons'
-import axios from 'axios'
 
 class ItemView extends Component {
   constructor(props) {
@@ -13,8 +12,8 @@ class ItemView extends Component {
 
   componentDidMount = () => {
 
-      let title = this.props.match.params.title
-      console.log(title);
+    let title = this.props.match.params.title
+    console.log(title);
     fetch(`http://localhost:3000/api/v1/products/?title=${title}`)
     .then(res => res.json())
     .then(
@@ -35,6 +34,7 @@ class ItemView extends Component {
         return (
           <li className="collection-item avatar" key={item.id}>
             <div className="item-img">
+              <img src={ require(`./../images/${item.image1}.jpg`)} alt={item.image}/>
             </div>
             <div className="item-desc">
               <span className="title">{item.title}</span>

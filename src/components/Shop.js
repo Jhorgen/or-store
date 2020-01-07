@@ -12,10 +12,10 @@ class Shop extends Component {
   }
 
   componentDidMount = () => {
-    if(this.props.addedItems.length > 0) {
+    if(this.props.form.addedItems > 0) {
       console.log("shop:", 'length');
-      let saveCartFromShop = this.props.addedItems
-      let saveTotalFromShop = Math.floor(this.props.total)
+      let saveCartFromShop = this.props.form.addedItems
+      let saveTotalFromShop = this.props.form.total
       console.log(saveTotalFromShop);
       this.props.saveSelectedItemData(this.props.name, saveCartFromShop, saveTotalFromShop)
     } else {
@@ -33,13 +33,13 @@ class Shop extends Component {
   }
 
   findCat = () => {
-    console.log(this.props.name);
+    console.log(this.props.form.name);
   }
 
   render() {
-    let items = this.props.items.length ?
+    let items = this.props.form.items.length ?
     (
-    this.props.items.map(item=>{
+    this.props.form.items.map(item=>{
     return (
       <div className="card" key={item.id}>
         <div className="card-image text-center">
