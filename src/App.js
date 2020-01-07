@@ -20,7 +20,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <div>
-          <Navbar/>
+          <Navbar />
           <Switch>
             <Route exact path="/" component={CategorySelect}/>
             <Route render={props => ( <Shop name={grips}/>)} path="/grips"/>

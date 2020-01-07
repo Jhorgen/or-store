@@ -3,6 +3,14 @@ import { connect } from 'react-redux'
 
 class Recipe extends Component{
 
+  componentWillMount = () => {
+    console.log('mount:', this.props.total);
+
+    console.log("result:", );
+
+  }
+
+
   componentWillUnmount = () => {
     if(this.refs.shipping.checked)
     this.props.substractShipping()
@@ -17,6 +25,8 @@ class Recipe extends Component{
     }
   }
 
+
+
   render() {
     return (
       <div className="container">
@@ -27,7 +37,7 @@ class Recipe extends Component{
               <span>Shipping(+6$)</span>
             </label>
           </li>
-          <li className="collection-item"><b>Total: ${this.props.total}</b></li>
+          <li className="collection-item"><b>Total: ${this.props.form.total}</b></li>
         </div>
         <div className="checkout">
           <button className="waves-effect waves-light btn">Checkout</button>
@@ -37,12 +47,6 @@ class Recipe extends Component{
   }
 }
 
-const mapStateToProps = (state) => {
-  return{
-    addedItems: state.addedItems,
-    total: state.total
-  }
-}
 
 const mapDispatchToProps = (dispatch) => {
   return{
@@ -51,4 +55,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Recipe)
+export default connect((state) => state, mapDispatchToProps)(Recipe)

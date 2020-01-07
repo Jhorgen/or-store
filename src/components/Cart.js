@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { removeItem, addQuantity, subtractQuantity } from './../actions/cartActions.js'
+import { removeItem, addQuantity, subtractQuantity, correctTotalOnEmpty, quantityAdjust } from './../actions/cartActions.js'
 import Recipe from './Recipe'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons'
@@ -15,17 +15,17 @@ class Cart extends Component {
   }
 
   componentDidMount = () => {
-
-    if(this.props.addedItems.length > 0) {
-      console.log('cart checkout:', this.props.addedItems[0].checkoutquantity);
+    if(this.props.form.addedItems.length <= 0) {
+      console.log('cart checkout:');
+      this.props.correctTotalOnEmpty();
     } else {
       console.log('nada');
     }
 
   }
 
-  handleRemove = (id) => {
-    this.props.removeItem(id);
+  handleRemove = (id, items) => {
+    this.props.removeItem(id, items);
   }
 
   handleAddQuantity = (id, checkoutquantity) => {
@@ -40,21 +40,26 @@ class Cart extends Component {
     this.props.subtractQuantity(id);
   }
 
-  testerTest = (addedItems) => {
-    console.log(addedItems);
+  handleQuantity = (e, id) => {
+    e.preventDefault()
+    this.props.correctTotalOnEmpty();
+    console.log(this.userInput.value);
+    console.log(id);
+    this.props.quantityAdjust(this.userInput.value, id)
   }
 
 
   render() {
+    let input
 
-    let addedItems = this.props.addedItems.length ?
+    let addedItems = this.props.form.addedItems.length ?
     (
-      this.props.addedItems.map(item => {
+      this.props.form.addedItems.map(item => {
         return (
           <li className="collection-item avatar" key={item.id}>
             <div className="item-img">
               <Link to={'/item/' + item.title}>
-              <img src={ require(`./../images/${item.image1}.jpg`)} alt={item.image}/>
+                <img src={ require(`./../images/${item.image1}.jpg`)} alt={item.image}/>
               </Link>
             </div>
             <div className="item-desc">
@@ -62,46 +67,52 @@ class Cart extends Component {
               <p>{item.description}</p>
               <p><b>Price: ${item.price}</b></p>
               <p>
-              <b>Quantity: {item.checkoutquantity}</b>
+                <b>Quantity: {item.checkoutquantity}</b>
               </p>
               <div className="add-remove">
+                <form onSubmit={(e) => {this.handleQuantity(e, item.id)}}>
+                  <input type="text" ref={(input) => this.userInput = input} />
+                  <button>Test</button>
+                </form>
                 <span className="material-icons pr-3" onClick={()=>{this.handleAddQuantity(item.id, item.checkoutquantity)}}><FontAwesomeIcon icon={faArrowUp} />
-                </span>
-                <span className="material-icons" onClick={()=>{this.handleSubtractQuantity(item.id, item.price)}}><FontAwesomeIcon icon={faArrowDown} /></span>
-              </div>
-              <button className="waves-effect waves-light btn pink remove" onClick={()=>{this.handleRemove(item.id)}}>Remove</button>
+              </span>
+              <span className="material-icons" onClick={()=>{this.handleSubtractQuantity(item.id, item.price)}}><FontAwesomeIcon icon={faArrowDown} /></span>
             </div>
-          </li>
-        )
-      })
-    )
-    :
-    (
-      <div>
-        <p>Nothing.</p>
-      </div>
-    )
+            <button className="waves-effect waves-light btn pink remove" onClick={()=>{this.handleRemove(item.id, this.props.form.addedItems)}}>Remove</button>
+          </div>
+        </li>
+      )
+    })
+  )
+  :
+  (
+    <div>
+      <p>Nothing.</p>
+    </div>
+  )
 
-    return (
-      <div className="container">
-        <div className="cart">
-          <h5 onClick={() => this.testerTest(addedItems)}> Cart:</h5>
-          <ul className="collection">
-            {addedItems}
-          </ul>
-        </div>
-        <Recipe />
+  return (
+    <div className="container">
+      <div className="cart">
+        <h5 onClick={() => this.testerTest(addedItems)}> Cart:</h5>
+        <ul className="collection">
+          {addedItems}
+        </ul>
       </div>
-    )
-  }
+      <Recipe />
+    </div>
+  )
+}
 }
 
 
 const mapDispatchToProps = (dispatch) => {
   return{
-    removeItem: (id) => {dispatch(removeItem(id))},
+    removeItem: (id, items) => {dispatch(removeItem(id, items))},
     addQuantity: (id) => {dispatch(addQuantity(id))},
     subtractQuantity: (id) => {dispatch(subtractQuantity(id))},
+    correctTotalOnEmpty: () => {dispatch(correctTotalOnEmpty())},
+    quantityAdjust: (input, id) => {dispatch(quantityAdjust(input, id))}
   }
 }
 
