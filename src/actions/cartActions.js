@@ -48,10 +48,6 @@ export const correctTotalOnEmpty = () => {
   return { type: 'CORRECT_TOTAL', total: 0 }
 }
 
-export const quantityAdjust = (input, id) => {
-  return {type: 'QUANTITY_ADJUST', input, id }
-}
-
 export const requestItem = () => {
   return { type: 'REQUESTED_ITEM' }
 };
