@@ -12,16 +12,11 @@ class Shop extends Component {
   }
 
   componentDidMount = () => {
-    if(this.props.form.addedItems > 0) {
-      console.log("shop:", 'length');
+    console.log("shop loaded items:", this.props.form.addedItems);
       let saveCartFromShop = this.props.form.addedItems
       let saveTotalFromShop = this.props.form.total
-      console.log(saveTotalFromShop);
-      this.props.saveSelectedItemData(this.props.name, saveCartFromShop, saveTotalFromShop)
-    } else {
       console.log("shop:", 'no length');
-      this.props.loadSelectedItemData(this.props.name)
-    }
+      this.props.saveSelectedItemData(this.props.name, saveCartFromShop, saveTotalFromShop)
   }
 
 

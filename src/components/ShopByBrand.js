@@ -37,43 +37,43 @@ class ShopByBrand extends Component {
   render() {
     let items = this.props.items.length ?
     (
-    this.props.items.map(item=>{
-    return (
-      <div className="card" key={item.id}>
-        <div className="card-image text-center">
-          <Link to="/item" onClick={() => {this.checkLink(item)}}>
-          <img style={{height: '13rem'}} src={ require(`./../images/${item.image1}.jpg`)} alt={item.title}/>
-          </Link>
-          <div><span className="card-title">{item.title}</span></div>
-          <span to="/" className="btn-floating halfway-fab waves-effect waves-light red"><i onClick={() => this.handleAddClick(item.id)} className="text-info">Add to cart</i></span>
-          <hr/>
-        </div>
-        <div className="card-content">
-          <p>{item.description}</p>
-          <p><b>Price: ${item.price}</b></p>
-        </div>
+      this.props.items.map(item=>{
+        return (
+          <div className="card" key={item.id}>
+            <div className="card-image text-center">
+              <Link to="/item" onClick={() => {this.checkLink(item)}}>
+                <img style={{height: '13rem'}} src={ require(`./../images/${item.image1}.jpg`)} alt={item.title}/>
+              </Link>
+              <div><span className="card-title">{item.title}</span></div>
+              <span to="/" className="btn-floating halfway-fab waves-effect waves-light red"><i onClick={() => this.handleAddClick(item.id)} className="text-info">Add to cart</i></span>
+              <hr/>
+            </div>
+            <div className="card-content">
+              <p>{item.description}</p>
+              <p><b>Price: ${item.price}</b></p>
+            </div>
+          </div>
+        )
+      })
+    )
+    :
+    (
+      <div>
+        <p>Nothing.</p>
       </div>
     )
-  })
-)
-:
-(
-    <div>
-      <p>Nothing.</p>
-    </div>
-  )
 
     return (
       <div className="container">
         <h3 className="text-center" onClick={() => this.findCat()}>{this.props.brand}</h3>
         <div>
           <div>
-        <Row className="justify-content-center mt-4">{items}</Row>
+            <Row className="justify-content-center mt-4">{items}</Row>
+          </div>
         </div>
       </div>
-    </div>
-  );
-}
+    );
+  }
 }
 
 
@@ -82,7 +82,6 @@ const mapDispatchToProps = (dispatch) => {
     addToCart: (id) => {(dispatch(addToCart(id)))},
     saveSelectedBrandData: (brand, saveCartFromBrand, saveTotalFromBrand) => {(dispatch(saveSelectedBrandData(brand, saveCartFromBrand, saveTotalFromBrand)))},
     loadSelectedBrandData: (brand) => {(dispatch(loadSelectedBrandData(brand)))}
-
   }
 }
 

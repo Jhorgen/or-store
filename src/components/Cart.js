@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { removeItem, addQuantity, subtractQuantity, correctTotalOnEmpty, quantityAdjust } from './../actions/cartActions.js'
+import { correctTotalOnEmpty } from './../actions/cartActions.js'
 import Recipe from './Recipe'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons'
+import CartItem from './CartItem'
 
 class Cart extends Component {
   constructor(props) {
@@ -21,65 +19,24 @@ class Cart extends Component {
     } else {
       console.log('nada');
     }
-
   }
 
-  handleRemove = (id, items) => {
-    this.props.removeItem(id, items);
-  }
 
-  handleAddQuantity = (id, checkoutquantity) => {
-    this.props.addQuantity(id);
-    console.log(id);
-    console.log("cart checkoutquantity:", checkoutquantity)
+  checkThis = (item, indexx) => {
+    console.log(item);
+    console.log(indexx);
 
-
-  }
-
-  handleSubtractQuantity = (id) => {
-    this.props.subtractQuantity(id);
-  }
-
-  handleQuantity = (e, id) => {
-    e.preventDefault()
-    this.props.correctTotalOnEmpty();
-    console.log(this.userInput.value);
-    console.log(id);
-    this.props.quantityAdjust(this.userInput.value, id)
   }
 
 
   render() {
-    let input
 
     let addedItems = this.props.form.addedItems.length ?
     (
-      this.props.form.addedItems.map(item => {
+      this.props.form.addedItems.map((item, indexx) => {
         return (
           <li className="collection-item avatar" key={item.id}>
-            <div className="item-img">
-              <Link to={'/item/' + item.title}>
-                <img src={ require(`./../images/${item.image1}.jpg`)} alt={item.image}/>
-              </Link>
-            </div>
-            <div className="item-desc">
-              <span className="title">{item.title}</span>
-              <p>{item.description}</p>
-              <p><b>Price: ${item.price}</b></p>
-              <p>
-                <b>Quantity: {item.checkoutquantity}</b>
-              </p>
-              <div className="add-remove">
-                <form onSubmit={(e) => {this.handleQuantity(e, item.id)}}>
-                  <input type="text" ref={(input) => this.userInput = input} />
-                  <button>Test</button>
-                </form>
-                <span className="material-icons pr-3" onClick={()=>{this.handleAddQuantity(item.id, item.checkoutquantity)}}><FontAwesomeIcon icon={faArrowUp} />
-              </span>
-              <span className="material-icons" onClick={()=>{this.handleSubtractQuantity(item.id, item.price)}}><FontAwesomeIcon icon={faArrowDown} /></span>
-            </div>
-            <button className="waves-effect waves-light btn pink remove" onClick={()=>{this.handleRemove(item.id, this.props.form.addedItems)}}>Remove</button>
-          </div>
+            <CartItem item={item} itemid={indexx} onClick={() => this.checkThis(item, indexx)} />
         </li>
       )
     })
@@ -108,11 +65,7 @@ class Cart extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return{
-    removeItem: (id, items) => {dispatch(removeItem(id, items))},
-    addQuantity: (id) => {dispatch(addQuantity(id))},
-    subtractQuantity: (id) => {dispatch(subtractQuantity(id))},
     correctTotalOnEmpty: () => {dispatch(correctTotalOnEmpty())},
-    quantityAdjust: (input, id) => {dispatch(quantityAdjust(input, id))}
   }
 }
 

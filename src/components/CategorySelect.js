@@ -26,21 +26,15 @@ class CategorySelect extends Component {
         console.log(this.props.form.items);
       }, 300);
     }
-  
+
 
   componentWillReceiveProps(nextProps) {
     console.log('updated props: ', nextProps)
 }
 
-  testthis = () => {
-    console.log(this.props.items);
-    console.log(this.props.form.addedItems);
-  }
-
   render() {
     return (
       <div>
-        <p onClick={() => this.testthis()}>asa</p>
         <br/>
         <Row className="justify-content-around m-3">
           <div className="test-hover">
