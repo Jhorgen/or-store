@@ -17,6 +17,9 @@
 .env.development.local
 .env.test.local
 .env.production.local
+exfiles.js
+
+exfiles.js
 
 npm-debug.log*
 yarn-debug.log*

@@ -9,6 +9,7 @@ import ItemView from './components/ItemView'
 import ShopByBrand from './components/ShopByBrand'
 import BrandSelect from './components/BrandSelect'
 import Admin from './components/Admin'
+import {route} from './exfiles.js'
 
 function App() {
 
@@ -33,7 +34,7 @@ function App() {
 
             <Route path="/cart" component={Cart}/>
 
-            <Route path="/admin" component={Admin}/>
+            <Route path={'/' + `${route}`} component={Admin}/>
           </Switch>
         </div>
       </BrowserRouter>
