@@ -67,7 +67,7 @@ class Admin extends Component {
   addNewItem() {
     axios.post(
       'http://localhost:3000/api/v1/products/',
-      { item:
+      { product:
         {
           category: "",
           brand: "",
