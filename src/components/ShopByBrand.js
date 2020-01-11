@@ -12,10 +12,10 @@ class ShopByBrand extends Component {
   }
 
   componentDidMount = () => {
-    if(this.props.addedItems.length > 0) {
+    if(this.props.form.addedItems.length > 0) {
       console.log("shop:", 'length');
-      let saveCartFromBrand = this.props.addedItems
-      let saveTotalFromBrand = this.props.total
+      let saveCartFromBrand = this.props.form.addedItems
+      let saveTotalFromBrand = this.props.form.total
       console.log(saveTotalFromBrand);
       this.props.saveSelectedItemData(this.props.brand, saveCartFromBrand, saveTotalFromBrand)
     } else {
@@ -35,9 +35,9 @@ class ShopByBrand extends Component {
   }
 
   render() {
-    let items = this.props.items.length ?
+    let items = this.props.form.items.length ?
     (
-      this.props.items.map(item=>{
+      this.props.form.items.map(item=>{
         return (
           <div className="card" key={item.id}>
             <div className="card-image text-center">
