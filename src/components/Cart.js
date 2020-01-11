@@ -8,7 +8,7 @@ class Cart extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      changeBlah: ''
+      handleHide: ''
     }
   }
 
@@ -25,7 +25,10 @@ class Cart extends Component {
   checkThis = (item, indexx) => {
     console.log(item);
     console.log(indexx);
+  }
 
+  handleHide = () => {
+    this.setState({handleHide: "none"})
   }
 
 
@@ -43,7 +46,7 @@ class Cart extends Component {
   )
   :
   (
-    <div>
+    <div style={{display: this.state.handleHide}}>
       <p>Nothing.</p>
     </div>
   )
@@ -51,12 +54,12 @@ class Cart extends Component {
   return (
     <div className="container">
       <div className="cart">
-        <h5 onClick={() => this.testerTest(addedItems)}> Cart:</h5>
+        <h5 style={{display: this.state.handleHide}} onClick={() => this.testerTest(addedItems)}> Cart:</h5>
         <ul className="collection">
           {addedItems}
         </ul>
       </div>
-      <Recipe />
+      <Recipe onClick={this.handleHide} />
     </div>
   )
 }
@@ -69,4 +72,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect((state)=>state, mapDispatchToProps)(Cart)
+export default connect((state) => state, mapDispatchToProps)(Cart)

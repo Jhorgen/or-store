@@ -9,21 +9,29 @@ import { faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons'
 class CartItem extends Component {
 
   handleAddQuantity = (id, checkoutquantity) => {
-    this.props.addQuantity(id, checkoutquantity);
+    let x = 4
+
+    for(var i = 0; i < x; i++) {
+      this.props.addQuantity(id, checkoutquantity);
+    }
     console.log(id);
     console.log("cart checkoutquantity:", checkoutquantity)
   }
 
 
   handleSubtractQuantity = (id) => {
-    this.props.subtractQuantity(id);
+    console.log(this.props.itemid);
+    let x = this.props.form.addedItems[this.props.itemid].checkoutquantity - 1
+
+    for(var i = 0; i < x; i++) {
+      this.props.subtractQuantity(id);
+    }
   }
 
 
   handleRemove = (id, items) => {
     this.props.removeItem(id, items);
   }
-
 
   render() {
 

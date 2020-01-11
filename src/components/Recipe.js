@@ -1,12 +1,27 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Elements, StripeProvider } from 'react-stripe-elements'
+import PaymentForm from './PaymentForm'
+import { Row } from 'reactstrap'
 
-class Recipe extends Component{
+
+
+class Recipe extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      checkout: '',
+      paymentInfo: "none"
+    }
+  }
 
   componentWillMount = () => {
     console.log('mount:', this.props.total);
 
     console.log("result:", );
+
+    let x = (this.props.form.total).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+    console.log(x);
 
   }
 
@@ -25,24 +40,38 @@ class Recipe extends Component{
     }
   }
 
+  checkout = () => {
+    this.setState({checkout: "none", paymentInfo: ''})
+    this.props.onClick()
+  }
+
 
 
   render() {
     return (
+    <StripeProvider apiKey="pk_test_NY8WIf5Voo958BYlhfjqezPa00hUDvgiUO">
+      <Elements>
       <div className="container">
-        <div className="collection">
+        <button className="btn btn-info" style={{display: this.state.paymentInfo}} onClick={() => {window.location.reload()}}>Back to cart</button>
+        <Row className="justify-content-center" style={{display: this.state.paymentInfo}}>
+        <PaymentForm total={this.props.form.total.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')} />
+        </Row>
+
+        <div className="collection" style={{display: this.state.checkout}}>
           <li className="collection-item">
             <label>
               <input type="checkbox" ref="shipping" onChange={this.handleChecked} />
               <span>Shipping(+5$)</span>
             </label>
           </li>
-          <li className="collection-item"><b>Total: ${this.props.form.total}</b></li>
+          <li className="collection-item"><b>Total: ${this.props.form.total.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</b></li>
         </div>
         <div className="checkout">
-          <button className="waves-effect waves-light btn">Checkout</button>
+          <button style={{display: this.state.checkout}} onClick={() => this.checkout()} className="waves-effect waves-light btn">Checkout</button>
         </div>
       </div>
+    </Elements>
+    </StripeProvider>
     )
   }
 }
