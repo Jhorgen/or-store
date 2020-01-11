@@ -8,21 +8,21 @@ import { Row } from 'reactstrap'
 class BrandSelect extends Component {
 
   componentDidMount() {
-    if(this.props.addedItems.length > 0) {
-      let saveTotal = Math.floor(this.props.total);
-      let check = this.props.addedItems;
+    if(this.props.form.addedItems.length > 0) {
+      let saveTotal = Math.floor(this.props.form.total);
+      let check = this.props.form.addedItems;
     this.props.loadItemDataCheck(check, saveTotal);
     console.log('length');
-    console.log(this.props.addedItems);
+    console.log(this.props.form.addedItems);
   } else {
     this.props.loadItemData();
     console.log('no length');
   }
 
-    console.log('check new action:', this.props.addedItems);
+    console.log('check new action:', this.props.form.addedItems);
 
     setTimeout( () => {
-      console.log(this.props.items);
+      console.log(this.props.form.items);
     }, 300);
   }
 
