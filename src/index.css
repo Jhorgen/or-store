@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Yeseva+One&display=swap');
+@import url('https://fonts.googleapis.com/css?family=News+Cycle&display=swap');
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -32,7 +35,7 @@ code {
     margin-top:40px;
 }
 .collection .collection-item{
-    display: flex;
+    list-style: none;
 }
 .collection-item.avatar .title {
     font-size: 20px;
@@ -42,10 +45,7 @@ code {
     margin-bottom: 20px;
 
 }
-.collection .collection-item img{
-    width: 150px;
-    margin-right: 25px;
-}
+
 .item-desc{
     align-self:center;
 }
@@ -55,7 +55,10 @@ code {
 }
 
 .test-hover:hover {
-  box-shadow: 1px 1px 1px coral;
+  box-shadow: 2px 2px 2px coral;
+  transition: .2s ease;
+  margin: .1rem !important;
+  border: 1px solid #00000026;
 }
 
 input::-webkit-outer-spin-button,
@@ -165,3 +168,37 @@ input[type=number] {
     margin-top: 1em;
   }
 }
+
+.test {
+font-family: 'Yeseva One', cursive;
+}
+
+.test a {
+  color: black;
+  padding: .4rem;
+  font-size: 1.2rem;
+}
+
+.test a:hover {
+  color: black;
+  text-decoration: none;
+  border-radius: 10px;
+  font-size: 1.3rem;
+  transition: .2s ease;
+}
+
+.item-description-format {
+  font-family: 'News Cycle', sans-serif;
+  font-size: 1.1rem;
+}
+
+
+.item-view-hover:hover {
+  display: block !important;
+}
+
+.card {
+  border-radius: 1.25rem !important;
+}
+
+/* add less margin for shop item on hover / create own class */

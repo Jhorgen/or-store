@@ -23,10 +23,10 @@ class Navbar extends Component {
             <img style={{height: '13rem'}} src={ require(`./../images/orb-logo.webp`)} alt={"The Oter Rim Bicycle Shop"}/>
           </Link>
         </Row>
-        <Row className="justify-content-around m-5">
+        <Row className="justify-content-around m-5 test">
           <Link to="/">Categories</Link>
           <Link to="/brands">Brands</Link>
-          <Link to="/cart"><span>Cart</span>{this.props.cartItems}</Link>
+          <Link to="/cart"><span className="pr-2">Cart</span><b>[{this.props.form.addedItems.length}]</b></Link>
           <Link to="/cart"><i>Search</i></Link>
           <div>
             <a href="https://www.facebook.com/outerrimbicycles/" target="about_blank" title="Our Facebook page">
