@@ -9,7 +9,6 @@ import ItemView from './components/ItemView'
 import ShopByBrand from './components/ShopByBrand'
 import BrandSelect from './components/BrandSelect'
 import Admin from './components/Admin'
-import {route} from './exfiles.js'
 
 function App() {
 
@@ -30,11 +29,13 @@ function App() {
             <Route path="/brands" component={BrandSelect}/>
             <Route render={props => ( <ShopByBrand brand={fox}/>)} path="/fox"/>
 
+            // <Route render={props => ( <ShopByBrand brand={fox}/>)} path="/fox/:category"/> ADD ASAP, SAME AS TITLE
+
             <Route path="/item/:title/" component={ItemView}/>
 
             <Route path="/cart" component={Cart}/>
 
-            <Route path={'/' + `${route}`} component={Admin}/>
+            <Route path={'/' + `${process.env.REACT_APP_R_API_KEY}`} component={Admin}/>
           </Switch>
         </div>
       </BrowserRouter>
