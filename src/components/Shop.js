@@ -36,13 +36,13 @@ class Shop extends Component {
     (
     this.props.form.items.map(item=>{
     return (
-      <div className="card" key={item.id}>
-        <div className="card-image text-center">
+      <div className="card m-3 test-hover" key={item.id}>
+        <div className="card-image text-center item-view-hover">
           <Link to={'/item/' + item.title.split(' ').join('')} onClick={() => {this.checkLink(item)}}>
           <img style={{height: '13rem'}} src={ require(`./../images/${item.image1}.jpg`)} alt={item.title}/>
-          </Link>
           <div><span className="card-title">{item.title}</span></div>
-          <span to="/" className="btn-floating halfway-fab waves-effect waves-light red"><i onClick={() => this.handleAddClick(item.id)} className="text-info">Add to cart</i></span>
+          <span onClick={() => this.handleAddClick(item.id)}>View</span>
+        </Link>
           <hr/>
         </div>
         <div className="card-content">

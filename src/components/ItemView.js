@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons'
+import { Row, Col } from 'reactstrap'
+import { Link } from 'react-router-dom'
 
 class ItemView extends Component {
   constructor(props) {
@@ -21,51 +21,54 @@ class ItemView extends Component {
     )
   }
 
-  test = ()=> {
-    console.log(this.state.itemView.length);
-    console.log(this.state.itemView);
-
-  }
 
   render() {
     let item = this.state.itemView.length ?
     (
       this.state.itemView.map(item => {
         return (
-          <li className="collection-item avatar" key={item.id}>
-            <div className="item-img">
-              <img src={ require(`./../images/${item.image1}.jpg`)} alt={item.image}/>
-            </div>
-            <div className="item-desc">
-              <span className="title">{item.title}</span>
-              <p>{item.description}</p>
-              <p><b>Price: ${item.price}</b></p>
-              <p>
-                <b>Quantity: {item.checkoutquantity}</b>
-              </p>
-              <div className="add-remove">
-                <span className="material-icons pr-3" onClick={()=>{this.handleAddQuantity(item.id)}}><FontAwesomeIcon icon={faArrowUp} />
-              </span>
-              <span className="material-icons" onClick={()=>{this.handleSubtractQuantity(item.id, item.price)}}><FontAwesomeIcon icon={faArrowDown} /></span>
-            </div>
-          </div>
-        </li>
-      )
-    })
-  )
-  :
-  (
-    <div>
-      <p onClick={() => this.test()}>Nothing.</p>
-    </div>
-  )
+          <div key={item.id}>
+            <Link to={'/' + item.category}>View all <span>{item.category}</span></Link> <br/>
+            <Link to={'/' + item.brand}>View {item.category} by <span>{item.brand}</span></Link>
 
-  return (
-    <div>
-      <ul>{item}</ul>
-    </div>
-  )
-}
+          <Row className="collection-item avatar text-center">
+            <Col>
+              <span className="title">{item.title}</span>
+            </Col>
+            <Col>
+              <span className="title">{item.title}</span>
+            </Col>
+            <Col>
+              <span className="title">{item.title}</span>
+            </Col>
+          </Row>
+            <div className="item-img text-center mt-4 mb-4">
+              <img style={{height: "15rem"}} src={ require(`./../images/${item.image1}.jpg`)} alt={item.image}/>
+            </div>
+          <Row className="item-desc justify-content-center align-items-center">
+            <p className="pr-4"><b>Price: ${item.price}</b></p>
+            <p className="btn btn-info">Add to cart</p>
+          </Row>
+          <Row className="justify-content-center">
+            <p className="item-description-format">{item.description}</p>
+            </Row>
+        </div>
+        )
+      })
+    )
+    :
+    (
+      <div>
+        <p onClick={() => this.test()}>Nothing.</p>
+      </div>
+    )
+
+    return (
+      <div>
+        {item}
+      </div>
+    )
+  }
 }
 
 export default ItemView;

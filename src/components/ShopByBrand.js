@@ -39,7 +39,7 @@ class ShopByBrand extends Component {
     (
       this.props.form.items.map(item=>{
         return (
-          <div className="card" key={item.id}>
+          <div className="card m-3" key={item.id}>
             <div className="card-image text-center">
               <Link to="/item" onClick={() => {this.checkLink(item)}}>
                 <img style={{height: '13rem'}} src={ require(`./../images/${item.image1}.jpg`)} alt={item.title}/>

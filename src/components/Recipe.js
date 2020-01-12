@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Elements, StripeProvider } from 'react-stripe-elements'
 import PaymentForm from './PaymentForm'
 import { Row } from 'reactstrap'
+import { sk } from './../exfiles.js'
 
 
 
@@ -16,7 +17,7 @@ class Recipe extends Component {
   }
 
   componentWillMount = () => {
-    console.log('mount:', this.props.total);
+    console.log('mount:', this.props.form.total + 20.15 + .15 + .15);
 
     console.log("result:", );
 
@@ -49,12 +50,12 @@ class Recipe extends Component {
 
   render() {
     return (
-    <StripeProvider apiKey="pk_test_NY8WIf5Voo958BYlhfjqezPa00hUDvgiUO">
+    <StripeProvider apiKey={`${process.env.REACT_APP_API_KEY}`}>
       <Elements>
       <div className="container">
         <button className="btn btn-info" style={{display: this.state.paymentInfo}} onClick={() => {window.location.reload()}}>Back to cart</button>
         <Row className="justify-content-center" style={{display: this.state.paymentInfo}}>
-        <PaymentForm total={this.props.form.total.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')} />
+        <PaymentForm total={this.props.form.total} />
         </Row>
 
         <div className="collection" style={{display: this.state.checkout}}>

@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { correctTotalOnEmpty } from './../actions/cartActions.js'
 import Recipe from './Recipe'
 import CartItem from './CartItem'
+import { Row } from 'reactstrap'
+
 
 class Cart extends Component {
   constructor(props) {
@@ -13,6 +15,7 @@ class Cart extends Component {
   }
 
   componentDidMount = () => {
+
     if(this.props.form.addedItems.length <= 0) {
       console.log('cart checkout:');
       this.props.correctTotalOnEmpty();
@@ -53,12 +56,12 @@ class Cart extends Component {
 
   return (
     <div className="container">
-      <div className="cart">
-        <h5 style={{display: this.state.handleHide}} onClick={() => this.testerTest(addedItems)}> Cart:</h5>
+      <h5 style={{display: this.state.handleHide}} onClick={() => this.testerTest(addedItems)}> Cart:</h5>
+      <Row className="cart">
         <ul className="collection">
           {addedItems}
         </ul>
-      </div>
+      </Row>
       <Recipe onClick={this.handleHide} />
     </div>
   )

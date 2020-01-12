@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { removeItem, correctTotalOnEmpty, subtractQuantity, addQuantity } from './../actions/cartActions.js'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons'
+import { Row, Col } from 'reactstrap'
 
 
 class CartItem extends Component {
@@ -37,27 +38,36 @@ class CartItem extends Component {
 
     return (
       <div>
-        <div className="item-img">
-          <Link to={'/item/' + this.props.item.title}>
-            <img src={ require(`./../images/${this.props.item.image1}.jpg`)} alt={this.props.item.image}/>
-          </Link>
-        </div>
-        <div className="item-desc">
+        <Row className="align-items-center">
+
+          <Col>
+            <Link to={'/item/' + this.props.item.title}>
+              <img style={{height: "5rem"}} src={ require(`./../images/${this.props.item.image1}.jpg`)} alt={this.props.item.image}/>
+            </Link>
+          </Col>
+
+          <Col>
           <span className="title">{this.props.item.title}</span>
-          <p>{this.props.item.description}</p>
+          </Col>
+
+          <Col>
           <p><b>Price: ${this.props.item.price}</b></p>
-          <p>
-            <b>Quantity: {this.props.item.checkoutquantity}</b>
-          </p>
-          <div className="add-remove">
-            <div className="add-remove">
-              <span className="material-icons pr-3" onClick={()=>{this.handleAddQuantity(this.props.item.id, this.props.item.checkoutquantity)}}><FontAwesomeIcon icon={faArrowUp} />
-            </span>
-            <span className="material-icons" onClick={()=>{this.handleSubtractQuantity(this.props.item.id, this.props.item.price)}}><FontAwesomeIcon icon={faArrowDown} /></span>
-          </div>
-        </div>
-      </div>
-      <button className="waves-effect waves-light btn pink remove" onClick={()=>{this.handleRemove(this.props.item.id, this.props.form.addedItems)}}>Remove</button>
+          </Col>
+
+          <Col>
+          <p><b>Quantity: {this.props.item.checkoutquantity}</b></p>
+          </Col>
+
+          <Col>
+          <span className="material-icons pr-3" onClick={()=>{this.handleAddQuantity(this.props.item.id, this.props.item.checkoutquantity)}}><FontAwesomeIcon icon={faArrowUp} />
+        </span>
+        <span className="material-icons" onClick={()=>{this.handleSubtractQuantity(this.props.item.id, this.props.item.price)}}><FontAwesomeIcon icon={faArrowDown} /></span>
+        </Col>
+
+        <Col>
+        <button className="waves-effect waves-light btn pink remove" onClick={()=>{this.handleRemove(this.props.item.id, this.props.form.addedItems)}}>Remove</button>
+        </Col>
+      </Row>
     </div>
   )
 }
