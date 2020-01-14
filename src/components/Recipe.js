@@ -3,8 +3,6 @@ import { connect } from 'react-redux'
 import { Elements, StripeProvider } from 'react-stripe-elements'
 import PaymentForm from './PaymentForm'
 import { Row } from 'reactstrap'
-import { sk } from './../exfiles.js'
-
 
 
 class Recipe extends Component {
@@ -27,19 +25,6 @@ class Recipe extends Component {
   }
 
 
-  componentWillUnmount = () => {
-    if(this.refs.shipping.checked)
-    this.props.substractShipping()
-  }
-
-  handleChecked = (e) => {
-    if(e.target.checked) {
-      this.props.addShipping();
-    }
-    else {
-      this.props.substractShipping();
-    }
-  }
 
   checkout = () => {
     this.setState({checkout: "none", paymentInfo: ''})
@@ -53,23 +38,21 @@ class Recipe extends Component {
     <StripeProvider apiKey={`${process.env.REACT_APP_API_KEY}`}>
       <Elements>
       <div className="container">
+
         <button className="btn btn-info" style={{display: this.state.paymentInfo}} onClick={() => {window.location.reload()}}>Back to cart</button>
+
         <Row className="justify-content-center" style={{display: this.state.paymentInfo}}>
         <PaymentForm total={this.props.form.total} />
         </Row>
+        <Row className="align-items-center">
+        <div style={{display: this.state.checkout}}>
+          <span className="mr-2"><b>Total: ${this.props.form.total.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</b></span>
+        </div>
 
-        <div className="collection" style={{display: this.state.checkout}}>
-          <li className="collection-item">
-            <label>
-              <input type="checkbox" ref="shipping" onChange={this.handleChecked} />
-              <span>Shipping(+5$)</span>
-            </label>
-          </li>
-          <li className="collection-item"><b>Total: ${this.props.form.total.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</b></li>
-        </div>
         <div className="checkout">
-          <button style={{display: this.state.checkout}} onClick={() => this.checkout()} className="waves-effect waves-light btn">Checkout</button>
+          <button style={{display: this.state.checkout}} onClick={() => this.checkout()} className="btn btn-info">Checkout</button>
         </div>
+      </Row>
       </div>
     </Elements>
     </StripeProvider>

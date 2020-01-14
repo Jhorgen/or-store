@@ -33,7 +33,13 @@ code {
 }
 .cart{
     margin-top:40px;
+  }
+
+.collection {
+  border: 3px solid #6350ff21;
+  padding: 1rem;
 }
+
 .collection .collection-item{
     list-style: none;
 }
@@ -199,6 +205,10 @@ font-family: 'Yeseva One', cursive;
 
 .card {
   border-radius: 1.25rem !important;
+}
+
+hr {
+  background: #6350ff21 !important;
 }
 
 /* add less margin for shop item on hover / create own class */
