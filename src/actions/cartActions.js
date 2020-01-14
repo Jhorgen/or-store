@@ -44,6 +44,11 @@ export const subShipping = (id) => {
   }
 }
 
+
+
+
+// Cart / state management
+
 export const correctTotalOnEmpty = () => {
   return { type: 'CORRECT_TOTAL', total: 0 }
 }

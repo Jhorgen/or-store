@@ -8,6 +8,9 @@
 # testing
 /coverage
 .env
+Signup.js
+temp.js
+Login.js
 
 # production
 /build
