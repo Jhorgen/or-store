@@ -42,7 +42,7 @@ class Recipe extends Component {
         <button className="btn btn-info" style={{display: this.state.paymentInfo}} onClick={() => {window.location.reload()}}>Back to cart</button>
 
         <Row className="justify-content-center" style={{display: this.state.paymentInfo}}>
-        <PaymentForm total={this.props.form.total} />
+        <PaymentForm total={this.props.form.total} cartItems={this.props.form.addedItems} />
         </Row>
         <Row className="align-items-center">
         <div style={{display: this.state.checkout}}>

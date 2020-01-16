@@ -13,9 +13,13 @@ class CartItem extends Component {
     this.state = {
       itemQuantity: '',
       updateDisplay: 'none',
-      readOnly: 'readOnly'
+      readOnly: 'readOnly',
+      value: ''
     }
   }
+
+
+
 
   handleAddQuantity = (id, checkoutquantity, itemQuantity, e) => {
     e.preventDefault()
@@ -31,7 +35,6 @@ class CartItem extends Component {
 
 
   handleSubtractQuantity = (id) => {
-    this.setState({updateDisplay: '', readOnly: ''})
     console.log(this.props.itemid);
     let x = this.props.form.addedItems[this.props.itemid].checkoutquantity - 1
 
@@ -43,6 +46,10 @@ class CartItem extends Component {
 
   handleRemove = (id, items) => {
     this.props.removeItem(id, items);
+  }
+
+  handleStyles = () => {
+    this.setState({updateDisplay: '', readOnly: ''})
   }
 
   handleChange = (e) => {
@@ -73,15 +80,14 @@ class CartItem extends Component {
           </Col>
 
           <Col>
-            <p className="text-center"><b>Qty:<br/>{this.props.item.checkoutquantity}</b></p>
           </Col>
 
           <form className="d-flex" onSubmit={(e) => this.handleAddQuantity(this.props.item.id, this.props.item.checkoutquantity, this.state.itemQuantity, e)}>
 
-          <input style={{width: '3rem'}} className="mr-3 form-control" name="itemQuantity" placeholder={`${this.props.item.checkoutquantity}`} onClick={() => {this.handleSubtractQuantity(this.props.item.id, this.props.item.price)}} onChange={(e) => this.handleChange(e)} readOnly={this.state.readOnly} />
+          <input onClick={() => this.handleStyles(this.props.item.id)} style={{width: '3rem'}} className="mr-3 form-control" name="itemQuantity" placeholder={`${this.props.item.checkoutquantity}`} onChange={(e) => this.handleChange(e)} readOnly={this.state.readOnly} />
 
 
-            <button style={{display: this.state.updateDisplay, fontSize: '.8rem'}} type='submit' className="pr-3 btn btn-secondary">Update</button>
+            <button onClick={() => {this.handleSubtractQuantity(this.props.item.id, this.props.item.price)}} style={{display: this.state.updateDisplay, fontSize: '.8rem'}} type='submit' className="pr-3 btn btn-secondary">Update</button>
 
           </form>
 

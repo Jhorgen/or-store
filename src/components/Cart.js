@@ -15,14 +15,13 @@ class Cart extends Component {
   }
 
   componentDidMount = () => {
-console.log(this.props.form.addedItems);
-    if(this.props.form.addedItems.length <= 0) {
-      console.log('cart checkout:');
-      this.props.correctTotalOnEmpty();
-    } else {
-      console.log('nada');
-    }
+  if(this.props.form.addedItems.length <= 0) {
+    console.log('cart checkout:');
+    this.props.correctTotalOnEmpty();
+  } else {
+    console.log('nada');
   }
+}
 
 
   checkThis = (item, indexx) => {

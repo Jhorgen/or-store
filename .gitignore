@@ -11,6 +11,7 @@
 Signup.js
 temp.js
 Login.js
+PurchasesView.js
 
 # production
 /build

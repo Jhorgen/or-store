@@ -107,7 +107,7 @@ const cartReducer = (state = initState, action) => {
   }
 
   if(action.type === ADD_QUANTITY) {
-    let addedItem = state.items.find(item=> item.id === action.id)
+    let addedItem = state.addedItems.find(item=> item.id === action.id)
     let newTotal = state.total + addedItem.price
 
     const updatedItems = state.addedItems.map(item =>
@@ -122,7 +122,7 @@ const cartReducer = (state = initState, action) => {
   }
 
   if(action.type === SUB_QUANTITY) {
-    let addedItem = state.items.find(item=> item.id === action.id)
+    let addedItem = state.addedItems.find(item=> item.id === action.id)
 
     const updatedItems = state.addedItems.map(item =>
       item.id === action.id ? { ...item, checkoutquantity: item.checkoutquantity -= 1 } : item

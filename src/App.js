@@ -9,6 +9,7 @@ import ItemView from './components/ItemView'
 import ShopByBrand from './components/ShopByBrand'
 import BrandSelect from './components/BrandSelect'
 import Admin from './components/Admin'
+import PurchasesView from './components/PurchasesView'
 
 
 function App() {
@@ -38,7 +39,7 @@ function App() {
 
             <Route path={'/' + `${process.env.REACT_APP_R_API_KEY}`} component={Admin}/>
 
-        
+
           </Switch>
         </div>
       </BrowserRouter>
