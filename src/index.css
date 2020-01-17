@@ -43,21 +43,31 @@ code {
 .collection .collection-item{
     list-style: none;
 }
+
 .collection-item.avatar .title {
     font-size: 20px;
     font-weight: 500;
     color: #ee6e73;
     display: block;
     margin-bottom: 20px;
-
 }
 
-.item-desc{
+.category-title:hover {
+  color: white;
+  font-size: 1.7rem;
+}
+
+.item-desc {
     align-self:center;
 }
 
 .category-select:hover {
   text-decoration: none;
+  background: black;
+  padding: 0.2rem;
+  padding-bottom: 0.67rem;
+  opacity: .7;
+  border-radius: 5px;
 }
 
 .test-hover:hover {
