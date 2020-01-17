@@ -32,83 +32,118 @@ class BrandSelect extends Component {
         <br/>
         <Row className="justify-content-around m-3">
           <div className="test-hover">
-            <h4 className="text-center category-select">Grips</h4>
+
             <Link
               to="/grips"
               >
-              <img style={{height: '13rem'}} src={ require(`./../images/bars.jpg`)} alt="Bars" title="Bars"/>
+              <img style={{height: '13rem'}} src={ require(`./../images/primo.png`)} alt="Bars" title="Bars"/>
             </Link>
           </div>
 
           <div className="test-hover">
-            <h4 className="text-center category-select">Grips</h4>
+
             <Link
               to="/pedals"
               >
-              <img style={{height: '13rem'}} src={ require(`./../images/bars.jpg`)} alt="Bars" title="Bars"/>
+              <img style={{height: '13rem'}} src={ require(`./../images/snafu.png`)} alt="Bars" title="Bars"/>
             </Link>
           </div>
           <div className="test-hover">
-            <h4 className="text-center category-select">Grips</h4>
+
             <Link
               to={{
                 pathname: "/shop",
                 state: { category: "Grips" }
               }}
               >
-              <img style={{height: '13rem'}} src={ require(`./../images/bars.jpg`)} alt="Bars" title="Bars"/>
+              <img style={{height: '13rem'}} src={ require(`./../images/odyssey.png`)} alt="Bars" title="Bars"/>
             </Link>
           </div>
           <div className="test-hover">
-            <h4 className="text-center category-select">Grips</h4>
+
             <Link
               to={{
                 pathname: "/shop",
                 state: { category: "Pedals" }
               }}
               >
-              <img style={{height: '13rem'}} src={ require(`./../images/bars.jpg`)} alt="Bars" title="Bars"/>
+              <img style={{height: '13rem'}} src={ require(`./../images/fit.jpg`)} alt="Bars" title="Bars"/>
             </Link>
           </div>
           <div className="test-hover">
-            <h4 className="text-center category-select">Grips</h4>
+
             <Link
               to={{
                 pathname: "/shop",
                 state: { category: "Grips" }
               }}
               >
-              <img style={{height: '13rem'}} src={ require(`./../images/bars.jpg`)} alt="Bars" title="Bars"/>
+              <img style={{height: '13rem'}} src={ require(`./../images/fist.png`)} alt="Bars" title="Bars"/>
             </Link>
           </div>
           <div className="test-hover">
-            <h4 className="text-center category-select">Grips</h4>
+
             <Link
               to={{
                 pathname: "/shop",
                 state: { category: "Pedals" }
               }}
               >
-              <img style={{height: '13rem'}} src={ require(`./../images/bars.jpg`)} alt="Bars" title="Bars"/>
+              <img style={{height: '13rem'}} src={ require(`./../images/bsd.jpg`)} alt="Bars" title="Bars"/>
             </Link>
           </div>
           <div className="test-hover">
-            <h4 className="text-center category-select">Grips</h4>
+
             <Link
               to={{
                 pathname: "/shop",
                 state: { category: "Grips" }
               }}
               >
-              <img style={{height: '13rem'}} src={ require(`./../images/bars.jpg`)} alt="Bars" title="Bars"/>
+              <img style={{height: '13rem'}} src={ require(`./../images/odi.png`)} alt="Bars" title="Bars"/>
             </Link>
           </div>
           <div className="test-hover">
-            <h4 className="text-center category-select">Grips</h4>
+
             <Link
               to={{
                 pathname: "/shop",
                 state: { category: "Pedals" }
+              }}
+              >
+              <img style={{height: '13rem'}} src={ require(`./../images/tlcbikes.jpg`)} alt="Bars" title="Bars"/>
+            </Link>
+          </div>
+
+          <div className="test-hover">
+
+            <Link
+              to={{
+                pathname: "/shop",
+                state: { category: "Grips" }
+              }}
+              >
+              <img style={{height: '13rem'}} src={ require(`./../images/maxxis.png`)} alt="Bars" title="Bars"/>
+            </Link>
+          </div>
+
+          <div className="test-hover">
+
+            <Link
+              to={{
+                pathname: "/shop",
+                state: { category: "Pedals" }
+              }}
+              >
+              <img style={{height: '13rem'}} src={ require(`./../images/federal.jpeg`)} alt="Federal" title="Federal"/>
+            </Link>
+          </div>
+          <div className="test-hover">
+
+            <Link
+              to={{
+                pathname: "/shop",
+                state: { category: "Grips" }
               }}
               >
               <img style={{height: '13rem'}} src={ require(`./../images/bars.jpg`)} alt="Bars" title="Bars"/>
@@ -116,65 +151,7 @@ class BrandSelect extends Component {
           </div>
 
           <div className="test-hover">
-            <h4 className="text-center category-select">Grips</h4>
-            <Link
-              to={{
-                pathname: "/shop",
-                state: { category: "Grips" }
-              }}
-              >
-              <img style={{height: '13rem'}} src={ require(`./../images/bars.jpg`)} alt="Bars" title="Bars"/>
-            </Link>
-          </div>
 
-          <div className="test-hover">
-            <h4 className="text-center category-select">Grips</h4>
-            <Link
-              to={{
-                pathname: "/shop",
-                state: { category: "Pedals" }
-              }}
-              >
-              <img style={{height: '13rem'}} src={ require(`./../images/bars.jpg`)} alt="Bars" title="Bars"/>
-            </Link>
-          </div>
-          <div className="test-hover">
-            <h4 className="text-center category-select">Grips</h4>
-            <Link
-              to={{
-                pathname: "/shop",
-                state: { category: "Grips" }
-              }}
-              >
-              <img style={{height: '13rem'}} src={ require(`./../images/bars.jpg`)} alt="Bars" title="Bars"/>
-            </Link>
-          </div>
-
-          <div className="test-hover">
-            <h4 className="text-center category-select">Grips</h4>
-            <Link
-              to={{
-                pathname: "/shop",
-                state: { category: "Pedals" }
-              }}
-              >
-              <img style={{height: '13rem'}} src={ require(`./../images/bars.jpg`)} alt="Bars" title="Bars"/>
-            </Link>
-          </div>
-
-          <div className="test-hover">
-            <h4 className="text-center category-select">Grips</h4>
-            <Link
-              to={{
-                pathname: "/shop",
-                state: { category: "Grips" }
-              }}
-              >
-              <img style={{height: '13rem'}} src={ require(`./../images/bars.jpg`)} alt="Bars" title="Bars"/>
-            </Link>
-          </div>
-          <div className="test-hover">
-            <h4 className="text-center category-select">Grips</h4>
             <Link
               to={{
                 pathname: "/shop",
@@ -186,7 +163,7 @@ class BrandSelect extends Component {
           </div>
 
           <div className="test-hover">
-            <h4 className="text-center category-select">Grips</h4>
+
             <Link
               to={{
                 pathname: "/shop",
@@ -196,9 +173,8 @@ class BrandSelect extends Component {
               <img style={{height: '13rem'}} src={ require(`./../images/bars.jpg`)} alt="Bars" title="Bars"/>
             </Link>
           </div>
-
           <div className="test-hover">
-            <h4 className="text-center category-select">Grips</h4>
+
             <Link
               to={{
                 pathname: "/shop",
@@ -210,7 +186,7 @@ class BrandSelect extends Component {
           </div>
 
           <div className="test-hover">
-            <h4 className="text-center category-select">Grips</h4>
+
             <Link
               to={{
                 pathname: "/shop",
@@ -222,7 +198,7 @@ class BrandSelect extends Component {
           </div>
 
           <div className="test-hover">
-            <h4 className="text-center category-select">Grips</h4>
+
             <Link
               to={{
                 pathname: "/shop",
@@ -234,7 +210,7 @@ class BrandSelect extends Component {
           </div>
 
           <div className="test-hover">
-            <h4 className="text-center category-select">Grips</h4>
+
             <Link
               to={{
                 pathname: "/shop",
@@ -246,7 +222,31 @@ class BrandSelect extends Component {
           </div>
 
           <div className="test-hover">
-            <h4 className="text-center category-select">Grips</h4>
+
+            <Link
+              to={{
+                pathname: "/shop",
+                state: { category: "Pedals" }
+              }}
+              >
+              <img style={{height: '13rem'}} src={ require(`./../images/bars.jpg`)} alt="Bars" title="Bars"/>
+            </Link>
+          </div>
+
+          <div className="test-hover">
+
+            <Link
+              to={{
+                pathname: "/shop",
+                state: { category: "Grips" }
+              }}
+              >
+              <img style={{height: '13rem'}} src={ require(`./../images/bars.jpg`)} alt="Bars" title="Bars"/>
+            </Link>
+          </div>
+
+          <div className="test-hover">
+
             <Link
               to={{
                 pathname: "/shop",
