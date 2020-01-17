@@ -26,7 +26,7 @@ class Navbar extends Component {
         <Row className="justify-content-around m-5 test">
           <Link to="/">Categories</Link>
           <Link to="/brands">Brands</Link>
-          <Link to="/cart"><span className="pr-2">Cart</span><b>[{this.props.form.addedItems.length}]</b></Link>
+          <Link to="/cart"><span className="pr-2">Cart</span><b className='text-info pb-2' style={{fontSize: '1rem'}}>{this.props.form.addedItems.length > 0 ? this.props.form.addedItems.length : ''}</b></Link>
           <Link to="/cart"><i>Search</i></Link>
           <div>
             <a href="https://www.facebook.com/outerrimbicycles/" target="about_blank" title="Our Facebook page">
