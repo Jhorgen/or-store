@@ -4,6 +4,7 @@ import { injectStripe, CardNumberElement,
   CardExpiryElement,
   CardCVCElement, CardElement } from 'react-stripe-elements'
   import { Button, Row } from 'reactstrap'
+  import axios from 'axios'
 
   class PaymentForm extends Component {
     constructor(props) {
@@ -27,7 +28,6 @@ import { injectStripe, CardNumberElement,
       console.log('test');
       console.log('cart items:', this.props.form.addedItems);
     }
-
 
     async submit(e) {
       e.preventDefault()
@@ -69,15 +69,60 @@ import { injectStripe, CardNumberElement,
           })
         })
 
-        if (response.ok) console.log('Purchase Complete');
+        if (response.ok) {
+          console.log('Purchase Complete')
+          for(var i = 0; i < this.props.form.addedItems.length; i++) {
+            console.log(this.props.form.addedItems[i].id);
+              const item = {
+                category: this.props.form.addedItems[i].category,
+                brand: this.props.form.addedItems[i].brand,
+                title: this.props.form.addedItems[i].title,
+                description: this.props.form.addedItems[i].description,
+                color1: this.props.form.addedItems[i].color1,
+                color2: this.props.form.addedItems[i].color2,
+                color3: this.props.form.addedItems[i].color3,
+                color4: this.props.form.addedItems[i].color4,
+                color5: this.props.form.addedItems[i].color5,
+                size1: this.props.form.addedItems[i].size1,
+                size2: this.props.form.addedItems[i].size2,
+                size3: this.props.form.addedItems[i].size3,
+                size4: this.props.form.addedItems[i].size4,
+                size5: this.props.form.addedItems[i].size5,
+                quantity: this.props.form.addedItems[i].quantity - this.props.form.addedItems[i].checkoutquantity,
+                price: this.props.form.addedItems[i].price,
+                saleprice: this.props.form.addedItems[i].saleprice,
+                image1: this.props.form.addedItems[i].image1,
+                image2: "test",
+                image3: "test",
+                image4: "test",
+                image5: "test",
+                review: "",
+                rating: undefined,
+                checkoutquantity: 1
+              }
+              axios.put (
+                `http://localhost:3000/api/v1/products/${this.props.form.addedItems[i].id}`,
+                {
+                  product: item
+                })
+                .then(response => {
+                  console.log('response:', response);
+
+                })
+                .catch(error => {
+                  console.log('error:', error);
+                })
+          }
+        }
 
       }
 
       toggleForm = () => {
         this.setState({shippingForm: 'none', paymentForm: ''})
         console.log('test');
-        console.log('cart items:', this.props.form.addedItems);
-        console.log(this.props.cartItems);
+        console.log('state:', this.props.form.addedItems);
+        console.log('props:', this.props.cartItems);
+
       }
 
       handleChange(e, name) {

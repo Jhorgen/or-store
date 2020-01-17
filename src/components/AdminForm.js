@@ -64,7 +64,7 @@ class AdminForm extends Component {
       rating: undefined,
       checkoutquantity: 1
     }
-    axios.put(
+    axios.put (
       `http://localhost:3000/api/v1/products/${this.props.item.id}`,
       {
         product: item
