@@ -15,6 +15,7 @@ class Cart extends Component {
   }
 
   componentDidMount = () => {
+    console.log(this.props.form.addedItems);
   if(this.props.form.addedItems.length <= 0) {
     console.log('cart checkout:');
     this.props.correctTotalOnEmpty();
@@ -49,14 +50,14 @@ class Cart extends Component {
   :
   (
     <div style={{display: this.state.handleHide}}>
-      <p>Nothing.</p>
+      <p>Your cart is empty!</p>
     </div>
   )
 
   return (
     <div className="container">
       <Row className="cart mt-2">
-        <ul className="collection">
+        <ul className={this.props.form.addedItems.length > 0 ? "collection" : ''}>
           {addedItems}
         </ul>
       </Row>
