@@ -10,17 +10,17 @@ class AdminForm extends Component {
       brand: this.props.item.brand,
       title: this.props.item.title,
       description: this.props.item.description,
-      color1: this.props.item.color1,
-      color2: this.props.item.color2,
-      color3: this.props.item.color3,
-      color4: this.props.item.color4,
-      color5: this.props.item.color5,
-      size1: this.props.item.size1,
-      size2: this.props.item.size2,
-      size3: this.props.item.size3,
-      size4: this.props.item.size4,
-      size5: this.props.item.size5,
-      quantity: this.props.item.quantity,
+      option1: this.props.item.option1,
+      option2: this.props.item.option2,
+      option3: this.props.item.option3,
+      option4: this.props.item.option4,
+      option5: this.props.item.option5,
+      option6: this.props.item.option6,
+      option7: this.props.item.option7,
+      option8: this.props.item.option8,
+      option9: this.props.item.option9,
+      option10: this.props.item.option10,
+      option1option1quantity: this.props.item.option1quantity,
       price: this.props.item.price,
       saleprice: this.props.item.saleprice,
       image1: this.props.item.image1,
@@ -42,17 +42,17 @@ class AdminForm extends Component {
       brand: this.state.brand,
       title: this.state.title,
       description: this.state.description,
-      color1: this.state.color1,
-      color2: this.state.color2,
-      color3: this.state.color3,
-      color4: this.state.color4,
-      color5: this.state.color5,
-      size1: this.state.size1,
-      size2: this.state.size2,
-      size3: this.state.size3,
-      size4: this.state.size4,
-      size5: this.state.size5,
-      quantity: this.state.quantity,
+      option1: this.state.option1,
+      option2: this.state.option2,
+      option3: this.state.option3,
+      option4: this.state.option4,
+      option5: this.state.option5,
+      option6: this.state.option6,
+      option7: this.state.option7,
+      option8: this.state.option8,
+      option9: this.state.option9,
+      option10: this.state.option10,
+      option1quantity: this.state.option1quantity,
       price: this.state.price,
       saleprice: this.state.saleprice,
       image1: this.state.image1,
@@ -62,7 +62,7 @@ class AdminForm extends Component {
       image5: "test",
       review: "",
       rating: undefined,
-      checkoutquantity: 1
+      checkoutoption1quantity: 1
     }
     axios.put (
       `http://localhost:3000/api/v1/products/${this.props.item.id}`,
@@ -105,37 +105,37 @@ class AdminForm extends Component {
             name="description" placeholder='Enter a Description' value={this.state.description} onChange={this.handleInput}  />
 
             <input className='input'
-            name="color1" placeholder='Enter Color #1' value={this.state.color1} onChange={this.handleInput}  />
+            name="option1" placeholder='Enter Color #1' value={this.state.option1} onChange={this.handleInput}  />
 
             <input className='input'
-            name="color2" placeholder='Enter Color #2' value={this.state.color2} onChange={this.handleInput}  />
+            name="option2" placeholder='Enter Color #2' value={this.state.option2} onChange={this.handleInput}  />
 
             <input className='input'
-            name="color3" placeholder='Enter Color #3' value={this.state.color3} onChange={this.handleInput}  />
+            name="option3" placeholder='Enter Color #3' value={this.state.option3} onChange={this.handleInput}  />
 
             <input className='input'
-            name="color4" placeholder='Enter Color #4' value={this.state.color4} onChange={this.handleInput}  />
+            name="option4" placeholder='Enter Color #4' value={this.state.option4} onChange={this.handleInput}  />
 
             <input className='input'
-            name="color5" placeholder='Enter Color #5' value={this.state.color5} onChange={this.handleInput}  />
+            name="option5" placeholder='Enter Color #5' value={this.state.option5} onChange={this.handleInput}  />
 
             <input className='input'
-            name="size1" placeholder='Enter Size #1' value={this.state.size1} onChange={this.handleInput}  />
+            name="option6" placeholder='Enter Size #1' value={this.state.option6} onChange={this.handleInput}  />
 
             <input className='input'
-            name="size2" placeholder='Enter Size #2' value={this.state.size2} onChange={this.handleInput}  />
+            name="option7" placeholder='Enter Size #2' value={this.state.option7} onChange={this.handleInput}  />
 
             <input className='input'
-            name="size3" placeholder='Enter Size #3' value={this.state.size3} onChange={this.handleInput}  />
+            name="option8" placeholder='Enter Size #3' value={this.state.option8} onChange={this.handleInput}  />
 
             <input className='input'
-            name="size4" placeholder='Enter Size #4' value={this.state.size4} onChange={this.handleInput}  />
+            name="option9" placeholder='Enter Size #4' value={this.state.option9} onChange={this.handleInput}  />
 
             <input className='input'
-            name="size5" placeholder='Enter Size #5' value={this.state.size5} onChange={this.handleInput}  />
+            name="option10" placeholder='Enter Size #5' value={this.state.option10} onChange={this.handleInput}  />
 
             <input className='input'
-            name="quantity" placeholder='Enter Quantity' value={this.state.quantity} onChange={this.handleInput}  />
+            name="option1quantity" placeholder='Enter Quantity' value={this.state.option1quantity} onChange={this.handleInput}  />
 
             <input className='input'
             name="price" placeholder='Enter Price' value={this.state.price} onChange={this.handleInput}  />

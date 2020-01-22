@@ -25,21 +25,21 @@ class Adminitem extends Component {
               <hr/>
             </div>
             <div className="card-content">
-              <span onClick={this.handleClick}><b>Category</b>: {this.props.item.category}</span><br/>
-              <span onClick={this.handleClick}><b>Brand</b>: {this.props.item.brand}</span><br/>
-              <span onClick={this.handleClick}>Title: {this.props.item.title}</span><br/>
-              <span onClick={this.handleClick}>Description: {this.props.item.description}</span><br/>
-              <span onClick={this.handleClick}>Color1: {this.props.item.color1}</span><br/>
-              <span onClick={this.handleClick}>Color2: {this.props.item.color2}</span><br/>
-              <span onClick={this.handleClick}>Color3: {this.props.item.color3}</span><br/>
-              <span onClick={this.handleClick}>{this.props.item.color4}</span><br/>
-              <span onClick={this.handleClick}>{this.props.item.color5}</span><br/>
-              <span onClick={this.handleClick}>{this.props.item.size1}</span><br/>
-              <span onClick={this.handleClick}>{this.props.item.size2}</span><br/>
-              <span onClick={this.handleClick}>{this.props.item.size3}</span><br/>
-              <span onClick={this.handleClick}>{this.props.item.size4}</span><br/>
-              <span onClick={this.handleClick}>{this.props.item.size5}</span><br/>
-              <span onClick={this.handleClick}>{this.props.item.quantity}</span><br/>
+              <span onClick={this.handleClick}><span className='text-primary'>Category</span>: <span className='text-danger'>{this.props.item.category}</span></span><br/>
+              <span onClick={this.handleClick}><span className='text-primary'>Brand</span>: <span className='text-danger'>{this.props.item.brand}</span></span><br/>
+              <span onClick={this.handleClick}><span className='text-primary'>Title</span>: <span className='text-danger'>{this.props.item.title}</span></span><br/>
+              <span onClick={this.handleClick}><span className='text-primary'>Description</span>: <span className='text-danger'>{this.props.item.description}</span></span><br/>
+              <span onClick={this.handleClick}><span className='text-primary'>Option 1</span>: <span className='text-danger'>{this.props.item.option1}</span> <span style={{fontSize: '.8rem'}}><b>Qty</b></span>: <b style={{fontSize: '.8rem'}}>{this.props.item.option1quantity}</b></span><br/>
+              <span onClick={this.handleClick}><span className='text-primary'>Option 2</span>: <span className='text-danger'>{this.props.item.option2}</span> <span style={{fontSize: '.8rem'}}><b>Qty</b></span>: <b style={{fontSize: '.8rem'}}>{this.props.item.option2quantity}</b></span><br/>
+              <span onClick={this.handleClick}><span className='text-primary'>Option 3</span>: <span className='text-danger'>{this.props.item.option3}</span> <span style={{fontSize: '.8rem'}}><b>Qty</b></span>: <b style={{fontSize: '.8rem'}}>{this.props.item.option3quantity}</b></span><br/>
+              <span onClick={this.handleClick}><span className='text-primary'>Option 4</span>: <span className='text-danger'>{this.props.item.option4}</span> <span style={{fontSize: '.8rem'}}><b>Qty</b></span>: <b style={{fontSize: '.8rem'}}>{this.props.item.option4quantity}</b></span><br/>
+              <span onClick={this.handleClick}><span className='text-primary'>Option 5</span>: <span className='text-danger'>{this.props.item.option5}</span> <span style={{fontSize: '.8rem'}}><b>Qty</b></span>: <b style={{fontSize: '.8rem'}}>{this.props.item.option5quantity}</b></span><br/>
+              <span onClick={this.handleClick}><span className='text-primary'>Option 6</span>: <span className='text-danger'>{this.props.item.option6}</span> <span style={{fontSize: '.8rem'}}><b>Qty</b></span>: <b style={{fontSize: '.8rem'}}>{this.props.item.option6quantity}</b></span><br/>
+              <span onClick={this.handleClick}><span className='text-primary'>Option 7</span>: <span className='text-danger'>{this.props.item.option7}</span> <span style={{fontSize: '.8rem'}}><b>Qty</b></span>: <b style={{fontSize: '.8rem'}}>{this.props.item.option7quantity}</b></span><br/>
+              <span onClick={this.handleClick}><span className='text-primary'>Option 8</span>: <span className='text-danger'>{this.props.item.option8}</span> <span style={{fontSize: '.8rem'}}><b>Qty</b></span>: <b style={{fontSize: '.8rem'}}>{this.props.item.option8quantity}</b></span><br/>
+              <span onClick={this.handleClick}><span className='text-primary'>Option 9</span>: <span className='text-danger'>{this.props.item.option9}</span> <span style={{fontSize: '.8rem'}}><b>Qty</b></span>: <b style={{fontSize: '.8rem'}}>{this.props.item.option9quantity}</b></span><br/>
+              <span onClick={this.handleClick}><span className='text-primary'>Option 10</span>: <span className='text-danger'>{this.props.item.option10}</span></span> <span style={{fontSize: '.8rem'}}><b>Qty</b></span>: <span className='text-danger'>{this.props.item.option10quantity}</span><br/>
+              <span onClick={this.handleClick}>{this.props.item.option1quantity}</span><br/>
               <span onClick={this.handleClick}>{this.props.item.price}</span><br/>
               <span onClick={this.handleClick}>{this.props.item.saleprice}</span>
               <span onClick={this.handleClick}>{this.props.item.image1}</span><br/>
