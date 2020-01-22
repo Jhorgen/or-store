@@ -83,6 +83,8 @@ const cartReducer = (state = initState, action) => {
     }
     else {
       addedItem.checkoutquantity = 1;
+      addedItem.selectedOptionIndex = action.selectedIndex;
+      addedItem.selectedoption = action.selected;
       let newTotal = state.total + addedItem.price
       return {
         ...state,

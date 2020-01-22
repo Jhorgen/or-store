@@ -1,10 +1,12 @@
 import { ADD_TO_CART, REMOVE_ITEM, SUB_QUANTITY, ADD_QUANTITY, SUB_SHIPPING, ADD_SHIPPING } from './action-types/cart-actions.js'
 
 //add cart action
-export const addToCart = (id) => {
+export const addToCart = (id, selected, selectedIndex) => {
   return{
     type: ADD_TO_CART,
-    id
+    id,
+    selected,
+    selectedIndex
   }
 }
 //remove item action
