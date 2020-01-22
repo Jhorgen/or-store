@@ -15,7 +15,7 @@ code {
     monospace;
 }
 
-.box{
+.box {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap
@@ -24,23 +24,24 @@ code {
     font-size: 2.4em;
     cursor: pointer;
 }
-.card{
+.card {
     width: 300px;
 }
-.card .card-image .card-title{
+.card .card-image .card-title {
     color: black;
     font-weight: 400
 }
-.cart{
+.cart {
     margin-top:40px;
   }
 
 .collection {
   border: 3px solid #6350ff21;
   padding: 1rem;
+  border-radius: 10px;
 }
 
-.collection .collection-item{
+.collection .collection-item {
     list-style: none;
 }
 
@@ -63,18 +64,15 @@ code {
 
 .category-select:hover {
   text-decoration: none;
-  background: black;
-  padding: 0.2rem;
-  padding-bottom: 0.67rem;
-  opacity: .7;
-  border-radius: 5px;
+
 }
 
 .test-hover:hover {
   box-shadow: 2px 2px 2px coral;
-  transition: .2s ease;
+  transition: .3s ease;
   margin: .1rem !important;
   border: 1px solid #00000026;
+  border-radius: 2rem;
 }
 
 input::-webkit-outer-spin-button,
@@ -220,5 +218,29 @@ font-family: 'Yeseva One', cursive;
 hr {
   background: #6350ff21 !important;
 }
+
+
+@media only screen and (max-width: 400px) {
+  .cat-row {
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .cat-row {
+    flex-direction: column !important;
+    width: 75% !important;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .cat-row {
+    flex-direction: column !important;
+    width: 60% !important;
+  }
+}
+
+
 
 /* add less margin for shop item on hover / create own class */

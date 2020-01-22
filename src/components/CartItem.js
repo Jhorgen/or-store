@@ -17,8 +17,6 @@ class CartItem extends Component {
   }
 
 
-
-
   handleAddQuantity = (id, checkoutquantity, itemQuantity, e) => {
     e.preventDefault()
     this.setState({updateDisplay: 'none', readOnly: 'readOnly'})
