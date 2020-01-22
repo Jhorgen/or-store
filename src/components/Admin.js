@@ -65,44 +65,54 @@ class Admin extends Component {
   }
 
   addNewItem() {
+    var key = ('option1')
+    var titletest = 'title'
+    let value =
+
     axios.post(
       'http://localhost:3000/api/v1/products/',
       { product:
         {
-          category: "",
-          brand: "",
-          title: "",
-          description: "",
-          color1: "",
-          color2: "",
-          color3: "",
-          color4: "",
-          color5: "",
-          size1: "",
-          size2: "",
-          size3: "",
-          size4: "",
-          size5: "",
-          quantity: undefined,
-          price: undefined,
+          category: "Grips",
+          brand: "Colony",
+          [titletest]: "BMX Grip 41231",
+          description: "They have great grip",
+          [key]: 'Medium red',
+          option2: "Large blue",
+          option3: "test",
+          option4: "",
+          option5: "test",
+          option6: "",
+          option7: "",
+          option8: "",
+          option9: "",
+          option10: "",
+          selectedOptionIndex: "",
+          option1quantity: 5,
+          option2quantity: 2,
+          option3quantity: 10,
+          option4quantity: undefined,
+          option5quantity: undefined,
+          option6quantity: undefined,
+          option7quantity: undefined,
+          option8quantity: undefined,
+          option9quantity: undefined,
+          option10quantity: undefined,
+          price: 27.00,
           saleprice: undefined,
-          image1: "",
+          image1: 'bars',
           image2: "",
           image3: "",
           image4: "",
           image5: "",
-          review: "",
           rating: undefined,
           checkoutquantity: 1
         }
       }
     )
     .then(response => {
-      console.log(response)
-      const items = update(this.state.items, {
-        $splice: [[0, 0, response.data]]
-      })
-      this.setState({items: items, editingitemId: response.data.id})
+      console.log(response, response.option1)
+
     })
     .catch(error => console.log(error))
   }
