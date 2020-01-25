@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { injectStripe, CardNumberElement,
   CardExpiryElement,
-  CardCVCElement, CardElement } from 'react-stripe-elements'
+  CardCVCElement } from 'react-stripe-elements'
   import { Button, Row } from 'reactstrap'
   import axios from 'axios'
 
@@ -88,7 +88,7 @@ import { injectStripe, CardNumberElement,
             this.props.form.addedItems[i].selectedOptionIndex == 3 ? selectedOptionQuantity = this.props.form.addedItems[i].option3quantity :
             this.props.form.addedItems[i].selectedOptionIndex == 2 ? selectedOptionQuantity = this.props.form.addedItems[i].option2quantity :
             this.props.form.addedItems[i].selectedOptionIndex == 1 ? selectedOptionQuantity = this.props.form.addedItems[i].option1quantity :
-            selectedOptionQuantity = 'idk'
+            
             console.log('option', selectedOptionQuantity);
               const item = {
                 [quantity]: selectedOptionQuantity - this.props.form.addedItems[i].checkoutquantity,

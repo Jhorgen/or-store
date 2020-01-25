@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Row } from 'reactstrap'
-import { Link } from 'react-router-dom'
-import { addToCart, loadSelectedItemData, saveSelectedItemData, saveCartFromShop } from './../actions/cartActions.js'
+import { addToCart, loadSelectedItemData, saveSelectedItemData } from './../actions/cartActions.js'
 import ShopItem from './ShopItem'
 
 

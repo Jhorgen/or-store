@@ -10,6 +10,7 @@ class ShopItem extends Component {
     this.state = {
       addedNotification: 'none',
       add: 'none',
+      defaultOption: '',
       option1: '',
       option2: '',
       option3: '',
@@ -21,27 +22,45 @@ class ShopItem extends Component {
       option9: '',
       option10: '',
       selectedOption: '',
-      selectedOptionIndex: ''
+      selectedOptionIndex: '',
+      inStock: '',
+      showSelect: ''
+
     }
   }
 
   componentDidMount = () => {
-    this.setState({option1: <option value={'1'}>{this.props.item.option1}</option>})
-    this.props.item.option2 === '' ? this.setState({option2: ''}) : this.setState({option2: <option value={'2'}>{this.props.item.option2}</option> })
-    this.props.item.option3 === '' ? this.setState({option3: ''}) : this.setState({option3: <option value={'3'}>{this.props.item.option3}</option> })
-    this.props.item.option4 === '' ? this.setState({option4: ''}) : this.setState({option4: <option value={'4'}>{this.props.item.option4}</option> })
-    this.props.item.option5 === '' ? this.setState({option5: ''}) : this.setState({option5: <option value={'5'}>{this.props.item.option5}</option> })
-    this.props.item.option6 === '' ? this.setState({option6: ''}) : this.setState({option6: <option value={'6'}>{this.props.item.option6}</option> })
-    this.props.item.option7 === '' ? this.setState({option7: ''}) : this.setState({option7: <option value={'7'}>{this.props.item.option7}</option> })
-    this.props.item.option8 === '' ? this.setState({option8: ''}) : this.setState({option8: <option value={'8'}>{this.props.item.option8}</option> })
-    this.props.item.option9 === '' ? this.setState({option9: ''}) : this.setState({option9: <option value={'9'}>{this.props.item.option9}</option> })
-    this.props.item.option10 === '' ? this.setState({option10: ''}) : this.setState({option10: <option value={'10'}>{this.props.item.option10}</option> })
+    console.log(this.props.item.option1quantity)
+
+
+    this.setState({defaultOption: <option value={'default'}>Options</option>})
+  this.setState({option1: <option value={'1'}>{this.props.item.option1}</option> })
+    this.props.item.option2quantity === 0 ? this.setState({option2: ''}) : this.setState({option2: <option value={'2'}>{this.props.item.option2}</option> })
+    this.props.item.option3quantity === 0 ? this.setState({option3: ''}) : this.setState({option3: <option value={'3'}>{this.props.item.option3}</option> })
+    this.props.item.option4quantity === 0 ? this.setState({option4: ''}) : this.setState({option4: <option value={'4'}>{this.props.item.option4}</option> })
+    this.props.item.option5quantity === 0 ? this.setState({option5: ''}) : this.setState({option5: <option value={'5'}>{this.props.item.option5}</option> })
+    this.props.item.option6quantity === 0 ? this.setState({option6: ''}) : this.setState({option6: <option value={'6'}>{this.props.item.option6}</option> })
+    this.props.item.option7quantity === 0 ? this.setState({option7: ''}) : this.setState({option7: <option value={'7'}>{this.props.item.option7}</option> })
+    this.props.item.option8quantity === 0 ? this.setState({option8: ''}) : this.setState({option8: <option value={'8'}>{this.props.item.option8}</option> })
+    this.props.item.option9quantity === 0 ? this.setState({option9: ''}) : this.setState({option9: <option value={'9'}>{this.props.item.option9}</option> })
+    this.props.item.option10quantity === 0 ? this.setState({option10: ''}) : this.setState({option10: <option value={'10'}>{this.props.item.option10}</option> })
+
+    this.props.item.option1quantity === 0 && this.props.item.option2quantity === 0 && this.props.item.option3quantity === 0 && this.props.item.option4quantity === 0 && this.props.item.option5quantity === 0 && this.props.item.option6quantity === 0 && this.props.item.option7quantity === 0 && this.props.item.option8quantity === 0 && this.props.item.option9quantity === 0 && this.props.item.option10quantity === 0 ? this.setState({showSelect: 'none', inStock: <span className='btn btn-danger mt-2'>Out of stock</span>}) : this.setState({inStock: <button style={{display: ''}} className='btn btn-secondary mt-3' onClick={() => this.handleAddClick(this.props.item.id)}>Add to cart</button>})
+
   }
 
   handleAddClick = (id) => {
-  let selected = this.state.selectedOption;
-  let selectedIndex = this.state.selectedOptionIndex;
+
+  if(this.state.selectedOptionIndex === '') {
+    console.log('test');
+    let selectedIndex = '1'
+    let selected = this.props.item.option1
     this.props.addToCart(id, selected, selectedIndex);
+  } else {
+    let selected = this.state.selectedOption;
+    let selectedIndex = this.state.selectedOptionIndex;
+    this.props.addToCart(id, selected, selectedIndex);
+  }
     this.setState({addedNotification: ''})
     setTimeout( () => {
       this.setState({addedNotification: 'none'})
@@ -70,12 +89,13 @@ class ShopItem extends Component {
             <img style={{height: '13rem', width: '100%'}} src={ require(`./../images/${this.props.item.image1}.jpg`)} alt={this.props.item.title}/>
             <div className='mt-3'><span className="card-title">{this.props.item.title}</span></div>
           </Link>
-          <button style={{display: ''}} className='btn btn-secondary mt-3' onClick={() => this.handleAddClick(this.props.item.id)}>Add to cart</button><br/>
+          {this.state.inStock}<br/>
           <div className='mt-3'>
 
-            <form>
+            <form style={{display: this.state.showSelect}}>
               <select ref="selectMark"
                 onChange={(e) => this.onChange(e.target.value, e.target)}>
+                {this.state.defaultOption}
                 {this.state.option1}
                 {this.state.option2}
                 {this.state.option3}
