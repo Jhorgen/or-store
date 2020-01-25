@@ -3,8 +3,6 @@ import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import rootReducer from './reducers/cartReducer.js'
 import thunk from 'redux-thunk'
-import devToolsEnhancer from 'remote-redux-devtools';
-import { composeWithDevTools } from 'remote-redux-devtools';
 
 
 
