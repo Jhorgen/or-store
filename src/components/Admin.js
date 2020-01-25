@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import { Row, Button } from 'reactstrap'
+import { Row, Button, Col } from 'reactstrap'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
 import axios from 'axios'
 import AdminForm from './AdminForm'
 import AdminItem from './AdminItem.js'
@@ -19,8 +18,40 @@ class Admin extends Component {
       display: false,
       items: [],
       editingitemId: null,
-      notification: ''
-    };
+      notification: '',
+      itemForm: '',
+      category: '',
+      brand: '',
+      title: '',
+      description: '',
+      option1: '',
+      option2: '',
+      option3: '',
+      option4: '',
+      option5: '',
+      option6: '',
+      option7: '',
+      option8: '',
+      option9: '',
+      option10: '',
+      option1quantity: '',
+      option2quantity: '',
+      option3quantity: '',
+      option4quantity: '',
+      option5quantity: '',
+      option6quantity: '',
+      option7quantity: '',
+      option8quantity: '',
+      option9quantity: '',
+      option10quantity: '',
+      price: '',
+      saleprice: '',
+      image1: '',
+      image2: '',
+      image3: '',
+      image4: '',
+      image5: ''
+    }
   }
 
   ComponentDidMount = () => {
@@ -64,47 +95,228 @@ class Admin extends Component {
     .catch(error => console.log(error))
   }
 
+  handleInput = (e) => {
+    this.setState({[e.target.name]: e.target.value})
+
+    this.setState({updated: <span onClick={() => this.postUpdate()} className='btn btn-info btn-block mb-3 ml-4 mt-2'>Update</span>})
+  }
+
+  addItemForm = () => {
+    this.setState({items: []})
+    this.setState({itemForm: <form onSubmit={this.addNewItem}>
+    <div className='d-flex align-items-baseline'>
+      <Col>
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Category:</span>
+        <input className='input' name="category" placeholder='Enter Category' value={this.state.value} onChange={this.handleInput} ref={this.props.titleRef} />
+      </Row>
+
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Brand:</span>
+        <input className='input' name="brand" placeholder='Enter Brand' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Title:</span> <input className='input'
+          name="title" placeholder='Enter Title' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Description:</span> <input className='input'
+          name="description" placeholder='Enter Description' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Price:</span>
+        <input className='input' name="price" placeholder='Enter Price' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Sale price:</span>
+        <input className='input' name="saleprice" placeholder='Sale price' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+    </Col>
+
+    <Col>
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 1:</span>
+        <input className='input' name="option1" placeholder='Enter Option 1' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 2:</span>
+        <input className='input' name="option2" placeholder='Enter Option 2' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 3:</span>
+        <input className='input' name="option3" placeholder='Enter Option 3' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 4:</span>
+        <input className='input' name="option4" placeholder='Enter Option 4' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 5:</span>
+        <input className='input' name="option5" placeholder='Enter Option 5' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 6:</span>
+        <input className='input' name="option6" placeholder='Enter Option 6' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 7:</span>
+        <input className='input' name="option7" placeholder='Enter Option 7' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 8:</span>
+        <input className='input' name="option8" placeholder='Enter Option 8' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 9:</span>
+        <input className='input' name="option9" placeholder='Enter Option 9' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 10:</span>
+        <input className='input' name="option10" placeholder='Enter Option 10' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+    </Col>
+
+    <Col>
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 1 Qty:</span>
+        <input className='input' name="option1quantity" placeholder='Enter Quantity (Option 1)' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 2 Qty:</span>
+        <input className='input' name="option2quantity" placeholder='Enter Quantity (Option 2)' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 3 Qty:</span>
+        <input className='input' name="option3quantity" placeholder='Enter Quantity (Option 3)' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 4 Qty:</span>
+        <input className='input' name="option4quantity" placeholder='Enter Quantity (Option 4)' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 5 Qty:</span>
+        <input className='input' name="option5quantity" placeholder='Enter Quantity (Option 5)' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 6 Qty:</span>
+        <input className='input' name="option6quantity" placeholder='Enter Quantity (Option 6)' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 7 Qty:</span>
+        <input className='input' name="option7quantity" placeholder='Enter Quantity (Option 7)' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 8 Qty:</span>
+        <input className='input' name="option8quantity" placeholder='Enter Quantity (Option 8)' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 9 Qty:</span>
+        <input className='input' name="option9quantity" placeholder='Enter Quantity (Option 9)' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 10 Qty:</span>
+        <input className='input' name="option10quantity" placeholder='Enter Quantity (Option 10)' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+    </Col>
+
+    <Col>
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Image 1:</span>
+        <input className='input' name="image1" placeholder='Enter Image 1' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Image 2:</span>
+        <input className='input' name="image2" placeholder='Enter Image 2' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Image 3:</span>
+        <input className='input' name="image3" placeholder='Enter Image 3' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Image 4:</span>
+        <input className='input' name="image4" placeholder='Enter Image 4' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Image 5:</span>
+        <input className='input' name="image5" placeholder='Enter Image 5' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+
+    </Col>
+
+
+  </div>
+  <Row>
+      <input className='btn btn-success' type='submit'/>
+      </Row>
+
+
+  </form>})
+  }
+
   addNewItem() {
-    var key = ('option1')
-    var titletest = 'title'
-    let value =
 
     axios.post(
       'http://localhost:3000/api/v1/products/',
       { product:
         {
-          category: "Grips",
-          brand: "Colony",
-          [titletest]: "BMX Grip 41231",
-          description: "They have great grip",
-          [key]: 'Medium red',
-          option2: "Large blue",
-          option3: "test",
-          option4: "",
-          option5: "test",
-          option6: "",
-          option7: "",
-          option8: "",
-          option9: "",
-          option10: "",
+          category: this.state.category,
+          brand: this.state.brand,
+          title: this.state.title,
+          description: this.state.description,
+          option1: this.state.option1,
+          option2: this.state.option2,
+          option3: this.state.option3,
+          option4: this.state.option4,
+          option5: this.state.option5,
+          option6: this.state.option6,
+          option7: this.state.option7,
+          option8: this.state.option8,
+          option9: this.state.option9,
+          option10: this.state.option10,
           selectedOptionIndex: "",
-          option1quantity: 5,
-          option2quantity: 2,
-          option3quantity: 10,
-          option4quantity: undefined,
-          option5quantity: undefined,
-          option6quantity: undefined,
-          option7quantity: undefined,
-          option8quantity: undefined,
-          option9quantity: undefined,
-          option10quantity: undefined,
-          price: 27.00,
-          saleprice: undefined,
-          image1: 'bars',
-          image2: "",
-          image3: "",
-          image4: "",
-          image5: "",
+          option1quantity: this.state.option1quantity,
+          option2quantity: this.state.option2quantity,
+          option3quantity: this.state.option3quantity,
+          option4quantity: this.state.option4quantity,
+          option5quantity: this.state.option5quantity,
+          option6quantity: this.state.option6quantity,
+          option7quantity: this.state.option7quantity,
+          option8quantity: this.state.option8quantity,
+          option9quantity: this.state.option9quantity,
+          option10quantity: this.state.option10quantity,
+          price: this.state.price,
+          saleprice: this.state.saleprice,
+          image1: this.state.image1,
+          image2: this.state.image2,
+          image3: this.state.image3,
+          image4: this.state.image4,
+          image5: this.state.image5,
           rating: undefined,
           checkoutquantity: 1
         }
@@ -172,7 +384,7 @@ class Admin extends Component {
         <div>
           <Row className="justify-content-around">
             <Button onClick={() =>this.loadItems()} color="info" size="lg">Edit/Delete inventory</Button>
-            <Button onClick={() =>this.addNewItem()} color="info" size="lg">Add item</Button>
+            <Button onClick={() =>this.addItemForm()} color="info" size="lg">Add item</Button>
             <Button onClick={() =>this.loadItems()} color="info" size="lg">View intentory</Button>
           </Row>
         </div>
@@ -180,6 +392,10 @@ class Admin extends Component {
       return (
         <div>
           {admin}
+
+          <Row className="justify-content-center m-3 mt-5">
+            {this.state.itemForm}
+          </Row>
           <Row className="justify-content-center m-3 mt-5">
             { this.state.items.map(item => {
               if(this.state.editingitemId === item.id) {
