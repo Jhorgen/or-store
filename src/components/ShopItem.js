@@ -55,11 +55,14 @@ class ShopItem extends Component {
     console.log('test');
     let selectedIndex = '1'
     let selected = this.props.item.option1
-    this.props.addToCart(id, selected, selectedIndex);
+    let price = this.props.item.option1price
+    this.props.addToCart(id, selected, selectedIndex, price);
   } else {
     let selected = this.state.selectedOption;
     let selectedIndex = this.state.selectedOptionIndex;
-    this.props.addToCart(id, selected, selectedIndex);
+    let price = this.props.item[`option${selectedIndex}price`]
+    console.log(price);
+    this.props.addToCart(id, selected, selectedIndex, price);
   }
     this.setState({addedNotification: ''})
     setTimeout( () => {
@@ -87,7 +90,7 @@ class ShopItem extends Component {
         <div className="card-image text-center item-view-hover">
           <Link to={'/item/' + this.props.item.title.split(' ').join('')}>
             <img style={{height: '13rem', width: '100%'}} src={ require(`./../images/${this.props.item.image1}.jpg`)} alt={this.props.item.title}/>
-            <div className='mt-3'><span className="card-title">{this.props.item.title}</span></div>
+            <div className='mt-3'><span className="card-title">{this.props.item.brand} {this.props.item.title}</span></div>
           </Link>
           {this.state.inStock}<br/>
           <div className='mt-3'>
@@ -126,7 +129,7 @@ class ShopItem extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addToCart: (id, selected, selectedIndex) => {(dispatch(addToCart(id, selected, selectedIndex)))}
+    addToCart: (id, selected, selectedIndex, price) => {(dispatch(addToCart(id, selected, selectedIndex, price)))}
   }
 }
 

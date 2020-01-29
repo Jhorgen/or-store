@@ -75,6 +75,7 @@ const cartReducer = (state = initState, action) => {
 
     if(existed_item)
     {
+      addedItem.price = action.price
       addedItem.checkoutquantity += 1
       return {
         ...state,
@@ -82,6 +83,7 @@ const cartReducer = (state = initState, action) => {
       }
     }
     else {
+      addedItem.price = action.price
       addedItem.checkoutquantity = 1;
       addedItem.selectedOptionIndex = action.selectedIndex;
       addedItem.selectedoption = action.selected;
