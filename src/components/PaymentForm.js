@@ -88,7 +88,7 @@ import { injectStripe, CardNumberElement,
             this.props.form.addedItems[i].selectedOptionIndex == 3 ? selectedOptionQuantity = this.props.form.addedItems[i].option3quantity :
             this.props.form.addedItems[i].selectedOptionIndex == 2 ? selectedOptionQuantity = this.props.form.addedItems[i].option2quantity :
             this.props.form.addedItems[i].selectedOptionIndex == 1 ? selectedOptionQuantity = this.props.form.addedItems[i].option1quantity :
-            
+
             console.log('option', selectedOptionQuantity);
               const item = {
                 [quantity]: selectedOptionQuantity - this.props.form.addedItems[i].checkoutquantity,
@@ -100,6 +100,7 @@ import { injectStripe, CardNumberElement,
                 })
                 .then(response => {
                   console.log('response:', response);
+                  this.testPost()
 
                 })
                 .catch(error => {

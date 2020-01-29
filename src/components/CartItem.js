@@ -11,7 +11,6 @@ class CartItem extends Component {
     this.state = {
       itemQuantity: '',
       updateDisplay: 'none',
-      readOnly: 'readOnly',
       value: ''
     }
   }
@@ -19,7 +18,7 @@ class CartItem extends Component {
 
   handleAddQuantity = (id, checkoutquantity, itemQuantity, e) => {
     e.preventDefault()
-    this.setState({updateDisplay: 'none', readOnly: 'readOnly'})
+    this.setState({updateDisplay: 'none'})
     let x = itemQuantity -1
 
     for(var i = 0; i < x; i++) {
@@ -45,7 +44,7 @@ class CartItem extends Component {
   }
 
   handleStyles = () => {
-    this.setState({updateDisplay: '', readOnly: ''})
+    this.setState({updateDisplay: ''})
   }
 
   handleChange = (e) => {
@@ -80,7 +79,7 @@ class CartItem extends Component {
 
           <form className="d-flex" onSubmit={(e) => this.handleAddQuantity(this.props.item.id, this.props.item.checkoutquantity, this.state.itemQuantity, e)}>
 
-          <input onClick={() => this.handleStyles(this.props.item.id)} style={{width: '3rem'}} className="mr-3 form-control" name="itemQuantity" placeholder={`${this.props.item.checkoutquantity}`} onChange={(e) => this.handleChange(e)} readOnly={this.state.readOnly} />
+          <input onClick={() => this.handleStyles(this.props.item.id)} style={{width: '3rem'}} className="mr-3 form-control" name="itemQuantity" placeholder={`${this.props.item.checkoutquantity}`} onChange={(e) => this.handleChange(e)} />
 
 
             <button onClick={() => {this.handleSubtractQuantity(this.props.item.id, this.props.item.price)}} style={{display: this.state.updateDisplay, fontSize: '.8rem'}} type='submit' className="pr-3 btn btn-secondary">Update</button>
