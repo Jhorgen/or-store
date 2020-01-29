@@ -33,7 +33,7 @@ ComponentDidMount = () => {
               <Link to={'/item/' + this.props.item.title.split(' ').join('')} onClick={() => {this.checkLink(this.props.item)}}>
                 <img style={{height: '13rem', width: '100%'}} src={ require(`./../images/${this.props.item.image1}.jpg`)} alt={this.props.item.title}/>
               </Link>
-              <div><span className="card-title">{this.props.item.title}</span></div>
+              <div><span className="card-title">{this.props.item.brand} {this.props.item.title}</span></div>
               <hr/>
             </div>
             <div className="card-content m-2">

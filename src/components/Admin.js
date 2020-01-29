@@ -15,7 +15,7 @@ class Admin extends Component {
       password: '',
       correct: true,
       incorrect: '',
-      display: false,
+      display: 'none',
       items: [],
       editingitemId: null,
       notification: '',
@@ -24,6 +24,16 @@ class Admin extends Component {
       brand: '',
       title: '',
       description: '',
+      spec1: '',
+      spec2: '',
+      spec3: '',
+      spec4: '',
+      spec5: '',
+      spec6: '',
+      spec7: '',
+      spec8: '',
+      spec9: '',
+      spec10: '',
       option1: '',
       option2: '',
       option3: '',
@@ -34,23 +44,38 @@ class Admin extends Component {
       option8: '',
       option9: '',
       option10: '',
-      option1quantity: '',
-      option2quantity: '',
-      option3quantity: '',
-      option4quantity: '',
-      option5quantity: '',
-      option6quantity: '',
-      option7quantity: '',
-      option8quantity: '',
-      option9quantity: '',
-      option10quantity: '',
-      price: '',
-      saleprice: '',
+      option1quantity: 0,
+      option2quantity: 0,
+      option3quantity: 0,
+      option4quantity: 0,
+      option5quantity: 0,
+      option6quantity: 0,
+      option7quantity: 0,
+      option8quantity: 0,
+      option9quantity: 0,
+      option10quantity: 0,
+      price: undefined,
+      saleprice: undefined,
       image1: '',
       image2: '',
       image3: '',
       image4: '',
-      image5: ''
+      image5: '',
+      image6: '',
+      image7: '',
+      image8: '',
+      image9: '',
+      image10: '',
+      option1price: undefined,
+      option2price: undefined,
+      option3price: undefined,
+      option4price: undefined,
+      option5price: undefined,
+      option6price: undefined,
+      option7price: undefined,
+      option8price: undefined,
+      option9price: undefined,
+      option10price: '',
     }
   }
 
@@ -77,7 +102,7 @@ class Admin extends Component {
     console.log('A password was submitted: ' + this.state.password);
     event.preventDefault();
     if(this.state.user === "test" && this.state.password === "test") {
-      this.setState({correct: false})
+      this.setState({correct: false, display: ''})
     } else {
       console.log('false');
       this.setState({incorrect: <h4>Incorrect login information.</h4>})
@@ -103,7 +128,7 @@ class Admin extends Component {
 
   addItemForm = () => {
     this.setState({items: []})
-    this.setState({itemForm: <form onSubmit={this.addNewItem}>
+    this.setState({itemForm: <form onSubmit={(e) => this.addNewItem(e)}>
     <div className='d-flex align-items-baseline'>
       <Col>
       <Row className='m-1'>
@@ -127,13 +152,58 @@ class Admin extends Component {
       </Row>
 
       <Row className='m-1'>
-        <span className='text-primary m-1'>Price:</span>
-        <input className='input' name="price" placeholder='Enter Price' value={this.state.value} onChange={this.handleInput} />
+        <span className='text-primary m-1'>Spec 1:</span> <input className='input'
+          name="spec1" placeholder='Enter Spec 1' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Spec 2:</span> <input className='input'
+          name="spec2" placeholder='Enter Spec 2' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Spec 3:</span> <input className='input'
+          name="spec3" placeholder='Enter Spec 3' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Spec 4:</span> <input className='input'
+          name="spec4" placeholder='Enter Spec 4' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Spec 5:</span> <input className='input'
+          name="spec5" placeholder='Enter Spec 5' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Spec 6:</span> <input className='input'
+          name="spec6" placeholder='Enter Spec 6' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Spec 7:</span> <input className='input'
+          name="spec7" placeholder='Enter Spec 7' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Spec 8:</span> <input className='input'
+          name="spec8" placeholder='Enter Spec 8' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Spec 9:</span> <input className='input'
+          name="spec9" placeholder='Enter Spec 9' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Spec 10:</span> <input className='input'
+          name="spec10" placeholder='Enter Spec 10' value={this.state.value} onChange={this.handleInput} />
       </Row>
 
       <Row className='m-1'>
         <span className='text-primary m-1'>Sale price:</span>
-        <input className='input' name="saleprice" placeholder='Sale price' value={this.state.value} onChange={this.handleInput} />
+        <input className='input' name="saleprice" placeholder='Enter Sale Price' value={this.state.value} onChange={this.handleInput} />
       </Row>
     </Col>
 
@@ -186,6 +256,58 @@ class Admin extends Component {
       <Row className='m-1'>
         <span className='text-primary m-1'>Option 10:</span>
         <input className='input' name="option10" placeholder='Enter Option 10' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+    </Col>
+
+    <Col>
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 1 price:</span>
+        <input className='input' name="option1price" placeholder='Enter price 1' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 2 price:</span>
+        <input className='input' name="option2price" placeholder='Enter price 2' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 3 price:</span>
+        <input className='input' name="option3price" placeholder='Enter price 3' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 4 price:</span>
+        <input className='input' name="option4price" placeholder='Enter price 4' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 5 price:</span>
+        <input className='input' name="option5price" placeholder='Enter price 5' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 6 price:</span>
+        <input className='input' name="option6price" placeholder='Enter price 6' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 7 price:</span>
+        <input className='input' name="option7price" placeholder='Enter price 7' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 8 price:</span>
+        <input className='input' name="option8price" placeholder='Enter price 8' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 9 price:</span>
+        <input className='input' name="option9price" placeholder='Enter price 9' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 10 price:</span>
+        <input className='input' name="option10price" placeholder='Enter price 10' onChange={this.handleInput} />
       </Row>
     </Col>
 
@@ -267,6 +389,30 @@ class Admin extends Component {
         <input className='input' name="image5" placeholder='Enter Image 5' value={this.state.value} onChange={this.handleInput} />
       </Row>
 
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Image 6:</span>
+        <input className='input' name="image6" placeholder='Enter Image 6' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Image 7:</span>
+        <input className='input' name="image7" placeholder='Enter Image 7' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Image 8:</span>
+        <input className='input' name="image8" placeholder='Enter Image 8' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Image 9:</span>
+        <input className='input' name="image9" placeholder='Enter Image 9' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Image 10:</span>
+        <input className='input' name="image10" placeholder='Enter Image 10' value={this.state.value} onChange={this.handleInput} />
+      </Row>
     </Col>
 
 
@@ -279,8 +425,8 @@ class Admin extends Component {
   </form>})
   }
 
-  addNewItem() {
-
+  addNewItem(e) {
+    e.preventDefault()
     axios.post(
       'http://localhost:3000/api/v1/products/',
       { product:
@@ -289,6 +435,16 @@ class Admin extends Component {
           brand: this.state.brand,
           title: this.state.title,
           description: this.state.description,
+          spec1: this.state.spec1,
+          spec2: this.state.spec2,
+          spec3: this.state.spec3,
+          spec4: this.state.spec4,
+          spec5: this.state.spec5,
+          spec6: this.state.spec6,
+          spec7: this.state.spec7,
+          spec8: this.state.spec8,
+          spec9: this.state.spec9,
+          spec10: this.state.spec10,
           option1: this.state.option1,
           option2: this.state.option2,
           option3: this.state.option3,
@@ -317,13 +473,30 @@ class Admin extends Component {
           image3: this.state.image3,
           image4: this.state.image4,
           image5: this.state.image5,
+          image6: this.state.image6,
+          image7: this.state.image7,
+          image8: this.state.image8,
+          image9: this.state.image9,
+          image10: this.state.image10,
           rating: undefined,
-          checkoutquantity: 1
+          checkoutquantity: 1,
+          option1price: this.state.option1price,
+          option2price: this.state.option2price,
+          option3price: this.state.option3price,
+          option4price: this.state.option4price,
+          option5price: this.state.option5price,
+          option6price: this.state.option6price,
+          option7price: this.state.option7price,
+          option8price: this.state.option8price,
+          option9price: this.state.option9price,
+          option10price: this.state.option10price
         }
       }
     )
     .then(response => {
       console.log(response, response.option1)
+      this.setState({itemForm: ''})
+      this.loadItems()
 
     })
     .catch(error => console.log(error))
@@ -396,7 +569,7 @@ class Admin extends Component {
           <Row className="justify-content-center m-3 mt-5">
             {this.state.itemForm}
           </Row>
-          <Row className="justify-content-center m-3 mt-5">
+          <Row style={{display: this.state.display}} className="justify-content-center m-3 mt-5">
             { this.state.items.map(item => {
               if(this.state.editingitemId === item.id) {
                 return(<AdminForm item={item} key={item.id} updateItem={this.updateItem} titleRef={input => this.title = input} resetNotification={this.resetNotification} />)
