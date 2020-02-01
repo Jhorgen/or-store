@@ -10,9 +10,10 @@ class ItemView extends Component {
     }
   }
 
-  componentDidMount = () => {;
-
+  componentDidMount = () => {
     let title = this.props.match.params.title
+    console.log(this.props.match.params.test
+);
     console.log(title);
     fetch(`http://localhost:3000/api/v1/products/?title=${title}`)
     .then(res => res.json())
