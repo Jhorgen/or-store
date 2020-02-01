@@ -75,29 +75,17 @@ class Admin extends Component {
       option7price: undefined,
       option8price: undefined,
       option9price: undefined,
-      option10price: '',
+      option10price: undefined,
     }
   }
 
-  ComponentDidMount = () => {
-    console.log('Mount');
-    axios.get(`http://localhost:3000/api/v1/products/`)
-    .then(response => {
-      this.setState({items: response.data})
-    })
-    .catch(error => console.log(error))
-  }
+
 
   handleChange = (e) => {
     this.setState({[e.target.name]: e.target.value});
   }
 
   handleSubmit = (event) => {
-    axios.get(`http://localhost:3000/api/v1/products/`)
-    .then(response => {
-      this.setState({items: response.data})
-    })
-    .catch(error => console.log(error))
     console.log('A user was submitted: ' + this.state.user);
     console.log('A password was submitted: ' + this.state.password);
     event.preventDefault();
@@ -116,6 +104,7 @@ class Admin extends Component {
     axios.get(`http://localhost:3000/api/v1/products/`)
     .then(response => {
       this.setState({items: response.data})
+      console.log(this.state.items);
     })
     .catch(error => console.log(error))
   }
@@ -426,6 +415,7 @@ class Admin extends Component {
   }
 
   addNewItem(e) {
+
     e.preventDefault()
     axios.post(
       'http://localhost:3000/api/v1/products/',
@@ -495,7 +485,11 @@ class Admin extends Component {
     )
     .then(response => {
       console.log(response, response.option1)
-      this.setState({itemForm: ''})
+      this.setState({itemForm: '', category: '', brand: '', title: '', description: '', spec1: '', spec2: '', spec3: '', spec4: '',
+      spec5: '', spec6: '', spec7: '', spec8: '', spec9: '', spec10: '', option1: '', option2: '', option3: '', option4: '', option5: '', option6: '', option7: '', option8: '', option9: '', option10: '', option1quantity: 0, option2quantity: 0, option3quantity: 0,
+      option4quantity: 0, option5quantity: 0, option6quantity: 0, option7quantity: 0, option8quantity: 0, option9quantity: 0,
+      option10quantity: 0, price: undefined, saleprice: undefined, image1: '', image2: '', image3: '', image4: '', image5: '',
+      image6: '', image7: '', image8: '', image9: '', image10: '', option1price: undefined, option2price: undefined, option3price: undefined, option4price: undefined, option5price: undefined, option6price: undefined, option7price: undefined, option8price: undefined, option9price: undefined, option10price: '', editingItemId: null})
       this.loadItems()
 
     })
@@ -525,9 +519,9 @@ class Admin extends Component {
   }
 
   enableEditing = (id) => {
-    console.log("editingItemId:", this.state.editingitemId);
     this.setState({editingitemId: id},
       () => { this.title.focus() })
+      console.log("editingItemId:", this.state.editingitemId);
     }
 
     render() {
@@ -581,9 +575,6 @@ class Admin extends Component {
 
 
       }
-      <span>
-        {this.state.notification}
-      </span>
     </Row>
   </div>
 );
