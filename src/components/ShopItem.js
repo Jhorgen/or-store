@@ -92,25 +92,27 @@ class ShopItem extends Component {
             <img style={{height: '13rem', width: '100%'}} src={ require(`./../images/${this.props.item.image1}.jpg`)} alt={this.props.item.title}/>
             <div className='mt-3'><span className="card-title">{this.props.item.brand} {this.props.item.title}</span></div>
           </Link>
-          {this.state.inStock}<br/>
-          <div className='mt-3'>
+          <form className='mt-3' style={{display: this.state.showSelect}}>
+            <select ref="selectMark"
+              onChange={(e) => this.onChange(e.target.value, e.target)}>
+              {this.state.defaultOption}
+              {this.state.option1}
+              {this.state.option2}
+              {this.state.option3}
+              {this.state.option4}
+              {this.state.option5}
+              {this.state.option6}
+              {this.state.option7}
+              {this.state.option8}
+              {this.state.option9}
+              {this.state.option10}
+            </select>
+          </form>
+        <div>
 
-            <form style={{display: this.state.showSelect}}>
-              <select ref="selectMark"
-                onChange={(e) => this.onChange(e.target.value, e.target)}>
-                {this.state.defaultOption}
-                {this.state.option1}
-                {this.state.option2}
-                {this.state.option3}
-                {this.state.option4}
-                {this.state.option5}
-                {this.state.option6}
-                {this.state.option7}
-                {this.state.option8}
-                {this.state.option9}
-                {this.state.option10}
-              </select>
-            </form>
+
+            {this.state.inStock}<br/>
+
 
             <span style={{display: this.state.addedNotification}}><b>Added to cart</b></span>
           </div>
@@ -118,7 +120,6 @@ class ShopItem extends Component {
         </div>
         <div className="card-content m-2 mt-n2">
           <p>{this.props.item.description}</p>
-          <p><b>Price: ${this.props.item.price}</b></p>
         </div>
       </div>
     );
