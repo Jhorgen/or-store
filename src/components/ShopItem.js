@@ -89,7 +89,7 @@ class ShopItem extends Component {
       <div className="card m-3 test-hover" key={this.props.item.id} >
         <div className="card-image text-center item-view-hover">
           <Link to={'/item/' + this.props.item.title.split(' ').join('')}>
-            <img style={{height: '13rem', width: '100%'}} src={ require(`./../images/${this.props.item.image1}.jpg`)} alt={this.props.item.title}/>
+            <img style={{height: '13rem', width: '100%'}} src={ require(`./../images/${this.props.item.image1}.jpg`)} alt={this.props.brand + this.props.item.title} title={this.props.item.brand + ' ' + this.props.item.title} />
             <div className='mt-3'><span className="card-title">{this.props.item.brand} {this.props.item.title}</span></div>
           </Link>
           <form className='mt-3' style={{display: this.state.showSelect}}>
