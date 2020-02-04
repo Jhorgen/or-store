@@ -13,11 +13,11 @@ import Admin from './components/Admin'
 
 function App() {
 
+  //Categories
   const bars = 'Bars'
   const frames = 'Frames'
   const stems = 'Stems'
   const tires = 'Tires'
-
   const rims = 'Rims'
   const hubs = 'Hubs'
   const cranks = 'Cranks'
@@ -31,11 +31,18 @@ function App() {
   const gloves = 'Gloves'
   const headsets = 'Headsets'
   const grips = "Grips"
+  const brakes = "Brakes"
+
+  //Brands
+  const colony = "Colony"
+  const snafu = "Snafu"
+  const fit = "Fit"
+  const tlc = "TLC"
+  const primo = "Primo"
+
+  const wheels = "Wheels"
 
 
-
-
-  const fox = "Fox"
 
   return (
     <div className="App">
@@ -61,22 +68,18 @@ function App() {
             <Route render={props => ( <Shop name={gloves}/>)} path="/gloves"/>
             <Route render={props => ( <Shop name={headsets}/>)} path="/headsets"/>
             <Route render={props => ( <Shop name={grips}/>)} path="/grips"/>
-
-
-
-
-
-
-
-
-
-
+            <Route render={props => ( <Shop name={brakes}/>)} path="/brakes"/>
 
 
             <Route path="/brands" component={BrandSelect}/>
-            <Route render={props => ( <ShopByBrand brand={fox}/>)} path="/fox"/>
+            <Route render={props => ( <ShopByBrand brand={colony}/>)} path="/colony"/>
+            <Route render={props => ( <ShopByBrand brand={snafu}/>)} path="/snafu"/>
+            <Route render={props => ( <ShopByBrand brand={fit}/>)} path="/fit"/>
+            <Route render={props => ( <ShopByBrand brand={tlc}/>)} path="/tlc"/>
+            <Route render={props => ( <ShopByBrand brand={primo}/>)} path="/primo"/>
 
-            // <Route render={props => ( <ShopByBrand brand={fox}/>)} path="/fox/:category"/> ADD ASAP, SAME AS TITLE
+
+
 
             <Route path="/item/:title/" component={ItemView}/>
 
