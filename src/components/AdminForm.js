@@ -129,11 +129,11 @@ class AdminForm extends Component {
       image3: this.state.image3,
       image4: this.state.image4,
       image5: this.state.image5,
-      image6: this.props.item.image6,
-      image7: this.props.item.image7,
-      image8: this.props.item.image8,
-      image9: this.props.item.image9,
-      image10: this.props.item.image10,
+      image6: this.state.image6,
+      image7: this.state.image7,
+      image8: this.state.image8,
+      image9: this.state.image9,
+      image10: this.state.image10,
     }
     axios.put (
       `http://localhost:3000/api/v1/products/${this.props.item.id}`,
@@ -156,9 +156,7 @@ class AdminForm extends Component {
           <form onBlur={this.handleBlur}>
             <div style={{width: '20rem'}} className="card m-3">
               <div className="card-image text-center m-3">
-                <Link to={'/item/' + this.props.item.title.split(' ').join('')} onClick={() => {this.checkLink(this.props.item)}}>
                   <img style={{height: '13rem', width: '100%'}} src={ require(`./../images/${this.props.item.image1}.jpg`)} alt={this.props.item.title}/>
-                </Link>
                 <div><span className="card-title">{this.props.item.brand} {this.props.item.title}</span></div>
                 <hr/>
               </div>
@@ -435,12 +433,12 @@ class AdminForm extends Component {
                 </Row>
 
                 <Row className='m-1'>
-                  <span className='text-primary m-1'>Spec 9:</span>
+                  <span className='text-primary m-1'>Weight:</span>
                   <input className='input' name="spec9" placeholder='Enter Spec 9' value={this.state.spec9} onChange={this.handleInput} />
                 </Row>
 
                 <Row className='m-1'>
-                  <span className='text-primary m-1'>Spec 10:</span>
+                  <span className='text-primary m-1'>Colors::</span>
                   <input className='input' name="spec10" placeholder='Enter Spec 10' value={this.state.spec10} onChange={this.handleInput} />
                 </Row>
 
