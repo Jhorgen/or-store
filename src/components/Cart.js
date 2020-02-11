@@ -57,7 +57,7 @@ class Cart extends Component {
   return (
     <div className="container">
       <Row className="cart mt-2">
-        <ul className={this.props.form.addedItems.length > 0 ? "collection" : ''}>
+        <ul className={this.props.form.addedItems.length > 0 ? "collection w-100" : ''}>
           {addedItems}
         </ul>
       </Row>
