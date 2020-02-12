@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Row } from 'reactstrap'
+import { Row, Spinner } from 'reactstrap'
 import { addToCart, loadSelectedItemData, saveSelectedItemData } from './../actions/cartActions.js'
 import ShopItem from './ShopItem'
 
@@ -12,6 +12,7 @@ class Shop extends Component {
   }
 
   componentDidMount = () => {
+    console.log(this.props.form.items)
     console.log('typeof:', typeof(this.props.form.items[0].id));
     console.log("shop loaded items:", this.props.form.addedItems);
       let saveCartFromShop = this.props.form.addedItems
@@ -28,7 +29,7 @@ class Shop extends Component {
 
 
   render() {
-    let items = this.props.form.items.length ?
+    let items = this.props.form.items.length < 200 ?
     (
     this.props.form.items.map(item=>{
     return (
@@ -38,8 +39,8 @@ class Shop extends Component {
 )
 :
 (
-    <div>
-      <p>Nothing.</p>
+    <div className='text-center mt-2 mb-5'>
+      <Spinner color="info" />
     </div>
   )
 
