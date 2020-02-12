@@ -2,11 +2,19 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { loadItemData, loadItemDataCheck } from './../actions/cartActions.js'
-import { Row, Col } from 'reactstrap'
+import { Row, Col, Spinner } from 'reactstrap'
 
 
 
 class CategorySelect extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      spinner: '',
+      itemDisplay: 'none'
+    }
+  }
+
 
     componentDidMount() {
       if(this.props.form.addedItems.length > 0) {
@@ -24,20 +32,22 @@ class CategorySelect extends Component {
       console.log('check new action:', this.props.form.addedItems);
 
       setTimeout( () => {
-        console.log(this.props.form.items);
+        this.handleLoad()
       }, 300);
     }
 
-
-  componentWillReceiveProps(nextProps) {
-    console.log('updated props: ', nextProps)
-}
+    handleLoad = () => {
+      this.setState({spinner: 'none', itemDisplay: ''})
+    }
 
   render() {
     return (
       <div className='text-center'>
         <br/>
-        <Row className="justify-content-around m-3">
+          <div style={{display: this.state.spinner}} className='text-center mt-2 mb-5'>
+            <Spinner color="info" />
+          </div>
+        <Row style={{display: this.state.itemDisplay}} className="justify-content-around m-3">
 
           <Row className='m-3 cat-row'>
 
