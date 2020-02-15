@@ -72,16 +72,16 @@ function App() {
 
 
             <Route path="/brands" component={BrandSelect}/>
-            <Route render={props => ( <ShopByBrand brand={colony}/>)} path="/colony"/>
-            <Route render={props => ( <ShopByBrand brand={snafu}/>)} path="/snafu"/>
-            <Route render={props => ( <ShopByBrand brand={fit}/>)} path="/fit"/>
-            <Route render={props => ( <ShopByBrand brand={tlc}/>)} path="/tlc"/>
-            <Route render={props => ( <ShopByBrand brand={primo}/>)} path="/primo"/>
+            <Route render={props => ( <ShopByBrand brand={colony}/>)} path="/colony-all"/>
+            <Route render={props => ( <ShopByBrand brand={snafu}/>)} path="/snafu-all"/>
+            <Route render={props => ( <ShopByBrand brand={fit}/>)} path="/fit-all"/>
+            <Route render={props => ( <ShopByBrand brand={tlc}/>)} path="/tlc-all"/>
+            <Route render={props => ( <ShopByBrand brand={primo}/>)} path="/primo-all"/>
 
 
 
 
-            <Route path="/item/:title/" component={ItemView}/>
+            <Route path="/:brand/:title/" component={ItemView}/>
 
             <Route path="/cart" component={Cart}/>
 
