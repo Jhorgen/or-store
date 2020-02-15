@@ -19,7 +19,7 @@ class ShopByBrand extends Component {
       console.log(saveTotalFromBrand);
       this.props.saveSelectedItemData(this.props.brand, saveCartFromBrand, saveTotalFromBrand)
     } else {
-      console.log("shop:", 'no length');
+      console.log("shop:", 'no length', this.props.brand);
       this.props.loadSelectedBrandData(this.props.brand)
     }
   }

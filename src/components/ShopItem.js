@@ -25,14 +25,30 @@ class ShopItem extends Component {
       selectedOption: '',
       selectedOptionIndex: '',
       addButton: '',
-      outOfStock: ''
+      outOfStock: '',
+      itemPriceMin: '',
+      itemPriceMax: '',
+      minToMaxSymbol: ''
     }
   }
 
   componentDidMount = () => {
-    console.log(this.props.item.option1quantity)
+    let priceCheck = []
 
-    this.setState({defaultOption: <option value={'default'}>Select an option</option>})
+    for(var i = 1; i < 11; i++) {
+      if(this.props.item[`option${i}price`] > 0 && !null) {
+        priceCheck.push(this.props.item[`option${i}price`])
+        }
+        if(i == 10) {
+          if(Math.min(...priceCheck) === Math.max(...priceCheck)) {
+            this.setState({itemPriceMin: '$' + Math.min(...priceCheck), minToMaxSymbol: ''})
+          } else {
+            this.setState({itemPriceMin: '$' + Math.min(...priceCheck), itemPriceMax: '$' + Math.max(...priceCheck), minToMaxSymbol: <span>~</span>})
+          }
+      }
+    }
+
+    this.setState({defaultOption: <option style={{display: 'none'}} value={'default'}>Select an option</option>})
 
     this.props.item.option1 === '' ? this.setState({option1: ''}) : this.props.item.option1quantity === 0 ? this.setState({option1: <option value={'1'}>{this.props.item.option1} (Out of stock)</option>}) : this.setState({option1: <option value={'1'}>{this.props.item.option1}</option> })
 
@@ -82,7 +98,7 @@ class ShopItem extends Component {
     if(et.selectedOptions[0].text.includes('(Out of stock)')) {
       this.setState({outOfStock: <p className='mt-3'>This option is out of stock. Please select another option.</p>, addButton: ''})
     } else {
-      this.setState({addButton: <button style={{width: '65%'}} className='btn btn-secondary mt-3 form-control' onClick={() => this.handleAddClick(this.props.item.id)}>Add to cart</button>})
+      this.setState({addButton: <button style={{width: '65%'}} className='btn btn-secondary mt-3 mb-2 form-control' onClick={() => this.handleAddClick(this.props.item.id)}>Add to cart</button>})
       this.setState({outOfStock: ''})
     }
   }
@@ -91,7 +107,7 @@ class ShopItem extends Component {
     return (
       <div className="card m-3 test-hover" key={this.props.item.id} >
         <div className="card-image text-center item-view-hover">
-          <Link to={'/item/' + this.props.item.title.split(' ').join('')}>
+          <Link to={this.props.item.brand + '/' + this.props.item.title.split(' ').join('')}>
             <img style={{height: '13rem', width: '100%'}} src={ require(`./../images/${this.props.item.image1}.jpg`)} alt={this.props.brand + this.props.item.title} title={this.props.item.brand + ' ' + this.props.item.title} />
             <div className='mt-3'><span className="card-title">{this.props.item.brand} {this.props.item.title}</span></div>
           </Link>
@@ -115,13 +131,13 @@ class ShopItem extends Component {
           <span style={{width: '70%'}}>{this.state.outOfStock}</span>
           {this.state.addButton}<br/>
         </Row>
+        <span style={{fontSize: '17px', fontWeight: 'bold'}} className='text-center'>{this.state.itemPriceMin} {this.state.minToMaxSymbol} {this.state.itemPriceMax}</span>
         <div>
         <span style={{display: this.state.addedNotification}}><b>Added to cart</b></span>
           </div>
           <hr/>
         </div>
         <div className="card-content m-2 mt-n2">
-          <p>{this.props.item.description}</p>
         </div>
       </div>
     );
