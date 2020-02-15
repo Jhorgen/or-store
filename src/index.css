@@ -219,6 +219,17 @@ hr {
   background: #6350ff21 !important;
 }
 
+@media only screen and (max-width: 700px) {
+  .item-view-info {
+    display: none
+  }
+}
+
+@media only screen and (min-width: 700px) {
+  .item-view-info-2 {
+    display: none
+  }
+}
 
 @media only screen and (max-width: 400px) {
   .cat-row {

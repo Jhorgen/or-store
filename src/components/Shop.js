@@ -7,11 +7,10 @@ import ShopItem from './ShopItem'
 
 class Shop extends Component {
 
-  checkLink = (item) => {
-    console.log(item);
-  }
-
   componentDidMount = () => {
+    let brand = 'test'
+    let title = 'test2'
+    console.log(`http://localhost:3000/api/v1/products/?brand=${brand}&title=${title}`)
     console.log(this.props.form.items)
     console.log('typeof:', typeof(this.props.form.items[0].id));
     console.log("shop loaded items:", this.props.form.addedItems);
