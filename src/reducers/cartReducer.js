@@ -71,15 +71,17 @@ const cartReducer = (state = initState, action) => {
 
   if(action.type === ADD_TO_CART) {
     let addedItem = state.items.find(item => item.id === action.id)
-    let existed_item = state.addedItems.find(item => action.id === item.id)
+    let existed_item = state.addedItems.find(item => action.id === item.id && action.selectedOptionIndex === item. selectedOptionIndex)
 
     if(existed_item)
     {
-      addedItem.price = action.price
-      addedItem.checkoutquantity += 1
-      return {
-        ...state,
-        total: state.total + addedItem.price
+      if(existed_item.selectedOptionIndex === addedItem.selectedOptionIndex){
+        addedItem.price = action.price
+        addedItem.checkoutquantity += 1
+        return {
+          ...state,
+          total: state.total + addedItem.price
+        }
       }
     }
     else {
