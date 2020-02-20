@@ -8,11 +8,6 @@ import ShopItem from './ShopItem'
 class Shop extends Component {
 
   componentDidMount = () => {
-    let brand = 'test'
-    let title = 'test2'
-    console.log(`http://localhost:3000/api/v1/products/?brand=${brand}&title=${title}`)
-    console.log(this.props.form.items)
-    console.log('typeof:', typeof(this.props.form.items[0].id));
     console.log("shop loaded items:", this.props.form.addedItems);
       let saveCartFromShop = this.props.form.addedItems
       let saveTotalFromShop = this.props.form.total
@@ -45,7 +40,7 @@ class Shop extends Component {
 
     return (
       <div className="container">
-        <h3 className="text-center" onClick={() => this.findCat()}>{this.props.name}</h3>
+        <h3 className="text-center mt-3" onClick={() => this.findCat()}>{this.props.name}</h3>
         <div>
           <div>
         <Row className="justify-content-center mt-4">{items}</Row>

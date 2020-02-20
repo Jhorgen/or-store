@@ -28,7 +28,8 @@ class ShopItem extends Component {
       outOfStock: '',
       itemPriceMin: '',
       itemPriceMax: '',
-      minToMaxSymbol: ''
+      minToMaxSymbol: '',
+      selectedPrice: ''
     }
   }
 
@@ -98,8 +99,10 @@ class ShopItem extends Component {
     if(et.selectedOptions[0].text.includes('(Out of stock)')) {
       this.setState({outOfStock: <p className='mt-3'>This option is out of stock. Please select another option.</p>, addButton: ''})
     } else {
-      this.setState({addButton: <button style={{width: '65%'}} className='btn btn-secondary mt-3 mb-2 form-control' onClick={() => this.handleAddClick(this.props.item.id)}>Add to cart</button>})
-      this.setState({outOfStock: ''})
+      this.setState({selectedPrice: this.props.item[`option${e}price`]})
+      setTimeout( () => {
+      this.setState({addButton: <button style={{width: '65%'}} className='btn btn-secondary mt-3 mb-2 form-control' onClick={() => this.handleAddClick(this.props.item.id)}>Add to cart <span style={{fontWeight: 'bold'}}>({this.state.selectedPrice})</span></button>})
+    },  1);
     }
   }
 
@@ -131,7 +134,7 @@ class ShopItem extends Component {
           <span style={{width: '70%'}}>{this.state.outOfStock}</span>
           {this.state.addButton}<br/>
         </Row>
-        <span style={{fontSize: '17px', fontWeight: 'bold'}} className='text-center'>{this.state.itemPriceMin} {this.state.minToMaxSymbol} {this.state.itemPriceMax}</span>
+        <span style={{fontSize: '15px', fontWeight: 'bold'}} className='text-center'>{this.state.itemPriceMin} {this.state.minToMaxSymbol} {this.state.itemPriceMax}</span>
         <div>
         <span style={{display: this.state.addedNotification}}><b>Added to cart</b></span>
           </div>
