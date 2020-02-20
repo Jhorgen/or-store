@@ -11,11 +11,12 @@ export const addToCart = (id, selected, selectedIndex, price) => {
   }
 }
 //remove item action
-export const removeItem = (id, items) => {
+export const removeItem = (id, items, selectedIndex) => {
   return{
     type: REMOVE_ITEM,
     id,
-    items
+    items,
+    selectedIndex
   }
 }
 //subtract qt action

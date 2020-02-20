@@ -70,37 +70,52 @@ const cartReducer = (state = initState, action) => {
   }
 
   if(action.type === ADD_TO_CART) {
-    let addedItem = state.items.find(item => item.id === action.id)
-    let existed_item = state.addedItems.find(item => action.id === item.id && action.selectedOptionIndex === item. selectedOptionIndex)
+    let existed_item = state.addedItems.find(item => item.selectedOptionIndex == action.selectedIndex && item.id === action.id)
+    const updatedItems = state.addedItems.map(item =>
+      item.selectedOptionIndex == action.selectedIndex && item.id === action.id ? { ...item, checkoutquantity: existed_item.checkoutquantity += 1 } : item
+    );
 
     if(existed_item)
+
     {
-      if(existed_item.selectedOptionIndex === addedItem.selectedOptionIndex){
-        addedItem.price = action.price
-        addedItem.checkoutquantity += 1
+      console.log('existing', existed_item);
         return {
           ...state,
-          total: state.total + addedItem.price
+          total: state.total + existed_item.price,
+          addedItems: updatedItems
+
         }
-      }
     }
+
     else {
+      let addedItem = state.items.find(item => item.id === action.id)
+      console.log(addedItem);
       addedItem.price = action.price
       addedItem.checkoutquantity = 1;
       addedItem.selectedOptionIndex = action.selectedIndex;
       addedItem.selectedoption = action.selected;
+      console.log(addedItem.selectedoption);
+      console.log('new item', addedItem);
+      state.addedItems.push(addedItem)
+      const updatedItems = state.addedItems.map(item =>
+        item.selectedOptionIndex == action.selectedIndex && item.id === action.id ? { ...item } : item
+      );
       let newTotal = state.total + addedItem.price
       return {
         ...state,
-        addedItems: [...state.addedItems, addedItem],
-        total : newTotal
+        addedItems: updatedItems,
+        total: newTotal
       }
     }
   }
 
   if(action.type === REMOVE_ITEM) {
-    let itemToRemove= state.addedItems.find(item=> action.id === item.id)
-    let new_items = state.addedItems.filter(item=> action.id !== item.id)
+    let itemToRemove = state.addedItems.find(item=> item.selectedOptionIndex === action.selectedIndex && action.id === item.id)
+    console.log(itemToRemove);
+    console.log(action.selectedIndex);
+
+    let new_items = state.addedItems.filter(item=> item !== itemToRemove)
+    console.log(new_items);
 
     let newTotal
     action.items.length === 1 ? newTotal = 0 : newTotal = state.total - (itemToRemove.price * itemToRemove.checkoutquantity )
