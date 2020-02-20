@@ -16,6 +16,7 @@ class ItemView extends Component {
       selectedOptionIndex: '',
       inStock: '',
       selectedPrice: '',
+      selectedImage: '',
       addButton: '',
       defaultOption: '',
       option1: '',
@@ -61,7 +62,7 @@ class ItemView extends Component {
           description: 'image description'
         }) : console.log('nope')
         if(i == 10) {
-          this.setState({images: images})
+          this.setState({images: images, selectedImage: this.state.itemView[0].image1})
           console.log(this.state.images);
         }
       }
@@ -95,13 +96,12 @@ class ItemView extends Component {
             this.setState({spec9: <li className='mt-3' style={{listStyle: 'none'}}><b className='d-flex'>Weight</b> {this.state.itemView[0].spec9}</li>})
           }
           if(z == 10 && this.state.itemView[0].spec10 !== '') {
-          this.setState({spec10: <li className='mt-3' style={{listStyle: 'none'}}><b className='d-flex'>Available in</b> {this.state.itemView[0].spec10}</li>})
+            this.setState({spec10: <li className='mt-3' style={{listStyle: 'none'}}><b className='d-flex'>Available in</b> {this.state.itemView[0].spec10}</li>})
           }
         }
-        }
       }
-
-
+      this.setState({selectedImage: this.state.itemView[0].image1})
+    }
   )
 }
 
@@ -113,6 +113,7 @@ handleAddToCart = (id) => {
     let price = this.state.itemView[0].option1price
     this.props.addToCart(id, selected, selectedIndex, price);
   } else {
+    console.log('working');
     let selected = this.state.selectedOption;
     let selectedIndex = this.state.selectedOptionIndex;
     let price = this.state.itemView[0][`option${selectedIndex}price`]
@@ -126,6 +127,18 @@ onChange = (e, et) => {
   this.setState({selectedOption: et.selectedOptions[0].text, selectedOptionIndex : e})
   this.setState({selectedPrice: <b style={{background: 'coral', color: '#f8f9fa', boxShadow: '3px 0px 13px lightcoral', borderRadius: '15px', padding: '5px', fontSize: '19px'}} className='mr-3'>${this.state.itemView[0][`option${e}price`]}</b>})
 
+  for(var i = 1; i < 11; i++)
+  if(this.state.itemView[0][`image${i}`].toLowerCase().includes(et.selectedOptions[0].text.split(' ').join('').toLowerCase())) {
+    this.setState({selectedImage: this.state.itemView[0][`image${i}`]})
+  }
+  else {
+    // console.log('fail');
+    // console.log(i);
+    // console.log('seaching', this.state.itemView[0].image2, 'for', et.selectedOptions[0].text.split(' ').join('').toLowerCase());
+  }
+
+
+
   if(et.selectedOptions[0].text.includes('(Out of stock)')) {
     this.setState({outOfStock: <p className='mt-3'>This option is out of stock. Please select another option.</p>, addButton: ''})
   } else {
@@ -135,32 +148,27 @@ onChange = (e, et) => {
 }
 
 render() {
-  let item = this.state.itemView.length ?
+  let item = this.state.itemView.length && this.state.selectedImage !== '' ?
   (
     this.state.itemView.map(item => {
       return (
         <div key={item.id}>
-          <Link to={'/' + item.category.toLowerCase()}>View all <span>{item.category}</span></Link> <br/>
-          <Link to={'/' + item.brand}>View {item.category} by <span>{item.brand}</span></Link>
-
-          <Row className="collection-item avatar text-center">
-            <Col>
-              <span className="title">{item.title}</span>
-            </Col>
-            <Col>
-              <span className="title">{item.title}</span>
-            </Col>
-            <Col>
-              <span className="title">{item.title}</span>
-            </Col>
-          </Row>
 
           <Row className="item-desc justify-content-center text-right">
-            <Col xs='7'>
+            <Col xs='3' className='text-center d-flex flex-column align-items-center'>
+              <span style={{background: '#f8f9fa', fontWeight: 'bold', borderRadius: '11px', padding: '5px', boxShadow: '1px 0px 22px coral'}} className="title mt-1"><span>{item.brand}</span> {item.title}</span>
+              <hr style={{width: '100%'}}/>
+              <div>
+              <Link className='mt-2 pr-2 text-dark' style={{textDecoration: 'none'}} to={'/' + item.category.toLowerCase()}>View all <span>{item.category}</span></Link>
+              <b className='pr-2'>-</b>
+              <Link className='mt-2 text-dark' style={{textDecoration: 'none'}} to={'/' + item.brand}>View {item.category} by <span>{item.brand}</span></Link>
+              </div>
+          </Col>
+            <Col xs='4'>
               <Lightbox thumbnailWidth='25rem' thumbnailHeight='20rem' images={
                   [
                     {
-                      src: require(`./../images/${this.state.itemView[0].image1}.jpg`),
+                      src: require(`./../images/${this.state.selectedImage}.jpg`),
                       title: 'image title',
                       description: 'image description'
                     }
@@ -188,17 +196,17 @@ render() {
 
                 <Row className='align-items-baseline justify-content-center'>{this.state.selectedPrice}{this.state.addButton}</Row>
                 <ul className='text-left'>
-                <li>{this.state.itemView[0].description}</li>
-                    {this.state.spec1}
-                    {this.state.spec2}
-                    {this.state.spec3}
-                    {this.state.spec4}
-                    {this.state.spec5}
-                    {this.state.spec6}
-                    {this.state.spec7}
-                    {this.state.spec8}
-                    {this.state.spec9}
-                    {this.state.spec10}
+                  <li>{this.state.itemView[0].description}</li>
+                  {this.state.spec1}
+                  {this.state.spec2}
+                  {this.state.spec3}
+                  {this.state.spec4}
+                  {this.state.spec5}
+                  {this.state.spec6}
+                  {this.state.spec7}
+                  {this.state.spec8}
+                  {this.state.spec9}
+                  {this.state.spec10}
                 </ul>
               </Col>
             </Row>
@@ -231,17 +239,17 @@ render() {
 
                   <Row className='align-items-baseline justify-content-center'>{this.state.selectedPrice}{this.state.addButton}</Row>
                   <ul className='text-left'>
-                  <li>{this.state.itemView[0].description}</li>
-                      {this.state.spec1}
-                      {this.state.spec2}
-                      {this.state.spec3}
-                      {this.state.spec4}
-                      {this.state.spec5}
-                      {this.state.spec6}
-                      {this.state.spec7}
-                      {this.state.spec8}
-                      {this.state.spec9}
-                      {this.state.spec10}
+                    <li>{this.state.itemView[0].description}</li>
+                    {this.state.spec1}
+                    {this.state.spec2}
+                    {this.state.spec3}
+                    {this.state.spec4}
+                    {this.state.spec5}
+                    {this.state.spec6}
+                    {this.state.spec7}
+                    {this.state.spec8}
+                    {this.state.spec9}
+                    {this.state.spec10}
                   </ul>
                 </Col>
               </Row>
