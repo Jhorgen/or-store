@@ -8,7 +8,9 @@ class Adminitem extends Component {
     super(props)
     this.state = {
       qtyDisplay: <b>Qty</b>,
-      noQty: ''
+      noQty: '',
+      deleteConfirmation: '',
+      deleteCancel: ''
     }
   }
 
@@ -21,7 +23,8 @@ ComponentDidMount = () => {
   }
 
   handleDelete = () => {
-    this.props.onDelete(this.props.item.id)
+    this.setState({deleteConfirmation: <button className='btn btn-success' onClick={() => this.props.onDelete(this.props.item.id)}>Confirm</button>})
+    this.setState({deleteCancel: <button className='btn btn-danger' onClick={() => this.setState({deleteConfirmation: '', deleteCancel: ''})}>Cancel</button>})
   }
 
   render() {
@@ -59,6 +62,7 @@ ComponentDidMount = () => {
               <span><span className='text-primary'>Image 5</span>: <span className='text-danger'>{this.props.item.image5}</span></span><br/>
             </div>
             <button onClick={this.handleDelete} className="deleteButton btn btn-danger mt-1">Delete</button>
+            <div className='mt-2 text-center'>{this.state.deleteConfirmation} {this.state.deleteCancel}</div>
           </div>
         </div>
       </div>

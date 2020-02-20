@@ -550,9 +550,8 @@ class Admin extends Component {
       (
         <div>
           <Row className="justify-content-around">
-            <Button onClick={() =>this.loadItems()} color="info" size="lg">Edit/Delete inventory</Button>
             <Button onClick={() =>this.addItemForm()} color="info" size="lg">Add item</Button>
-            <Button onClick={() =>this.loadItems()} color="info" size="lg">View intentory</Button>
+            <Button onClick={() =>this.loadItems()} color="info" size="lg">View/Edit intentory</Button>
           </Row>
         </div>
       )
