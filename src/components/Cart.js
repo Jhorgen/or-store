@@ -43,6 +43,7 @@ class Cart extends Component {
         return (
           <li className="collection-item avatar" key={item.id}>
             <CartItem item={item} itemid={indexx} onClick={() => this.checkThis(item, indexx)} />
+            <hr/>
         </li>
       )
     })
@@ -57,7 +58,7 @@ class Cart extends Component {
   return (
     <div className="container">
       <Row className="cart mt-2">
-        <ul className={this.props.form.addedItems.length > 0 ? "collection w-100" : ''}>
+        <ul className={this.props.form.addedItems.length > 0 ? "collection w-100 mt-4" : ''}>
           {addedItems}
         </ul>
       </Row>
