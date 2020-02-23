@@ -3,39 +3,43 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { removeItem, correctTotalOnEmpty, subtractQuantity, addQuantity } from './../actions/cartActions.js'
 import { Row, Col } from 'reactstrap'
+import { faArrowUp } from '@fortawesome/free-solid-svg-icons'
+import { faArrowDown } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
 class CartItem extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      itemQuantity: '',
+      inputQuantity: '',
       updateDisplay: 'none',
       value: ''
     }
   }
 
-  handleAddQuantity = (id, checkoutquantity, itemQuantity, e) => {
+  handleAddQuantity = (id, inputQuantity, e) => {
     e.preventDefault()
     this.setState({updateDisplay: 'none'})
-    let x = itemQuantity -1
+    let x = inputQuantity
+    let selectedIndex = this.props.item.selectedOptionIndex
+    console.log(selectedIndex);
 
-    for(var i = 0; i < x; i++) {
-      this.props.addQuantity(id, checkoutquantity);
+    for(var i = 1; i < x; i++) {
+      this.props.addQuantity(id, selectedIndex);
     }
     console.log(id);
-    console.log("cart checkoutquantity:", checkoutquantity)
   }
 
-  handleSubtractQuantity = (id) => {
+  handleSubtractQuantity = (id, checkoutQuantity) => {
     console.log(this.props.itemid);
-    let x = this.props.form.addedItems[this.props.itemid].checkoutquantity - 1
+    let x = this.props.form.addedItems[this.props.itemid].checkoutquantity
+    console.log('blah', checkoutQuantity);
 
-    for(var i = 0; i < x; i++) {
+    for(var i = 1; i < checkoutQuantity; i++) {
       this.props.subtractQuantity(id);
     }
   }
-
 
   handleRemove = (id, items) => {
     let selectedIndex = this.props.item.selectedOptionIndex;
@@ -51,7 +55,7 @@ class CartItem extends Component {
     this.setState({
       [e.target.name]: e.target.value
     });
-    console.log(this.state.itemQuantity);
+    console.log(this.state.inputQuantity);
   }
 
   render() {
@@ -75,18 +79,20 @@ class CartItem extends Component {
           </Col>
 
           <Col xs='2'>
-          <form className="d-flex" onSubmit={(e) => this.handleAddQuantity(this.props.item.id, this.props.item.checkoutquantity, this.state.itemQuantity, e)}>
+          <form className="d-flex" onSubmit={(e) => this.handleAddQuantity(this.props.item.id, this.state.inputQuantity, e)}>
             <div className='d-flex align-items-center'>
-              <span className='mr-2'>Quantity:</span> <input onClick={() => this.handleStyles(this.props.item.id)} style={{width: '3rem'}} className="mr-3 form-control" name="itemQuantity" placeholder={`${this.props.item.checkoutquantity}`} onChange={(e) => this.handleChange(e)} />
+              <span className='mr-2'>Quantity:</span>
+              <div>
+                <span onClick={() => this.addSingleQuantity(this.props.item.id)} className='mr-3' style={{fontSize: '1.2rem'}}><FontAwesomeIcon icon={faArrowUp} /></span>
+                <input onClick={() => this.handleStyles(this.props.item.id)} style={{width: '3rem'}} className="mr-3 form-control" name="inputQuantity" placeholder={`${this.props.item.checkoutquantity}`} onChange={(e) => this.handleChange(e)} />
+                <span onClick={() => this.subtractSingleQuantity(this.props.item.id)} className='mr-3' style={{fontSize: '1.2rem'}}><FontAwesomeIcon icon={faArrowDown} /></span>
+              </div>
+              <button onClick={() => {this.handleSubtractQuantity(this.props.item.id, this.props.item.checkoutquantity)}} style={{display: this.state.updateDisplay, fontSize: '.8rem'}} type='submit' className="btn btn-secondary mr-3">Update</button>
+                <button className="btn btn-secondary" style={{fontSize: ".8rem"}} onClick={()=>{this.handleRemove(this.props.item.id, this.props.form.addedItems, this.props.item.selectedOptionIndex)}}>Remove</button>
             </div>
-
-            <button onClick={() => {this.handleSubtractQuantity(this.props.item.id, this.props.item.price)}} style={{display: this.state.updateDisplay, fontSize: '.8rem'}} type='submit' className="pr-3 btn btn-secondary">Update</button>
           </form>
           </Col>
 
-          <Col xs='2'>
-            <button className="btn btn-secondary" style={{fontSize: ".8rem"}} onClick={()=>{this.handleRemove(this.props.item.id, this.props.form.addedItems, this.props.item.selectedOptionIndex)}}>Remove</button>
-          </Col>
         </Row>
       </div>
     )
@@ -97,7 +103,7 @@ const mapDispatchToProps = (dispatch) => {
   return{
     removeItem: (id, items, selectedIndex) => {dispatch(removeItem(id, items, selectedIndex))},
     correctTotalOnEmpty: () => {dispatch(correctTotalOnEmpty())},
-    addQuantity: (id) => {dispatch(addQuantity(id))},
+    addQuantity: (id, selectedIndex) => {dispatch(addQuantity(id, selectedIndex))},
     subtractQuantity: (id) => {dispatch(subtractQuantity(id))},
   }
 }

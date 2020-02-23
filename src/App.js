@@ -135,7 +135,6 @@ function App() {
           </Switch>
         </div>
       </BrowserRouter>
-      <Footer/>
     </StickyContainer>
   );
 }

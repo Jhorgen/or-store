@@ -4,6 +4,7 @@ import { correctTotalOnEmpty } from './../actions/cartActions.js'
 import Recipe from './Recipe'
 import CartItem from './CartItem'
 import { Row } from 'reactstrap'
+import Footer from './Footer'
 
 
 class Cart extends Component {
@@ -56,6 +57,7 @@ class Cart extends Component {
   )
 
   return (
+    <div className='footer-control'>
     <div className="container">
       <Row className="cart mt-2">
         <ul className={this.props.form.addedItems.length > 0 ? "collection w-100 mt-4" : ''}>
@@ -63,6 +65,8 @@ class Cart extends Component {
         </ul>
       </Row>
       <Recipe onClick={this.handleHide} />
+    </div>
+    <Footer />
     </div>
   )
 }
