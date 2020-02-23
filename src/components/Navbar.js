@@ -53,35 +53,59 @@ class Navbar extends Component {
             <DropdownMenu>
               <div onClick={() => this.toggle}><Link to='/colony-all'>Colony</Link></div>
 
-              <div onClick={() => this.toggle}><Link to='/colony-all'>Snafu</Link></div>
+              <div onClick={() => this.toggle}><Link to='/snafu-all'>Snafu</Link></div>
 
-              <div onClick={() => this.toggle}><Link to='/colony-all'>Fit</Link></div>
+              <div onClick={() => this.toggle}><Link to='/fit-all'>Fit</Link></div>
 
-              <div onClick={() => this.toggle}><Link to='/colony-all'>TLC</Link></div>
+              <div onClick={() => this.toggle}><Link to='/tlc-all'>TLC</Link></div>
 
-              <div onClick={() => this.toggle}><Link to='/colony-all'>Primo</Link></div>
+              <div onClick={() => this.toggle}><Link to='/primo-all'>Primo</Link></div>
 
-              <div onClick={() => this.toggle}><Link to='/colony-all'>PYC</Link></div>
+              <div onClick={() => this.toggle}><Link to='/pyc-all'>PYC</Link></div>
 
-              <div onClick={() => this.toggle}><Link to='/colony-all'>Volume</Link></div>
+              <div onClick={() => this.toggle}><Link to='/volume-all'>Volume</Link></div>
 
-              <div onClick={() => this.toggle}><Link to='/colony-all'></Link></div>
+              <div onClick={() => this.toggle}><Link to='/blackops-all'>Black Ops</Link></div>
 
-              <div onClick={() => this.toggle}><Link to='=/colony-all'>Black Ops</Link></div>
+              <div onClick={() => this.toggle}><Link to='/tallorder-all'>Tall Order</Link></div>
 
-              <div onClick={() => this.toggle}><Link to='/colony-all'>Colony</Link></div>
+              <div onClick={() => this.toggle}><Link to='/kmc-all'>KMC</Link></div>
 
-              <div onClick={() => this.toggle}><Link to='/colony-all'>Colony</Link></div>
+              <div onClick={() => this.toggle}><Link to='/odyssey-all'>Odyssey</Link></div>
 
-              <div onClick={() => this.toggle}><Link to='/colony-all'>Colony</Link></div>
+              <div onClick={() => this.toggle}><Link to='/shadowconspiracy-all'>Shadow Conspiracy</Link></div>
 
-              <div onClick={() => this.toggle}><Link to='/colony-all'>Colony</Link></div>
+              <div onClick={() => this.toggle}><Link to='/kool-all'>Kool</Link></div>
 
-              <div onClick={() => this.toggle}><Link to='/colony-all'>Colony</Link></div>
+              <div onClick={() => this.toggle}><Link to='/sandm-all'>S&M</Link></div>
 
-              <div onClick={() => this.toggle}><Link to='/colony-all'>Colony</Link></div>
+              <div onClick={() => this.toggle}><Link to='/total-all'>Total</Link></div>
 
-              <div onClick={() => this.toggle}><Link to='/colony-all'>Colony</Link></div>
+              <div onClick={() => this.toggle}><Link to='/division-all'>Division</Link></div>
+
+              <div onClick={() => this.toggle}><Link to='/demolition-all'>Demolition</Link></div>
+
+              <div onClick={() => this.toggle}><Link to='/fist-all'>Fist</Link></div>
+
+              <div onClick={() => this.toggle}><Link to='/sunday-all'>Sunday</Link></div>
+
+              <div onClick={() => this.toggle}><Link to='/odi-all'>Odi</Link></div>
+
+              <div onClick={() => this.toggle}><Link to='/bsd-all'>BSD</Link></div>
+
+              <div onClick={() => this.toggle}><Link to='/fsa-all'>FSA</Link></div>
+
+              <div onClick={() => this.toggle}><Link to='/gsport-all'>GSport</Link></div>
+
+              <div onClick={() => this.toggle}><Link to='/kore-all'>Kore</Link></div>
+
+              <div onClick={() => this.toggle}><Link to='/federal-all'>Federal</Link></div>
+
+              <div onClick={() => this.toggle}><Link to='/stranger-all'>Stranger</Link></div>
+
+              <div onClick={() => this.toggle}><Link to='/academy-all'>Academy</Link></div>
+
+              <div onClick={() => this.toggle}><Link to='/maxxis-all'>Maxxis</Link></div>
 
             </DropdownMenu>
           </Dropdown>
