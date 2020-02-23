@@ -70,9 +70,8 @@ code {
 .test-hover:hover {
   box-shadow: 2px 2px 2px coral;
   transition: .3s ease;
-  margin: .1rem !important;
   border: 1px solid #00000026;
-  border-radius: 2rem;
+  border-radius: .25rem !important;
 }
 
 input::-webkit-outer-spin-button,
@@ -212,7 +211,7 @@ font-family: 'Yeseva One', cursive;
 }
 
 .card {
-  border-radius: 1.25rem !important;
+  border-radius: 1rem !important;
 }
 
 hr {
@@ -223,11 +222,17 @@ hr {
   .item-view-info {
     display: none
   }
+  .item-view-title {
+    display: none !important;
+  }
 }
 
 @media only screen and (min-width: 700px) {
   .item-view-info-2 {
-    display: none
+    display: none;
+  }
+  .item-view-title {
+    display: flex !important;
   }
 }
 
@@ -252,6 +257,25 @@ hr {
   }
 }
 
+.footer-control {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
+.shop-header-container {
+  margin-top: .5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.shop-header {
+  border-radius: 15px;
+  box-shadow: 8px 11px 16px beige;
+  padding-bottom: .5rem !important;
+  width: 50%;
+  margin-top: 1rem;
+}
 
 /* add less margin for shop item on hover / create own class */

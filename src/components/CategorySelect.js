@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { loadItemData, loadItemDataCheck } from './../actions/cartActions.js'
 import { Row, Col, Spinner } from 'reactstrap'
+import Footer from './Footer'
 
 
 
@@ -12,7 +13,8 @@ class CategorySelect extends Component {
     this.state = {
       spinner: '',
       itemDisplay: 'none',
-      frameDisplay: 'none'
+      frameDisplay: 'none',
+      footerDisplay: ''
     }
   }
 
@@ -38,21 +40,21 @@ class CategorySelect extends Component {
     }
 
     handleLoad = () => {
-      this.setState({spinner: 'none', itemDisplay: ''})
+      this.setState({spinner: 'none', itemDisplay: '', footerDisplay: <Footer/>})
     }
 
   render() {
     return (
-      <div className='text-center'>
+      <div className='text-center footer-control'>
         <br/>
           <div style={{display: this.state.spinner}} className='text-center mt-2 mb-5'>
             <Spinner color="info" />
           </div>
         <Row style={{display: this.state.itemDisplay}} className="justify-content-around m-3">
 
-          <Row className='m-3 cat-row'>
+          <Row className='m-3 cat-row justify-content-center'>
 
-            <Col>
+            <Col xs='2'>
           <div className='test-hover' style={{border: '1px solid beige'}}>
             <h4 className="text-center category-select">Bars</h4>
             <Link
@@ -63,18 +65,7 @@ class CategorySelect extends Component {
           </div>
         </Col>
 
-        <Col>
-          <div className='test-hover' style={{border: '1px solid beige'}}>
-            <h4 className="text-center category-select">Frames</h4>
-            <Link
-              to="/frames"
-              >
-              <img className='cat-img' style={{height: '13rem',  width: '100%'}} src={ require(`./../images/testframe.jpg`)} alt="Bars" title="Bars"/>
-            </Link>
-          </div>
-        </Col>
-
-        <Col>
+        <Col xs='2' style={{padding: '0'}}>
           <div className='test-hover' style={{border: '1px solid beige'}}>
             <h4 className="text-center category-select">Stems</h4>
             <Link
@@ -85,7 +76,19 @@ class CategorySelect extends Component {
           </div>
         </Col>
 
-        <Col>
+        <Col xs='2'>
+          <div className='test-hover' style={{border: '1px solid beige'}}>
+            <h4 className="text-center category-select">Frames</h4>
+            <Link
+              to="/frames"
+              >
+              <img className='cat-img' style={{height: '13rem',  width: '100%'}} src={ require(`./../images/testframe.jpg`)} alt="Bars" title="Bars"/>
+            </Link>
+          </div>
+        </Col>
+
+
+        <Col xs='2'>
           <div className='test-hover' style={{border: '1px solid beige'}}>
             <h4 className="text-center category-select">Tires</h4>
             <Link
@@ -97,8 +100,8 @@ class CategorySelect extends Component {
         </Col>
         </Row>
 
-        <Row className='m-3 cat-row'>
-          <Col>
+        <Row className='m-3 cat-row justify-content-center'>
+          <Col xs='2'>
           <div className='test-hover' style={{border: '1px solid beige'}}>
             <h4 className="text-center category-select">Rims</h4>
             <Link to='/rims'
@@ -108,7 +111,7 @@ class CategorySelect extends Component {
           </div>
         </Col>
 
-        <Col>
+        <Col xs='2'>
           <div className='test-hover' style={{border: '1px solid beige'}}>
             <h4 className="text-center category-select">Hubs</h4>
             <Link
@@ -119,7 +122,7 @@ class CategorySelect extends Component {
           </div>
         </Col>
 
-        <Col>
+        <Col xs='2'>
           <div className='test-hover' style={{border: '1px solid beige'}}>
             <h4 className="text-center category-select">Cranks</h4>
             <Link
@@ -130,7 +133,7 @@ class CategorySelect extends Component {
           </div>
         </Col>
 
-        <Col>
+        <Col xs='2'>
           <div className='test-hover' style={{border: '1px solid beige'}}>
             <h4 className="text-center category-select">Forks</h4>
             <Link
@@ -142,8 +145,8 @@ class CategorySelect extends Component {
         </Col>
         </Row>
 
-        <Row className='m-3 cat-row'>
-          <Col>
+        <Row className='m-3 cat-row justify-content-center'>
+          <Col xs='2'>
           <div className='test-hover' style={{border: '1px solid beige'}}>
             <h4 className="text-center category-select">Seats</h4>
             <Link
@@ -154,7 +157,7 @@ class CategorySelect extends Component {
           </div>
         </Col>
 
-        <Col>
+        <Col xs='2'>
           <div className='test-hover' style={{border: '1px solid beige'}}>
             <h4 className="text-center category-select">Pedals</h4>
             <Link
@@ -165,7 +168,7 @@ class CategorySelect extends Component {
           </div>
         </Col>
 
-        <Col>
+        <Col xs='2'>
           <div className='test-hover' style={{border: '1px solid beige'}}>
             <h4 className="text-center category-select">Sprockets</h4>
             <Link
@@ -176,7 +179,7 @@ class CategorySelect extends Component {
           </div>
         </Col>
 
-        <Col>
+        <Col xs='2'>
           <div className='test-hover' style={{border: '1px solid beige'}}>
             <h4 className="text-center category-select">Chains</h4>
             <Link
@@ -188,8 +191,8 @@ class CategorySelect extends Component {
         </Col>
         </Row>
 
-        <Row className='m-3 cat-row'>
-          <Col>
+        <Row className='m-3 cat-row justify-content-center'>
+          <Col xs='2'>
           <div className='test-hover' style={{border: '1px solid beige'}}>
             <h4 className="text-center category-select">Pegs</h4>
             <Link
@@ -200,7 +203,7 @@ class CategorySelect extends Component {
           </div>
         </Col>
 
-        <Col>
+        <Col xs='2'>
           <div className='test-hover' style={{border: '1px solid beige'}}>
             <h4 className="text-center category-select">Titanium hardware</h4>
             <Link
@@ -211,7 +214,7 @@ class CategorySelect extends Component {
           </div>
         </Col>
 
-        <Col>
+        <Col xs='2'>
           <div className='test-hover' style={{border: '1px solid beige'}}>
             <h4 className="text-center category-select">Gloves</h4>
             <Link
@@ -222,7 +225,7 @@ class CategorySelect extends Component {
           </div>
         </Col>
 
-        <Col>
+        <Col xs='2'>
           <div className='test-hover' style={{border: '1px solid beige'}}>
             <h4 className="text-center category-select">Headsets</h4>
             <Link
@@ -232,8 +235,10 @@ class CategorySelect extends Component {
             </Link>
           </div>
         </Col>
+        </Row>
 
-        <Col>
+        <Row className='m-3 cat-row justify-content-center'>
+        <Col xs='2'>
           <div className='test-hover' style={{border: '1px solid beige'}}>
             <h4 className="text-center category-select">Grips</h4>
             <Link
@@ -243,9 +248,32 @@ class CategorySelect extends Component {
             </Link>
           </div>
         </Col>
-        </Row>
+
+        <Col xs='2'>
+          <div className='test-hover' style={{border: '1px solid beige'}}>
+            <h4 className="text-center category-select">Brakes</h4>
+            <Link
+              to='/grips'
+              >
+              <img style={{height: '13rem',  width: '100%'}} src={ require(`./../images/odi-longneck-soft-grip-black.jpg`)} alt="Grips" title="Grips"/>
+            </Link>
+          </div>
+        </Col>
+
+        <Col xs='2'>
+          <div className='test-hover' style={{border: '1px solid beige'}}>
+            <h4 className="text-center category-select">Complete Wheels</h4>
+            <Link
+              to='/grips'
+              >
+              <img style={{height: '13rem',  width: '100%'}} src={ require(`./../images/odi-longneck-soft-grip-black.jpg`)} alt="Grips" title="Grips"/>
+            </Link>
+          </div>
+        </Col>
+      </Row>
 
         </Row>
+        {this.state.footerDisplay}
       </div>
     )
   }

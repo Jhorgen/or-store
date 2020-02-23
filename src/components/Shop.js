@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Row, Spinner } from 'reactstrap'
 import { addToCart, loadSelectedItemData, saveSelectedItemData } from './../actions/cartActions.js'
 import ShopItem from './ShopItem'
+import Footer from './Footer'
 
 
 class Shop extends Component {
@@ -38,15 +39,22 @@ class Shop extends Component {
     </div>
   )
 
+  let footer = this.props.form.items.length < 200 ? <Footer/> : ''
+
     return (
+      <div className='footer-control'>
       <div className="container">
-        <h3 className="text-center mt-3" onClick={() => this.findCat()}>{this.props.name}</h3>
+        <div className='shop-header-container'>
+          <h3 className="text-center shop-header" onClick={() => this.findCat()}>{this.props.name}</h3>
+        </div>
         <div>
           <div>
         <Row className="justify-content-center mt-4">{items}</Row>
         </div>
       </div>
     </div>
+    {footer}
+  </div>
   );
 }
 }

@@ -4,6 +4,7 @@ import { Row, Spinner } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import { addToCart, loadSelectedBrandData, saveSelectedBrandData } from './../actions/cartActions.js'
 import ShopItem from './ShopItem'
+import Footer from './Footer'
 
 
 class ShopByBrand extends Component {
@@ -49,14 +50,19 @@ class ShopByBrand extends Component {
     </div>
   )
     return (
+    <div class='footer-control'>
       <div className="container">
-        <h3 className="text-center" onClick={() => this.findCat()}>{this.props.brand}</h3>
+        <div className='shop-header-container'>
+          <h3 className="text-center shop-header" onClick={() => this.findCat()}>{this.props.brand}</h3>
+        </div>
         <div>
           <div>
             <Row className="justify-content-center mt-4">{items}</Row>
           </div>
         </div>
       </div>
+      <Footer />
+    </div>
     );
   }
 }

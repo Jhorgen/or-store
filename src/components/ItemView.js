@@ -5,6 +5,7 @@ import Lightbox from 'react-lightbox-component';
 import { connect } from 'react-redux'
 import { addToCart } from './../actions/cartActions.js'
 import "react-lightbox-component/build/css/index.css";
+import Footer from './Footer'
 
 class ItemView extends Component {
   constructor(props) {
@@ -152,10 +153,10 @@ render() {
   (
     this.state.itemView.map(item => {
       return (
-        <div key={item.id}>
+        <div key={item.id} className='footer-control'>
 
-          <Row className="item-desc justify-content-center text-right">
-            <Col xs='3' className='text-center d-flex flex-column align-items-center'>
+          <Row className="item-desc justify-content-around mt-4">
+            <Col xs='3' className='item-view-title text-center flex-column align-items-center'>
               <span style={{background: '#f8f9fa', fontWeight: 'bold', borderRadius: '11px', padding: '5px', boxShadow: '1px 0px 22px coral'}} className="title mt-1"><span>{item.brand}</span> {item.title}</span>
               <hr style={{width: '100%'}}/>
               <div>
@@ -164,7 +165,7 @@ render() {
               <Link className='mt-2 text-dark' style={{textDecoration: 'none'}} to={'/' + item.brand}>View {item.category} by <span>{item.brand}</span></Link>
               </div>
           </Col>
-            <Col xs='4'>
+            <Col xs='4' className='d-flex justify-content-center align-items-center flex-column'>
               <Lightbox thumbnailWidth='25rem' thumbnailHeight='20rem' images={
                   [
                     {
@@ -174,6 +175,11 @@ render() {
                     }
                   ]
                 }/>
+              <div>
+                <Lightbox style={{textAlign: 'left', display: 'flex'}} images={
+                    this.state.images
+                  }/>
+              </div>
               </Col>
 
               <Col className='text-center item-view-info' xs='4'>
@@ -211,13 +217,6 @@ render() {
               </Col>
             </Row>
 
-
-            <div className="item-img text-center mt-4 mb-4">
-              <Lightbox images={
-                  this.state.images
-                }/>
-              </div>
-
               <Row className="justify-content-center">
                 <Col className='text-center item-view-info-2'>
                   <form className='mt-3 mb-4'>
@@ -253,6 +252,7 @@ render() {
                   </ul>
                 </Col>
               </Row>
+              <Footer/>
             </div>
           )
         })
