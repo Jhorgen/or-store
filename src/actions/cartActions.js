@@ -19,18 +19,19 @@ export const removeItem = (id, items, selectedIndex) => {
     selectedIndex
   }
 }
-//subtract qt action
+
 export const subtractQuantity=(id)=>{
   return{
     type: SUB_QUANTITY,
     id
   }
 }
-//add qt action
-export const addQuantity = (id) => {
+
+export const addQuantity = (id, selectedIndex) => {
   return{
     type: ADD_QUANTITY,
-    id
+    id,
+    selectedIndex
   }
 }
 

@@ -5,7 +5,7 @@ const initState = {
   addedItems: [],
   total: 0,
   loading: false,
-  error: false,
+  error: false
 }
 
 
@@ -128,11 +128,14 @@ const cartReducer = (state = initState, action) => {
   }
 
   if(action.type === ADD_QUANTITY) {
-    let addedItem = state.addedItems.find(item=> item.id === action.id)
+    let addedItem = state.addedItems.find(item=> item.selectedOptionIndex === action.selectedIndex && item.id === action.id)
+    console.log(addedItem);
+    console.log(state.addedItems);
+    console.log(action.selectedIndex);
     let newTotal = state.total + addedItem.price
 
     const updatedItems = state.addedItems.map(item =>
-      item.id === action.id ? { ...item, checkoutquantity: item.checkoutquantity += 1 } : item
+      item === addedItem ? { ...item, checkoutquantity: item.checkoutquantity += 1 } : item
     );
 
     return {
