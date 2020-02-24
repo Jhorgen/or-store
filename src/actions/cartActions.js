@@ -20,10 +20,11 @@ export const removeItem = (id, items, selectedIndex) => {
   }
 }
 
-export const subtractQuantity=(id)=>{
+export const subtractQuantity = (id, selectedIndex) => {
   return{
     type: SUB_QUANTITY,
-    id
+    id,
+    selectedIndex
   }
 }
 
