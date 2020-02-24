@@ -15,16 +15,9 @@ class Recipe extends Component {
   }
 
   componentWillMount = () => {
-    console.log('mount:', this.props.form.total + 20.15 + .15 + .15);
-
-    console.log("result:", );
-
     let x = (this.props.form.total).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
     console.log(x);
-
   }
-
-
 
   checkout = () => {
     this.setState({checkout: "none", paymentInfo: ''})
@@ -32,30 +25,24 @@ class Recipe extends Component {
   }
 
 
-
   render() {
     return (
-    <StripeProvider apiKey={`${process.env.REACT_APP_API_KEY}`}>
-      <Elements>
-      <div className="container">
-
-        <button className="btn btn-info" style={{display: this.state.paymentInfo}} onClick={() => {window.location.reload()}}>Back to cart</button>
-
-        <Row className="justify-content-center" style={{display: this.state.paymentInfo}}>
-        <PaymentForm total={this.props.form.total} cartItems={this.props.form.addedItems} />
-        </Row>
-        <Row className="align-items-center">
-        <div style={{display: this.state.checkout}}>
-          <span className="mr-2"><b>Total: ${this.props.form.total.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</b></span>
-        </div>
-
-        <div className="checkout">
-          <button style={{display: this.state.checkout}} onClick={() => this.checkout()} className="btn btn-info">Checkout</button>
-        </div>
-      </Row>
-      </div>
-    </Elements>
-    </StripeProvider>
+      <StripeProvider apiKey={`${process.env.REACT_APP_API_KEY}`}>
+        <Elements>
+          <div className="container">
+            <button className="btn btn-info" style={{display: this.state.paymentInfo}} onClick={() => {window.location.reload()}}>Back to cart</button>
+            <Row className="justify-content-center" style={{display: this.state.paymentInfo}}>
+              <PaymentForm total={this.props.form.total} cartItems={this.props.form.addedItems} />
+            </Row>
+            <Row className="align-items-center float-right" style={{display: this.state.checkout}}>
+              <div className='d-flex flex-column' style={{display: this.state.checkout}}>
+                <span className="mr-2"><b>Total: ${this.props.form.total.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</b></span>
+                <button onClick={() => this.checkout()} className="btn btn-info">Checkout</button>
+              </div>
+            </Row>
+          </div>
+        </Elements>
+      </StripeProvider>
     )
   }
 }

@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 import { injectStripe, CardNumberElement,
   CardExpiryElement,
   CardCVCElement } from 'react-stripe-elements'
-  import { Button, Row } from 'reactstrap'
-  import axios from 'axios'
+import { Button, Row } from 'reactstrap'
+import axios from 'axios'
 
   class PaymentForm extends Component {
     constructor(props) {
@@ -33,6 +33,7 @@ import { injectStripe, CardNumberElement,
       }
     }
 
+
     ComponentDidMount = () => {
       console.log(this.props.form.total);
       console.log('test');
@@ -41,33 +42,39 @@ import { injectStripe, CardNumberElement,
 
     async submit(e) {
       e.preventDefault()
-      let name = this.state.firstName + ' ' + this.state.lastName
-      let address = this.state.address + ' ' + this.state.city + ' ' + this.state.state + ' ' + this.state.zip
-      let chargeToken = await this.props.stripe.createToken({name: name, address: address }).then(({token, error}) => {
-  if (error) {
-    console.log('error:', error);
-  } else {
-    this.setState({token: token.id})
-    console.log('no error:', token);
-  }
-});
+      if(new RegExp(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,15}/g).test(this.state.email) === false) {
+        this.setState({emailIncomplete: ''})
+        setTimeout( () => {
+          this.setState({emailIncomplete: 'none'})
+        }, 550);
+      } else {
+        let name = this.state.firstName + ' ' + this.state.lastName
+        let address = this.state.address + ' ' + this.state.city + ' ' + this.state.state + ' ' + this.state.zip
+        let chargeToken = await this.props.stripe.createToken({name: name, address: address }).then(({token, error}) => {
+          if (error) {
+            console.log('error:', error);
+          } else {
+            this.setState({token: token.id})
+            console.log('no error:', token);
+          }
+        });
 
-      let charge = {
-        customer: null,
-        address_city: this.state.city,
-        country: "usa",
-        line1: this.state.address,
-        line2: null,
-        postal_code: this.state.zip,
-        state: this.state.state,
-        email: this.state.email,
-        name: this.state.firstName + ' ' + this.state.lastName,
-        phone: null,
-        amount: Math.round(this.props.total.toFixed(2)*100),
-        currency: "usd",
-        token: this.state.token,
-        description: 'Name:' + ' ' + this.state.firstName + ' ' + this.state.lastName + ' ' + 'Address:' + ' ' + this.state.address + ' ' + this.state.city + ' ' + this.state.state + ' ' + this.state.zip + ' ' + 'Address2:' + this.state.address2 + ' ' + this.state.city2 + ' ' + this.state.state2 + ' ' + this.state.zip2,
-        address: this.state.address + ' ' + this.state.city + ' ' + this.state.state + ' ' + this.state.zip
+        let charge = {
+          customer: null,
+          address_city: this.state.city,
+          country: "usa",
+          line1: this.state.address,
+          line2: null,
+          postal_code: this.state.zip,
+          state: this.state.state,
+          email: this.state.email,
+          name: this.state.firstName + ' ' + this.state.lastName,
+          phone: null,
+          amount: Math.round(this.props.total.toFixed(2)*100),
+          currency: "usd",
+          token: this.state.token,
+          description: 'Name:' + ' ' + this.state.firstName + ' ' + this.state.lastName + ' ' + 'Address:' + ' ' + this.state.address + ' ' + this.state.city + ' ' + this.state.state + ' ' + this.state.zip + ' ' + 'Address2:' + this.state.address2 + ' ' + this.state.city2 + ' ' + this.state.state2 + ' ' + this.state.zip2,
+          address: this.state.address + ' ' + this.state.city + ' ' + this.state.state + ' ' + this.state.zip
         }
 
         let response = await fetch("http://localhost:3000/api/v1/charges", {
@@ -96,29 +103,29 @@ import { injectStripe, CardNumberElement,
             this.props.form.addedItems[i].selectedOptionIndex == 1 ? selectedOptionQuantity = this.props.form.addedItems[i].option1quantity :
 
             console.log('option', selectedOptionQuantity);
-              const item = {
-                [quantity]: selectedOptionQuantity - this.props.form.addedItems[i].checkoutquantity,
-              }
-              axios.put (
-                `http://localhost:3000/api/v1/products/${this.props.form.addedItems[i].id}`,
-                {
-                  product: item
-                })
-                .then(response => {
-                  console.log('response:', response);
-                  this.testPost()
+            const item = {
+              [quantity]: selectedOptionQuantity - this.props.form.addedItems[i].checkoutquantity,
+            }
+            axios.put (
+              `http://localhost:3000/api/v1/products/${this.props.form.addedItems[i].id}`,
+              {
+                product: item
+              })
+              .then(response => {
+                console.log('response:', response);
+                this.testPost()
 
-                })
-                .catch(error => {
-                  console.log('error:', error);
-                })
+              })
+              .catch(error => {
+                console.log('error:', error);
+              })
+            }
           }
         }
-
       }
 
       toggleForm = () => {
-          if(new RegExp(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,15}/g).test(this.state.email) && this.state.zip.length >= 5) {
+        if(new RegExp(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,15}/g).test(this.state.email) && this.state.zip.length >= 5) {
           this.setState({nextButton: 'none', paymentForm: '', toggleHr: ''})
         } else {
           if(new RegExp(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,15}/g).test(this.state.email) === false) {
@@ -340,12 +347,11 @@ import { injectStripe, CardNumberElement,
 
       toggleShippingForm = () => {
         if(this.state.checked == 'checked') {
-        this.setState({checked: '', addressSame: ''})
-      } else {
-        this.setState({checked: 'checked', addressSame: 'none' })
+          this.setState({checked: '', addressSame: ''})
+        } else {
+          this.setState({checked: 'checked', addressSame: 'none' })
+        }
       }
-      }
-
 
 
       render() {
@@ -353,75 +359,54 @@ import { injectStripe, CardNumberElement,
           <div>
             <div style={{background: "beige"}} className="checkout-form">
               <p style={{display: this.state.paymentForm}}></p>
-
               <form onSubmit={(e) => this.submit(e)}>
-
                 <Row className="flex-column" style={{display: this.state.shippingForm}}>
-
-                    <h4 className='text-center pb-2'>{this.state.checked == 'checked' ? <span>Shipping details</span> : <span>Billing address</span>}</h4>
-
-                    <b>Email</b>
-                    <input type='email' onChange={(e) => this.handleChange(e, 'email')} placeholder="Email" />
-                    <p style={{display: this.state.emailIncomplete, marginTop: '-.3px', textAlign: 'center', fontWeight: 'bold'}}><span class='text-danger'>* </span>Email required</p>
+                  <h4 className='text-center pb-2'>{this.state.checked == 'checked' ? <span>Shipping details</span> : <span>Billing address</span>}</h4>
+                  <b>Email</b>
+                  <input type='email' onChange={(e) => this.handleChange(e, 'email')} placeholder="Email" />
+                  <p style={{display: this.state.emailIncomplete, marginTop: '-.3px', textAlign: 'center', fontWeight: 'bold'}}><span class='text-danger'>* </span>Email required</p>
                   <br/>
+                  <b>First name</b>
+                  <input onChange={(e) => this.handleChange(e, 'firstName')} placeholder="First name" />
+                  <br/>
+                  <b>Last name</b>
+                  <input onChange={(e) => this.handleChange(e, 'lastName')} placeholder="Last name" />
+                  <br/>
+                  <b>City</b>
+                  <input onChange={(e) => this.handleChange(e, 'city')} placeholder="City" />
+                  <br/>
+                  <b>State</b>
+                  <input onChange={(e) => this.handleChange(e, 'state')} placeholder="State"/>
+                  <br/>
+                  <b>Zip Code</b>
+                  <input onChange={(e) => this.handleChange(e, 'zip')} placeholder="Zip" />
+                  <br/>
+                  <b>Street address</b>
+                  <input onChange={(e) => this.handleChange(e, 'address')} placeholder="Street address" />
+                  <br/>
+                  <Row className="flex-column" style={{display: this.state.addressSame}}>
+                    <hr/>
+                    <h4 className='text-center pb-2'>Shipping address</h4>
                     <b>First name</b>
                     <input onChange={(e) => this.handleChange(e, 'firstName')} placeholder="First name" />
-                  <br/>
-
+                    <br/>
                     <b>Last name</b>
                     <input onChange={(e) => this.handleChange(e, 'lastName')} placeholder="Last name" />
-                  <br/>
-
+                    <br/>
                     <b>City</b>
-                    <input onChange={(e) => this.handleChange(e, 'city')} placeholder="City" />
-                  <br/>
-
+                    <input onChange={(e) => this.handleChange(e, 'city2')} placeholder="City" />
+                    <br/>
                     <b>State</b>
-                    <input onChange={(e) => this.handleChange(e, 'state')} placeholder="State"/>
-                  <br/>
-
-                    <b>Zip Code</b>
-                    <input onChange={(e) => this.handleChange(e, 'zip')} placeholder="Zip" />
-                  <br/>
-
+                    <input onChange={(e) => this.handleChange(e, 'state2')} placeholder="State"/>
+                    <br/>
+                    <b>Zip code</b>
+                    <input onChange={(e) => this.handleChange(e, 'zip2')} placeholder="Zip" />
+                    <br/>
                     <b>Street address</b>
-                    <input onChange={(e) => this.handleChange(e, 'address')} placeholder="Street address" />
-                  <br/>
-
-                    <Row className="flex-column" style={{display: this.state.addressSame}}>
-
-                      <hr/>
-                        <h4 className='text-center pb-2'>Shipping address</h4>
-
-                        <b>First name</b>
-                        <input onChange={(e) => this.handleChange(e, 'firstName')} placeholder="First name" />
-                      <br/>
-
-                        <b>Last name</b>
-                        <input onChange={(e) => this.handleChange(e, 'lastName')} placeholder="Last name" />
-                      <br/>
-
-                        <b>City</b>
-                        <input onChange={(e) => this.handleChange(e, 'city2')} placeholder="City" />
-                      <br/>
-
-                        <b>State</b>
-                        <input onChange={(e) => this.handleChange(e, 'state2')} placeholder="State"/>
-                      <br/>
-
-                        <b>Zip code</b>
-                        <input onChange={(e) => this.handleChange(e, 'zip2')} placeholder="Zip" />
-                      <br/>
-
-                        <b>Street address</b>
-                        <input onChange={(e) => this.handleChange(e, 'address2')} placeholder="Street address" />
-                      <br/>
-
-                    </Row>
-
-
-                    <textarea onChange={(e) => this.handleChange(e, 'discription')} placeholder="Comments or feedback? Write them here!"></textarea>
-
+                    <input onChange={(e) => this.handleChange(e, 'address2')} placeholder="Street address" />
+                    <br/>
+                  </Row>
+                  <textarea onChange={(e) => this.handleChange(e, 'discription')} placeholder="Comments or feedback? Write them here!"></textarea>
                   <br/>
                   <Row className='align-items-baseline justify-content-center'>
                     <p className='pr-1'>Shipping address same as billing?</p>
@@ -430,21 +415,17 @@ import { injectStripe, CardNumberElement,
                   <span style={{display: this.state.nextButton}} className="btn btn-block btn-info" onClick={() => this.toggleForm()}>Next</span>
                   <hr className='w-100' style={{display: this.state.toggleHr}}/>
                 </Row>
-
                 <Row className="flex-column" style={{display: this.state.paymentForm}}>
-
                   <label className="pr-4 pb-2">
                     <b>Card details</b>
                     <CardNumberElement />
                   </label>
                   <br/>
-
                   <label className="pr-3 pb-2">
                     <b>Expiration date</b>
                     <CardExpiryElement />
                   </label>
                   <br/>
-
                   <label>
                     <b>CVC</b>
                     <CardCVCElement />

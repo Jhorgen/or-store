@@ -278,4 +278,12 @@ hr {
   margin-top: 1rem;
 }
 
+.lightbox-flex div {
+  display: flex;
+}
+
+.cursor-toggle:hover {
+ cursor: pointer;
+}
+
 /* add less margin for shop item on hover / create own class */
