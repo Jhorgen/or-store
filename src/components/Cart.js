@@ -11,20 +11,20 @@ class Cart extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      handleHide: ''
+      handleHide: '',
+      total: ''
     }
   }
 
   componentDidMount = () => {
     console.log(this.props.form.addedItems);
-  if(this.props.form.addedItems.length <= 0) {
-    console.log('cart checkout:');
-    this.props.correctTotalOnEmpty();
-  } else {
-    console.log('nada');
+    if(this.props.form.addedItems.length <= 0) {
+      console.log('cart checkout:');
+      this.props.correctTotalOnEmpty();
+    } else {
+      console.log('nada');
+    }
   }
-}
-
 
   checkThis = (item, indexx) => {
     console.log(item);
@@ -37,46 +37,46 @@ class Cart extends Component {
 
 
   render() {
-
-    let addedItems = this.props.form.addedItems.length ?
-    (
-      this.props.form.addedItems.map((item, indexx) => {
-        return (
-          <li className="collection-item avatar" key={item.id}>
-            <CartItem item={item} itemid={indexx} onClick={() => this.checkThis(item, indexx)} />
-            <hr/>
-        </li>
+    let total
+    this.props.form.addedItems.length ? total = <Recipe onClick={this.handleHide} /> : total = ''
+      let addedItems = this.props.form.addedItems.length ?
+      (
+        this.props.form.addedItems.map((item, indexx) => {
+          return (
+            <li className="collection-item avatar" key={item.id}>
+              <CartItem item={item} itemid={indexx} onClick={() => this.checkThis(item, indexx)} />
+              <hr/>
+            </li>
+          )
+        })
       )
-    })
-  )
-  :
-  (
-    <div style={{display: this.state.handleHide}}>
-      <p>Your cart is empty!</p>
-    </div>
-  )
+      :
+      (
+        <div style={{display: this.state.handleHide}}>
+          <h4>Your cart is empty!</h4>
+        </div>
+      )
 
-  return (
-    <div className='footer-control'>
-    <div className="container">
-      <Row className="cart mt-2">
-        <ul className={this.props.form.addedItems.length > 0 ? "collection w-100 mt-4" : ''}>
-          {addedItems}
-        </ul>
-      </Row>
-      <Recipe onClick={this.handleHide} />
-    </div>
-    <Footer />
-    </div>
-  )
-}
-}
-
-
-const mapDispatchToProps = (dispatch) => {
-  return{
-    correctTotalOnEmpty: () => {dispatch(correctTotalOnEmpty())},
+      return (
+        <div className='footer-control'>
+          <div className="container">
+            <Row className="cart mt-2">
+              <ul className={this.props.form.addedItems.length > 0 ? "collection w-100 mt-4" : ''}>
+                {addedItems}
+              </ul>
+            </Row>
+            {total}
+          </div>
+        </div>
+      )
+    }
   }
-}
 
-export default connect((state) => state, mapDispatchToProps)(Cart)
+
+  const mapDispatchToProps = (dispatch) => {
+    return{
+      correctTotalOnEmpty: () => {dispatch(correctTotalOnEmpty())},
+    }
+  }
+
+  export default connect((state) => state, mapDispatchToProps)(Cart)
