@@ -13,6 +13,7 @@ class ItemView extends Component {
     this.state = {
       itemView: [],
       images: [],
+      addedNotification: 'none',
       selectedOption: '',
       selectedOptionIndex: '',
       inStock: '',
@@ -121,6 +122,12 @@ handleAddToCart = (id) => {
     console.log(price);
     this.props.addToCart(id, selected, selectedIndex, price);
   }
+  this.setState({addButton:<b className='mb-2'>Added to cart</b>, selectedPrice: '' })
+  setTimeout( () => {
+      this.setState({addButton: <button style={{width: '70%'}} className='btn btn-block btn-secondary mt-2 form-control mb-4' onClick={() => this.handleAddToCart(this.state.itemView[0].id)}>Add to cart</button>})
+
+      this.setState({selectedPrice: <b style={{background: 'coral', color: '#f8f9fa', boxShadow: '3px 0px 13px lightcoral', borderRadius: '15px', padding: '5px', fontSize: '19px'}} className='mr-3'>${this.state.itemView[0][`option${this.state.selectedOptionIndex}price`]}</b>})
+  }, 450);
 }
 
 onChange = (e, et) => {
@@ -175,7 +182,7 @@ render() {
                     }
                   ]
                 }/>
-              <div>
+              <div className='lightbox-flex'>
                 <Lightbox style={{textAlign: 'left', display: 'flex'}} images={
                     this.state.images
                   }/>
@@ -201,6 +208,7 @@ render() {
                 </form>
 
                 <Row className='align-items-baseline justify-content-center'>{this.state.selectedPrice}{this.state.addButton}</Row>
+
                 <ul className='text-left'>
                   <li>{this.state.itemView[0].description}</li>
                   {this.state.spec1}
