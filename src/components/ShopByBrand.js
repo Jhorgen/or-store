@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import { addToCart, loadSelectedBrandData, saveSelectedBrandData } from './../actions/cartActions.js'
 import ShopItem from './ShopItem'
 import Footer from './Footer'
+import { ScrollToTopOnMount } from './ScrollFix'
 
 
 class ShopByBrand extends Component {
@@ -24,15 +25,6 @@ class ShopByBrand extends Component {
     }
   }
 
-  handleAddClick = (id) => {
-    this.props.addToCart(id);
-    console.log(this.props.test);
-    console.log(id);
-  }
-
-  findCat = () => {
-    console.log(this.props.brand);
-  }
 
   render() {
     let items = this.props.form.items.length < 200 ?
@@ -49,8 +41,12 @@ class ShopByBrand extends Component {
       <Spinner color="info" />
     </div>
   )
+
+  let footer = this.props.form.items.length < 200 ? <Footer/> : ''
+
     return (
     <div class='footer-control'>
+      <ScrollToTopOnMount />
       <div className="container">
         <div className='shop-header-container'>
           <h3 className="text-center shop-header" onClick={() => this.findCat()}>{this.props.brand}</h3>
@@ -61,7 +57,7 @@ class ShopByBrand extends Component {
           </div>
         </div>
       </div>
-      <Footer />
+      {footer}
     </div>
     );
   }
