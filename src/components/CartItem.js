@@ -17,13 +17,27 @@ class CartItem extends Component {
       updateDisplay: 'none',
       value: '',
       zeroQuantityCheck: '',
-      removeButtonDisplay: ''
+      removeButtonDisplay: '',
+      quantityAlert: '',
+      inputRefresh: <input onClick={() => this.handleStyles(this.props.item.id)} className="mr-3 form-control" style={{width: '3rem'}} name="inputQuantity" placeholder={`${this.props.item.checkoutquantity}`} onChange={(e) => this.handleChange(e)} autoComplete='off' />
     }
   }
 
   addSingleQuantity = (id) => {
     let selectedIndex = this.props.item.selectedOptionIndex
+    if(this.props.item.checkoutquantity - this.props.item[`option${selectedIndex}quantity`] === 0) {
+      this.setState({quantityAlert: <span><FontAwesomeIcon style={{fontSize: '1.5rem', paddingLeft: '.3rem'}} icon={faExclamationTriangle} /> <b>{this.props.item[`option${selectedIndex}quantity`]}</b> in stock.</span>, removeButtonDisplay: 'none'})
+      setTimeout( () => {
+        this.setState({quantityAlert: '', removeButtonDisplay: ''})
+      }, 550);
+      console.log(this.props.item[`option${selectedIndex}quantity`] - 1);
+    } else {
     this.props.addQuantity(id, selectedIndex);
+    this.setState({inputRefresh: ''})
+    setTimeout( () => {
+      this.setState({inputRefresh: <input onClick={() => this.handleStyles(this.props.item.id)} className="mr-3 form-control" style={{width: '3rem'}} name="inputQuantity" placeholder={`${this.props.item.checkoutquantity}`} onChange={(e) => this.handleChange(e)} autoComplete='off' />})
+    }, 50);
+  }
   }
 
   subtractSingleQuantity = (id) => {
@@ -35,32 +49,43 @@ class CartItem extends Component {
     } else {
       let selectedIndex = this.props.item.selectedOptionIndex
       this.props.subtractQuantity(id, selectedIndex)
+      this.setState({inputRefresh: ''})
+      setTimeout( () => {
+        this.setState({inputRefresh: <input onClick={() => this.handleStyles(this.props.item.id)} className="mr-3 form-control" style={{width: '3rem'}} name="inputQuantity" placeholder={`${this.props.item.checkoutquantity}`} onChange={(e) => this.handleChange(e)} autoComplete='off' />})
+      }, 50);
     }
   }
 
   handleAddQuantity = (id, inputQuantity, e) => {
     e.preventDefault()
-    if(inputQuantity <= 0) {
-      this.setState({zeroQuantityCheck: <FontAwesomeIcon style={{fontSize: '1.5rem', paddingLeft: '.3rem'}} icon={faExclamationTriangle} />, removeButtonDisplay: 'none'})
+    let selectedIndex = this.props.item.selectedOptionIndex
+
+    if(this.props.item[`option${selectedIndex}quantity`] < inputQuantity) {
+      this.setState({quantityAlert: <span><FontAwesomeIcon style={{fontSize: '1.5rem', paddingLeft: '.3rem'}} icon={faExclamationTriangle} /> <b>{this.props.item[`option${selectedIndex}quantity`]}</b> in stock.</span>, removeButtonDisplay: 'none'})
       setTimeout( () => {
-        this.setState({zeroQuantityCheck: '', removeButtonDisplay: ''})
-      }, 450);
+        this.setState({quantityAlert: '', removeButtonDisplay: ''})
+      }, 50);
+
     } else {
       this.setState({updateDisplay: 'none'})
       let x = inputQuantity
-      let selectedIndex = this.props.item.selectedOptionIndex
 
       for(var i = 1; i < x; i++) {
         this.props.addQuantity(id, selectedIndex);
       }
+      this.setState({inputRefresh: ''})
+      setTimeout( () => {
+        this.setState({inputRefresh: <input onClick={() => this.handleStyles(this.props.item.id)} className="mr-3 form-control" style={{width: '3rem'}} name="inputQuantity" placeholder={`${this.props.item.checkoutquantity}`} onChange={(e) => this.handleChange(e)} autoComplete='off' />})
+      }, 50);
     }
   }
 
   handleSubtractQuantity = (id, checkoutQuantity) => {
     let x = this.props.form.addedItems[this.props.itemid].checkoutquantity
-
-    for(var i = 1; i < checkoutQuantity; i++) {
-      this.props.subtractQuantity(id);
+    let selectedIndex = this.props.item.selectedOptionIndex
+    // add check here. also, how does it consistently run this function before the onSubmit runs
+    for(var i = 1; i < x; i++) {
+      this.props.subtractQuantity(id, selectedIndex);
     }
   }
 
@@ -99,12 +124,13 @@ class CartItem extends Component {
                 <span className='mr-2'>Quantity:</span>
                 <div>
                   <span onClick={() => this.addSingleQuantity(this.props.item.id)} className='mr-3 cursor-toggle' style={{fontSize: '1.2rem'}}><FontAwesomeIcon icon={faArrowUp} /></span>
-                  <input onClick={() => this.handleStyles(this.props.item.id)} className="mr-3 form-control" style={{width: '3rem'}} name="inputQuantity" placeholder={`${this.props.item.checkoutquantity}`} onChange={(e) => this.handleChange(e)} autoComplete='off' />
+                  {this.state.inputRefresh}
                   <span onClick={() => this.subtractSingleQuantity(this.props.item.id)} className='mr-3 cursor-toggle' style={{fontSize: '1.2rem'}}><FontAwesomeIcon icon={faArrowDown} /></span>
                 </div>
                 <button onClick={() => {this.handleSubtractQuantity(this.props.item.id, this.props.item.checkoutquantity)}} style={{display: this.state.updateDisplay, fontSize: '.8rem'}} type='submit' className="btn btn-secondary mr-3">Update</button>
                 <button className="btn btn-secondary" style={{fontSize: ".8rem", display: this.state.removeButtonDisplay}} onClick={()=>{this.handleRemove(this.props.item.id, this.props.form.addedItems, this.props.item.selectedOptionIndex)}}>Remove</button>
                 {this.state.zeroQuantityCheck}
+                {this.state.quantityAlert}
               </div>
             </form>
           </Col>
