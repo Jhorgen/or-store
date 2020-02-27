@@ -83,7 +83,7 @@ class CartItem extends Component {
   handleSubtractQuantity = (id, checkoutQuantity) => {
     let x = this.props.form.addedItems[this.props.itemid].checkoutquantity
     let selectedIndex = this.props.item.selectedOptionIndex
-    // add check here. also, how does it consistently run this function before the onSubmit runs
+    // add check here. also, how does it consistently run this function before the onSubmit runs 
     for(var i = 1; i < x; i++) {
       this.props.subtractQuantity(id, selectedIndex);
     }
