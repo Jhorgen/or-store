@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Yeseva+One&display=swap');
 @import url('https://fonts.googleapis.com/css?family=News+Cycle&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans&display=swap');
 
 body {
   margin: 0;
@@ -225,6 +226,9 @@ hr {
   .item-view-title {
     display: none !important;
   }
+  .icon-toggle {
+    display: none !important
+  }
 }
 
 @media only screen and (min-width: 700px) {
@@ -286,4 +290,8 @@ hr {
  cursor: pointer;
 }
 
+.navbar-font {
+  font-family: Noto Sans;
+  font-size: 20px;
+}
 /* add less margin for shop item on hover / create own class */
