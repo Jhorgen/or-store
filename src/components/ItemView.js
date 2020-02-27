@@ -109,19 +109,31 @@ class ItemView extends Component {
 
 handleAddToCart = (id) => {
   if(this.state.selectedOptionIndex === '') {
-    console.log('test');
     let selectedIndex = '1'
     let selected = this.state.itemView[0].option1
     let price = this.state.itemView[0].option1price
+
+    if(this.state.itemView[0].option1quantity === 0) {
+      console.log('wont add')
+    } else {
+      console.log('will add');
+    }
+
     this.props.addToCart(id, selected, selectedIndex, price);
   } else {
-    console.log('working');
+
     let selected = this.state.selectedOption;
     let selectedIndex = this.state.selectedOptionIndex;
     let price = this.state.itemView[0][`option${selectedIndex}price`]
-    console.log(price);
+
+    if(this.state.itemView[0][`option${selectedIndex}quantity`] === 0) {
+      console.log('wont add')
+    } else {
+      console.log('will add');
+    }
     this.props.addToCart(id, selected, selectedIndex, price);
   }
+
   this.setState({addButton:<b className='mb-2'>Added to cart</b>, selectedPrice: '' })
   setTimeout( () => {
       this.setState({addButton: <button style={{width: '70%'}} className='btn btn-block btn-secondary mt-2 form-control mb-4' onClick={() => this.handleAddToCart(this.state.itemView[0].id)}>Add to cart</button>})
