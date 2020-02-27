@@ -53,8 +53,8 @@ class CategorySelect extends Component {
         <Row style={{display: this.state.itemDisplay}} className="justify-content-center m-3">
 
 
-            <div className='card m-3'>
-              <div className='test-hover' style={{border: '1px solid beige'}}>
+            <div className='card m-3' style={{border: 'none'}}>
+              <div className='test-hover'>
                 <h4 className="text-center category-select">Bars</h4>
                 <Link
                   to="/bars"
@@ -64,8 +64,8 @@ class CategorySelect extends Component {
               </div>
             </div>
 
-            <div className='card m-3'>
-              <div className='test-hover' style={{border: '1px solid beige'}}>
+            <div className='card m-3' style={{border: 'none'}}>
+              <div className='test-hover'>
                 <h4 className="text-center category-select">Stems</h4>
                 <Link
                   to='/stems'
@@ -75,8 +75,8 @@ class CategorySelect extends Component {
               </div>
             </div>
 
-            <div className='card m-3'>
-              <div className='test-hover' style={{border: '1px solid beige'}}>
+            <div className='card m-3' style={{border: 'none'}}>
+              <div className='test-hover'>
                 <h4 className="text-center category-select">Frames</h4>
                 <Link
                   to="/frames"
@@ -87,8 +87,8 @@ class CategorySelect extends Component {
             </div>
 
 
-            <div className='card m-3'>
-              <div className='test-hover' style={{border: '1px solid beige'}}>
+            <div className='card m-3' style={{border: 'none'}}>
+              <div className='test-hover'>
                 <h4 className="text-center category-select">Tires</h4>
                 <Link
                   to='/tires'
@@ -98,8 +98,8 @@ class CategorySelect extends Component {
               </div>
             </div>
 
-            <div className='card m-3'>
-              <div className='test-hover' style={{border: '1px solid beige'}}>
+            <div className='card m-3' style={{border: 'none'}}>
+              <div className='test-hover'>
                 <h4 className="text-center category-select">Rims</h4>
                 <Link to='/rims'
                   >
@@ -108,8 +108,8 @@ class CategorySelect extends Component {
               </div>
             </div>
 
-            <div className='card m-3'>
-              <div className='test-hover' style={{border: '1px solid beige'}}>
+            <div className='card m-3' style={{border: 'none'}}>
+              <div className='test-hover'>
                 <h4 className="text-center category-select">Hubs</h4>
                 <Link
                   to='/hubs'
@@ -119,8 +119,8 @@ class CategorySelect extends Component {
               </div>
             </div>
 
-            <div className='card m-3'>
-              <div className='test-hover' style={{border: '1px solid beige'}}>
+            <div className='card m-3' style={{border: 'none'}}>
+              <div className='test-hover'>
                 <h4 className="text-center category-select">Cranks</h4>
                 <Link
                   to='/cranks'
@@ -130,8 +130,8 @@ class CategorySelect extends Component {
               </div>
             </div>
 
-            <div className='card m-3'>
-              <div className='test-hover' style={{border: '1px solid beige'}}>
+            <div className='card m-3' style={{border: 'none'}}>
+              <div className='test-hover'>
                 <h4 className="text-center category-select">Forks</h4>
                 <Link
                   to='/forks'
@@ -141,8 +141,8 @@ class CategorySelect extends Component {
               </div>
             </div>
 
-            <div className='card m-3'>
-              <div className='test-hover' style={{border: '1px solid beige'}}>
+            <div className='card m-3' style={{border: 'none'}}>
+              <div className='test-hover'>
                 <h4 className="text-center category-select">Seats</h4>
                 <Link
                   to='/seats'
@@ -152,8 +152,8 @@ class CategorySelect extends Component {
               </div>
             </div>
 
-            <div className='card m-3'>
-              <div className='test-hover' style={{border: '1px solid beige'}}>
+            <div className='card m-3' style={{border: 'none'}}>
+              <div className='test-hover'>
                 <h4 className="text-center category-select">Pedals</h4>
                 <Link
                   to='/pedals'
@@ -163,8 +163,8 @@ class CategorySelect extends Component {
               </div>
             </div>
 
-            <div className='card m-3'>
-              <div className='test-hover' style={{border: '1px solid beige'}}>
+            <div className='card m-3' style={{border: 'none'}}>
+              <div className='test-hover'>
                 <h4 className="text-center category-select">Sprockets</h4>
                 <Link
                   to='/sprockets'
@@ -174,8 +174,8 @@ class CategorySelect extends Component {
               </div>
             </div>
 
-            <div className='card m-3'>
-              <div className='test-hover' style={{border: '1px solid beige'}}>
+            <div className='card m-3' style={{border: 'none'}}>
+              <div className='test-hover'>
                 <h4 className="text-center category-select">Chains</h4>
                 <Link
                   to='/chains'
@@ -185,8 +185,8 @@ class CategorySelect extends Component {
               </div>
             </div>
 
-            <div className='card m-3'>
-              <div className='test-hover' style={{border: '1px solid beige'}}>
+            <div className='card m-3' style={{border: 'none'}}>
+              <div className='test-hover'>
                 <h4 className="text-center category-select">Pegs</h4>
                 <Link
                   to='/pegs'
@@ -196,8 +196,8 @@ class CategorySelect extends Component {
               </div>
             </div>
 
-            <div className='card m-3'>
-              <div className='test-hover' style={{border: '1px solid beige'}}>
+            <div className='card m-3' style={{border: 'none'}}>
+              <div className='test-hover'>
                 <h4 className="text-center category-select">Titanium hardware</h4>
                 <Link
                   to='/titanium'
@@ -207,8 +207,8 @@ class CategorySelect extends Component {
               </div>
             </div>
 
-            <div className='card m-3'>
-              <div className='test-hover' style={{border: '1px solid beige'}}>
+            <div className='card m-3' style={{border: 'none'}}>
+              <div className='test-hover'>
                 <h4 className="text-center category-select">Gloves</h4>
                 <Link
                   to='/gloves'
@@ -218,8 +218,8 @@ class CategorySelect extends Component {
               </div>
             </div>
 
-            <div className='card m-3'>
-              <div className='test-hover' style={{border: '1px solid beige'}}>
+            <div className='card m-3' style={{border: 'none'}}>
+              <div className='test-hover'>
                 <h4 className="text-center category-select">Headsets</h4>
                 <Link
                   to='/Headsets'
@@ -229,8 +229,8 @@ class CategorySelect extends Component {
               </div>
             </div>
 
-            <div className='card m-3'>
-              <div className='test-hover' style={{border: '1px solid beige'}}>
+            <div className='card m-3' style={{border: 'none'}}>
+              <div className='test-hover'>
                 <h4 className="text-center category-select">Grips</h4>
                 <Link
                   to='/grips'
@@ -240,8 +240,8 @@ class CategorySelect extends Component {
               </div>
             </div>
 
-            <div className='card m-3'>
-              <div className='test-hover' style={{border: '1px solid beige'}}>
+            <div className='card m-3' style={{border: 'none'}}>
+              <div className='test-hover'>
                 <h4 className="text-center category-select">Brakes</h4>
                 <Link
                   to='/brakes'
@@ -251,8 +251,8 @@ class CategorySelect extends Component {
               </div>
             </div>
 
-            <div className='card m-3'>
-              <div className='test-hover' style={{border: '1px solid beige'}}>
+            <div className='card m-3' style={{border: 'none'}}>
+              <div className='test-hover'>
                 <h4 className="text-center category-select">Complete Wheels</h4>
                 <Link
                   to='/wheels'
