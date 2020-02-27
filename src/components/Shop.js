@@ -4,6 +4,7 @@ import { Row, Spinner } from 'reactstrap'
 import { addToCart, loadSelectedItemData, saveSelectedItemData } from './../actions/cartActions.js'
 import ShopItem from './ShopItem'
 import Footer from './Footer'
+import {ScrollToTopOnMount} from './ScrollFix'
 
 
 class Shop extends Component {
@@ -43,6 +44,7 @@ class Shop extends Component {
 
     return (
       <div className='footer-control'>
+        <ScrollToTopOnMount/>
       <div className="container">
         <div className='shop-header-container'>
           <h3 className="text-center shop-header" onClick={() => this.findCat()}>{this.props.name}</h3>

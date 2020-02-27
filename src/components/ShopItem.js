@@ -40,7 +40,7 @@ class ShopItem extends Component {
       if(this.props.item[`option${i}price`] > 0 && !null) {
         priceCheck.push(this.props.item[`option${i}price`])
         }
-        if(i == 10) {
+        if(i === 10) {
           if(Math.min(...priceCheck) === Math.max(...priceCheck)) {
             this.setState({itemPriceMin: '$' + Math.min(...priceCheck), minToMaxSymbol: ''})
           } else {
