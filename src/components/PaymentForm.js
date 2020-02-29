@@ -51,12 +51,7 @@ import { injectStripe, CardNumberElement,
 
     async submit(e) {
       e.preventDefault()
-      if(new RegExp(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,15}/g).test(this.state.email) === false) {
-        this.setState({emailValidation: ''})
-        setTimeout( () => {
-          this.setState({emailValidation: 'none'})
-        }, 550);
-      } else {
+      if(this.state.firstName !== '' && this.state.lastName !== '' && this.state.city !== '' && this.state.state.toString().length === 2 && new RegExp(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,15}/g).test(this.state.email) && this.state.zip.toString().length === 5 && this.state.address !== '') {
         let name = this.state.firstName + ' ' + this.state.lastName
         let address = this.state.address + ' ' + this.state.city + ' ' + this.state.state + ' ' + this.state.zip
         let chargeToken = await this.props.stripe.createToken({name: name, address: address }).then(({token, error}) => {
@@ -128,7 +123,37 @@ import { injectStripe, CardNumberElement,
               .catch(error => {
                 console.log('error:', error);
               })
+
             }
+          }
+        } else {
+          if(new RegExp(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,15}/g).test(this.state.email) === false) {
+            this.setState({emailValidation: ''})
+          }
+
+          if(this.state.firstName === '') {
+            this.setState({firstNameValidation: ''})
+          }
+
+          if(this.state.lastName === '') {
+            this.setState({lastNameValidation: ''})
+          }
+
+          if(this.state.city === '') {
+            this.setState({cityValidation: ''})
+          }
+
+          if(this.state.state === '') {
+            this.setState({stateValidation: ''})
+          }
+
+          let zipCodeCheck = this.state.zip
+          if(zipCodeCheck.toString().length !== 5) {
+            this.setState({zipValidation: ''})
+          }
+
+          if(this.state.address === '') {
+            this.setState({addressValidation: ''})
           }
         }
       }
@@ -139,59 +164,67 @@ import { injectStripe, CardNumberElement,
         } else {
           if(new RegExp(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,15}/g).test(this.state.email) === false) {
             this.setState({emailValidation: ''})
-            setTimeout( () => {
-              this.setState({emailValidation: 'none'})
-            }, 550);
           }
 
           if(this.state.firstName === '') {
             this.setState({firstNameValidation: ''})
-            setTimeout( () => {
-              this.setState({firstNameValidation: 'none'})
-            }, 550);
           }
 
           if(this.state.lastName === '') {
             this.setState({lastNameValidation: ''})
-            setTimeout( () => {
-              this.setState({lastNameValidation: 'none'})
-            }, 550);
           }
 
           if(this.state.city === '') {
             this.setState({cityValidation: ''})
-            setTimeout( () => {
-              this.setState({cityValidation: 'none'})
-            }, 550);
           }
 
           if(this.state.state === '') {
             this.setState({stateValidation: ''})
-            setTimeout( () => {
-              this.setState({stateValidation: 'none'})
-            }, 550);
           }
 
           let zipCodeCheck = this.state.zip
           if(zipCodeCheck.toString().length !== 5) {
             this.setState({zipValidation: ''})
-            setTimeout( () => {
-              this.setState({zipValidation: 'none'})
-            }, 550);
           }
 
           if(this.state.address === '') {
             this.setState({addressValidation: ''})
-            setTimeout( () => {
-              this.setState({addressValidation: 'none'})
-            }, 550);
           }
-
         }
       }
 
       handleChange(e, name) {
         this.setState({ [name]: e.target.value });
+
+          if(new RegExp(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,15}/g).test(this.state.email)) {
+            this.setState({emailValidation: 'none'})
+          }
+
+          if(this.state.firstName !== '') {
+            this.setState({firstNameValidation: 'none'})
+          }
+
+          if(this.state.lastName !== '') {
+            this.setState({lastNameValidation: 'none'})
+          }
+
+          if(this.state.city !== '') {
+            this.setState({cityValidation: 'none'})
+          }
+
+          if(this.state.state !== 'Select') {
+            this.setState({stateValidation: 'none'})
+          }
+
+          let zipCodeCheck = this.state.zip
+          if(zipCodeCheck.toString().length === 4) {
+            this.setState({zipValidation: 'none'})
+          }
+
+          if(this.state.address !== '') {
+            this.setState({addressValidation: 'none'})
+          }
+
       };
 
       testPost() {
@@ -492,7 +525,7 @@ import { injectStripe, CardNumberElement,
                   <br/>
                   <b>Street address</b>
                   <input onChange={(e) => this.handleChange(e, 'address')} placeholder="Street address" />
-                  <p style={{display: this.state.addressValidation, marginTop: '-.3px', textAlign: 'center', fontWeight: 'bold'}}><span class='text-danger'>* </span>Email required</p>
+                  <p style={{display: this.state.addressValidation, marginTop: '-.3px', textAlign: 'center', fontWeight: 'bold'}}><span class='text-danger'>* </span>Street address required</p>
                   <br/>
                   <Row className="flex-column" style={{display: this.state.addressSame}}>
                     <hr/>
