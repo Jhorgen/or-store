@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Row, Spinner } from 'reactstrap'
-import { Link } from 'react-router-dom'
 import { addToCart, loadSelectedBrandData, saveSelectedBrandData } from './../actions/cartActions.js'
 import ShopItem from './ShopItem'
 import Footer from './Footer'
@@ -18,7 +17,7 @@ class ShopByBrand extends Component {
       let saveCartFromBrand = this.props.form.addedItems
       let saveTotalFromBrand = this.props.form.total
       console.log(saveTotalFromBrand);
-      this.props.saveSelectedItemData(this.props.brand, saveCartFromBrand, saveTotalFromBrand)
+      this.props.saveSelectedBrandData(this.props.brand, saveCartFromBrand, saveTotalFromBrand)
     } else {
       console.log("shop:", 'no length', this.props.brand);
       this.props.loadSelectedBrandData(this.props.brand)
