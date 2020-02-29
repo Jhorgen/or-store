@@ -3,9 +3,9 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { removeItem, correctTotalOnEmpty, subtractQuantity, addQuantity } from './../actions/cartActions.js'
 import { Row, Col } from 'reactstrap'
-import { faArrowUp } from '@fortawesome/free-solid-svg-icons'
+import { faAngleUp } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowDown } from '@fortawesome/free-solid-svg-icons'
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
 import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons'
 
 
@@ -83,7 +83,7 @@ class CartItem extends Component {
   handleSubtractQuantity = (id, checkoutQuantity) => {
     let x = this.props.form.addedItems[this.props.itemid].checkoutquantity
     let selectedIndex = this.props.item.selectedOptionIndex
-    // add check here. also, how does it consistently run this function before the onSubmit runs 
+    // add check here. also, how does it consistently run this function before the onSubmit runs
     for(var i = 1; i < x; i++) {
       this.props.subtractQuantity(id, selectedIndex);
     }
@@ -123,9 +123,9 @@ class CartItem extends Component {
               <div className='d-flex align-items-center'>
                 <span className='mr-2'>Quantity:</span>
                 <div>
-                  <span onClick={() => this.addSingleQuantity(this.props.item.id)} className='mr-3 cursor-toggle' style={{fontSize: '1.2rem'}}><FontAwesomeIcon icon={faArrowUp} /></span>
+                  <span onClick={() => this.addSingleQuantity(this.props.item.id)} className='mr-3 cursor-toggle' style={{fontSize: '1.3rem'}}><FontAwesomeIcon icon={faAngleUp} /></span>
                   {this.state.inputRefresh}
-                  <span onClick={() => this.subtractSingleQuantity(this.props.item.id)} className='mr-3 cursor-toggle' style={{fontSize: '1.2rem'}}><FontAwesomeIcon icon={faArrowDown} /></span>
+                  <span onClick={() => this.subtractSingleQuantity(this.props.item.id)} className='mr-3 cursor-toggle' style={{fontSize: '1.3rem'}}><FontAwesomeIcon icon={faAngleDown} /></span>
                 </div>
                 <button onClick={() => {this.handleSubtractQuantity(this.props.item.id, this.props.item.checkoutquantity)}} style={{display: this.state.updateDisplay, fontSize: '.8rem'}} type='submit' className="btn btn-secondary mr-3">Update</button>
                 <button className="btn btn-secondary" style={{fontSize: ".8rem", display: this.state.removeButtonDisplay}} onClick={()=>{this.handleRemove(this.props.item.id, this.props.form.addedItems, this.props.item.selectedOptionIndex)}}>Remove</button>
