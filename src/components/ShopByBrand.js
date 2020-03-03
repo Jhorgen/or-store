@@ -26,38 +26,38 @@ class ShopByBrand extends Component {
 
 
   render() {
-    let items = this.props.form.items.length < 200 ?
+    let items = this.props.form.items.length < 200 && this.props.form.items[0].brand === this.props.brand ?
     (
-    this.props.form.items.map(item=>{
-    return (
-      <ShopItem item={item} />
+      this.props.form.items.map(item=>{
+        return (
+          <ShopItem item={item} />
+        )
+      })
     )
-  })
-)
-:
-(
-    <div className='text-center mt-2 mb-5'>
-      <Spinner color="info" />
-    </div>
-  )
+    :
+    (
+      <div className='text-center mt-2 mb-5'>
+        <Spinner color="info" />
+      </div>
+    )
 
-  let footer = this.props.form.items.length < 200 ? <Footer/> : ''
+    let footer = this.props.form.items.length < 200 ? <Footer/> : ''
 
     return (
-    <div class='footer-control'>
-      <ScrollToTopOnMount />
-      <div className="container">
-        <div className='shop-header-container'>
-          <h3 className="text-center shop-header" onClick={() => this.findCat()}>{this.props.brand}</h3>
-        </div>
-        <div>
+      <div class='footer-control'>
+        <ScrollToTopOnMount />
+        <div className="container">
+          <div className='shop-header-container'>
+            <h3 className="text-center shop-header">{this.props.brand}</h3>
+          </div>
           <div>
-            <Row className="justify-content-center mt-4">{items}</Row>
+            <div>
+              <Row className="justify-content-center mt-4">{items}</Row>
+            </div>
           </div>
         </div>
+        {footer}
       </div>
-      {footer}
-    </div>
     );
   }
 }
