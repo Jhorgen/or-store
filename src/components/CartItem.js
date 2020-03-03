@@ -29,7 +29,7 @@ class CartItem extends Component {
       this.setState({quantityAlert: <span><FontAwesomeIcon style={{fontSize: '1.5rem', paddingLeft: '.3rem'}} icon={faExclamationTriangle} /> <b>{this.props.item[`option${selectedIndex}quantity`]}</b> in stock.</span>, removeButtonDisplay: 'none'})
       setTimeout( () => {
         this.setState({quantityAlert: '', removeButtonDisplay: ''})
-      }, 550);
+      }, 750);
       console.log(this.props.item[`option${selectedIndex}quantity`] - 1);
     } else {
     this.props.addQuantity(id, selectedIndex);
@@ -64,7 +64,7 @@ class CartItem extends Component {
       this.setState({quantityAlert: <span><FontAwesomeIcon style={{fontSize: '1.5rem', paddingLeft: '.3rem'}} icon={faExclamationTriangle} /> <b>{this.props.item[`option${selectedIndex}quantity`]}</b> in stock.</span>, removeButtonDisplay: 'none'})
       setTimeout( () => {
         this.setState({quantityAlert: '', removeButtonDisplay: ''})
-      }, 50);
+      }, 750);
 
     } else {
       this.setState({updateDisplay: 'none'})
@@ -121,7 +121,7 @@ class CartItem extends Component {
           <Col xs='2'>
             <form className="d-flex" onSubmit={(e) => this.handleAddQuantity(this.props.item.id, this.state.inputQuantity, e)}>
               <div className='d-flex align-items-center'>
-                <span className='mr-2'>Quantity:</span>
+                <span style={{fontWeight: 'bold'}} className='mr-2 text-info'>Quantity<b className='text-dark'>:</b></span>
                 <div>
                   <span onClick={() => this.addSingleQuantity(this.props.item.id)} className='mr-3 cursor-toggle' style={{fontSize: '1.3rem'}}><FontAwesomeIcon icon={faAngleUp} /></span>
                   {this.state.inputRefresh}
