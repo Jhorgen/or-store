@@ -229,6 +229,18 @@ hr {
   .icon-toggle {
     display: none !important
   }
+
+  .item-view-links-toggle {
+    margin-top: 2rem;
+  }
+
+  .item-view-info-2 {
+    margin-bottom: 2rem;
+  }
+
+  .toggle-margin {
+    margin-top: 1rem !important;
+  }
 }
 
 @media only screen and (min-width: 700px) {
@@ -238,6 +250,11 @@ hr {
   .item-view-title {
     display: flex !important;
   }
+
+  .item-view-links-toggle {
+    display: none !important;
+  }
+
 }
 
 @media only screen and (max-width: 400px) {
@@ -293,5 +310,14 @@ hr {
 .navbar-font {
   font-family: Noto Sans;
   font-size: 18px;
+}
+
+.item-view-links-font {
+  font-family: Noto Sans;
+  font-weight: bold;
+}
+
+.item-view-links:hover {
+  font-weight: normal !important;
 }
 /* add less margin for shop item on hover / create own class */
