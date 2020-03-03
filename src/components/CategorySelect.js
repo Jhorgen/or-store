@@ -27,7 +27,7 @@ class CategorySelect extends Component {
       console.log('length');
       console.log(this.props.form.addedItems);
     } else {
-      this.props.loadItemData(); // create function that doesn't query the server, but still handles initial state? resulting in fewer server queries..
+      this.props.loadItemData();
       console.log('no length');
     }
 
