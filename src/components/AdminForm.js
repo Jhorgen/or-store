@@ -136,7 +136,7 @@ class AdminForm extends Component {
       image10: this.state.image10,
     }
     axios.put (
-      `http://localhost:3000/api/v1/products/${this.props.item.id}`,
+      `https://nameless-hollows-85718.herokuapp.com/api/v1/products/${this.props.item.id}`,
       {
         product: item
       })
