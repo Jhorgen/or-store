@@ -38,7 +38,8 @@ import { injectStripe, CardNumberElement,
         cityValidation: 'none',
         stateValidation: 'none',
         zipValidation: 'none',
-        addressValidation: 'none'
+        addressValidation: 'none',
+        tester: ''
       }
     }
 
@@ -81,7 +82,7 @@ import { injectStripe, CardNumberElement,
           address: this.state.address + ' ' + this.state.city + ' ' + this.state.state + ' ' + this.state.zip
         }
 
-        let response = await fetch("http://localhost:3000/api/v1/charges", {
+        let response = await fetch("https://nameless-hollows-85718.herokuapp.com/api/v1/charges", {
           method: "POST",
           headers: {
             'Content-type': 'application/json',
@@ -111,7 +112,7 @@ import { injectStripe, CardNumberElement,
               [quantity]: selectedOptionQuantity - this.props.form.addedItems[i].checkoutquantity,
             }
             axios.put (
-              `http://localhost:3000/api/v1/products/${this.props.form.addedItems[i].id}`,
+              `https://nameless-hollows-85718.herokuapp.com/api/v1/products/${this.props.form.addedItems[i].id}`,
               {
                 product: item
               })
@@ -195,6 +196,7 @@ import { injectStripe, CardNumberElement,
 
       handleChange(e, name) {
         this.setState({ [name]: e.target.value });
+        console.log(this.state.tester);
 
           if(new RegExp(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,15}/g).test(this.state.email)) {
             this.setState({emailValidation: 'none'})
@@ -229,10 +231,10 @@ import { injectStripe, CardNumberElement,
 
       testPost() {
         axios.post(
-          'http://localhost:3000/api/v1/purchases/',
+          'https://nameless-hollows-85718.herokuapp.com/api/v1/purchases/',
           { purchase:
             {
-              amount: this.props.form.total,
+              amount: this.props.form.total.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,'),
               email: this.state.email,
               firstname: this.state.firstName,
               lastname: this.state.lastName,
@@ -446,23 +448,23 @@ import { injectStripe, CardNumberElement,
                 <Row className="flex-column" style={{display: this.state.shippingForm}}>
                   <h4 className='text-center pb-2'>{this.state.checked == 'checked' ? <span>Shipping details</span> : <span>Billing address</span>}</h4>
                   <b>Email</b>
-                  <input type='email' onChange={(e) => this.handleChange(e, 'email')} placeholder="Email" />
+                  <input className='form-control' type='email' onChange={(e) => this.handleChange(e, 'email')} placeholder="Email" />
                   <p style={{display: this.state.emailValidation, marginTop: '-.3px', textAlign: 'center', fontWeight: 'bold'}}><span class='text-danger'>* </span>Email required</p>
                   <br/>
                   <b>First name</b>
-                  <input onChange={(e) => this.handleChange(e, 'firstName')} placeholder="First name" />
+                  <input className='form-control' onChange={(e) => this.handleChange(e, 'firstName')} placeholder="First name" />
                   <p style={{display: this.state.firstNameValidation, marginTop: '-.3px', textAlign: 'center', fontWeight: 'bold'}}><span class='text-danger'>* </span>First name required</p>
                   <br/>
                   <b>Last name</b>
-                  <input onChange={(e) => this.handleChange(e, 'lastName')} placeholder="Last name" />
+                  <input className='form-control' onChange={(e) => this.handleChange(e, 'lastName')} placeholder="Last name" />
                   <p style={{display: this.state.lastNameValidation, marginTop: '-.3px', textAlign: 'center', fontWeight: 'bold'}}><span class='text-danger'>* </span>Last name required</p>
                   <br/>
                   <b>City</b>
-                  <input onChange={(e) => this.handleChange(e, 'city')} placeholder="City" />
+                  <input className='form-control' onChange={(e) => this.handleChange(e, 'city')} placeholder="City" />
                   <p style={{display: this.state.cityValidation, marginTop: '-.3px', textAlign: 'center', fontWeight: 'bold'}}><span class='text-danger'>* </span>City required</p>
                   <br/>
                   <b>State</b>
-                  <form className='mt-3'>
+                  <form>
                     <select className='form-control' onChange={(e) => this.handleChange(e, 'state')}>
                       <option value={'default'}>Select</option>
                       <option value={'AL'}>Alabama</option>
@@ -520,30 +522,30 @@ import { injectStripe, CardNumberElement,
                   <p style={{display: this.state.stateValidation, marginTop: '-.3px', textAlign: 'center', fontWeight: 'bold'}}><span class='text-danger'>* </span>State required</p>
                   <br/>
                   <b>Zip Code</b>
-                  <input onChange={(e) => this.handleChange(e, 'zip')} placeholder="Zip" />
+                  <input className='form-control' onChange={(e) => this.handleChange(e, 'zip')} placeholder="Zip" />
                   <p style={{display: this.state.zipValidation, marginTop: '-.3px', textAlign: 'center', fontWeight: 'bold'}}><span class='text-danger'>* </span>Zip code required</p>
                   <br/>
                   <b>Street address</b>
-                  <input onChange={(e) => this.handleChange(e, 'address')} placeholder="Street address" />
+                  <input className='form-control' onChange={(e) => this.handleChange(e, 'address')} placeholder="Street address" />
                   <p style={{display: this.state.addressValidation, marginTop: '-.3px', textAlign: 'center', fontWeight: 'bold'}}><span class='text-danger'>* </span>Street address required</p>
                   <br/>
                   <Row className="flex-column" style={{display: this.state.addressSame}}>
                     <hr/>
                     <h4 className='text-center pb-2'>Shipping address</h4>
                     <b>First name</b>
-                    <input onChange={(e) => this.handleChange(e, 'firstName2')} placeholder="First name" />
+                    <input className='form-control' onChange={(e) => this.handleChange(e, 'firstName2')} placeholder="First name" />
                     <br/>
                     <b>Last name</b>
-                    <input onChange={(e) => this.handleChange(e, 'lastName2')} placeholder="Last name" />
+                    <input className='form-control' onChange={(e) => this.handleChange(e, 'lastName2')} placeholder="Last name" />
                     <br/>
                     <b>City</b>
-                    <input onChange={(e) => this.handleChange(e, 'city2')} placeholder="City" />
+                    <input className='form-control' onChange={(e) => this.handleChange(e, 'city2')} placeholder="City" />
                     <br/>
                     <b>State</b>
-                    <input onChange={(e) => this.handleChange(e, 'state2')} placeholder="State"/>
-                    <form className='mt-3'>
+                    <form>
                       <select className='form-control' ref="selectMark"
                         onChange={(e) => this.handleChange(e.target.value, 'state2')}>
+                        <option value={'default'}>Select</option>
                         <option value={'AL'}>Alabama</option>
                         <option value={'AK'}>Alaska</option>
                         <option value={'AZ'}>Arizona</option>
@@ -598,17 +600,17 @@ import { injectStripe, CardNumberElement,
                     </form>
                     <br/>
                     <b>Zip code</b>
-                    <input onChange={(e) => this.handleChange(e, 'zip2')} placeholder="Zip" />
+                    <input className='form-control' onChange={(e) => this.handleChange(e, 'zip2')} placeholder="Zip" />
                     <br/>
                     <b>Street address</b>
-                    <input onChange={(e) => this.handleChange(e, 'address2')} placeholder="Street address" />
+                    <input className='form-control' onChange={(e) => this.handleChange(e, 'address2')} placeholder="Street address" />
                     <br/>
                   </Row>
-                  <textarea onChange={(e) => this.handleChange(e, 'discription')} placeholder="Comments or feedback? Write them here!"></textarea>
+                  <textarea className='form-control' onChange={(e) => this.handleChange(e, 'discription')} placeholder="Comments or feedback? Write them here!"></textarea>
                   <br/>
                   <Row className='align-items-baseline justify-content-center'>
                     <p className='pr-1'>Shipping address same as billing?</p>
-                    <input onClick={() => this.toggleShippingForm()} style={{width: '2rem', height: '1rem'}} type='checkbox' checked={this.state.checked} />
+                    <input className='form-control' onClick={() => this.toggleShippingForm()} style={{width: '2rem', height: '1rem'}} type='checkbox' checked={this.state.checked} />
                   </Row>
                   <span style={{display: this.state.nextButton}} className="btn btn-block btn-info" onClick={() => this.toggleForm()}>Next</span>
                   <hr className='w-100' style={{display: this.state.toggleHr}}/>
@@ -616,7 +618,7 @@ import { injectStripe, CardNumberElement,
                 <Row className="flex-column" style={{display: this.state.paymentForm}}>
                   <label className="pr-4 pb-2">
                     <b>Card details</b>
-                    <CardNumberElement />
+                    <CardNumberElement onChange={(e) => this.handleChange(e, 'tester')} />
                   </label>
                   <br/>
                   <label className="pr-3 pb-2">
@@ -629,7 +631,6 @@ import { injectStripe, CardNumberElement,
                     <CardCVCElement />
                   </label>
                   <br/>
-                  <p onClick={() => this.testPost()}>test</p>
                   <Button className="btn btn-block"><b>Pay now (${this.props.total.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')})</b></Button>
                 </Row>
               </form>

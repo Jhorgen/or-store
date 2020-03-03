@@ -51,8 +51,6 @@ export const subShipping = (id) => {
 }
 
 
-
-
 // Cart / state management
 
 export const correctTotalOnEmpty = () => {
@@ -87,7 +85,7 @@ export const saveSelectedItemDataBrands = (data, saveCartFromBrands, saveTotalFr
 export const loadItemData = () => {
   return (dispatch) => {
     dispatch(requestItem())
-    fetch(`http://localhost:3000/api/v1/products`)
+    fetch(`https://nameless-hollows-85718.herokuapp.com/api/v1/products`)
     .then(res => res.json())
     .then(
       data => { console.log('data', data);
@@ -100,7 +98,7 @@ export const loadItemData = () => {
 
 export const loadItemDataCheck = (check, saveTotal) => {
   return (dispatch) => {
-    fetch(`http://localhost:3000/api/v1/products`)
+    fetch(`https://nameless-hollows-85718.herokuapp.com/api/v1/products`)
     .then(res => res.json())
     .then(
       data => { console.log('data', data);
@@ -113,7 +111,7 @@ export const loadItemDataCheck = (check, saveTotal) => {
 
 export const loadSelectedItemData = (category) => {
   return (dispatch) => {
-    fetch(`http://localhost:3000/api/v1/products/?category=${category}`)
+    fetch(`https://nameless-hollows-85718.herokuapp.com/api/v1/products/?category=${category}`)
     .then(res => res.json())
     .then(
       data => { console.log('data', data);
@@ -127,7 +125,7 @@ export const loadSelectedItemData = (category) => {
 
 export const saveSelectedItemData = (category, saveCartFromShop, saveTotalFromShop) => {
   return (dispatch) => {
-    fetch(`http://localhost:3000/api/v1/products/?category=${category}`)
+    fetch(`https://nameless-hollows-85718.herokuapp.com/api/v1/products/?category=${category}`)
     .then(res => res.json())
     .then(
       data => { console.log('data', data);
@@ -140,7 +138,7 @@ export const saveSelectedItemData = (category, saveCartFromShop, saveTotalFromSh
 
 export const loadSelectedBrandData = (brand) => {
   return (dispatch) => {
-    fetch(`http://localhost:3000/api/v1/products/?brand=${brand}`)
+    fetch(`https://nameless-hollows-85718.herokuapp.com/api/v1/products/?brand=${brand}`)
     .then(res => res.json())
     .then(
       data => { console.log('data', data);
@@ -154,7 +152,7 @@ export const loadSelectedBrandData = (brand) => {
 
 export const saveSelectedBrandData = (brand, saveCartFromBrands, saveTotalFromBrands) => {
   return (dispatch) => {
-    fetch(`http://localhost:3000/api/v1/products/?brand=${brand}`)
+    fetch(`https://nameless-hollows-85718.herokuapp.com/api/v1/products/?brand=${brand}`)
     .then(res => res.json())
     .then(
       data => { console.log('data', data);

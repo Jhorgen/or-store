@@ -53,7 +53,7 @@ class ItemView extends Component {
 
     console.log(this.props.match.params);
     console.log(title);
-    fetch(`http://localhost:3000/api/v1/products/?brand=${brand}&title=${title}`)
+    fetch(`https://nameless-hollows-85718.herokuapp.com/api/v1/products/?brand=${brand}&title=${title}`)
     .then(res => res.json())
     .then(
       data => {this.setState({itemView: data})
@@ -65,7 +65,10 @@ class ItemView extends Component {
         }) : console.log('nope')
         if(i == 10) {
           this.setState({images: images, selectedImage: this.state.itemView[0].image1})
-          console.log(this.state.images);
+          if(images.length < 2) {
+            this.setState({images: []})
+            console.log(this.state.images);
+          }
         }
       }
 
@@ -119,7 +122,7 @@ handleAddToCart = (id) => {
       console.log('will add');
     }
 
-    this.props.addToCart(id, selected, selectedIndex, price);
+    this.props.addToCart(id);
   } else {
 
     let selected = this.state.selectedOption;
@@ -173,18 +176,31 @@ render() {
     this.state.itemView.map(item => {
       return (
         <div key={item.id} className='footer-control'>
-
+          <Row className="justify-content-center item-view-links-toggle">
+            <Col className='text-center'>
+            <div className='text-center flex-column align-items-center'>
+              <div className='item-view-links-font text-center'>
+                <Link className='mt-2 pr-2 text-dark item-view-links' style={{textDecoration: 'none'}} to={'/' + item.category.toLowerCase()}>View all <span>{item.category}</span></Link>
+                <b className='pr-2'>/</b>
+                <Link className='mt-2 text-dark item-view-links' style={{textDecoration: 'none'}} to={'/' + item.brand}>View all {item.brand} products</Link>
+              </div>
+              <hr style={{width: '100%'}}/>
+              <span style={{background: '#f8f9fa', fontWeight: 'bold', borderRadius: '11px', padding: '5px', boxShadow: '1px 0px 22px coral'}} className="title mt-1"><span>{item.brand}</span> {item.title}</span>
+          </div>
+        </Col>
+        </Row>
           <Row className="item-desc justify-content-around mt-4">
             <Col xs='3' className='item-view-title text-center flex-column align-items-center'>
               <span style={{background: '#f8f9fa', fontWeight: 'bold', borderRadius: '11px', padding: '5px', boxShadow: '1px 0px 22px coral'}} className="title mt-1"><span>{item.brand}</span> {item.title}</span>
               <hr style={{width: '100%'}}/>
-              <div>
-              <Link className='mt-2 pr-2 text-dark' style={{textDecoration: 'none'}} to={'/' + item.category.toLowerCase()}>View all <span>{item.category}</span></Link>
-              <b className='pr-2'>-</b>
-              <Link className='mt-2 text-dark' style={{textDecoration: 'none'}} to={'/' + item.brand}>View {item.category} by <span>{item.brand}</span></Link>
+              <div className='item-view-links-font'>
+              <Link className='mt-2 pr-2 text-dark item-view-links' style={{textDecoration: 'none'}} to={'/' + item.category.toLowerCase()}>View all <span>{item.category}</span></Link>
+              <b className='pr-2'>/</b>
+              <Link className='mt-2 text-dark item-view-links' style={{textDecoration: 'none'}} to={'/' + item.brand.toLowerCase().split(' ').join('') + '-all'}>View all {item.brand} products</Link>
               </div>
           </Col>
-            <Col xs='4' className='d-flex justify-content-center align-items-center flex-column'>
+
+            <Col xs='4' className='d-flex justify-content-center align-items-center flex-column toggle-margin'>
               <Lightbox thumbnailWidth='25rem' thumbnailHeight='20rem' images={
                   [
                     {
