@@ -195,7 +195,7 @@ import { injectStripe, CardNumberElement,
       }
 
       handleChange(e, name) {
-        this.setState({ [name]: e.target.value });
+        this.setState({[name]: e.target.value});
         console.log(this.state.tester);
 
           if(new RegExp(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,15}/g).test(this.state.email)) {
@@ -226,7 +226,6 @@ import { injectStripe, CardNumberElement,
           if(this.state.address !== '') {
             this.setState({addressValidation: 'none'})
           }
-
       };
 
       testPost() {
@@ -438,6 +437,62 @@ import { injectStripe, CardNumberElement,
         }
       }
 
+      toggleOverview = () => {
+
+        let shipping = 0;
+
+        for(var i = 0; i < this.props.form.addedItems.length; i++) {
+          if(this.props.form.addedItems[i].category === 'Bars') {
+            console.log('true');
+          } else {
+            console.log('false');
+          }
+
+          if(this.props.form.addedItems[i].category === 'Bars') {
+            console.log('true');
+          } else {
+            console.log('false');
+          }
+
+          if(this.props.form.addedItems[i].category === 'Bars') {
+            console.log('true');
+          } else {
+            console.log('false');
+          }
+
+          if(this.props.form.addedItems[i].category === 'Bars') {
+            console.log('true');
+          } else {
+            console.log('false');
+          }
+
+          if(this.props.form.addedItems[i].category === 'Bars') {
+            console.log('true');
+          } else {
+            console.log('false');
+          }
+
+          if(this.props.form.addedItems[i].category === 'Bars') {
+            console.log('true');
+          } else {
+            console.log('false');
+          }
+
+          if(this.props.form.addedItems[i].category === 'Bars') {
+            console.log('true');
+          } else {
+            console.log('false');
+          }
+
+          if(this.props.form.addedItems[i].category === 'Bars') {
+            console.log('true');
+          } else {
+            console.log('false');
+          }
+        }
+
+      }
+
 
       render() {
         return (
@@ -632,6 +687,8 @@ import { injectStripe, CardNumberElement,
                   </label>
                   <br/>
                   <Button className="btn btn-block"><b>Pay now (${this.props.total.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')})</b></Button>
+                  <Button onClick={this.toggleOverview} className="btn btn-block"><b>Next</b></Button>
+
                 </Row>
               </form>
             </div>
