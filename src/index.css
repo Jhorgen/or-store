@@ -317,6 +317,25 @@ hr {
   font-weight: bold;
 }
 
+.add-font {
+  font-family: Noto Sans;
+}
+
+.category-header {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  top: 50%;
+  left: 50%;
+  color: black;
+  font-size: 30px;
+  transform: translate(-50%, -50%);
+  font-family: Noto Sans;
+  font-weight: bold;
+  white-space: nowrap;
+
+}
+
 .item-view-links:hover {
   font-weight: normal !important;
 }
