@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 const Footer = () => {
   return (
-    <Row style={{background: "black"}} className="text-center align-items-center">
+    <Row style={{background: "black", margin: '0'}} className="text-center align-items-center">
       <Col className='mt-4'>
         <Link className='text-light' to='/'><p>About us</p></Link>
         <Link className='text-light' to='/'><p>Contact us</p></Link>
