@@ -14,7 +14,7 @@ class Recipe extends Component {
     }
   }
 
-  componentWillMount = () => {
+  componentDidMount = () => {
     let x = (this.props.form.total).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
     console.log(x);
   }
@@ -37,7 +37,7 @@ class Recipe extends Component {
             <Row className="align-items-center float-right" style={{display: this.state.checkout}}>
               <div className='d-flex flex-column' style={{display: this.state.checkout}}>
                 <span className="mr-2"><b>Total: ${this.props.form.total.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</b></span>
-                <button onClick={() => this.checkout()} className="btn btn-info">Checkout</button>
+                <button onClick={() => this.checkout()} className="btn btn-info mt-1">Checkout</button>
               </div>
             </Row>
           </div>
