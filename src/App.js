@@ -9,6 +9,7 @@ import ItemView from './components/ItemView'
 import ShopByBrand from './components/ShopByBrand'
 import BrandSelect from './components/BrandSelect'
 import Admin from './components/Admin'
+import SearchResults from './components/SearchResults'
 import { StickyContainer, Sticky } from 'react-sticky';
 
 
@@ -127,6 +128,7 @@ function App() {
             <Route render={props => ( <ShopByBrand brand={kool} key='47'/>)} path="/kool-all"/>
 
 
+            <Route path="/search" component={SearchResults} />
             <Route path="/:brand/:title/" component={ItemView}/>
             <Route path="/cart" component={Cart}/>
             <Route path={'/' + `${process.env.REACT_APP_R_API_KEY}`} component={Admin}/>
