@@ -3,6 +3,9 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { addToCart } from './../actions/cartActions.js'
 import { Row } from 'reactstrap';
+import { faEye } from '@fortawesome/free-solid-svg-icons'
+import {faCartPlus} from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
 class ShopItem extends Component {
@@ -29,7 +32,8 @@ class ShopItem extends Component {
       itemPriceMin: '',
       itemPriceMax: '',
       minToMaxSymbol: '',
-      selectedPrice: ''
+      selectedPrice: '',
+      addDisplay: 'none'
     }
   }
 
@@ -106,16 +110,26 @@ class ShopItem extends Component {
     }
   }
 
+  toggleAddDisplay = () => {
+    this.setState({addDisplay: ''})
+  }
+
   render () {
     return (
       <div className="card m-3 test-hover" key={this.props.item.id} >
         <div style={{margin: '10px'}} className="card-image text-center item-view-hover">
           <Link to={this.props.item.brand + '/' + this.props.item.title.split(' ').join('')}>
             <img style={{height: '13rem', width: '100%'}} src={ require(`./../images/${this.props.item.image1}.jpg`)} alt={this.props.brand + this.props.item.title} title={this.props.item.brand + ' ' + this.props.item.title} />
-            <div className='mt-3'><span className="card-title">{this.props.item.brand} {this.props.item.title}</span></div>
+            <div className='mt-3 mb-3'><span className="card-title" style={{textShadow: '1px 1px 1px #545b62', fontSize: '16px'}}>{this.props.item.brand} {this.props.item.title}</span></div>
           </Link>
+          <hr style={{width: '70%', background: 'lightcoral !important'}}/>
+          <Link to={this.props.item.brand + '/' + this.props.item.title.split(' ').join('')} style={{color: 'black'}}>
+          <FontAwesomeIcon style={{fontSize: '1.6rem'}} icon={faEye} />
+          </Link>
+          <FontAwesomeIcon style={{fontSize: '1.6rem', marginLeft: '2.4rem'}} icon={faCartPlus} onClick={this.toggleAddDisplay} />
+          <hr style={{width: '50%', background: 'lightcoral !important'}}/>
           <Row className='justify-content-center mb-2'>
-          <form className='mt-3'>
+          <form className='mt-3' style={{display: this.state.addDisplay}}>
             <select className='form-control' ref="selectMark"
               onChange={(e) => this.onChange(e.target.value, e.target)}>
               {this.state.defaultOption}
@@ -134,7 +148,7 @@ class ShopItem extends Component {
           <span style={{width: '70%'}}>{this.state.outOfStock}</span>
           {this.state.addButton}
         </Row>
-        <span style={{fontSize: '15px', fontWeight: 'bold'}} className='text-center'>{this.state.itemPriceMin} {this.state.minToMaxSymbol} {this.state.itemPriceMax}</span>
+        <span style={{fontSize: '15.5px', fontWeight: 'bold'}} className='text-center'>{this.state.itemPriceMin} {this.state.minToMaxSymbol} {this.state.itemPriceMax}</span>
         <div className='mb-2'>
         <span style={{display: this.state.addedNotification}}><b>Added to cart</b></span>
           </div>
