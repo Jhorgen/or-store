@@ -7,6 +7,7 @@ import { addToCart } from './../actions/cartActions.js'
 import "react-lightbox-component/build/css/index.css";
 import Footer from './Footer'
 
+
 class ItemView extends Component {
   constructor(props) {
     super(props)
@@ -177,6 +178,7 @@ render() {
       return (
         <div key={item.id} className='footer-control'>
           <Row className="justify-content-center item-view-links-toggle">
+
             <Col className='text-center'>
             <div className='text-center flex-column align-items-center'>
               <div className='item-view-links-font text-center'>
@@ -189,6 +191,7 @@ render() {
           </div>
         </Col>
         </Row>
+
           <Row className="item-desc justify-content-around mt-4">
             <Col xs='3' className='item-view-title text-center flex-column align-items-center'>
               <span style={{background: '#f8f9fa', fontWeight: 'bold', borderRadius: '11px', padding: '5px', boxShadow: '1px 0px 22px coral'}} className="title mt-1"><span>{item.brand}</span> {item.title}</span>
@@ -200,7 +203,7 @@ render() {
               </div>
           </Col>
 
-            <Col xs='4' className='d-flex justify-content-center align-items-center flex-column toggle-margin'>
+            <Col xs='4' className='d-flex justify-content-center align-items-center flex-column toggle-margin' style={{height: '100%'}}>
               <Lightbox thumbnailWidth='25rem' thumbnailHeight='20rem' images={
                   [
                     {
@@ -217,7 +220,7 @@ render() {
               </div>
               </Col>
 
-              <Col className='text-center item-view-info' xs='4'>
+              <Col xs='4' className='text-center item-view-info'>
                 <form className='mt-3 mb-4'>
                   <select className='form-control' ref="selectMark"
                     onChange={(e) => this.onChange(e.target.value, e.target)}>
