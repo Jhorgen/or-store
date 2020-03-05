@@ -113,15 +113,15 @@ class CartItem extends Component {
             </Link>
           </Col>
           <Col xs='4'>
-            <span className="title" style={{fontSize: '1rem'}}><b className='text-dark'>{this.props.item.brand}</b><br/><hr/> {this.props.item.title}<br/><hr/> <span className='text-dark'>{this.props.item.selectedoption}</span></span>
+            <span className="title add-font" style={{fontSize: '1rem'}}><b className='text-dark'>{this.props.item.brand}</b><br/><hr/> {this.props.item.title}<br/><hr/> <span className='text-dark'>{this.props.item.selectedoption}</span></span>
           </Col>
           <Col xs='2'>
-            <p className="text-center"><b>Price:<br/> ${this.props.item.price}</b></p>
+            <span className="text-center add-font"><b>${this.props.item.price}</b></span>
           </Col>
           <Col xs='2'>
             <form className="d-flex" onSubmit={(e) => this.handleAddQuantity(this.props.item.id, this.state.inputQuantity, e)}>
               <div className='d-flex align-items-center'>
-                <span style={{fontWeight: 'bold'}} className='mr-2 text-info'>Quantity<b className='text-dark'>:</b></span>
+                <span style={{fontWeight: 'bold'}} className='mr-2 add-font'>Quantity<span className='text-dark' style={{paddingLeft: '1.5px'}}>:</span></span>
                 <div>
                   <span onClick={() => this.addSingleQuantity(this.props.item.id)} className='mr-3 cursor-toggle' style={{fontSize: '1.3rem'}}><FontAwesomeIcon icon={faAngleUp} /></span>
                   {this.state.inputRefresh}
