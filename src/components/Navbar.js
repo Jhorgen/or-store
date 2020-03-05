@@ -16,13 +16,20 @@ import {
   UncontrolledDropdown,
   NavbarText
 } from 'reactstrap';
+import {faSearch} from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faShoppingCart} from '@fortawesome/free-solid-svg-icons'
+
 
 class OrbNavbar extends Component {
   constructor(props) {
     super(props)
     this.state = {
       lengthCheck: false,
-      dropdownOpen: false
+      dropdownOpen: false,
+      searchBarDispay: 'none',
+      searchInput: '',
+      searchButton: 'none'
     }
   }
 
@@ -44,6 +51,18 @@ class OrbNavbar extends Component {
     this.setState({dropdownOpen: false});
   }
 
+  searchBarToggle = () => {
+    this.setState({searchBarDispay: ''})
+    console.log('test');
+  }
+
+  handleSearchInput = (e, name) => {
+    this.setState({[name]: e.target.value})
+    this.state.searchInput.length > 1 ? this.setState({searchButton: ''}) : this.setState({searchButton: 'none'})
+  }
+
+
+
   render() {
     return(
       <div>
@@ -62,12 +81,16 @@ class OrbNavbar extends Component {
                 </NavItem>
                 <NavItem className='mr-2 mb-2'>
                   <Col>
-                    <Link to="/cart"><span className="text-light mr-2 navbar-font">Cart</span><b className='text-info' style={{fontSize: '1rem'}}>{this.props.form.addedItems.length > 0 ? this.props.form.addedItems.length : ''}</b></Link>
+                    <Link to="/cart"><span className="text-light mr-2 navbar-font"><FontAwesomeIcon style={{fontSize: '1.6rem'}} icon={faShoppingCart} onClick={this.toggleAddDisplay} />
+                    </span><b className='text-info' style={{fontSize: '1rem'}}>{this.props.form.addedItems.length > 0 ? this.props.form.addedItems[0].checkoutquantity  : ''}</b></Link>
                   </Col>
                 </NavItem>
                 <NavItem>
-                  <Col>
-                    <Link to="/cart"><span className='text-light navbar-font'>Search</span></Link>
+                  <Col className='d-flex'>
+                    <span onClick={() => this.searchBarToggle()} className='text-light navbar-font pr-2'><FontAwesomeIcon style={{fontSize: '1.6rem'}} icon={faSearch} onClick={this.toggleAddDisplay} />
+                    </span>
+                    <input className='form-control mr-2' style={{display: this.state.searchBarDispay}} onChange={(e) => this.handleSearchInput(e, 'searchInput')}/>
+                    <Link to={{ pathname: '/search', state: { searchInput: this.state.searchInput} }}><button className='btn btn-info' style={{display: this.state.searchButton}}>Go</button></Link>
                   </Col>
                 </NavItem>
               </Nav>
@@ -80,7 +103,6 @@ class OrbNavbar extends Component {
                   <img style={{height: '2rem'}} src={ require(`./../images/insta-logo.webp`)} alt={"The Outer Rim Bicycle Shop"}/>
                 </a>
               </div>
-
           </Navbar>
         </div>}
       </Sticky>
