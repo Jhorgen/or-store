@@ -126,7 +126,7 @@ class ShopItem extends Component {
           <Link to={this.props.item.brand + '/' + this.props.item.title.split(' ').join('')} style={{color: 'black'}}>
           <FontAwesomeIcon style={{fontSize: '1.6rem'}} icon={faEye} />
           </Link>
-          <FontAwesomeIcon style={{fontSize: '1.6rem', marginLeft: '2.4rem'}} icon={faCartPlus} onClick={this.toggleAddDisplay} />
+          <FontAwesomeIcon className='cursor-toggle' style={{fontSize: '1.6rem', marginLeft: '2.4rem'}} icon={faCartPlus} onClick={this.toggleAddDisplay} />
           <hr style={{width: '50%', background: 'lightcoral !important'}}/>
           <Row className='justify-content-center mb-2'>
           <form className='mt-3' style={{display: this.state.addDisplay}}>
