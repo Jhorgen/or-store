@@ -16,9 +16,11 @@ import {
   UncontrolledDropdown,
   NavbarText
 } from 'reactstrap';
-import {faSearch} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faSearch} from '@fortawesome/free-solid-svg-icons'
 import {faShoppingCart} from '@fortawesome/free-solid-svg-icons'
+import {faFacebookF} from "@fortawesome/free-brands-svg-icons"
+import {faInstagram} from "@fortawesome/free-brands-svg-icons"
 
 
 class OrbNavbar extends Component {
@@ -27,11 +29,12 @@ class OrbNavbar extends Component {
     this.state = {
       lengthCheck: false,
       dropdownOpen: false,
-      searchBarDispay: 'none',
+      searchBarDispay: '',
       searchInput: '',
       searchButton: 'none'
     }
   }
+
 
   tester = () => {
     console.log(this.props.cartItems);
@@ -52,15 +55,20 @@ class OrbNavbar extends Component {
   }
 
   searchBarToggle = () => {
-    this.setState({searchBarDispay: ''})
-    console.log('test');
+    this.setState({searchBarDispay: <input className='form-control mr-2' onChange={(e) => this.handleSearchInput(e, 'searchInput')} />
+})
   }
 
   handleSearchInput = (e, name) => {
     this.setState({[name]: e.target.value})
-    this.state.searchInput.length > 1 ? this.setState({searchButton: ''}) : this.setState({searchButton: 'none'})
+    this.setState({searchButton: ''})
   }
 
+  searchToggle = () => {
+    if(this.state.searchInput.length > -1) {
+      this.setState({searchBarDispay: '', searchButton: 'none', dropdownOpen: false})
+    }
+  }
 
 
   render() {
@@ -69,7 +77,7 @@ class OrbNavbar extends Component {
         <Sticky>
           {({ style }) => <div style={{ ...style, zIndex: '2', borderBottomStyle: 'ridge' }}>
           <Navbar color="dark" light expand="md">
-            <NavbarBrand href="/"><Link to='/'><img className="mb-n5" style={{height: '12rem', marginTop: '-3.5rem'}} src={ require(`./../images/orb-logo-footer.webp`)} alt={"The Oter Rim Bicycle Shop"}/></Link></NavbarBrand>
+            <NavbarBrand href="/"><Link to='/' onClick={this.searchToggle}><img className="mb-n5" style={{height: '12rem', marginTop: '-3.5rem'}} src={ require(`./../images/orb-logo-footer.webp`)} alt={"The Oter Rim Bicycle Shop"} title='Orb Home'/></Link></NavbarBrand>
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.dropdownOpen} navbar>
               <Nav className="mr-auto" navbar>
@@ -81,33 +89,35 @@ class OrbNavbar extends Component {
                 </NavItem>
                 <NavItem className='mr-2 mb-2'>
                   <Col>
-                    <Link to="/cart"><span className="text-light mr-2 navbar-font"><FontAwesomeIcon style={{fontSize: '1.6rem'}} icon={faShoppingCart} onClick={this.toggleAddDisplay} />
-                    </span><b className='text-info' style={{fontSize: '1rem'}}>{this.props.form.addedItems.length > 0 ? this.props.form.addedItems[0].checkoutquantity  : ''}</b></Link>
-                  </Col>
-                </NavItem>
-                <NavItem>
-                  <Col className='d-flex'>
-                    <span onClick={() => this.searchBarToggle()} className='text-light navbar-font pr-2'><FontAwesomeIcon style={{fontSize: '1.6rem'}} icon={faSearch} onClick={this.toggleAddDisplay} />
-                    </span>
-                    <input className='form-control mr-2' style={{display: this.state.searchBarDispay}} onChange={(e) => this.handleSearchInput(e, 'searchInput')}/>
-                    <Link to={{ pathname: '/search', state: { searchInput: this.state.searchInput} }}><button className='btn btn-info' style={{display: this.state.searchButton}}>Go</button></Link>
-                  </Col>
-                </NavItem>
-              </Nav>
-            </Collapse>
-              <div className='icon-toggle'>
-                <a href="https://www.facebook.com/outerrimbicycles/" target="about_blank" title="Our Facebook page">
-                  <img className="pr-3" style={{height: '2rem'}} src={ require(`./../images/fb-logo.webp`)} alt={"The Outer Rim Bicycle Shop"}/>
-                </a>
-                <a href="https://www.instagram.com/outerrimbicycles/" target="about_blank" title="Our Instagram page">
-                  <img style={{height: '2rem'}} src={ require(`./../images/insta-logo.webp`)} alt={"The Outer Rim Bicycle Shop"}/>
-                </a>
-              </div>
-          </Navbar>
-        </div>}
-      </Sticky>
-    </div>
-  )
+                    <Link to="/cart"><span className="text-light mr-2 navbar-font"><FontAwesomeIcon style={{fontSize: '1.6rem'}} icon={faShoppingCart} onClick={this.toggleAddDisplay} title='Cart' />
+                  </span><b className='text-info' style={{fontSize: '1rem'}}>{this.props.form.addedItems.length > 0 ? this.props.form.addedItems[0].checkoutquantity  : ''}</b></Link>
+                </Col>
+              </NavItem>
+              <NavItem>
+                <Col>
+                  <form className='d-flex align-items-center'>
+                    <span onClick={() => this.searchBarToggle()} className='text-light navbar-font pr-3 cursor-toggle'><FontAwesomeIcon style={{fontSize: '1.6rem'}} icon={faSearch} onClick={this.toggleAddDisplay} title='Search' />
+                  </span>
+                  {this.state.searchBarDispay}
+                  <Link to={{ pathname: '/search', state: {searchInput: this.state.searchInput, search: 'search'}}}><button onClick={() => this.searchToggle()} className='btn btn-info' type='submit' style={{display: this.state.searchButton}}>Go</button></Link>
+                </form>
+              </Col>
+            </NavItem>
+          </Nav>
+        </Collapse>
+        <div className='icon-toggle flex-column align-items-center'>
+          <a href="https://www.facebook.com/outerrimbicycles/" target="about_blank" title="Our Facebook page">
+            <FontAwesomeIcon className='text-secondary' style={{fontSize: '1.7rem'}} icon={faFacebookF} />
+          </a>
+          <a className='mt-3' href="https://www.instagram.com/outerrimbicycles/" target="about_blank" title="Our Instagram page">
+            <FontAwesomeIcon className='text-secondary' style={{fontSize: '1.65rem'}} icon={faInstagram} />
+          </a>
+        </div>
+      </Navbar>
+    </div>}
+  </Sticky>
+</div>
+)
 }
 }
 
