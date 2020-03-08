@@ -12,15 +12,41 @@ class SearchResults extends Component {
   }
 
   componentDidMount = () => {
-
     let description = this.props.location.state.searchInput;
-
     fetch(`https://nameless-hollows-85718.herokuapp.com/api/v1/products/?description=${description}`)
     .then(res => res.json())
     .then(
       data => {this.setState({results: data})
       console.log(data)}
+    )
+  }
 
+  componentWillReceiveProps = (nextProps) => {
+    console.log('fired');
+    if(this.props.location.state.search === 'search') {
+      console.log('fired 2');
+      console.log(nextProps);
+      let description = this.props.location.state.searchInput;
+      fetch(`https://nameless-hollows-85718.herokuapp.com/api/v1/products/?description=${description}`)
+      .then(res => res.json())
+      .then(
+        data => {this.setState({results: data})
+        this.nextSearch()}
+      )
+    } else {
+      console.log(this.props.location.state);
+      console.log('search input', this.props.location.state.searchInput);
+    }
+  }
+
+  nextSearch = () => {
+    this.setState({results: []})
+    let description = this.props.location.state.searchInput;
+    fetch(`https://nameless-hollows-85718.herokuapp.com/api/v1/products/?description=${description}`)
+    .then(res => res.json())
+    .then(
+      data => {this.setState({results: data})
+      console.log(data)}
     )
   }
 
