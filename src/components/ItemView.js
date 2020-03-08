@@ -61,8 +61,8 @@ class ItemView extends Component {
       for(var i = 1; i < 11; i++) {
         this.state.itemView[0][`image${i}`] != '' ? images.push({
           src: require(`./../images/${this.state.itemView[0][`image${i}`]}.jpg`),
-          title: 'image title',
-          description: 'image description'
+          title: this.state.itemView[0].brand + ' ' + this.state.itemView[0].title,
+          description: this.state.itemView[0][`option${i}`]
         }) : console.log('nope')
         if(i == 10) {
           this.setState({images: images, selectedImage: this.state.itemView[0].image1})
@@ -75,25 +75,25 @@ class ItemView extends Component {
 
       this.setState({defaultOption: <option style={{display: 'none'}} value={'default'}>Select an option</option>})
 
-      this.state.itemView[0].option1 === '' ? this.setState({option1: ''}) : this.state.itemView[0].option1quantity === 0 ? this.setState({option1: <option value={'1'}>{this.state.itemView[0].option1} (Out of stock)</option>}) : this.setState({option1: <option value={'1'}>{this.state.itemView[0].option1}</option> })
+      this.state.itemView[0].option1 === '' ? this.setState({option1: ''}) : this.state.itemView[0].option1quantity === 0 ? this.setState({option1: <option value={'1'}>{this.state.itemView[0].option1} (Out of stock)</option>}) : this.setState({option1: <option value={'1'}>{this.state.itemView[0].option1}  (${this.state.itemView[0].option1price})</option>})
 
-      this.state.itemView[0].option2 === '' ? this.setState({option2: ''}) : this.state.itemView[0].option2quantity === 0 ? this.setState({option2: <option value={'2'}>{this.state.itemView[0].option2}</option>}) : this.setState({option2: <option value={'2'}>{this.state.itemView[0].option2}</option> })
+      this.state.itemView[0].option2 === '' ? this.setState({option2: ''}) : this.state.itemView[0].option2quantity === 0 ? this.setState({option2: <option value={'2'}>{this.state.itemView[0].option2}</option>}) : this.setState({option2: <option value={'2'}>{this.state.itemView[0].option2} (${this.state.itemView[0].option2price})</option> })
 
-      this.state.itemView[0].option3 === '' ? this.setState({option3: ''}) : this.state.itemView[0].option3quantity === 0 ? this.setState({option3: <option value={'3'}>{this.state.itemView[0].option3}</option>}) : this.setState({option3: <option value={'3'}>{this.state.itemView[0].option3}</option> })
+      this.state.itemView[0].option3 === '' ? this.setState({option3: ''}) : this.state.itemView[0].option3quantity === 0 ? this.setState({option3: <option value={'3'}>{this.state.itemView[0].option3}</option>}) : this.setState({option3: <option value={'3'}>{this.state.itemView[0].option3} (${this.state.itemView[0].option3price})</option> })
 
-      this.state.itemView[0].option4 === '' ? this.setState({option4: ''}) : this.state.itemView[0].option4quantity === 0 ? this.setState({option4: <option value={'4'}>{this.state.itemView[0].option4}</option>}) : this.setState({option4: <option value={'4'}>{this.state.itemView[0].option4}</option> })
+      this.state.itemView[0].option4 === '' ? this.setState({option4: ''}) : this.state.itemView[0].option4quantity === 0 ? this.setState({option4: <option value={'4'}>{this.state.itemView[0].option4}</option>}) : this.setState({option4: <option value={'4'}>{this.state.itemView[0].option4} (${this.state.itemView[0].option4price})</option> })
 
-      this.state.itemView[0].option5 === '' ? this.setState({option5: ''}) : this.state.itemView[0].option5quantity === 0 ? this.setState({option5: <option value={'5'}>{this.state.itemView[0].option5}</option>}) : this.setState({option5: <option value={'5'}>{this.state.itemView[0].option5}</option> })
+      this.state.itemView[0].option5 === '' ? this.setState({option5: ''}) : this.state.itemView[0].option5quantity === 0 ? this.setState({option5: <option value={'5'}>{this.state.itemView[0].option5}</option>}) : this.setState({option5: <option value={'5'}>{this.state.itemView[0].option5} (${this.state.itemView[0].option5price})</option> })
 
-      this.state.itemView[0].option6 === '' ? this.setState({option6: ''}) : this.state.itemView[0].option6quantity === 0 ? this.setState({option6: <option value={'6'}>{this.state.itemView[0].option6}</option>}) : this.setState({option6: <option value={'6'}>{this.state.itemView[0].option6}</option> })
+      this.state.itemView[0].option6 === '' ? this.setState({option6: ''}) : this.state.itemView[0].option6quantity === 0 ? this.setState({option6: <option value={'6'}>{this.state.itemView[0].option6}</option>}) : this.setState({option6: <option value={'6'}>{this.state.itemView[0].option6} (${this.state.itemView[0].option6price})</option> })
 
-      this.state.itemView[0].option7 === '' ? this.setState({option7: ''}) : this.state.itemView[0].option7quantity === 0 ? this.setState({option7: <option value={'7'}>{this.state.itemView[0].option7}</option>}) : this.setState({option7: <option value={'7'}>{this.state.itemView[0].option7}</option> })
+      this.state.itemView[0].option7 === '' ? this.setState({option7: ''}) : this.state.itemView[0].option7quantity === 0 ? this.setState({option7: <option value={'7'}>{this.state.itemView[0].option7}</option>}) : this.setState({option7: <option value={'7'}>{this.state.itemView[0].option7} (${this.state.itemView[0].option7price})</option> })
 
-      this.state.itemView[0].option8 === '' ? this.setState({option8: ''}) : this.state.itemView[0].option8quantity === 0 ? this.setState({option8: <option value={'8'}>{this.state.itemView[0].option8}</option>}) : this.setState({option8: <option value={'8'}>{this.state.itemView[0].option8}</option> })
+      this.state.itemView[0].option8 === '' ? this.setState({option8: ''}) : this.state.itemView[0].option8quantity === 0 ? this.setState({option8: <option value={'8'}>{this.state.itemView[0].option8}</option>}) : this.setState({option8: <option value={'8'}>{this.state.itemView[0].option8} (${this.state.itemView[0].option8price})</option> })
 
-      this.state.itemView[0].option9 === '' ? this.setState({option9: ''}) : this.state.itemView[0].option9quantity === 0 ? this.setState({option9: <option value={'9'}>{this.state.itemView[0].option9}</option>}) : this.setState({option9: <option value={'9'}>{this.state.itemView[0].option9}</option> })
+      this.state.itemView[0].option9 === '' ? this.setState({option9: ''}) : this.state.itemView[0].option9quantity === 0 ? this.setState({option9: <option value={'9'}>{this.state.itemView[0].option9}</option>}) : this.setState({option9: <option value={'9'}>{this.state.itemView[0].option9} (${this.state.itemView[0].option9price})</option> })
 
-      this.state.itemView[0].option10 === '' ? this.setState({option10: ''}) : this.state.itemView[0].option10quantity === 0 ? this.setState({option10: <option value={'10'}>{this.state.itemView[0].option10}</option>}) : this.setState({option10: <option value={'10'}>{this.state.itemView[0].option10}</option> })
+      this.state.itemView[0].option10 === '' ? this.setState({option10: ''}) : this.state.itemView[0].option10quantity === 0 ? this.setState({option10: <option value={'10'}>{this.state.itemView[0].option10}</option>}) : this.setState({option10: <option value={'10'}>{this.state.itemView[0].option10} (${this.state.itemView[0].option10price})</option> })
 
       for(var z = 1; z < 11; z++) {
         if(this.state.itemView[0][`spec${z}`] !== '') {
@@ -208,8 +208,8 @@ render() {
                   [
                     {
                       src: require(`./../images/${this.state.selectedImage}.jpg`),
-                      title: 'image title',
-                      description: 'image description'
+                      title: item.brand + ' ' + item.title,
+                      description: item.option1
                     }
                   ]
                 }/>
