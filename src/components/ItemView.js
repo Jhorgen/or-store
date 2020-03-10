@@ -3,7 +3,7 @@ import { Row, Col, Spinner } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import Lightbox from 'react-lightbox-component';
 import { connect } from 'react-redux'
-import { addToCart } from './../actions/cartActions.js'
+import { addToCart, viewItem } from './../actions/cartActions.js'
 import "react-lightbox-component/build/css/index.css";
 import Footer from './Footer'
 
@@ -57,7 +57,8 @@ class ItemView extends Component {
     fetch(`https://nameless-hollows-85718.herokuapp.com/api/v1/products/?brand=${brand}&title=${title}`)
     .then(res => res.json())
     .then(
-      data => {this.setState({itemView: data})
+      data => { this.props.viewItem(data)
+      this.setState({itemView: data})
       for(var i = 1; i < 11; i++) {
         this.state.itemView[0][`image${i}`] != '' ? images.push({
           src: require(`./../images/${this.state.itemView[0][`image${i}`]}.jpg`),
@@ -134,8 +135,9 @@ handleAddToCart = (id) => {
       console.log('wont add')
     } else {
       console.log('will add');
+      this.props.addToCart(id, selected, selectedIndex, price);
+      console.log(this.state.itemView[0].id);
     }
-    this.props.addToCart(id, selected, selectedIndex, price);
   }
 
   this.setState({addButton:<b className='mb-2'>Added to cart</b>, selectedPrice: '' })
@@ -313,7 +315,8 @@ render() {
 
   const mapDispatchToProps = (dispatch) => {
     return {
-      addToCart: (id, selected, selectedIndex, price) => {(dispatch(addToCart(id, selected, selectedIndex, price)))}
+      addToCart: (id, selected, selectedIndex, price) => {(dispatch(addToCart(id, selected, selectedIndex, price)))},
+      viewItem: (item) => {(dispatch(viewItem(item)))}
     }
   }
 
