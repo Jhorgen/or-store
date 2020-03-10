@@ -5,6 +5,7 @@ import { injectStripe, CardNumberElement,
   CardCVCElement } from 'react-stripe-elements'
   import { Button, Row } from 'reactstrap'
   import axios from 'axios'
+   import { checkout } from './../actions/cartActions.js'
 
 
   class PaymentForm extends Component {
@@ -39,10 +40,12 @@ import { injectStripe, CardNumberElement,
         stateValidation: 'none',
         zipValidation: 'none',
         addressValidation: 'none',
-        tester: ''
+        cardInfoValidation: 'none',
+        tester: '',
+        shipping: 0.00,
+        combinedTotal: 0
       }
     }
-
 
     ComponentDidMount = () => {
       console.log(this.props.form.total);
@@ -53,11 +56,13 @@ import { injectStripe, CardNumberElement,
     async submit(e) {
       e.preventDefault()
       if(this.state.firstName !== '' && this.state.lastName !== '' && this.state.city !== '' && this.state.state.toString().length === 2 && new RegExp(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,15}/g).test(this.state.email) && this.state.zip.toString().length === 5 && this.state.address !== '') {
+        console.log('test');
         let name = this.state.firstName + ' ' + this.state.lastName
         let address = this.state.address + ' ' + this.state.city + ' ' + this.state.state + ' ' + this.state.zip
         let chargeToken = await this.props.stripe.createToken({name: name, address: address }).then(({token, error}) => {
           if (error) {
             console.log('error:', error);
+            this.setState({cardInfoValidation: ''})
           } else {
             this.setState({token: token.id})
             console.log('no error:', token);
@@ -75,7 +80,7 @@ import { injectStripe, CardNumberElement,
           email: this.state.email,
           name: this.state.firstName + ' ' + this.state.lastName,
           phone: null,
-          amount: Math.round(this.props.total.toFixed(2)*100),
+          amount: Math.round(this.state.shipping + this.props.total.toFixed(2)*100),
           currency: "usd",
           token: this.state.token,
           description: 'Name:' + ' ' + this.state.firstName + ' ' + this.state.lastName + ' ' + 'Address:' + ' ' + this.state.address + ' ' + this.state.city + ' ' + this.state.state + ' ' + this.state.zip + ' ' + 'Address2:' + this.state.address2 + ' ' + this.state.city2 + ' ' + this.state.state2 + ' ' + this.state.zip2,
@@ -134,6 +139,7 @@ import { injectStripe, CardNumberElement,
 
           if(this.state.firstName === '') {
             this.setState({firstNameValidation: ''})
+
           }
 
           if(this.state.lastName === '') {
@@ -142,6 +148,7 @@ import { injectStripe, CardNumberElement,
 
           if(this.state.city === '') {
             this.setState({cityValidation: ''})
+
           }
 
           if(this.state.state === '') {
@@ -149,7 +156,7 @@ import { injectStripe, CardNumberElement,
           }
 
           let zipCodeCheck = this.state.zip
-          if(zipCodeCheck.toString().length !== 5) {
+          if(zipCodeCheck.toString().length > 5 || zipCodeCheck.toString().length < 5 ) {
             this.setState({zipValidation: ''})
           }
 
@@ -159,9 +166,104 @@ import { injectStripe, CardNumberElement,
         }
       }
 
-      toggleForm = () => {
+      toggleForm = (e) => {
+        console.log('ran again');
+        e.preventDefault()
         if(this.state.firstName !== '' && this.state.lastName !== '' && this.state.city !== '' && this.state.state.toString().length === 2 && new RegExp(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,15}/g).test(this.state.email) && this.state.zip.toString().length === 5 && this.state.address !== '') {
           this.setState({nextButton: 'none', paymentForm: '', toggleHr: ''})
+
+          let shipping = 5.00
+          for(var z = 0; z < this.props.form.addedItems.length; z++) {
+
+            if(this.props.form.addedItems[z].category === 'Bars') {
+              shipping = shipping + 15 * this.props.form.addedItems[z].checkoutquantity
+            }
+
+            if(this.props.form.addedItems[z].category === 'Brakes') {
+              shipping = shipping + 4 * this.props.form.addedItems[z].checkoutquantity
+            }
+
+            if(this.props.form.addedItems[z].category === 'Hubs') {
+              shipping = shipping + 4 * this.props.form.addedItems[z].checkoutquantity
+            }
+
+            if(this.props.form.addedItems[z].category === 'Rims') {
+              shipping = shipping + 15 * this.props.form.addedItems[z].checkoutquantity
+            }
+
+            if(this.props.form.addedItems[z].category === 'Pedals') {
+              shipping = shipping + 4 * this.props.form.addedItems[z].checkoutquantity
+            }
+
+            if(this.props.form.addedItems[z].category === 'Sprockets') {
+              shipping = shipping + 3 * this.props.form.addedItems[z].checkoutquantity
+            }
+
+            if(this.props.form.addedItems[z].category === 'Chains') {
+              shipping = shipping + 3 * this.props.form.addedItems[z].checkoutquantity
+            }
+
+            if(this.props.form.addedItems[z].category === 'Seats') {
+              shipping = shipping + 3 * this.props.form.addedItems[z].checkoutquantity
+            }
+
+            if(this.props.form.addedItems[z].category === 'Forks') {
+              shipping = shipping + 15 * this.props.form.addedItems[z].checkoutquantity
+            }
+
+            if(this.props.form.addedItems[z].category === 'Headsets') {
+              shipping = shipping + 3 * this.props.form.addedItems[z].checkoutquantity
+            }
+
+            if(this.props.form.addedItems[z].category === 'Gloves') {
+              shipping = shipping + 3 * this.props.form.addedItems[z].checkoutquantity
+            }
+
+            if(this.props.form.addedItems[z].category === 'Pegs') {
+              shipping = shipping + 3 * this.props.form.addedItems[z].checkoutquantity
+            }
+
+            if(this.props.form.addedItems[z].category === 'Grips') {
+              shipping = shipping + 3.00 * this.props.form.addedItems[z].checkoutquantity
+              console.log(shipping);
+            }
+
+            if(this.props.form.addedItems[z].category === 'Titanium Hardware') {
+              shipping = shipping + 2 * this.props.form.addedItems[z].checkoutquantity
+            }
+
+            if(this.props.form.addedItems[z].category === 'Cranks') {
+              shipping = shipping + 4 * this.props.form.addedItems[z].checkoutquantity
+            }
+
+            if(this.props.form.addedItems[z].category === 'Stems') {
+              shipping = shipping + 4 * this.props.form.addedItems[z].checkoutquantity
+            }
+
+            if(this.props.form.addedItems[z].category === 'Tires') {
+              shipping = shipping + 10 * this.props.form.addedItems[z].checkoutquantity
+            }
+
+            if(this.props.form.addedItems[z].category === 'Wheels') {
+              shipping = shipping + 15 * this.props.form.addedItems[z].checkoutquantity
+            }
+
+            if(this.props.form.addedItems[z].category === 'Frames') {
+              shipping = shipping + 20 * this.props.form.addedItems[z].checkoutquantity
+            }
+
+            if(z + 1 == this.props.form.addedItems.length) {
+              this.setState({shipping: shipping})
+              console.log(this.state.shipping);
+              this.setState({combinedTotal: this.props.total + shipping})
+            } else {
+              console.log('z', z);
+              console.log('l', this.props.form.addedItems.length);
+            }
+
+          }
+
+
         } else {
           if(new RegExp(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,15}/g).test(this.state.email) === false) {
             this.setState({emailValidation: ''})
@@ -229,11 +331,14 @@ import { injectStripe, CardNumberElement,
       };
 
       testPost() {
+        console.log('total', this.props.total);
+        console.log('total with toFixed', this.props.total.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,'));
         axios.post(
           'https://nameless-hollows-85718.herokuapp.com/api/v1/purchases/',
           { purchase:
             {
               amount: this.props.form.total.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,'),
+              shipping: this.state.shipping,
               email: this.state.email,
               firstname: this.state.firstName,
               lastname: this.state.lastName,
@@ -425,6 +530,7 @@ import { injectStripe, CardNumberElement,
         )
         .then(response => {
           console.log(response)
+          this.props.checkout(this.props.form.items)
         })
         .catch(error => console.log(error))
       }
@@ -437,69 +543,12 @@ import { injectStripe, CardNumberElement,
         }
       }
 
-      toggleOverview = () => {
-
-        let shipping = 0;
-
-        for(var i = 0; i < this.props.form.addedItems.length; i++) {
-          if(this.props.form.addedItems[i].category === 'Bars') {
-            console.log('true');
-          } else {
-            console.log('false');
-          }
-
-          if(this.props.form.addedItems[i].category === 'Bars') {
-            console.log('true');
-          } else {
-            console.log('false');
-          }
-
-          if(this.props.form.addedItems[i].category === 'Bars') {
-            console.log('true');
-          } else {
-            console.log('false');
-          }
-
-          if(this.props.form.addedItems[i].category === 'Bars') {
-            console.log('true');
-          } else {
-            console.log('false');
-          }
-
-          if(this.props.form.addedItems[i].category === 'Bars') {
-            console.log('true');
-          } else {
-            console.log('false');
-          }
-
-          if(this.props.form.addedItems[i].category === 'Bars') {
-            console.log('true');
-          } else {
-            console.log('false');
-          }
-
-          if(this.props.form.addedItems[i].category === 'Bars') {
-            console.log('true');
-          } else {
-            console.log('false');
-          }
-
-          if(this.props.form.addedItems[i].category === 'Bars') {
-            console.log('true');
-          } else {
-            console.log('false');
-          }
-        }
-
-      }
-
-
       render() {
         return (
           <div>
             <div style={{background: "beige"}} className="checkout-form">
               <p style={{display: this.state.paymentForm}}></p>
-              <form onSubmit={(e) => this.submit(e)}>
+              <form onSubmit={(e) => this.toggleForm(e)}>
                 <Row className="flex-column" style={{display: this.state.shippingForm}}>
                   <h4 className='text-center pb-2'>{this.state.checked == 'checked' ? <span>Shipping details</span> : <span>Billing address</span>}</h4>
                   <b>Email</b>
@@ -667,10 +716,15 @@ import { injectStripe, CardNumberElement,
                     <p className='pr-1'>Shipping address same as billing?</p>
                     <input className='form-control' onClick={() => this.toggleShippingForm()} style={{width: '2rem', height: '1rem'}} type='checkbox' checked={this.state.checked} />
                   </Row>
-                  <span style={{display: this.state.nextButton}} className="btn btn-block btn-info" onClick={() => this.toggleForm()}>Next</span>
+                  <span style={{display: this.state.nextButton}} className="btn btn-block btn-info" onClick={(e) => this.toggleForm(e)}>Next</span>
                   <hr className='w-100' style={{display: this.state.toggleHr}}/>
                 </Row>
                 <Row className="flex-column" style={{display: this.state.paymentForm}}>
+                  <b className='text-center'>Cart: ${this.props.total.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</b>
+                  <b className='text-center'>Shipping: ${this.state.shipping.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</b>
+                  <hr style={{width: '50%'}}/>
+                  <b className='text-center'>Total: ${this.state.combinedTotal.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</b>
+                  <hr style={{width: '35%'}}/>
                   <label className="pr-4 pb-2">
                     <b>Card details</b>
                     <CardNumberElement onChange={(e) => this.handleChange(e, 'tester')} />
@@ -686,9 +740,8 @@ import { injectStripe, CardNumberElement,
                     <CardCVCElement />
                   </label>
                   <br/>
-                  <Button className="btn btn-block"><b>Pay now (${this.props.total.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')})</b></Button>
-                  <Button onClick={this.toggleOverview} className="btn btn-block"><b>Next</b></Button>
-
+                  <button className="btn btn-block btn-info"><b onClick={(e) => this.submit(e)} className='p-5'>Checkout (${this.state.combinedTotal.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')})</b></button>
+                  <p style={{display: this.state.cardInfoValidation, textAlign: 'center', fontWeight: 'bold'}}><span class='text-danger'>*</span>Please enter card info or use a different card.</p>
                 </Row>
               </form>
             </div>
@@ -697,4 +750,10 @@ import { injectStripe, CardNumberElement,
       }
     }
 
-    export default connect ((state) => state)(injectStripe(PaymentForm));
+    const mapDispatchToProps = (dispatch) => {
+      return{
+        checkout: (items) => {dispatch(checkout(items))}
+      }
+    }
+
+    export default connect ((state) => state, mapDispatchToProps)(injectStripe(PaymentForm));
