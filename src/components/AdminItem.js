@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-//delete Quantity in condition
 
 
 class Adminitem extends Component {
@@ -10,13 +9,8 @@ class Adminitem extends Component {
       qtyDisplay: <b>Qty</b>,
       noQty: '',
       deleteConfirmation: '',
-      deleteCancel: ''
-    }
+      deleteCancel: ''    }
   }
-
-ComponentDidMount = () => {
-  console.log(this.prop.item);
-}
 
   handleClick = (id) => {
     this.props.onClick(id)

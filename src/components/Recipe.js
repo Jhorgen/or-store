@@ -49,7 +49,7 @@ class Recipe extends Component {
 
 
 const mapDispatchToProps = (dispatch) => {
-  return{
+  return {
     addShipping: () => {dispatch({type: 'ADD_SHIPPING'})},
     substractShipping: () => {dispatch({type: 'SUB_SHIPPING'})}
   }
