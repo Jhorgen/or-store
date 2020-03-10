@@ -67,6 +67,21 @@ const cartReducer = (state = initState, action) => {
       ...state,
       total: action.total
     }
+
+    case 'VIEW_ITEM':
+    return {
+      ...state,
+      items: action.item
+    }
+
+    case 'CHECKOUT_COMPLETE':
+    return {
+      items: action.items,
+      addedItems: [],
+      total: 0,
+      loading: false,
+      error: false
+    }
   }
 
   if(action.type === ADD_TO_CART) {

@@ -50,6 +50,20 @@ export const subShipping = (id) => {
   }
 }
 
+export const checkout = (items) => {
+  return {
+    type: 'CHECKOUT_COMPLETE',
+    items
+  }
+}
+
+export const viewItem = (item) => {
+  return {
+    type: 'VIEW_ITEM',
+    item
+  }
+}
+
 
 // Cart / state management
 
