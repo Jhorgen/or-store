@@ -5,6 +5,7 @@ import Recipe from './Recipe'
 import CartItem from './CartItem'
 import { Row } from 'reactstrap'
 import Footer from './Footer'
+import {ScrollToTopOnMount} from './ScrollFix'
 
 
 class Cart extends Component {
@@ -59,9 +60,10 @@ class Cart extends Component {
 
       return (
         <div className='footer-control'>
+          <ScrollToTopOnMount/>
           <div className="container">
             <Row className="cart mt-2">
-              <ul className={this.props.form.addedItems.length > 0 ? "collection w-100 mt-4" : ''}>
+              <ul style={{display: this.state.handleHide}} className={this.props.form.addedItems.length > 0 ? "collection w-100 mt-4" : ''}>
                 {addedItems}
               </ul>
             </Row>

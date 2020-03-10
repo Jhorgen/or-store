@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { Spinner, Row, Col } from 'reactstrap'
 import Footer from './Footer'
+import {ScrollToTopOnMount} from './ScrollFix'
+
 
 class SearchResults extends Component {
   constructor(props) {
@@ -57,6 +59,7 @@ class SearchResults extends Component {
       this.state.results.map(searchResult => {
         return (
           <div key={searchResult.id}>
+            <ScrollToTopOnMount/>
             <Link style={{color: 'black'}} to={searchResult.brand + '/' + searchResult.title.split(' ').join('')}>
             <Row className="align-items-center text-center justify-content-center" style={{margin: '0px'}}>
               <Col sm='2' xs='6'>
