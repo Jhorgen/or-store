@@ -190,10 +190,6 @@ class Admin extends Component {
             name="spec10" placeholder='Enter Spec 10' value={this.state.value} onChange={this.handleInput} />
         </Row>
 
-        <Row className='m-1'>
-          <span className='text-primary m-1'>Sale price:</span>
-          <input className='input' name="saleprice" placeholder='Enter Sale Price' value={this.state.value} onChange={this.handleInput} />
-        </Row>
       </Col>
 
       <Col>
@@ -491,7 +487,6 @@ addNewItem(e) {
       option10quantity: 0, price: undefined, saleprice: undefined, image1: '', image2: '', image3: '', image4: '', image5: '',
       image6: '', image7: '', image8: '', image9: '', image10: '', option1price: undefined, option2price: undefined, option3price: undefined, option4price: undefined, option5price: undefined, option6price: undefined, option7price: undefined, option8price: undefined, option9price: undefined, option10price: '', editingItemId: null})
       this.loadItems()
-
     })
     .catch(error => console.log(error))
   }
