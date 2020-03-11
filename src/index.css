@@ -245,6 +245,10 @@ hr {
   .footer-logo-toggle {
     display: none !important;
   }
+  .navbar-margin-toggle {
+    margin-left: -15px;
+    margin-top: 15px;
+  }
 }
 
 @media only screen and (min-width: 700px) {
@@ -261,6 +265,11 @@ hr {
 
   .icon-toggle {
     display: flex !important
+  }
+
+  .navbar-margin-toggle {
+    margin-left: -40px;
+    margin-top: 15px;
   }
 
 }

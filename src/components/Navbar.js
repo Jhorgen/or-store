@@ -77,26 +77,26 @@ class OrbNavbar extends Component {
         <Sticky>
           {({ style }) => <div style={{ ...style, zIndex: '2', borderBottomStyle: 'ridge' }}>
           <Navbar color="dark" light expand="md">
-            <NavbarBrand href="/"><Link to='/' onClick={this.searchToggle}><img className="mb-n5" style={{height: '12rem', marginTop: '-3.5rem'}} src={ require(`./../images/orb-logo-footer.webp`)} alt={"The Oter Rim Bicycle Shop"} title='Orb Home'/></Link></NavbarBrand>
+            <NavbarBrand href="/"><Link to='/' onClick={this.searchToggle} style={{marginLeft: '-45px'}}><img className="mb-n5" style={{height: '10.5rem', marginTop: '-3.5rem'}} src={ require(`./../images/orb-logo-footer.webp`)} alt={"The Oter Rim Bicycle Shop"} title='Orb Home'/></Link></NavbarBrand>
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.dropdownOpen} navbar>
-              <Nav className="mr-auto" navbar>
+              <Nav className="mr-auto navbar-margin-toggle" navbar>
                 <NavItem>
                   <NavbarCategories />
                 </NavItem>
-                <NavItem>
+                <NavItem className='mr-2'>
                   <NavbarBrands />
                 </NavItem>
                 <NavItem className='mr-2 mb-2'>
                   <Col>
-                    <Link to="/cart"><span className="text-light mr-2 navbar-font"><FontAwesomeIcon style={{fontSize: '1.6rem'}} icon={faShoppingCart} onClick={this.toggleAddDisplay} title='Cart' />
+                    <Link to="/cart"><span className="text-light mr-2 navbar-font"><FontAwesomeIcon style={{fontSize: '1.45rem'}} icon={faShoppingCart} onClick={this.toggleAddDisplay} title='Cart' />
                   </span><b className='text-info' style={{fontSize: '1rem'}}>{this.props.form.addedItems.length > 0 ? this.props.form.addedItems[0].checkoutquantity  : ''}</b></Link>
                 </Col>
               </NavItem>
               <NavItem>
                 <Col>
                   <form className='d-flex align-items-center'>
-                    <span onClick={() => this.searchBarToggle()} className='text-light navbar-font pr-3 cursor-toggle'><FontAwesomeIcon style={{fontSize: '1.6rem'}} icon={faSearch} onClick={this.toggleAddDisplay} title='Search' />
+                    <span onClick={() => this.searchBarToggle()} className='text-light navbar-font pr-3 cursor-toggle'><FontAwesomeIcon style={{fontSize: '1.45rem'}} icon={faSearch} onClick={this.toggleAddDisplay} title='Search' />
                   </span>
                   {this.state.searchBarDispay}
                   <Link to={{ pathname: '/search', state: {searchInput: this.state.searchInput, search: 'search'}}}><button onClick={() => this.searchToggle()} className='btn btn-info' type='submit' style={{display: this.state.searchButton}}>Go</button></Link>
