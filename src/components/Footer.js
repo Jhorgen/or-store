@@ -8,7 +8,7 @@ import {faInstagram} from "@fortawesome/free-brands-svg-icons"
 
 const Footer = () => {
   return (
-    <Row style={{background: "black", margin: '0'}} className="text-center align-items-center">
+    <Row style={{background: "black", margin: '0', borderTop: '3px solid #343a40'}} className="text-center align-items-center">
       <Col className='mt-4'>
         <Link className='text-light add-font' to='/'><p>About us</p></Link>
         <Link className='text-light add-font' to='/'><p>Contact us</p></Link>
