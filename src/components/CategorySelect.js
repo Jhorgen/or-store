@@ -49,10 +49,13 @@ class CategorySelect extends Component {
         <div style={{display: this.state.spinner}} className='text-center mt-2 mb-5'>
           <Spinner color="info" />
         </div>
+        <div className='d-flex justify-content-center'>
+        <h4 className='category-header text-white add-font' style={{background: '#0000009e', padding: '13px', borderRadius: '5px'}}>Shipped from the USA</h4>
+        <img style={{width: '80%', height: '20rem'}} src={ require(`./../images/flag-banner.jpg`)} alt="Banner" title="Shipped from the USA."/>
+        </div>
         <div className='container'>
         <Row style={{display: this.state.itemDisplay}} className="justify-content-center m-3">
-
-
+          
             <div className='card m-3' style={{border: 'none'}}>
               <div className='test-hover'>
                 <h4 className="text-center category-select category-header" style={{textShadow: "1px 1px 1px black", fontSize: "40px"}}>Bars</h4>
