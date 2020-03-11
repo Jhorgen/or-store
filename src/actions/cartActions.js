@@ -150,7 +150,7 @@ export const saveSelectedItemData = (category, saveCartFromShop, saveTotalFromSh
   }
 }
 
-export const loadSelectedBrandData = (brand) => {
+export const loadBrandData = (brand) => {
   return (dispatch) => {
     fetch(`https://nameless-hollows-85718.herokuapp.com/api/v1/products/?brand=${brand}`)
     .then(res => res.json())

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Row, Spinner } from 'reactstrap'
-import { addToCart, loadSelectedBrandData, saveSelectedBrandData } from './../actions/cartActions.js'
+import { addToCart, loadBrandData, saveSelectedBrandData } from './../actions/cartActions.js'
 import ShopItem from './ShopItem'
 import Footer from './Footer'
 import { ScrollToTopOnMount } from './ScrollFix'
@@ -67,7 +67,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     addToCart: (id) => {(dispatch(addToCart(id)))},
     saveSelectedBrandData: (brand, saveCartFromBrand, saveTotalFromBrand) => {(dispatch(saveSelectedBrandData(brand, saveCartFromBrand, saveTotalFromBrand)))},
-    loadSelectedBrandData: (brand) => {(dispatch(loadSelectedBrandData(brand)))}
+    loadSelectedBrandData: (brand) => {(dispatch(loadBrandData(brand)))}
   }
 }
 
