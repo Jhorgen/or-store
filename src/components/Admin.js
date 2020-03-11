@@ -118,296 +118,300 @@ class Admin extends Component {
   addItemForm = () => {
     this.setState({items: []})
     this.setState({itemForm: <form onSubmit={(e) => this.addNewItem(e)}>
-    <div className='d-flex align-items-baseline'>
-      <Col>
-        <Row className='m-1'>
+
+      <Row>
+        <Col>
           <span className='text-primary m-1'>Category:</span>
           <input className='input' name="category" placeholder='Enter Category' value={this.state.value} onChange={this.handleInput} ref={this.props.titleRef} />
-        </Row>
+        </Col>
 
-        <Row className='m-1'>
+        <Col>
           <span className='text-primary m-1'>Brand:</span>
           <input className='input' name="brand" placeholder='Enter Brand' value={this.state.value} onChange={this.handleInput} />
-        </Row>
+        </Col>
 
-        <Row className='m-1'>
+        <Col>
           <span className='text-primary m-1'>Title:</span> <input className='input'
             name="title" placeholder='Enter Title' value={this.state.value} onChange={this.handleInput} />
-        </Row>
+        </Col>
 
-        <Row className='m-1'>
+        <Col>
           <span className='text-primary m-1'>Description:</span> <input className='input'
             name="description" placeholder='Enter Description' value={this.state.value} onChange={this.handleInput} />
-        </Row>
+        </Col>
+      </Row>
 
-        <Row className='m-1'>
-          <span className='text-primary m-1'>Spec 1:</span> <input className='input'
-            name="spec1" placeholder='Enter Spec 1' value={this.state.value} onChange={this.handleInput} />
-        </Row>
-
-        <Row className='m-1'>
-          <span className='text-primary m-1'>Spec 2:</span> <input className='input'
-            name="spec2" placeholder='Enter Spec 2' value={this.state.value} onChange={this.handleInput} />
-        </Row>
-
-        <Row className='m-1'>
-          <span className='text-primary m-1'>Spec 3:</span> <input className='input'
-            name="spec3" placeholder='Enter Spec 3' value={this.state.value} onChange={this.handleInput} />
-        </Row>
-
-        <Row className='m-1'>
-          <span className='text-primary m-1'>Spec 4:</span> <input className='input'
-            name="spec4" placeholder='Enter Spec 4' value={this.state.value} onChange={this.handleInput} />
-        </Row>
-
-        <Row className='m-1'>
-          <span className='text-primary m-1'>Spec 5:</span> <input className='input'
-            name="spec5" placeholder='Enter Spec 5' value={this.state.value} onChange={this.handleInput} />
-        </Row>
-
-        <Row className='m-1'>
-          <span className='text-primary m-1'>Spec 6:</span> <input className='input'
-            name="spec6" placeholder='Enter Spec 6' value={this.state.value} onChange={this.handleInput} />
-        </Row>
-
-        <Row className='m-1'>
-          <span className='text-primary m-1'>Spec 7:</span> <input className='input'
-            name="spec7" placeholder='Enter Spec 7' value={this.state.value} onChange={this.handleInput} />
-        </Row>
-
-        <Row className='m-1'>
-          <span className='text-primary m-1'>Spec 8:</span> <input className='input'
-            name="spec8" placeholder='Enter Spec 8' value={this.state.value} onChange={this.handleInput} />
-        </Row>
-
-        <Row className='m-1'>
-          <span className='text-primary m-1'>Spec 9:</span> <input className='input'
-            name="spec9" placeholder='Enter Spec 9' value={this.state.value} onChange={this.handleInput} />
-        </Row>
-
-        <Row className='m-1'>
-          <span className='text-primary m-1'>Spec 10:</span> <input className='input'
-            name="spec10" placeholder='Enter Spec 10' value={this.state.value} onChange={this.handleInput} />
-        </Row>
-
-      </Col>
+      <Row className='mt-2'>
 
       <Col>
-        <Row className='m-1'>
-          <span className='text-primary m-1'>Option 1:</span>
-          <input className='input' name="option1" placeholder='Enter Option 1' value={this.state.value} onChange={this.handleInput} />
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Spec 1:</span> <input className='input'
+          name="spec1" placeholder='Enter Spec 1' value={this.state.value} onChange={this.handleInput} />
         </Row>
 
-        <Row className='m-1'>
-          <span className='text-primary m-1'>Option 2:</span>
-          <input className='input' name="option2" placeholder='Enter Option 2' value={this.state.value} onChange={this.handleInput} />
-        </Row>
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Spec 2:</span> <input className='input'
+          name="spec2" placeholder='Enter Spec 2' value={this.state.value} onChange={this.handleInput} />
+      </Row>
 
-        <Row className='m-1'>
-          <span className='text-primary m-1'>Option 3:</span>
-          <input className='input' name="option3" placeholder='Enter Option 3' value={this.state.value} onChange={this.handleInput} />
-        </Row>
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Spec 3:</span> <input className='input'
+          name="spec3" placeholder='Enter Spec 3' value={this.state.value} onChange={this.handleInput} />
+      </Row>
 
-        <Row className='m-1'>
-          <span className='text-primary m-1'>Option 4:</span>
-          <input className='input' name="option4" placeholder='Enter Option 4' value={this.state.value} onChange={this.handleInput} />
-        </Row>
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Spec 4:</span> <input className='input'
+          name="spec4" placeholder='Enter Spec 4' value={this.state.value} onChange={this.handleInput} />
+      </Row>
 
-        <Row className='m-1'>
-          <span className='text-primary m-1'>Option 5:</span>
-          <input className='input' name="option5" placeholder='Enter Option 5' value={this.state.value} onChange={this.handleInput} />
-        </Row>
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Spec 5:</span> <input className='input'
+          name="spec5" placeholder='Enter Spec 5' value={this.state.value} onChange={this.handleInput} />
+      </Row>
 
-        <Row className='m-1'>
-          <span className='text-primary m-1'>Option 6:</span>
-          <input className='input' name="option6" placeholder='Enter Option 6' value={this.state.value} onChange={this.handleInput} />
-        </Row>
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Spec 6:</span> <input className='input'
+          name="spec6" placeholder='Enter Spec 6' value={this.state.value} onChange={this.handleInput} />
+      </Row>
 
-        <Row className='m-1'>
-          <span className='text-primary m-1'>Option 7:</span>
-          <input className='input' name="option7" placeholder='Enter Option 7' value={this.state.value} onChange={this.handleInput} />
-        </Row>
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Spec 7:</span> <input className='input'
+          name="spec7" placeholder='Enter Spec 7' value={this.state.value} onChange={this.handleInput} />
+      </Row>
 
-        <Row className='m-1'>
-          <span className='text-primary m-1'>Option 8:</span>
-          <input className='input' name="option8" placeholder='Enter Option 8' value={this.state.value} onChange={this.handleInput} />
-        </Row>
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Spec 8:</span> <input className='input'
+          name="spec8" placeholder='Enter Spec 8' value={this.state.value} onChange={this.handleInput} />
+      </Row>
 
-        <Row className='m-1'>
-          <span className='text-primary m-1'>Option 9:</span>
-          <input className='input' name="option9" placeholder='Enter Option 9' value={this.state.value} onChange={this.handleInput} />
-        </Row>
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Spec 9:</span> <input className='input'
+          name="spec9" placeholder='Enter Spec 9' value={this.state.value} onChange={this.handleInput} />
+      </Row>
 
-        <Row className='m-1'>
-          <span className='text-primary m-1'>Option 10:</span>
-          <input className='input' name="option10" placeholder='Enter Option 10' value={this.state.value} onChange={this.handleInput} />
-        </Row>
-      </Col>
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Spec 10:</span> <input className='input'
+          name="spec10" placeholder='Enter Spec 10' value={this.state.value} onChange={this.handleInput} />
+      </Row>
 
-      <Col>
-        <Row className='m-1'>
-          <span className='text-primary m-1'>Option 1 price:</span>
-          <input className='input' name="option1price" placeholder='Enter price 1' value={this.state.value} onChange={this.handleInput} />
-        </Row>
+    </Col>
 
-        <Row className='m-1'>
-          <span className='text-primary m-1'>Option 2 price:</span>
-          <input className='input' name="option2price" placeholder='Enter price 2' value={this.state.value} onChange={this.handleInput} />
-        </Row>
+    <Col>
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 1:</span>
+        <input className='input' name="option1" placeholder='Enter Option 1' value={this.state.value} onChange={this.handleInput} />
+      </Row>
 
-        <Row className='m-1'>
-          <span className='text-primary m-1'>Option 3 price:</span>
-          <input className='input' name="option3price" placeholder='Enter price 3' value={this.state.value} onChange={this.handleInput} />
-        </Row>
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 2:</span>
+        <input className='input' name="option2" placeholder='Enter Option 2' value={this.state.value} onChange={this.handleInput} />
+      </Row>
 
-        <Row className='m-1'>
-          <span className='text-primary m-1'>Option 4 price:</span>
-          <input className='input' name="option4price" placeholder='Enter price 4' value={this.state.value} onChange={this.handleInput} />
-        </Row>
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 3:</span>
+        <input className='input' name="option3" placeholder='Enter Option 3' value={this.state.value} onChange={this.handleInput} />
+      </Row>
 
-        <Row className='m-1'>
-          <span className='text-primary m-1'>Option 5 price:</span>
-          <input className='input' name="option5price" placeholder='Enter price 5' value={this.state.value} onChange={this.handleInput} />
-        </Row>
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 4:</span>
+        <input className='input' name="option4" placeholder='Enter Option 4' value={this.state.value} onChange={this.handleInput} />
+      </Row>
 
-        <Row className='m-1'>
-          <span className='text-primary m-1'>Option 6 price:</span>
-          <input className='input' name="option6price" placeholder='Enter price 6' value={this.state.value} onChange={this.handleInput} />
-        </Row>
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 5:</span>
+        <input className='input' name="option5" placeholder='Enter Option 5' value={this.state.value} onChange={this.handleInput} />
+      </Row>
 
-        <Row className='m-1'>
-          <span className='text-primary m-1'>Option 7 price:</span>
-          <input className='input' name="option7price" placeholder='Enter price 7' value={this.state.value} onChange={this.handleInput} />
-        </Row>
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 6:</span>
+        <input className='input' name="option6" placeholder='Enter Option 6' value={this.state.value} onChange={this.handleInput} />
+      </Row>
 
-        <Row className='m-1'>
-          <span className='text-primary m-1'>Option 8 price:</span>
-          <input className='input' name="option8price" placeholder='Enter price 8' value={this.state.value} onChange={this.handleInput} />
-        </Row>
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 7:</span>
+        <input className='input' name="option7" placeholder='Enter Option 7' value={this.state.value} onChange={this.handleInput} />
+      </Row>
 
-        <Row className='m-1'>
-          <span className='text-primary m-1'>Option 9 price:</span>
-          <input className='input' name="option9price" placeholder='Enter price 9' value={this.state.value} onChange={this.handleInput} />
-        </Row>
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 8:</span>
+        <input className='input' name="option8" placeholder='Enter Option 8' value={this.state.value} onChange={this.handleInput} />
+      </Row>
 
-        <Row className='m-1'>
-          <span className='text-primary m-1'>Option 10 price:</span>
-          <input className='input' name="option10price" placeholder='Enter price 10' onChange={this.handleInput} />
-        </Row>
-      </Col>
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 9:</span>
+        <input className='input' name="option9" placeholder='Enter Option 9' value={this.state.value} onChange={this.handleInput} />
+      </Row>
 
-      <Col>
-        <Row className='m-1'>
-          <span className='text-primary m-1'>Option 1 Qty:</span>
-          <input className='input' name="option1quantity" placeholder='Enter Quantity (Option 1)' value={this.state.value} onChange={this.handleInput} />
-        </Row>
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 10:</span>
+        <input className='input' name="option10" placeholder='Enter Option 10' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+    </Col>
 
-        <Row className='m-1'>
-          <span className='text-primary m-1'>Option 2 Qty:</span>
-          <input className='input' name="option2quantity" placeholder='Enter Quantity (Option 2)' value={this.state.value} onChange={this.handleInput} />
-        </Row>
+    <Col>
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 1 price:</span>
+        <input className='input' name="option1price" placeholder='Enter price 1' value={this.state.value} onChange={this.handleInput} />
+      </Row>
 
-        <Row className='m-1'>
-          <span className='text-primary m-1'>Option 3 Qty:</span>
-          <input className='input' name="option3quantity" placeholder='Enter Quantity (Option 3)' value={this.state.value} onChange={this.handleInput} />
-        </Row>
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 2 price:</span>
+        <input className='input' name="option2price" placeholder='Enter price 2' value={this.state.value} onChange={this.handleInput} />
+      </Row>
 
-        <Row className='m-1'>
-          <span className='text-primary m-1'>Option 4 Qty:</span>
-          <input className='input' name="option4quantity" placeholder='Enter Quantity (Option 4)' value={this.state.value} onChange={this.handleInput} />
-        </Row>
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 3 price:</span>
+        <input className='input' name="option3price" placeholder='Enter price 3' value={this.state.value} onChange={this.handleInput} />
+      </Row>
 
-        <Row className='m-1'>
-          <span className='text-primary m-1'>Option 5 Qty:</span>
-          <input className='input' name="option5quantity" placeholder='Enter Quantity (Option 5)' value={this.state.value} onChange={this.handleInput} />
-        </Row>
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 4 price:</span>
+        <input className='input' name="option4price" placeholder='Enter price 4' value={this.state.value} onChange={this.handleInput} />
+      </Row>
 
-        <Row className='m-1'>
-          <span className='text-primary m-1'>Option 6 Qty:</span>
-          <input className='input' name="option6quantity" placeholder='Enter Quantity (Option 6)' value={this.state.value} onChange={this.handleInput} />
-        </Row>
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 5 price:</span>
+        <input className='input' name="option5price" placeholder='Enter price 5' value={this.state.value} onChange={this.handleInput} />
+      </Row>
 
-        <Row className='m-1'>
-          <span className='text-primary m-1'>Option 7 Qty:</span>
-          <input className='input' name="option7quantity" placeholder='Enter Quantity (Option 7)' value={this.state.value} onChange={this.handleInput} />
-        </Row>
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 6 price:</span>
+        <input className='input' name="option6price" placeholder='Enter price 6' value={this.state.value} onChange={this.handleInput} />
+      </Row>
 
-        <Row className='m-1'>
-          <span className='text-primary m-1'>Option 8 Qty:</span>
-          <input className='input' name="option8quantity" placeholder='Enter Quantity (Option 8)' value={this.state.value} onChange={this.handleInput} />
-        </Row>
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 7 price:</span>
+        <input className='input' name="option7price" placeholder='Enter price 7' value={this.state.value} onChange={this.handleInput} />
+      </Row>
 
-        <Row className='m-1'>
-          <span className='text-primary m-1'>Option 9 Qty:</span>
-          <input className='input' name="option9quantity" placeholder='Enter Quantity (Option 9)' value={this.state.value} onChange={this.handleInput} />
-        </Row>
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 8 price:</span>
+        <input className='input' name="option8price" placeholder='Enter price 8' value={this.state.value} onChange={this.handleInput} />
+      </Row>
 
-        <Row className='m-1'>
-          <span className='text-primary m-1'>Option 10 Qty:</span>
-          <input className='input' name="option10quantity" placeholder='Enter Quantity (Option 10)' value={this.state.value} onChange={this.handleInput} />
-        </Row>
-      </Col>
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 9 price:</span>
+        <input className='input' name="option9price" placeholder='Enter price 9' value={this.state.value} onChange={this.handleInput} />
+      </Row>
 
-      <Col>
-        <Row className='m-1'>
-          <span className='text-primary m-1'>Image 1:</span>
-          <input className='input' name="image1" placeholder='Enter Image 1' value={this.state.value} onChange={this.handleInput} />
-        </Row>
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 10 price:</span>
+        <input className='input' name="option10price" placeholder='Enter price 10' onChange={this.handleInput} />
+      </Row>
+    </Col>
 
-        <Row className='m-1'>
-          <span className='text-primary m-1'>Image 2:</span>
-          <input className='input' name="image2" placeholder='Enter Image 2' value={this.state.value} onChange={this.handleInput} />
-        </Row>
+    <Col>
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 1 Qty:</span>
+        <input className='input' name="option1quantity" placeholder='Enter Quantity (Option 1)' value={this.state.value} onChange={this.handleInput} />
+      </Row>
 
-        <Row className='m-1'>
-          <span className='text-primary m-1'>Image 3:</span>
-          <input className='input' name="image3" placeholder='Enter Image 3' value={this.state.value} onChange={this.handleInput} />
-        </Row>
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 2 Qty:</span>
+        <input className='input' name="option2quantity" placeholder='Enter Quantity (Option 2)' value={this.state.value} onChange={this.handleInput} />
+      </Row>
 
-        <Row className='m-1'>
-          <span className='text-primary m-1'>Image 4:</span>
-          <input className='input' name="image4" placeholder='Enter Image 4' value={this.state.value} onChange={this.handleInput} />
-        </Row>
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 3 Qty:</span>
+        <input className='input' name="option3quantity" placeholder='Enter Quantity (Option 3)' value={this.state.value} onChange={this.handleInput} />
+      </Row>
 
-        <Row className='m-1'>
-          <span className='text-primary m-1'>Image 5:</span>
-          <input className='input' name="image5" placeholder='Enter Image 5' value={this.state.value} onChange={this.handleInput} />
-        </Row>
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 4 Qty:</span>
+        <input className='input' name="option4quantity" placeholder='Enter Quantity (Option 4)' value={this.state.value} onChange={this.handleInput} />
+      </Row>
 
-        <Row className='m-1'>
-          <span className='text-primary m-1'>Image 6:</span>
-          <input className='input' name="image6" placeholder='Enter Image 6' value={this.state.value} onChange={this.handleInput} />
-        </Row>
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 5 Qty:</span>
+        <input className='input' name="option5quantity" placeholder='Enter Quantity (Option 5)' value={this.state.value} onChange={this.handleInput} />
+      </Row>
 
-        <Row className='m-1'>
-          <span className='text-primary m-1'>Image 7:</span>
-          <input className='input' name="image7" placeholder='Enter Image 7' value={this.state.value} onChange={this.handleInput} />
-        </Row>
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 6 Qty:</span>
+        <input className='input' name="option6quantity" placeholder='Enter Quantity (Option 6)' value={this.state.value} onChange={this.handleInput} />
+      </Row>
 
-        <Row className='m-1'>
-          <span className='text-primary m-1'>Image 8:</span>
-          <input className='input' name="image8" placeholder='Enter Image 8' value={this.state.value} onChange={this.handleInput} />
-        </Row>
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 7 Qty:</span>
+        <input className='input' name="option7quantity" placeholder='Enter Quantity (Option 7)' value={this.state.value} onChange={this.handleInput} />
+      </Row>
 
-        <Row className='m-1'>
-          <span className='text-primary m-1'>Image 9:</span>
-          <input className='input' name="image9" placeholder='Enter Image 9' value={this.state.value} onChange={this.handleInput} />
-        </Row>
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 8 Qty:</span>
+        <input className='input' name="option8quantity" placeholder='Enter Quantity (Option 8)' value={this.state.value} onChange={this.handleInput} />
+      </Row>
 
-        <Row className='m-1'>
-          <span className='text-primary m-1'>Image 10:</span>
-          <input className='input' name="image10" placeholder='Enter Image 10' value={this.state.value} onChange={this.handleInput} />
-        </Row>
-      </Col>
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 9 Qty:</span>
+        <input className='input' name="option9quantity" placeholder='Enter Quantity (Option 9)' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Option 10 Qty:</span>
+        <input className='input' name="option10quantity" placeholder='Enter Quantity (Option 10)' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+    </Col>
+
+    <Col>
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Image 1:</span>
+        <input className='input' name="image1" placeholder='Enter Image 1' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Image 2:</span>
+        <input className='input' name="image2" placeholder='Enter Image 2' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Image 3:</span>
+        <input className='input' name="image3" placeholder='Enter Image 3' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Image 4:</span>
+        <input className='input' name="image4" placeholder='Enter Image 4' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Image 5:</span>
+        <input className='input' name="image5" placeholder='Enter Image 5' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Image 6:</span>
+        <input className='input' name="image6" placeholder='Enter Image 6' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Image 7:</span>
+        <input className='input' name="image7" placeholder='Enter Image 7' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Image 8:</span>
+        <input className='input' name="image8" placeholder='Enter Image 8' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Image 9:</span>
+        <input className='input' name="image9" placeholder='Enter Image 9' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+
+      <Row className='m-1'>
+        <span className='text-primary m-1'>Image 10:</span>
+        <input className='input' name="image10" placeholder='Enter Image 10' value={this.state.value} onChange={this.handleInput} />
+      </Row>
+    </Col>
 
 
-    </div>
-    <Row>
-      <input className='btn btn-success' type='submit'/>
-    </Row>
+  </Row>
+  <Row>
+    <input className='btn btn-success' type='submit'/>
+  </Row>
 
 
-  </form>})
+</form>})
 }
 
 addNewItem(e) {
@@ -492,6 +496,7 @@ addNewItem(e) {
   }
 
   updateItem = (item) => {
+    console.log('item updated', item);
     const itemIndex = this.state.items.findIndex(x => x.id === item.id)
     const items = update(this.state.items, {
       [itemIndex]: { $set: item }
