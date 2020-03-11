@@ -5,7 +5,8 @@ const initState = {
   addedItems: [],
   total: 0,
   loading: false,
-  error: false
+  error: false,
+  checkout: false
 }
 
 
@@ -17,7 +18,9 @@ const cartReducer = (state = initState, action) => {
       ...state,
       loading: true,
       error: false,
-    };
+      checkout: false
+    }
+
     case 'REQUESTED_ITEM_SUCCEEDED':
     return {
       ...state,
@@ -25,14 +28,17 @@ const cartReducer = (state = initState, action) => {
       loading: false,
       error: false,
       addedItems:action.addedItems,
-      total: action.total
-    };
+      total: action.total,
+      checkout: false
+    }
+
     case 'REQUESTED_ITEM_FAILED':
     return {
       ...state,
       loading: false,
-      error: true,
-    };
+      error: true
+    }
+
     case 'CHECK':
     return {
       ...state,
@@ -41,8 +47,8 @@ const cartReducer = (state = initState, action) => {
       error: false,
       addedItems: action.addedItems,
       total: action.total
-
     }
+
     case 'SHOP_CHECK':
     return {
       ...state,
@@ -52,6 +58,7 @@ const cartReducer = (state = initState, action) => {
       addedItems: action.addedItems,
       total: action.total
     }
+
     case 'BRANDS':
     return {
       ...state,
@@ -71,7 +78,8 @@ const cartReducer = (state = initState, action) => {
     case 'VIEW_ITEM':
     return {
       ...state,
-      items: action.item
+      items: action.item,
+      checkout: false
     }
 
     case 'CHECKOUT_COMPLETE':
@@ -80,7 +88,8 @@ const cartReducer = (state = initState, action) => {
       addedItems: [],
       total: 0,
       loading: false,
-      error: false
+      error: false,
+      checkout: true
     }
   }
 
@@ -94,12 +103,12 @@ const cartReducer = (state = initState, action) => {
 
     {
       console.log('existing', existed_item);
-        return {
-          ...state,
-          total: state.total + existed_item.price,
-          addedItems: updatedItems
+      return {
+        ...state,
+        total: state.total + existed_item.price,
+        addedItems: updatedItems
 
-        }
+      }
     }
 
     else {

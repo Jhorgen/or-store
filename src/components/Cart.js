@@ -13,7 +13,9 @@ class Cart extends Component {
     super(props)
     this.state = {
       handleHide: '',
-      total: ''
+      total: '',
+      emailMessage: '',
+      checked: ''
     }
   }
 
@@ -24,6 +26,10 @@ class Cart extends Component {
       this.props.correctTotalOnEmpty();
     } else {
       console.log('nada');
+    }
+
+    if(this.props.form.checkout) {
+      this.setState({emailMessage: <h4>An email receipt is on its way. Thank you for your purchase!</h4>, checked: 'none'})
     }
   }
 
@@ -54,7 +60,8 @@ class Cart extends Component {
       :
       (
         <div style={{display: this.state.handleHide}}>
-          <h4>Your cart is empty!</h4>
+          <h4 style={{display: this.state.checked}}>Your cart is empty!</h4>
+          {this.state.emailMessage}
         </div>
       )
 
