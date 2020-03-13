@@ -173,10 +173,24 @@ import { injectStripe, CardNumberElement,
           this.setState({nextButton: 'none', paymentForm: '', toggleHr: ''})
 
           let shipping = 5.00
+          let bars = []
+          let rims = []
+          let frames = []
+          let wheels = []
+          let tires = []
+          let forks = []
+
+
           for(var z = 0; z < this.props.form.addedItems.length; z++) {
 
             if(this.props.form.addedItems[z].category === 'Bars') {
-              shipping = shipping + 15 * this.props.form.addedItems[z].checkoutquantity
+              if(bars.length === 0) {
+                shipping = shipping + 15 * this.props.form.addedItems[z].checkoutquantity
+                bars.push(this.props.form.addedItems[z])
+                console.log('less than 0');
+              } else {
+                bars.push(this.props.form.addedItems[z])
+              }
             }
 
             if(this.props.form.addedItems[z].category === 'Brakes') {
@@ -188,7 +202,13 @@ import { injectStripe, CardNumberElement,
             }
 
             if(this.props.form.addedItems[z].category === 'Rims') {
-              shipping = shipping + 15 * this.props.form.addedItems[z].checkoutquantity
+              if(rims.length === 0) {
+                shipping = shipping + 15 * this.props.form.addedItems[z].checkoutquantity
+                rims.push(this.props.form.addedItems[z])
+                console.log('less than 0');
+              } else {
+                rims.push(this.props.form.addedItems[z])
+              }
             }
 
             if(this.props.form.addedItems[z].category === 'Pedals') {
@@ -253,12 +273,112 @@ import { injectStripe, CardNumberElement,
             }
 
             if(z + 1 == this.props.form.addedItems.length) {
-              this.setState({shipping: shipping})
-              console.log(this.state.shipping);
-              this.setState({combinedTotal: this.props.total + shipping})
-            } else {
-              console.log('z', z);
-              console.log('l', this.props.form.addedItems.length);
+              if(bars.length > 1) {
+                console.log('bars have length. 2nd check');
+                for(var n = 1; n < bars.length; n++) {
+                  if(bars[n].checkoutquantity > 1) {
+                    shipping = shipping + 10 * bars[n].checkoutquantity
+                    console.log('larger than 1 checkoutquantity. last check');
+                  } else {
+                    shipping = shipping + 10
+                    console.log('single checkout quantity. last check');
+                  }
+                  if(n + 1 === bars.length) {
+                    this.setState({shipping: shipping})
+                    console.log('shipping', shipping);
+                    console.log('ran first?');
+                  }
+              }
+              }
+
+              if(rims.length > 1) {
+                console.log('rims have length. 2nd check');
+                for(var m = 1; m < rims.length; m++) {
+                  if(rims[m].checkoutquantity > 1) {
+                    shipping = shipping + 10 * rims[m].checkoutquantity
+                    console.log('larger than 1 checkoutquantity. last check');
+                  } else {
+                    shipping = shipping + 10
+                    console.log('single checkout quantity. last check');
+                  }
+                  if(n + 1 === rims.length) {
+                    this.setState({shipping: shipping})
+                    console.log('shipping', shipping);
+                    console.log('ran first?');
+                  }
+              }
+              }
+
+              if(frames.length > 1) {
+                console.log('frames have length. 2nd check');
+                for(var r = 1; r < frames.length; r++) {
+                  if(frames[r].checkoutquantity > 1) {
+                    shipping = shipping + 15 * frames[r].checkoutquantity
+                    console.log('larger than 1 checkoutquantity. last check');
+                  } else {
+                    shipping = shipping + 15
+                    console.log('single checkout quantity. last check');
+                  }
+                  if(n + 1 === frames.length) {
+                    this.setState({shipping: shipping})
+                    console.log('shipping', shipping);
+                  }
+              }
+              }
+
+              if(forks.length > 1) {
+                console.log('forks have length. 2nd check');
+                for(var g = 1; g < forks.length; g++) {
+                  if(forks[g].checkoutquantity > 1) {
+                    shipping = shipping + 8 * forks[g].checkoutquantity
+                    console.log('larger than 1 checkoutquantity. last check');
+                  } else {
+                    shipping = shipping + 8
+                    console.log('single checkout quantity. last check');
+                  }
+                  if(n + 1 === forks.length) {
+                    this.setState({shipping: shipping})
+                    console.log('shipping', shipping);
+                  }
+              }
+              }
+
+              if(tires.length > 1) {
+                console.log('tires have length. 2nd check');
+                for(var f = 1; f < tires.length; f++) {
+                  if(tires[f].checkoutquantity > 1) {
+                    shipping = shipping + 6 * tires[f].checkoutquantity
+                    console.log('larger than 1 checkoutquantity. last check');
+                  } else {
+                    shipping = shipping + 6
+                    console.log('single checkout quantity. last check');
+                  }
+                  if(n + 1 === tires.length) {
+                    this.setState({shipping: shipping})
+                    console.log('shipping', shipping);
+                  }
+              }
+              }
+
+              if(wheels.length > 1) {
+                console.log('wheels have length. 2nd check');
+                for(var d = 1; d < wheels.length; d++) {
+                  if(wheels[d].checkoutquantity > 1) {
+                    shipping = shipping + 10 * wheels[d].checkoutquantity
+                    console.log('larger than 1 checkoutquantity. last check');
+                  } else {
+                    shipping = shipping + 10
+                    console.log('single checkout quantity. last check');
+                  }
+                  if(n + 1 === wheels.length) {
+                    this.setState({shipping: shipping})
+                    console.log('shipping', shipping);
+                  }
+              }
+              }
+
+                this.setState({shipping: shipping})
+                console.log('ran');
             }
 
           }
