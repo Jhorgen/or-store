@@ -8,7 +8,7 @@ import CategorySelect from './components/CategorySelect'
 import ItemView from './components/ItemView'
 import ShopByBrand from './components/ShopByBrand'
 import BrandSelect from './components/BrandSelect'
-import Admin from './components/Admin'
+import Check from './components/Check'
 import SearchResults from './components/SearchResults'
 import { StickyContainer, Sticky } from 'react-sticky';
 
@@ -131,7 +131,7 @@ function App() {
             <Route path="/search" component={SearchResults} />
             <Route path="/:brand/:title/" component={ItemView}/>
             <Route path="/cart" component={Cart}/>
-            <Route path={'/' + `${process.env.REACT_APP_R_API_KEY}`} component={Admin}/>
+            <Route path={'/' + `${process.env.REACT_APP_R_API_KEY}`} component={Check}/>
 
           </Switch>
         </div>
