@@ -3,7 +3,7 @@ import { Row, Col, Spinner } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import Lightbox from 'react-lightbox-component';
 import { connect } from 'react-redux'
-import { addToCart, viewItem } from './../actions/cartActions.js'
+import { addToCart, viewItem, saveCartItemTotal } from './../actions/cartActions.js'
 import "react-lightbox-component/build/css/index.css";
 import Footer from './Footer'
 
@@ -17,6 +17,7 @@ class ItemView extends Component {
       addedNotification: 'none',
       selectedOption: '',
       selectedOptionIndex: '',
+      outOfStock: '',
       inStock: '',
       selectedPrice: '',
       selectedImage: '',
@@ -137,6 +138,7 @@ handleAddToCart = (id) => {
       console.log('will add');
       this.props.addToCart(id, selected, selectedIndex, price);
       console.log(this.state.itemView[0].id);
+      this.props.saveCartItemTotal();
     }
   }
 
@@ -316,7 +318,8 @@ render() {
   const mapDispatchToProps = (dispatch) => {
     return {
       addToCart: (id, selected, selectedIndex, price) => {(dispatch(addToCart(id, selected, selectedIndex, price)))},
-      viewItem: (item) => {(dispatch(viewItem(item)))}
+      viewItem: (item) => {(dispatch(viewItem(item)))},
+      saveCartItemTotal: () => {(dispatch(saveCartItemTotal()))},
     }
   }
 

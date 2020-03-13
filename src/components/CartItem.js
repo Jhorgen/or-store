@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { removeItem, correctTotalOnEmpty, subtractQuantity, addQuantity } from './../actions/cartActions.js'
+import { removeItem, correctTotalOnEmpty, subtractQuantity, addQuantity, saveCartItemTotal } from './../actions/cartActions.js'
 import { Row, Col } from 'reactstrap'
 import { faAngleUp } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -37,6 +37,7 @@ class CartItem extends Component {
     setTimeout( () => {
       this.setState({inputRefresh: <input onClick={() => this.handleStyles(this.props.item.id)} className="mr-3 form-control" style={{width: '3rem'}} name="inputQuantity" placeholder={`${this.props.item.checkoutquantity}`} onChange={(e) => this.handleChange(e)} autoComplete='off' />})
     }, 50);
+    this.props.saveCartItemTotal();
   }
   }
 
@@ -53,6 +54,7 @@ class CartItem extends Component {
       setTimeout( () => {
         this.setState({inputRefresh: <input onClick={() => this.handleStyles(this.props.item.id)} className="mr-3 form-control" style={{width: '3rem'}} name="inputQuantity" placeholder={`${this.props.item.checkoutquantity}`} onChange={(e) => this.handleChange(e)} autoComplete='off' />})
       }, 50);
+      this.props.saveCartItemTotal();
     }
   }
 
@@ -77,6 +79,7 @@ class CartItem extends Component {
       setTimeout( () => {
         this.setState({inputRefresh: <input onClick={() => this.handleStyles(this.props.item.id)} className="mr-3 form-control" style={{width: '3rem'}} name="inputQuantity" placeholder={`${this.props.item.checkoutquantity}`} onChange={(e) => this.handleChange(e)} autoComplete='off' />})
       }, 50);
+      this.props.saveCartItemTotal();
     }
   }
 
@@ -92,6 +95,7 @@ class CartItem extends Component {
   handleRemove = (id, items) => {
     let selectedIndex = this.props.item.selectedOptionIndex;
     this.props.removeItem(id, items, selectedIndex);
+    this.props.saveCartItemTotal();
   }
 
   handleStyles = () => {
@@ -108,7 +112,7 @@ class CartItem extends Component {
       <div>
         <Row className="align-items-center text-center">
           <Col xs='2'>
-            <Link to={'/item/' + this.props.item.title}>
+            <Link to={this.props.item.brand + '/' + this.props.item.title.split(' ').join('')}>
               <img style={{height: "6rem"}} src={ require(`./../images/${this.props.item.image1}.jpg`)} alt={this.props.item.image}/>
             </Link>
           </Col>
@@ -146,6 +150,7 @@ const mapDispatchToProps = (dispatch) => {
     correctTotalOnEmpty: () => {dispatch(correctTotalOnEmpty())},
     addQuantity: (id, selectedIndex) => {dispatch(addQuantity(id, selectedIndex))},
     subtractQuantity: (id, selectedIndex) => {dispatch(subtractQuantity(id, selectedIndex))},
+    saveCartItemTotal: () => {dispatch(saveCartItemTotal())}
   }
 }
 
