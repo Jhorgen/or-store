@@ -31,13 +31,24 @@ class OrbNavbar extends Component {
       dropdownOpen: false,
       searchBarDispay: '',
       searchInput: '',
-      searchButton: 'none'
+      searchButton: 'none',
+      qty: ''
     }
   }
 
 
   tester = () => {
-    console.log(this.props.cartItems);
+    console.log('fired tester');
+    let qty = 0
+    for(var i = 0; i < this.props.form.addedItems.length; i++) {
+      qty = qty + this.props.form.addedItems[i].checkoutquantity
+      console.log(qty);
+      if(i + 1 === this.props.form.addedItems.length){
+        console.log('ok', qty);
+        this.setState({qty: qty})
+        console.log(this.props.form.addedItems[i].checkoutquantity);
+      }
+    }
   }
 
   toggle = () => {
@@ -76,7 +87,7 @@ class OrbNavbar extends Component {
       <div>
         <Sticky>
           {({ style }) => <div style={{ ...style, zIndex: '2', borderBottomStyle: 'ridge' }}>
-          <Navbar color="dark" light expand="md">
+          <Navbar onClick={this.tester} color="dark" light expand="md">
             <NavbarBrand href="/"><Link to='/' onClick={this.searchToggle} style={{marginLeft: '-45px'}}><img className="mb-n5" style={{height: '10.5rem', marginTop: '-3.5rem'}} src={ require(`./../images/orb-logo-footer.webp`)} alt={"The Oter Rim Bicycle Shop"} title='Orb Home'/></Link></NavbarBrand>
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.dropdownOpen} navbar>
@@ -90,7 +101,7 @@ class OrbNavbar extends Component {
                 <NavItem className='mr-2 mb-2'>
                   <Col>
                     <Link to="/cart"><span className="text-light mr-2 navbar-font"><FontAwesomeIcon style={{fontSize: '1.45rem'}} icon={faShoppingCart} onClick={this.toggleAddDisplay} title='Cart' />
-                  </span><b className='text-info' style={{fontSize: '1rem'}}>{this.props.form.addedItems.length > 0 ? this.props.form.addedItems[0].checkoutquantity  : ''}</b></Link>
+                  </span><b className='text-info' style={{fontSize: '1rem'}}>{this.props.form.addedItems.length > 0 ? this.props.form.cartQuantity : ''}</b></Link>
                 </Col>
               </NavItem>
               <NavItem>

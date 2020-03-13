@@ -64,6 +64,12 @@ export const viewItem = (item) => {
   }
 }
 
+export const saveCartItemTotal = () => {
+  return {
+    type: 'UPDATE_CART'
+  }
+}
+
 
 // Cart / state management
 

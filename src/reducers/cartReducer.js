@@ -6,7 +6,8 @@ const initState = {
   total: 0,
   loading: false,
   error: false,
-  checkout: false
+  checkout: false,
+  cartQuantity: 0
 }
 
 
@@ -72,7 +73,8 @@ const cartReducer = (state = initState, action) => {
     case 'CORRECT_TOTAL':
     return {
       ...state,
-      total: action.total
+      total: action.total,
+      cartQuantity: 0
     }
 
     case 'VIEW_ITEM':
@@ -89,8 +91,20 @@ const cartReducer = (state = initState, action) => {
       total: 0,
       loading: false,
       error: false,
+      cartQuantity: 0,
       checkout: true
     }
+
+    case 'UPDATE_CART':
+    let qty = 0
+    for(var i = 0; i < state.addedItems.length; i++) {
+      qty = qty + state.addedItems[i].checkoutquantity
+    }
+      return {
+        ...state,
+        cartQuantity: qty
+      }
+
   }
 
   if(action.type === ADD_TO_CART) {
