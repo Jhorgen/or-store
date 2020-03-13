@@ -9,7 +9,7 @@ class NavbarCategories extends Component {
     super(props)
     this.state = {
       lengthCheck: false,
-      dropdownOpen: false
+      dropdownOpen: true
     }
   }
 
@@ -33,9 +33,9 @@ class NavbarCategories extends Component {
 
   render() {
     return(
-      <div className='mb-2'>
+      <span className='mb-2'>
         <Col>
-          <Dropdown className="d-inline-block" onMouseOver={this.onMouseEnter} onMouseLeave={this.onMouseLeave} isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+          <Dropdown className="d-inline-block" onMouseOver={this.onMouseEnter}  isOpen={this.state.dropdownOpen} toggle={this.toggle}>
             <DropdownToggle
             tag="span"
             data-toggle="dropdown"
@@ -43,30 +43,30 @@ class NavbarCategories extends Component {
             style={{color: 'white'}}>
               <span className='navbar-font'>Categories</span>
             </DropdownToggle>
-            <DropdownMenu>
-              <div style={{fontWeight: 'bold', fontSize: '17px', padding: '4px'}} className='text-center' onClick={() => this.toggle}><Link to='/bars'>Bars</Link></div>
-              <div style={{fontWeight: 'bold', fontSize: '17px', padding: '4px'}} className='text-center' onClick={() => this.toggle}><Link to='/brakes'>Brakes</Link></div>
-              <div style={{fontWeight: 'bold', fontSize: '17px', padding: '4px'}} className='text-center' onClick={() => this.toggle}><Link to='/hubs'>Hubs</Link></div>
-              <div style={{fontWeight: 'bold', fontSize: '17px', padding: '4px'}} className='text-center' onClick={() => this.toggle}><Link to='/rims'>Rims</Link></div>
-              <div style={{fontWeight: 'bold', fontSize: '17px', padding: '4px'}} className='text-center' onClick={() => this.toggle}><Link to='/pedals'>Pedals</Link></div>
-              <div style={{fontWeight: 'bold', fontSize: '17px', padding: '4px'}} className='text-center' onClick={() => this.toggle}><Link to='/sprockets'>Sprockets</Link></div>
-              <div style={{fontWeight: 'bold', fontSize: '17px', padding: '4px'}} className='text-center' onClick={() => this.toggle}><Link to='/chains'>Chains</Link></div>
-              <div style={{fontWeight: 'bold', fontSize: '17px', padding: '4px'}} className='text-center' onClick={() => this.toggle}><Link to='/seats'>Seats</Link></div>
-              <div style={{fontWeight: 'bold', fontSize: '17px', padding: '4px'}} className='text-center' onClick={() => this.toggle}><Link to='/forks'>Forks</Link></div>
-              <div style={{fontWeight: 'bold', fontSize: '17px', padding: '4px'}} className='text-center' onClick={() => this.toggle}><Link to='/headsets'>Heatsets</Link></div>
-              <div style={{fontWeight: 'bold', fontSize: '17px', padding: '4px'}} className='text-center' onClick={() => this.toggle}><Link to='/gloves'>Gloves</Link></div>
-              <div style={{fontWeight: 'bold', fontSize: '17px', padding: '4px'}} className='text-center' onClick={() => this.toggle}><Link to='/pegs'>Pegs</Link></div>
-              <div style={{fontWeight: 'bold', fontSize: '17px', padding: '4px'}} className='text-center' onClick={() => this.toggle}><Link to='/grips'>Grips</Link></div>
-              <div style={{fontWeight: 'bold', fontSize: '17px', padding: '4px'}} className='text-center' onClick={() => this.toggle}><Link to='/titanium'>Titanium Hardware</Link></div>
-              <div style={{fontWeight: 'bold', fontSize: '17px', padding: '4px'}} className='text-center' onClick={() => this.toggle}><Link to='/cranks'>Cranks</Link></div>
-              <div style={{fontWeight: 'bold', fontSize: '17px', padding: '4px'}} className='text-center' onClick={() => this.toggle}><Link to='/stems'>Stems</Link></div>
-              <div style={{fontWeight: 'bold', fontSize: '17px', padding: '4px'}} className='text-center' onClick={() => this.toggle}><Link to='/tires'>Tires</Link></div>
-              <div style={{fontWeight: 'bold', fontSize: '17px', padding: '4px'}} className='text-center' onClick={() => this.toggle}><Link to='/wheels'>Wheels</Link></div>
-              <div style={{fontWeight: 'bold', fontSize: '17px', padding: '4px'}} className='text-center' onClick={() => this.toggle}><Link to='/frames'>Frames</Link></div>
+            <DropdownMenu style={{padding: '2rem'}}>
+              <span style={{fontWeight: 'bold', fontSize: '17px', padding: '4px'}} className='text-center' onClick={() => this.toggle}><Link to='/bars'>Bars</Link></span>|
+              <span style={{fontWeight: 'bold', fontSize: '17px', padding: '4px'}} className='text-center' onClick={() => this.toggle}><Link to='/brakes'>Brakes</Link></span>|
+              <span style={{fontWeight: 'bold', fontSize: '17px', padding: '4px'}} className='text-center' onClick={() => this.toggle}><Link to='/hubs'>Hubs</Link></span>|
+              <span style={{fontWeight: 'bold', fontSize: '17px', padding: '4px'}} className='text-center' onClick={() => this.toggle}><Link to='/rims'>Rims</Link></span>|
+              <span style={{fontWeight: 'bold', fontSize: '17px', padding: '4px'}} className='text-center' onClick={() => this.toggle}><Link to='/pedals'>Pedals</Link></span>|
+              <span style={{fontWeight: 'bold', fontSize: '17px', padding: '4px'}} className='text-center' onClick={() => this.toggle}><Link to='/sprockets'>Sprockets</Link></span>|
+              <span style={{fontWeight: 'bold', fontSize: '17px', padding: '4px'}} className='text-center' onClick={() => this.toggle}><Link to='/chains'>Chains</Link></span>|
+              <span style={{fontWeight: 'bold', fontSize: '17px', padding: '4px'}} className='text-center' onClick={() => this.toggle}><Link to='/seats'>Seats</Link></span>|
+              <span style={{fontWeight: 'bold', fontSize: '17px', padding: '4px'}} className='text-center' onClick={() => this.toggle}><Link to='/forks'>Forks</Link></span>|
+              <span style={{fontWeight: 'bold', fontSize: '17px', padding: '4px'}} className='text-center' onClick={() => this.toggle}><Link to='/headsets'>Heatsets</Link></span>|
+              <span style={{fontWeight: 'bold', fontSize: '17px', padding: '4px'}} className='text-center' onClick={() => this.toggle}><Link to='/gloves'>Gloves</Link></span>
+              <span style={{fontWeight: 'bold', fontSize: '17px', padding: '4px'}} className='text-center' onClick={() => this.toggle}><Link to='/pegs'>Pegs</Link></span>|
+              <span style={{fontWeight: 'bold', fontSize: '17px', padding: '4px'}} className='text-center' onClick={() => this.toggle}><Link to='/grips'>Grips</Link></span>|
+              <span style={{fontWeight: 'bold', fontSize: '17px', padding: '4px'}} className='text-center' onClick={() => this.toggle}><Link to='/titanium'>Titanium Hardware</Link></span>|
+              <span style={{fontWeight: 'bold', fontSize: '17px', padding: '4px'}} className='text-center' onClick={() => this.toggle}><Link to='/cranks'>Cranks</Link></span>|
+              <span style={{fontWeight: 'bold', fontSize: '17px', padding: '4px'}} className='text-center' onClick={() => this.toggle}><Link to='/stems'>Stems</Link></span>|
+              <span style={{fontWeight: 'bold', fontSize: '17px', padding: '4px'}} className='text-center' onClick={() => this.toggle}><Link to='/tires'>Tires</Link></span>|
+              <span style={{fontWeight: 'bold', fontSize: '17px', padding: '4px'}} className='text-center' onClick={() => this.toggle}><Link to='/wheels'>Wheels</Link></span>|
+              <span style={{fontWeight: 'bold', fontSize: '17px', padding: '4px'}} className='text-center' onClick={() => this.toggle}><Link to='/frames'>Frames</Link></span>
             </DropdownMenu>
           </Dropdown>
         </Col>
-      </div>
+      </span>
     )
   }
 }
