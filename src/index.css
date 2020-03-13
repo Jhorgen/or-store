@@ -69,11 +69,15 @@ code {
 }
 
 .test-hover:hover {
-  box-shadow: 2px 2px 2px coral;
-  transition: .3s ease;
-  border: 1px solid #00000026;
+  box-shadow: 0px -1px 0px crimson;
+  transition: .2.5s ease;
   border-radius: .25rem !important;
 }
+
+.test-hover img:hover {
+  opacity: 1 !important;
+}
+
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -350,7 +354,20 @@ hr {
   font-family: Noto Sans;
   font-weight: bold;
   white-space: nowrap;
+}
 
+.banner-text-position {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  top: 50%;
+  left: 50%;
+  color: black;
+  font-size: 28px;
+  transform: translate(-50%, 125%);
+  font-family: Noto Sans;
+  font-weight: bold;
+  white-space: nowrap;
 }
 
 .item-view-links:hover {
