@@ -69,7 +69,7 @@ class Cart extends Component {
         <div className='footer-control'>
           <ScrollToTopOnMount/>
           <div className="container">
-            <Row className="cart mt-2">
+            <Row className="cart mt-2 justify-content-center">
               <ul style={{display: this.state.handleHide}} className={this.props.form.addedItems.length > 0 ? "collection w-100 mt-4" : ''}>
                 {addedItems}
               </ul>
