@@ -35,7 +35,7 @@ class CategorySelect extends Component {
 
     setTimeout( () => {
       this.handleLoad()
-    }, 300);
+    }, 1000);
   }
 
   handleLoad = () => {
@@ -50,8 +50,8 @@ class CategorySelect extends Component {
           <Spinner color="info" />
         </div>
         <div className='d-flex justify-content-center' style={{position: 'relative', marginTop: '-19px'}}>
-        <h5 className='banner-text-position add-font' style={{background: '#0000009e', padding: '10px', borderRadius: '5px', color: '#ffffff91', textShadow: '.5px .5px .5px white'}}>Shipped from the USA</h5>
-        <img style={{width: '80%', height: '20rem'}} src={ require(`./../images/flag-banner.jpg`)} alt="Banner" title="Shipped from the USA."/>
+        <h5 className='banner-text-position add-font' style={{background: '#0000009e', padding: '10px', borderRadius: '5px', color: '#ffffff91', textShadow: '.5px .5px .5px white', display: this.state.itemDisplay}}>Shipped from the USA</h5>
+        <img style={{width: '80%', height: '20rem', display: this.state.itemDisplay}} src={ require(`./../images/flag-banner.jpg`)} alt="Banner" title="Shipped from the USA."/>
         </div>
         <div className='container'>
         <Row style={{display: this.state.itemDisplay}} className="justify-content-center m-3">
@@ -81,11 +81,7 @@ class CategorySelect extends Component {
             <div className='card m-3' style={{border: 'none'}}>
               <div className='test-hover'>
                 <h4 className="text-center cat-test category-select text-dark " style={{textShadow: "1px 1px 1px #495057", fontSize: "37px"}}>Frames</h4>
-                <Link
-                  to="/frames"
-                  >
                   <img className='cat-img' style={{height: '13rem',  width: '100%', opacity: '.75'}} src={ require(`./../images/testframe.jpg`)} alt="Bars" title="Bars"/>
-                </Link>
               </div>
             </div>
 
@@ -93,11 +89,7 @@ class CategorySelect extends Component {
             <div className='card m-3' style={{border: 'none'}}>
               <div className='test-hover'>
                 <h4 className="text-center cat-test category-select text-dark " style={{textShadow: "1px 1px 1px #495057", fontSize: "37px"}}>Tires</h4>
-                <Link
-                  to='/tires'
-                  >
                   <img style={{height: '12rem',  width: '100%', opacity: '.75'}} src={ require(`./../images/tires.jpg`)} alt="Bars" title="Bars"/>
-                </Link>
               </div>
             </div>
 

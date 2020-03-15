@@ -20,7 +20,7 @@ class Check extends Component {
       editingitemId: null,
       notification: '',
       itemForm: '',
-      category: '',
+      category: 'default',
       brand: '',
       title: '',
       description: '',
@@ -109,7 +109,7 @@ class Check extends Component {
     .catch(error => console.log(error))
   }
 
-  handleInput = (e) => {
+  handleInput = (e, name) => {
     this.setState({[e.target.name]: e.target.value})
 
     this.setState({updated: <span onClick={() => this.postUpdate()} className='btn btn-info btn-block mb-3 ml-4 mt-2'>Update</span>})
@@ -122,23 +122,27 @@ class Check extends Component {
       <Row>
         <Col>
           <form>
-            <select className='form-control' onChange={(e) => this.handleInput(e, 'category')}>
+            <select className='form-control' name='category' onChange={(e) => this.handleInput(e, "category")}>
               <option value={'default'}>Category</option>
-              <option value={'AL'}>Alabama</option>
-              <option value={'AK'}>Alaska</option>
-              <option value={'AZ'}>Arizona</option>
-              <option value={'AR'}>Arkansas</option>
-              <option value={'CA'}>California</option>
-              <option value={'CO'}>Colorado</option>
-              <option value={'CT'}>Connecticut</option>
-              <option value={'DE'}>Delaware</option>
-              <option value={'FL'}>Florida</option>
-              <option value={'GA'}>Georgia</option>
-              <option value={'HI'}>Hawaii</option>
-              <option value={'ID'}>Idaho</option>
-              <option value={'IL'}>Illinois</option>
-              <option value={'IN'}>Indiana</option>
-              <option value={'IA'}>Iowa</option>
+              <option value={'Bars'}>Bars</option>
+              <option value={'Brakes'}>Brakes</option>
+              <option value={'Hubs'}>Hubs</option>
+              <option value={'Rims'}>Rims</option>
+              <option value={'Pedals'}>Pedals</option>
+              <option value={'Sprockets'}>Sprockets</option>
+              <option value={'Chains'}>Chains</option>
+              <option value={'Seats'}>Seats</option>
+              <option value={'Forks'}>Forks</option>
+              <option value={'Headsets'}>Headsets</option>
+              <option value={'Gloves'}>Gloves</option>
+              <option value={'Pegs'}>Pegs</option>
+              <option value={'Grips'}>Grips</option>
+              <option value={'Titanium Hardware'}>Titanium Hardware</option>
+              <option value={'Cranks'}>Cranks</option>
+              <option value={'Stems'}>Stems</option>
+              <option value={'Tires'}>Tires</option>
+              <option value={'Wheels'}>Wheels</option>
+              <option value={'Frames'}>Frames</option>
             </select>
           </form>
         </Col>
