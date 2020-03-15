@@ -120,7 +120,7 @@ class OrbNavbar extends Component {
           <a href="https://www.facebook.com/outerrimbicycles/" target="about_blank" title="Our Facebook page">
             <FontAwesomeIcon className='text-secondary' style={{fontSize: '1.7rem'}} icon={faFacebookF} />
           </a>
-          <a className='mt-3' href="https://www.instagram.com/outerrimbicycles/" target="about_blank" title="Our Instagram page">
+          <a className='mt-2' href="https://www.instagram.com/outerrimbicycles/" target="about_blank" title="Our Instagram page">
             <FontAwesomeIcon className='text-secondary' style={{fontSize: '1.65rem'}} icon={faInstagram} />
           </a>
         </div>

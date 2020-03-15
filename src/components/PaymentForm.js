@@ -43,7 +43,7 @@ import { injectStripe, CardNumberElement,
         cardInfoValidation: 'none',
         tester: '',
         shipping: 0.00,
-        combinedTotal: 0
+        combinedTotal: 0.00
       }
     }
 
@@ -55,7 +55,7 @@ import { injectStripe, CardNumberElement,
 
     async submit(e) {
       e.preventDefault()
-      if(this.state.firstName !== '' && this.state.lastName !== '' && this.state.city !== '' && this.state.state.toString().length === 2 && new RegExp(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,15}/g).test(this.state.email) && this.state.zip.toString().length === 5 && this.state.address !== '') {
+      if(this.state.firstName !== '' && this.state.lastName !== '' && this.state.city !== '' && this.state.state.toString().length === 2 && new RegExp(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,15}/g).test(this.state.email) && this.state.zip.toString().length >= 5 && this.state.address !== '') {
         console.log('test');
         let name = this.state.firstName + ' ' + this.state.lastName
         let address = this.state.address + ' ' + this.state.city + ' ' + this.state.state + ' ' + this.state.zip
@@ -84,7 +84,6 @@ import { injectStripe, CardNumberElement,
           currency: "usd",
           token: this.state.token,
           description: 'Name:' + ' ' + this.state.firstName + ' ' + this.state.lastName + ' ' + 'Address:' + ' ' + this.state.address + ' ' + this.state.city + ' ' + this.state.state + ' ' + this.state.zip + ' ' + 'Address2:' + this.state.address2 + ' ' + this.state.city2 + ' ' + this.state.state2 + ' ' + this.state.zip2,
-          address: this.state.address + ' ' + this.state.city + ' ' + this.state.state + ' ' + this.state.zip
         }
 
         let response = await fetch("https://nameless-hollows-85718.herokuapp.com/api/v1/charges", {
@@ -156,7 +155,7 @@ import { injectStripe, CardNumberElement,
           }
 
           let zipCodeCheck = this.state.zip
-          if(zipCodeCheck.toString().length > 5 || zipCodeCheck.toString().length < 5 ) {
+          if(zipCodeCheck.toString().length > 5 || zipCodeCheck.toString().length < 11 ) {
             this.setState({zipValidation: ''})
           }
 
@@ -169,7 +168,7 @@ import { injectStripe, CardNumberElement,
       toggleForm = (e) => {
         console.log('ran again');
         e.preventDefault()
-        if(this.state.firstName !== '' && this.state.lastName !== '' && this.state.city !== '' && this.state.state.toString().length === 2 && new RegExp(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,15}/g).test(this.state.email) && this.state.zip.toString().length === 5 && this.state.address !== '') {
+        if(this.state.firstName !== '' && this.state.lastName !== '' && this.state.city !== '' && this.state.state.toString().length === 2 && new RegExp(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,15}/g).test(this.state.email) && this.state.zip.toString().length >= 5 && this.state.address !== '') {
           this.setState({nextButton: 'none', paymentForm: '', toggleHr: ''})
 
           let shipping = 5.00
@@ -351,7 +350,7 @@ import { injectStripe, CardNumberElement,
                 }
               }
 
-              this.setState({shipping: shipping})
+              this.setState({shipping: shipping, combinedTotal: this.props.total + shipping})
             }
 
           }
@@ -623,7 +622,7 @@ import { injectStripe, CardNumberElement,
         .then(response => {
           console.log(response)
           this.props.checkout(this.props.form.items)
-          this.location.reload();
+          window.location.reload();
         })
         .catch(error => console.log(error))
       }
