@@ -249,11 +249,11 @@ hr {
   .footer-logo-toggle {
     display: none !important;
   }
-  .navbar-margin-toggle {
-    margin-left: -15px;
-    margin-top: 15px;
-  }
+
+
 }
+
+
 
 @media only screen and (min-width: 700px) {
   .item-view-info-2 {
@@ -271,10 +271,7 @@ hr {
     display: flex !important
   }
 
-  .navbar-margin-toggle {
-    margin-left: -40px;
-    margin-top: 15px;
-  }
+
 
 }
 
@@ -292,10 +289,48 @@ hr {
   }
 }
 
+@media only screen and (min-width: 900px) {
+  .navbar-margin-toggle {
+    margin-left: -40px;
+    margin-top: 15px;
+  }
+
+  .nav-toggle-padding {
+    padding: 2rem !important;
+  }
+
+  .nav-dropdown-hr {
+    display: none !important;
+  }
+}
+
 @media only screen and (max-width: 900px) {
   .cat-row {
     flex-direction: column !important;
     width: 60% !important;
+  }
+  .navbar-margin-toggle {
+    margin-left: -15px;
+    margin-top: 15px;
+  }
+
+  .nav-toggle-padding {
+    padding: 0 !important;
+  }
+
+  .spacer-toggle {
+    display: none !important;
+  }
+
+  .nav-dropdown-toggle-flex {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .nav-dropdown-hr {
+    width: 50%;
+    margin-top: 0;
+    margin-bottom: 0;
   }
 }
 
