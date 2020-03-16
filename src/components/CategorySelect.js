@@ -58,7 +58,7 @@ class CategorySelect extends Component {
 
             <div className='card m-3' style={{border: 'none'}}>
               <div className='test-hover'>
-                <h4 className="text-center cat-test category-select text-dark " style={{textShadow: "1px 1px 1px #495057", fontSize: "37px"}}>Bars</h4>
+                <h4 className="text-center cat-test category-select add-font" style={{textShadow: "1px 1px 1px #495057", fontSize: "35px", color: 'black'}}>Bars</h4>
                 <Link
                   to="/bars"
                   >
@@ -69,76 +69,76 @@ class CategorySelect extends Component {
 
             <div className='card m-3' style={{border: 'none'}}>
               <div className='test-hover'>
-                <h4 className="text-center cat-test category-select text-dark " style={{textShadow: "1px 1px 1px #495057", fontSize: "37px"}}>Stems</h4>
+                <h4 className="text-center cat-test category-select add-font" style={{textShadow: "1px 1px 1px #495057", fontSize: "35px", color: 'black'}}>Stems</h4>
                 <Link
                   to='/stems'
                   >
-                  <img className='cat-img' style={{height: '13rem',  width: '100%', opacity: '.75'}} src={ require(`./../images/colony-squareback-rainbow.jpg`)} alt="Bars" title="Bars"/>
+                  <img className='cat-img' style={{height: '13rem', width: '100%', opacity: '.75'}} src={ require(`./../images/colony-squareback-rainbow.jpg`)} alt="Bars" title="Bars"/>
                 </Link>
               </div>
             </div>
 
             <div className='card m-3' style={{border: 'none'}}>
               <div className='test-hover'>
-                <h4 className="text-center cat-test category-select text-dark " style={{textShadow: "1px 1px 1px #495057", fontSize: "37px"}}>Frames</h4>
-                  <img className='cat-img' style={{height: '13rem',  width: '100%', opacity: '.75'}} src={ require(`./../images/testframe.jpg`)} alt="Bars" title="Bars"/>
+                <h4 className="text-center cat-test category-select add-font" style={{textShadow: "1px 1px 1px #495057", fontSize: "35px", color: 'black'}}>Frames</h4>
+                  <img className='cat-img' style={{height: '13rem', width: '100%', opacity: '.75'}} src={ require(`./../images/testframe.jpg`)} alt="Bars" title="Bars"/>
               </div>
             </div>
 
 
             <div className='card m-3' style={{border: 'none'}}>
               <div className='test-hover'>
-                <h4 className="text-center cat-test category-select text-dark " style={{textShadow: "1px 1px 1px #495057", fontSize: "37px"}}>Tires</h4>
-                  <img style={{height: '12rem',  width: '100%', opacity: '.75'}} src={ require(`./../images/tires.jpg`)} alt="Bars" title="Bars"/>
+                <h4 className="text-center cat-test category-select add-font" style={{textShadow: "1px 1px 1px #495057", fontSize: "35px", color: 'black'}}>Tires</h4>
+                  <img style={{height: '12rem', width: '100%', opacity: '.75'}} src={ require(`./../images/tires.jpg`)} alt="Bars" title="Bars"/>
               </div>
             </div>
 
             <div className='card m-3' style={{border: 'none'}}>
               <div className='test-hover'>
-                <h4 className="text-center cat-test category-select text-dark " style={{textShadow: "1px 1px 1px #495057", fontSize: "37px"}}>Rims</h4>
+                <h4 className="text-center cat-test category-select add-font" style={{textShadow: "1px 1px 1px #495057", fontSize: "35px", color: 'black'}}>Rims</h4>
                 <Link to='/rims'
                   >
-                  <img className='cat-img' style={{height: '13rem',  width: '100%', opacity: '.75'}} src={ require(`./../images/division-city-wide-rim-black.jpg`)} alt="Bars" title="Bars"/>
+                  <img className='cat-img' style={{height: '13rem', width: '100%', opacity: '.75'}} src={ require(`./../images/division-city-wide-rim-black.jpg`)} alt="Bars" title="Bars"/>
                 </Link>
               </div>
             </div>
 
             <div className='card m-3' style={{border: 'none'}}>
               <div className='test-hover'>
-                <h4 className="text-center cat-test category-select text-dark " style={{textShadow: "1px 1px 1px #495057", fontSize: "37px"}}>Hubs</h4>
+                <h4 className="text-center cat-test category-select add-font" style={{textShadow: "1px 1px 1px #495057", fontSize: "35px", color: 'black'}}>Hubs</h4>
                 <Link
                   to='/hubs'
                   >
-                  <img className='cat-img' style={{height: '13rem',  width: '100%', opacity: '.75'}} src={ require(`./../images/bsd-swerve-cassette-hub-black.jpg`)} alt="hubs" title="hubs"/>
+                  <img className='cat-img' style={{height: '13rem', width: '100%', opacity: '.75'}} src={ require(`./../images/bsd-swerve-cassette-hub-black.jpg`)} alt="hubs" title="hubs"/>
                 </Link>
               </div>
             </div>
 
             <div className='card m-3' style={{border: 'none'}}>
               <div className='test-hover'>
-                <h4 className="text-center cat-test category-select text-dark " style={{textShadow: "1px 1px 1px #495057", fontSize: "37px"}}>Cranks</h4>
+                <h4 className="text-center cat-test category-select add-font" style={{textShadow: "1px 1px 1px #495057", fontSize: "35px", color: 'black'}}>Cranks</h4>
                 <Link
                   to='/cranks'
                   >
-                  <img className='cat-img' style={{height: '13rem',  width: '100%', opacity: '.75'}} src={ require(`./../images/fit-indent-crank-black.jpg`)} alt="Cranks" title="Cranks"/>
+                  <img className='cat-img' style={{height: '13rem', width: '100%', opacity: '.75'}} src={ require(`./../images/fit-indent-crank-black.jpg`)} alt="Cranks" title="Cranks"/>
                 </Link>
               </div>
             </div>
 
             <div className='card m-3' style={{border: 'none'}}>
               <div className='test-hover'>
-                <h4 className="text-center cat-test category-select text-dark " style={{textShadow: "1px 1px 1px #495057", fontSize: "37px"}}>Forks</h4>
+                <h4 className="text-center cat-test category-select add-font" style={{textShadow: "1px 1px 1px #495057", fontSize: "35px", color: 'black'}}>Forks</h4>
                 <Link
                   to='/forks'
                   >
-                  <img className='cat-img' style={{height: '13rem',  width: '100%', opacity: '.75'}} src={ require(`./../images/colony-sweet-tooth-fork-black.jpg`)} alt="Forks" title="Forks"/>
+                  <img className='cat-img' style={{height: '13rem', width: '100%', opacity: '.75'}} src={ require(`./../images/colony-sweet-tooth-fork-black.jpg`)} alt="Forks" title="Forks"/>
                 </Link>
               </div>
             </div>
 
             <div className='card m-3' style={{border: 'none'}}>
               <div className='test-hover'>
-                <h4 className="text-center cat-test category-select text-dark " style={{textShadow: "1px 1px 1px #495057", fontSize: "37px"}}>Seats</h4>
+                <h4 className="text-center cat-test category-select add-font" style={{textShadow: "1px 1px 1px #495057", fontSize: "35px", color: 'black'}}>Seats</h4>
                 <Link
                   to='/seats'
                   >
@@ -149,7 +149,7 @@ class CategorySelect extends Component {
 
             <div className='card m-3' style={{border: 'none'}}>
               <div className='test-hover'>
-                <h4 className="text-center cat-test category-select text-dark " style={{textShadow: "1px 1px 1px #495057", fontSize: "37px"}}>Pedals</h4>
+                <h4 className="text-center cat-test category-select add-font" style={{textShadow: "1px 1px 1px #495057", fontSize: "35px", color: 'black'}}>Pedals</h4>
                 <Link
                   to='/pedals'
                   >
@@ -160,99 +160,99 @@ class CategorySelect extends Component {
 
             <div className='card m-3' style={{border: 'none'}}>
               <div className='test-hover'>
-                <h4 className="text-center cat-test category-select text-dark " style={{textShadow: "1px 1px 1px #495057", fontSize: "37px"}}>Sprockets</h4>
+                <h4 className="text-center cat-test category-select add-font" style={{textShadow: "1px 1px 1px #495057", fontSize: "35px", color: 'black'}}>Sprockets</h4>
                 <Link
                   to='/sprockets'
                   >
-                  <img className='cat-img' style={{height: '13rem',  width: '100%', opacity: '.75'}} src={ require(`./../images/colony-blaster-sprocket-black.jpg`)} alt="Sprockets" title="Sprockets"/>
+                  <img className='cat-img' style={{height: '13rem', width: '100%', opacity: '.75'}} src={ require(`./../images/colony-blaster-sprocket-black.jpg`)} alt="Sprockets" title="Sprockets"/>
                 </Link>
               </div>
             </div>
 
             <div className='card m-3' style={{border: 'none'}}>
               <div className='test-hover'>
-                <h4 className="text-center cat-test category-select text-dark " style={{textShadow: "1px 1px 1px #495057", fontSize: "37px"}}>Chains</h4>
+                <h4 className="text-center cat-test category-select add-font" style={{textShadow: "1px 1px 1px #495057", fontSize: "35px", color: 'black'}}>Chains</h4>
                 <Link
                   to='/chains'
                   >
-                  <img style={{height: '13rem',  width: '100%', opacity: '.75'}} src={ require(`./../images/kmc-z410-chain-gold.jpg`)} alt="kmc-z410-chain-gold" title="Chains"/>
+                  <img style={{height: '13rem', width: '100%', opacity: '.75'}} src={ require(`./../images/kmc-z410-chain-gold.jpg`)} alt="kmc-z410-chain-gold" title="Chains"/>
                 </Link>
               </div>
             </div>
 
             <div className='card m-3' style={{border: 'none'}}>
               <div className='test-hover'>
-                <h4 className="text-center cat-test category-select text-dark " style={{textShadow: "1px 1px 1px #495057", fontSize: "37px"}}>Pegs</h4>
+                <h4 className="text-center cat-test category-select add-font" style={{textShadow: "1px 1px 1px #495057", fontSize: "35px", color: 'black'}}>Pegs</h4>
                 <Link
                   to='/pegs'
                   >
-                  <img style={{height: '13rem',  width: '100%', opacity: '.75'}} src={ require(`./../images/colony-anyway-peg-black3.jpg`)} alt="Pegs" title="Pegs"/>
+                  <img style={{height: '13rem', width: '100%', opacity: '.75'}} src={ require(`./../images/colony-anyway-peg-black3.jpg`)} alt="Pegs" title="Pegs"/>
                 </Link>
               </div>
             </div>
 
             <div className='card m-3' style={{border: 'none'}}>
               <div className='test-hover'>
-                <h4 className="text-center cat-test category-select text-dark " style={{textShadow: "1px 1px 1px #495057", fontSize: "37px"}}>Titanium hardware</h4>
+                <h4 className="text-center cat-test category-select add-font" style={{textShadow: "1px 1px 1px #495057", fontSize: "35px", color: 'black'}}>Titanium hardware</h4>
                 <Link
                   to='/titanium'
                   >
-                  <img style={{height: '13rem',  width: '100%', opacity: '.75'}} src={ require(`./../images/titanium.jpg`)} alt="Titanium hardware" title="Titanium hardware"/>
+                  <img style={{height: '13rem', width: '100%', opacity: '.75'}} src={ require(`./../images/titanium.jpg`)} alt="Titanium hardware" title="Titanium hardware"/>
                 </Link>
               </div>
             </div>
 
             <div className='card m-3' style={{border: 'none'}}>
               <div className='test-hover'>
-                <h4 className="text-center cat-test category-select text-dark " style={{textShadow: "1px 1px 1px #495057", fontSize: "37px"}}>Gloves</h4>
+                <h4 className="text-center cat-test category-select add-font" style={{textShadow: "1px 1px 1px #495057", fontSize: "35px", color: 'black'}}>Gloves</h4>
                 <Link
                   to='/gloves'
                   >
-                  <img style={{height: '13rem',  width: '100%', opacity: '.75'}} src={ require(`./../images/fist-miami-glove.jpg`)} alt="Gloves" title="Gloves"/>
+                  <img style={{height: '13rem', width: '100%', opacity: '.75'}} src={ require(`./../images/fist-miami-glove.jpg`)} alt="Gloves" title="Gloves"/>
                 </Link>
               </div>
             </div>
 
             <div className='card m-3' style={{border: 'none'}}>
               <div className='test-hover'>
-                <h4 className="text-center cat-test category-select text-dark " style={{textShadow: "1px 1px 1px #495057", fontSize: "37px"}}>Headsets</h4>
+                <h4 className="text-center cat-test category-select add-font" style={{textShadow: "1px 1px 1px #495057", fontSize: "35px", color: 'black'}}>Headsets</h4>
                 <Link
                   to='/Headsets'
                   >
-                  <img style={{height: '13rem',  width: '100%', opacity: '.75'}} src={ require(`./../images/primo-integrated-headset-turquoise.jpg`)} alt="Headsets" title="Headsets"/>
+                  <img style={{height: '13rem', width: '100%', opacity: '.75'}} src={ require(`./../images/primo-integrated-headset-turquoise.jpg`)} alt="Headsets" title="Headsets"/>
                 </Link>
               </div>
             </div>
 
             <div className='card m-3' style={{border: 'none'}}>
               <div className='test-hover'>
-                <h4 className="text-center cat-test category-select text-dark " style={{textShadow: "1px 1px 1px #495057", fontSize: "37px"}}>Grips</h4>
+                <h4 className="text-center cat-test category-select add-font" style={{textShadow: "1px 1px 1px #495057", fontSize: "35px", color: 'black'}}>Grips</h4>
                 <Link
                   to='/grips'
                   >
-                  <img style={{height: '13rem',  width: '100%', opacity: '.75'}} src={ require(`./../images/odi-longneck-soft-grip-black.jpg`)} alt="Grips" title="Grips"/>
+                  <img style={{height: '13rem', width: '100%', opacity: '.75'}} src={ require(`./../images/odi-longneck-soft-grip-black.jpg`)} alt="Grips" title="Grips"/>
                 </Link>
               </div>
             </div>
 
             <div className='card m-3' style={{border: 'none'}}>
               <div className='test-hover'>
-                <h4 className="text-center cat-test category-select text-dark " style={{textShadow: "1px 1px 1px #495057", fontSize: "37px"}}>Brakes</h4>
+                <h4 className="text-center cat-test category-select add-font" style={{textShadow: "1px 1px 1px #495057", fontSize: "35px", color: 'black'}}>Brakes</h4>
                 <Link
                   to='/brakes'
                   >
-                  <img style={{height: '13rem',  width: '100%', opacity: '.75'}} src={ require(`./../images/colony-brethren-brake-set-black.jpg`)} alt="Grips" title="Grips"/>
+                  <img style={{height: '13rem', width: '100%', opacity: '.75'}} src={ require(`./../images/colony-brethren-brake-set-black.jpg`)} alt="Grips" title="Grips"/>
                 </Link>
               </div>
             </div>
 
             <div className='card m-3' style={{border: 'none'}}>
               <div className='test-hover'>
-                <h4 className="text-center cat-test category-select text-dark " style={{textShadow: "1px 1px 1px #495057", fontSize: "37px"}}>Complete Wheels</h4>
+                <h4 className="text-center cat-test category-select add-font" style={{textShadow: "1px 1px 1px #495057", fontSize: "35px", color: 'black'}}>Complete Wheels</h4>
                 <Link
                   to='/wheels'
                   >
-                  <img style={{height: '13rem',  width: '100%', opacity: '.75'}} src={ require(`./../images/colony-pintour-freecoaster-wheel-black.jpg`)} alt="Grips" title="Grips"/>
+                  <img style={{height: '13rem', width: '100%', opacity: '.75'}} src={ require(`./../images/colony-pintour-freecoaster-wheel-black.jpg`)} alt="Grips" title="Grips"/>
                 </Link>
               </div>
             </div>

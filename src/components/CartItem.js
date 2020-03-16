@@ -97,6 +97,7 @@ handleRemove = (id, items) => {
   this.props.removeItem(id, items, selectedIndex);
   this.props.saveCartItemTotal();
 
+//find duplicates --> reload on click of duplicate
 }
 
 handleStyles = () => {
