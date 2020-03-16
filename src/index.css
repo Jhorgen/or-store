@@ -297,6 +297,8 @@ hr {
 
   .nav-toggle-padding {
     padding: 2rem !important;
+    border: 1px solid #6d6e70 !important;
+    border-radius: 5px !important;
   }
 
   .nav-dropdown-hr {
