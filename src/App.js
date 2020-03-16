@@ -11,7 +11,8 @@ import BrandSelect from './components/BrandSelect'
 import Check from './components/Check'
 import SearchResults from './components/SearchResults'
 import { StickyContainer, Sticky } from 'react-sticky';
-
+import About from './components/About'
+import Contact from './components/Contact'
 
 
 function App() {
@@ -127,9 +128,10 @@ function App() {
             <Route render={props => ( <ShopByBrand brand={maxxis} key='46'/>)} path="/maxxis-all"/>
             <Route render={props => ( <ShopByBrand brand={kool} key='47'/>)} path="/kool-all"/>
 
-
+            <Route path="/contact" component={Contact} />
+            <Route path="/about" component={About} />
             <Route path="/search" component={SearchResults} />
-            <Route path="/:brand/:title/" component={ItemView}/>
+            <Route path="/:brand/:title/" component={ItemView} />
             <Route path="/cart" component={Cart}/>
             <Route path={'/' + `${process.env.REACT_APP_R_API_KEY}`} component={Check}/>
 
