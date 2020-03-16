@@ -38,7 +38,6 @@ class OrbNavbar extends Component {
 
 
   tester = () => {
-    console.log('fired tester');
     let qty = 0
     for(var i = 0; i < this.props.form.addedItems.length; i++) {
       qty = qty + this.props.form.addedItems[i].checkoutquantity
@@ -93,14 +92,14 @@ class OrbNavbar extends Component {
             <Collapse isOpen={this.state.dropdownOpen} navbar>
               <Nav className="mr-auto navbar-margin-toggle" navbar>
                 <NavItem>
-                  <NavbarCategories />
+                  <NavbarCategories onClick={this.toggle} />
                 </NavItem>
                 <NavItem className='mr-2'>
-                  <NavbarBrands />
+                  <NavbarBrands onClick={this.toggle}/>
                 </NavItem>
                 <NavItem className='mr-2 mb-2'>
                   <Col>
-                    <Link to="/cart"><span className="text-light mr-2 navbar-font"><FontAwesomeIcon style={{fontSize: '1.45rem'}} icon={faShoppingCart} onClick={this.toggleAddDisplay} title='Cart' />
+                    <Link onClick={() => this.toggle()} to="/cart"><span className="text-light mr-2 navbar-font"><FontAwesomeIcon style={{fontSize: '1.45rem'}} icon={faShoppingCart} onClick={this.toggleAddDisplay} title='Cart' />
                   </span><b className='text-info' style={{fontSize: '1rem'}}>{this.props.form.addedItems.length > 0 ? this.props.form.cartQuantity : ''}</b></Link>
                 </Col>
               </NavItem>

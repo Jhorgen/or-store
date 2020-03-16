@@ -9,7 +9,7 @@ class NavbarCategories extends Component {
     super(props)
     this.state = {
       lengthCheck: false,
-      dropdownOpen: true
+      dropdownOpen: false
     }
   }
 
@@ -35,35 +35,35 @@ class NavbarCategories extends Component {
     return(
       <span className='mb-2'>
         <Col>
-          <Dropdown className="d-inline-block" onMouseOver={this.onMouseEnter}  isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+          <Dropdown className="d-inline-block" onMouseOver={this.onMouseEnter} onMouseLeave={this.onMouseLeave} isOpen={this.state.dropdownOpen}>
             <DropdownToggle
             tag="span"
             data-toggle="dropdown"
             aria-expanded={this.state.dropdownOpen}
             style={{color: 'white'}}>
-              <span className='navbar-font'>Categories</span>
+              <Link to={'/'} className='navbar-font text-light' style={{textDecoration: 'none'}}>Categories</Link>
             </DropdownToggle>
-            <DropdownMenu className='nav-toggle-padding'>
+            <DropdownMenu className='nav-toggle-padding bg-dark'>
               <div className='nav-dropdown-toggle-flex'>
-              <span style={{fontWeight: 'bold', fontSize: '17px', padding: '4px'}} className='text-center' onClick={() => this.toggle}><Link className='text-dark' to='/bars'>Bars</Link></span><span className='spacer-toggle text-info'>|</span><hr className='nav-dropdown-hr bg-info'/>
-              <span style={{fontWeight: 'bold', fontSize: '17px', padding: '4px'}} className='text-center' onClick={() => this.toggle}><Link className='text-dark' to='/brakes'>Brakes</Link></span><span className='spacer-toggle text-info'>|</span><hr className='nav-dropdown-hr bg-info'/>
-              <span style={{fontWeight: 'bold', fontSize: '17px', padding: '4px'}} className='text-center' onClick={() => this.toggle}><Link className='text-dark' to='/hubs'>Hubs</Link></span><span className='spacer-toggle text-info'>|</span><hr className='nav-dropdown-hr bg-info'/>
-              <span style={{fontWeight: 'bold', fontSize: '17px', padding: '4px'}} className='text-center' onClick={() => this.toggle}><Link className='text-dark' to='/rims'>Rims</Link></span><span className='spacer-toggle text-info'>|</span><hr className='nav-dropdown-hr bg-info'/>
-              <span style={{fontWeight: 'bold', fontSize: '17px', padding: '4px'}} className='text-center' onClick={() => this.toggle}><Link className='text-dark' to='/pedals'>Pedals</Link></span><span className='spacer-toggle text-info'>|</span><hr className='nav-dropdown-hr bg-info'/>
-              <span style={{fontWeight: 'bold', fontSize: '17px', padding: '4px'}} className='text-center' onClick={() => this.toggle}><Link className='text-dark' to='/sprockets'>Sprockets</Link></span><span className='spacer-toggle text-info'>|</span><hr className='nav-dropdown-hr bg-info'/>
-              <span style={{fontWeight: 'bold', fontSize: '17px', padding: '4px'}} className='text-center' onClick={() => this.toggle}><Link className='text-dark' to='/chains'>Chains</Link></span><span className='spacer-toggle text-info'>|</span><hr className='nav-dropdown-hr bg-info'/>
-              <span style={{fontWeight: 'bold', fontSize: '17px', padding: '4px'}} className='text-center' onClick={() => this.toggle}><Link className='text-dark' to='/seats'>Seats</Link></span><span className='spacer-toggle text-info'>|</span><hr className='nav-dropdown-hr bg-info'/>
-              <span style={{fontWeight: 'bold', fontSize: '17px', padding: '4px'}} className='text-center' onClick={() => this.toggle}><Link className='text-dark' to='/forks'>Forks</Link></span><span className='spacer-toggle text-info'>|</span><hr className='nav-dropdown-hr bg-info'/>
-              <span style={{fontWeight: 'bold', fontSize: '17px', padding: '4px'}} className='text-center' onClick={() => this.toggle}><Link className='text-dark' to='/headsets'>Heatsets</Link></span><span className='spacer-toggle text-info'>|</span><hr className='nav-dropdown-hr bg-info'/>
-              <span style={{fontWeight: 'bold', fontSize: '17px', padding: '4px'}} className='text-center' onClick={() => this.toggle}><Link className='text-dark' to='/gloves'>Gloves</Link></span><span className='spacer-toggle text-info'>|</span><hr className='nav-dropdown-hr bg-info'/>
-              <span style={{fontWeight: 'bold', fontSize: '17px', padding: '4px'}} className='text-center' onClick={() => this.toggle}><Link className='text-dark' to='/pegs'>Pegs</Link></span><span className='spacer-toggle text-info'>|</span><hr className='nav-dropdown-hr bg-info'/>
-              <span style={{fontWeight: 'bold', fontSize: '17px', padding: '4px'}} className='text-center' onClick={() => this.toggle}><Link className='text-dark' to='/grips'>Grips</Link></span><span className='spacer-toggle text-info'>|</span><hr className='nav-dropdown-hr bg-info'/>
-              <span style={{fontWeight: 'bold', fontSize: '17px', padding: '4px'}} className='text-center' onClick={() => this.toggle}><Link className='text-dark' to='/titanium'>Titanium Hardware</Link></span><span className='spacer-toggle text-info'>|</span><hr className='nav-dropdown-hr bg-info'/>
-              <span style={{fontWeight: 'bold', fontSize: '17px', padding: '4px'}} className='text-center' onClick={() => this.toggle}><Link className='text-dark' to='/cranks'>Cranks</Link></span><span className='spacer-toggle text-info'>|</span><hr className='nav-dropdown-hr bg-info'/>
-              <span style={{fontWeight: 'bold', fontSize: '17px', padding: '4px'}} className='text-center' onClick={() => this.toggle}><Link className='text-dark' to='/stems'>Stems</Link></span><span className='spacer-toggle text-info'>|</span><hr className='nav-dropdown-hr bg-info'/>
-              <span style={{fontWeight: 'bold', fontSize: '17px', padding: '4px'}} className='text-center' onClick={() => this.toggle}>Tires</span><span className='spacer-toggle text-info'>|</span><hr className='nav-dropdown-hr bg-info'/>
-              <span style={{fontWeight: 'bold', fontSize: '17px', padding: '4px'}} className='text-center' onClick={() => this.toggle}><Link className='text-dark' to='/wheels'>Wheels</Link></span><span className='spacer-toggle text-info'>|</span><hr className='nav-dropdown-hr bg-info'/>
-              <span style={{fontWeight: 'bold', fontSize: '17px', padding: '4px'}} className='text-center' onClick={() => this.toggle}>Frames</span><hr className='nav-dropdown-hr bg-info'/>
+              <span style={{fontWeight: 'bold', fontSize: '15.5px', padding: '4px'}} className='text-center' onClick={() => this.props.onClick()}><Link className='add-font' style={{color: '#fff'}} to='/bars'>Bars</Link></span><span className='spacer-toggle text-info'>|</span><hr className='nav-dropdown-hr bg-info'/>
+              <span style={{fontWeight: 'bold', fontSize: '15.5px', padding: '4px'}} className='text-center' onClick={() => this.props.onClick()}><Link className='add-font' style={{color: '#fff'}} to='/brakes'>Brakes</Link></span><span className='spacer-toggle text-info'>|</span><hr className='nav-dropdown-hr bg-info'/>
+              <span style={{fontWeight: 'bold', fontSize: '15.5px', padding: '4px'}} className='text-center' onClick={() => this.props.onClick()}><Link className='add-font' style={{color: '#fff'}} to='/hubs'>Hubs</Link></span><span className='spacer-toggle text-info'>|</span><hr className='nav-dropdown-hr bg-info'/>
+              <span style={{fontWeight: 'bold', fontSize: '15.5px', padding: '4px'}} className='text-center' onClick={() => this.props.onClick()}><Link className='add-font' style={{color: '#fff'}} to='/rims'>Rims</Link></span><span className='spacer-toggle text-info'>|</span><hr className='nav-dropdown-hr bg-info'/>
+              <span style={{fontWeight: 'bold', fontSize: '15.5px', padding: '4px'}} className='text-center' onClick={() => this.props.onClick()}><Link className='add-font' style={{color: '#fff'}} to='/pedals'>Pedals</Link></span><span className='spacer-toggle text-info'>|</span><hr className='nav-dropdown-hr bg-info'/>
+              <span style={{fontWeight: 'bold', fontSize: '15.5px', padding: '4px'}} className='text-center' onClick={() => this.props.onClick()}><Link className='add-font' style={{color: '#fff'}} to='/sprockets'>Sprockets</Link></span><span className='spacer-toggle text-info'>|</span><hr className='nav-dropdown-hr bg-info'/>
+              <span style={{fontWeight: 'bold', fontSize: '15.5px', padding: '4px'}} className='text-center' onClick={() => this.props.onClick()}><Link className='add-font' style={{color: '#fff'}} to='/chains'>Chains</Link></span><span className='spacer-toggle text-info'>|</span><hr className='nav-dropdown-hr bg-info'/>
+              <span style={{fontWeight: 'bold', fontSize: '15.5px', padding: '4px'}} className='text-center' onClick={() => this.props.onClick()}><Link className='add-font' style={{color: '#fff'}} to='/seats'>Seats</Link></span><span className='spacer-toggle text-info'>|</span><hr className='nav-dropdown-hr bg-info'/>
+              <span style={{fontWeight: 'bold', fontSize: '15.5px', padding: '4px'}} className='text-center' onClick={() => this.props.onClick()}><Link className='add-font' style={{color: '#fff'}} to='/forks'>Forks</Link></span><span className='spacer-toggle text-info'>|</span><hr className='nav-dropdown-hr bg-info'/>
+              <span style={{fontWeight: 'bold', fontSize: '15.5px', padding: '4px'}} className='text-center' onClick={() => this.props.onClick()}><Link className='add-font' style={{color: '#fff'}} to='/headsets'>Heatsets</Link></span><span className='spacer-toggle text-info'>|</span><hr className='nav-dropdown-hr bg-info'/>
+              <span style={{fontWeight: 'bold', fontSize: '15.5px', padding: '4px'}} className='text-center' onClick={() => this.props.onClick()}><Link className='add-font' style={{color: '#fff'}} to='/gloves'>Gloves</Link></span><span className='spacer-toggle text-info'>|</span><hr className='nav-dropdown-hr bg-info'/>
+              <span style={{fontWeight: 'bold', fontSize: '15.5px', padding: '4px'}} className='text-center' onClick={() => this.props.onClick()}><Link className='add-font' style={{color: '#fff'}} to='/pegs'>Pegs</Link></span><span className='spacer-toggle text-info'>|</span><hr className='nav-dropdown-hr bg-info'/>
+              <span style={{fontWeight: 'bold', fontSize: '15.5px', padding: '4px'}} className='text-center' onClick={() => this.props.onClick()}><Link className='add-font' style={{color: '#fff'}} to='/grips'>Grips</Link></span><span className='spacer-toggle text-info'>|</span><hr className='nav-dropdown-hr bg-info'/>
+              <span style={{fontWeight: 'bold', fontSize: '15.5px', padding: '4px'}} className='text-center' onClick={() => this.props.onClick()}><Link className='add-font' style={{color: '#fff'}} to='/titanium'>Titanium Hardware</Link></span><span className='spacer-toggle text-info'>|</span><hr className='nav-dropdown-hr bg-info'/>
+              <span style={{fontWeight: 'bold', fontSize: '15.5px', padding: '4px'}} className='text-center' onClick={() => this.props.onClick()}><Link className='add-font' style={{color: '#fff'}} to='/cranks'>Cranks</Link></span><span className='spacer-toggle text-info'>|</span><hr className='nav-dropdown-hr bg-info'/>
+              <span style={{fontWeight: 'bold', fontSize: '15.5px', padding: '4px'}} className='text-center' onClick={() => this.props.onClick()}><Link className='add-font' style={{color: '#fff'}} to='/stems'>Stems</Link></span><span className='spacer-toggle text-info'>|</span><hr className='nav-dropdown-hr bg-info'/>
+              <span style={{fontWeight: 'bold', fontSize: '15.5px', padding: '4px'}} className='text-center text-light' onClick={() => this.props.onClick()}>Tires</span><span className='spacer-toggle text-info'>|</span><hr className='nav-dropdown-hr bg-info'/>
+              <span style={{fontWeight: 'bold', fontSize: '15.5px', padding: '4px'}} className='text-center text-light' onClick={() => this.props.onClick()}><Link className='add-font' style={{color: '#fff'}} to='/wheels'>Wheels</Link></span><span className='spacer-toggle text-info'>|</span><hr className='nav-dropdown-hr bg-info'/>
+              <span style={{fontWeight: 'bold', fontSize: '15.5px', padding: '4px'}} className='text-center text-light' onClick={() => this.props.onClick()}>Frames</span><hr className='nav-dropdown-hr bg-info'/>
               </div>
             </DropdownMenu>
           </Dropdown>
