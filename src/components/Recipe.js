@@ -27,7 +27,7 @@ class Recipe extends Component {
 
   render() {
     return (
-      <StripeProvider apiKey={`${process.env.REACT_APP_API_KEY}`}>
+      <StripeProvider apiKey={`${process.env.REACT_APP_FIRST}`}>
         <Elements>
           <div className="container">
             <button className="btn btn-info" style={{display: this.state.paymentInfo}} onClick={() => {window.location.reload()}}>Back to cart</button>
