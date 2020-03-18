@@ -29,7 +29,7 @@ class Cart extends Component {
     }
 
     if(this.props.form.checkout) {
-      this.setState({emailMessage: <h4 className='add-font' style={{fontWeight: 'bold'}}>An email receipt is on its way. Thank you for your purchase!</h4>, checked: 'none'})
+      this.setState({emailMessage: <h4 className='add-font empty-or-checkout-style' style={{fontSize: '1.25rem'}}>An email receipt is on its way. Thank you for your purchase!</h4>, checked: 'none'})
     }
   }
 
@@ -60,13 +60,13 @@ class Cart extends Component {
       :
       (
         <div style={{display: this.state.handleHide}}>
-          <h4 className='add-font' style={{display: this.state.checked, fontWeight: 'bold'}}>Your cart is empty!</h4>
+          <h4 className='add-font empty-or-checkout-style' style={{display: this.state.checked, fontSize: '1.25rem'}}>Your cart is empty!</h4>
           {this.state.emailMessage}
         </div>
       )
 
       return (
-        <div>
+        <div className='footer-control'>
           <ScrollToTopOnMount/>
           <div className="container">
             <Row className="cart mt-2 justify-content-center">
@@ -76,6 +76,7 @@ class Cart extends Component {
             </Row>
             {total}
           </div>
+        <Footer/>
         </div>
       )
     }
