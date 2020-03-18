@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { addToCart } from './../actions/cartActions.js'
+import { addToCart, saveCartItemTotal } from './../actions/cartActions.js'
 import { Row } from 'reactstrap';
 import { faEye } from '@fortawesome/free-solid-svg-icons'
 import {faCartPlus} from '@fortawesome/free-solid-svg-icons'
@@ -77,23 +77,51 @@ class ShopItem extends Component {
   }
 
   handleAddClick = (id) => {
-  if(this.state.selectedOptionIndex === '') {
-    console.log('test');
-    let selectedIndex = '1'
-    let selected = this.props.item.option1
-    let price = this.props.item.option1price
-    this.props.addToCart(id, selected, selectedIndex, price);
-  } else {
     let selected = this.state.selectedOption;
     let selectedIndex = this.state.selectedOptionIndex;
     let price = this.props.item[`option${selectedIndex}price`]
-    console.log(price);
-    this.props.addToCart(id, selected, selectedIndex, price);
-  }
-    this.setState({addedNotification: ''})
-    setTimeout( () => {
-      this.setState({addedNotification: 'none'})
-    }, 450);
+    let checkCart
+
+    for(var i = 0; i < this.props.form.addedItems.length; i++) {
+      if(selectedIndex === this.props.form.addedItems[i].selectedOptionIndex && id === this.props.form.addedItems[i].id)
+
+      if(this.props.form.addedItems[i][`option${selectedIndex}quantity`] - this.props.form.addedItems[i].checkoutquantity <= 0) {
+        checkCart = 'false'
+      }
+    }
+
+    if(this.props.item[`option${selectedIndex}quantity`] === 0 || this.props.form.addedItems.length >= 29 || checkCart === 'false') {
+
+      if(this.props.item[`option${selectedIndex}quantity`] === 0) {
+        window.location.reload();
+      }
+
+      if(this.props.form.addedItems.length >= 29) {
+        this.setState({addButton:<b className='mb-2'>Cart is limited to 30 individual items.</b>, selectedPrice: '' })
+        setTimeout( () => {
+          this.setState({addButton: <button style={{width: '70%'}} className='btn btn-block btn-secondary mt-2 form-control mb-3' onClick={() => this.handleAddClick(this.props.item.id)}>Add to cart</button>})
+
+          this.setState({selectedPrice: <b style={{background: 'coral', color: '#f8f9fa', boxShadow: '3px 0px 13px lightcoral', borderRadius: '15px', padding: '5px', fontSize: '19px'}} className='mr-3'>${this.props.item[`option${this.state.selectedOptionIndex}price`]}</b>})
+        }, 750);
+      } else {
+        this.setState({addButton:<b className='mb-2'>Only {this.props.item[`option${selectedIndex}quantity`]} in stock.</b>, selectedPrice: '' })
+        setTimeout( () => {
+          this.setState({addButton: <button style={{width: '70%'}} className='btn btn-block btn-secondary mt-2 form-control mb-3' onClick={() => this.handleAddClick(this.props.item.id)}>Add to cart</button>})
+
+          this.setState({selectedPrice: <b style={{background: 'coral', color: '#f8f9fa', boxShadow: '3px 0px 13px lightcoral', borderRadius: '15px', padding: '5px', fontSize: '19px'}} className='mr-3'>${this.props.item[`option${this.state.selectedOptionIndex}price`]}</b>})
+        }, 750);
+      }
+
+    } else {
+      this.props.addToCart(id, selected, selectedIndex, price);
+      this.props.saveCartItemTotal();
+      this.setState({addButton:<b className='mb-2'>Added to cart</b>, selectedPrice: '' })
+      setTimeout( () => {
+        this.setState({addButton: <button style={{width: '70%'}} className='btn btn-block btn-secondary mt-2 form-control mb-3' onClick={() => this.handleAddClick(this.props.item.id)}>Add to cart</button>})
+
+        this.setState({selectedPrice: <b style={{background: 'coral', color: '#f8f9fa', boxShadow: '3px 0px 13px lightcoral', borderRadius: '15px', padding: '5px', fontSize: '19px'}} className='mr-3'>${this.props.item[`option${this.state.selectedOptionIndex}price`]}</b>})
+      }, 450);
+    }
   }
 
   onChange = (e, et) => {
@@ -128,7 +156,7 @@ class ShopItem extends Component {
           </Link>
           <FontAwesomeIcon className='cursor-toggle' style={{fontSize: '1.6rem', marginLeft: '2.4rem'}} icon={faCartPlus} onClick={this.toggleAddDisplay} />
           <hr style={{width: '50%', background: 'lightcoral !important'}}/>
-          <Row className='justify-content-center mb-2'>
+          <Row className='justify-content-center mb-1 mt-n3'>
           <form className='mt-3' style={{display: this.state.addDisplay}}>
             <select className='form-control' ref="selectMark"
               onChange={(e) => this.onChange(e.target.value, e.target)}>
@@ -162,7 +190,8 @@ class ShopItem extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addToCart: (id, selected, selectedIndex, price) => {(dispatch(addToCart(id, selected, selectedIndex, price)))}
+    addToCart: (id, selected, selectedIndex, price) => {(dispatch(addToCart(id, selected, selectedIndex, price)))},
+    saveCartItemTotal: () => {(dispatch(saveCartItemTotal()))},
   }
 }
 

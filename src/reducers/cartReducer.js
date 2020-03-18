@@ -126,7 +126,7 @@ const cartReducer = (state = initState, action) => {
     }
 
     else {
-      let addedItem = state.items.find(item => item.id === action.id)
+      let addedItem = state.items.find(item => item.id === action.id )
       console.log(addedItem);
       addedItem.price = action.price
       addedItem.checkoutquantity = 1;

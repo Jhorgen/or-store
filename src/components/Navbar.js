@@ -88,7 +88,7 @@ class OrbNavbar extends Component {
           {({ style }) => <div style={{ ...style, zIndex: '2', borderBottomStyle: 'ridge' }}>
           <Navbar onClick={this.tester} color="dark" light expand="md">
             <NavbarBrand href="/"><Link to='/' onClick={this.searchToggle} style={{marginLeft: '-45px'}}><img className="mb-n5" style={{height: '10.5rem', marginTop: '-3.5rem'}} src={ require(`./../images/orb-logo-footer.webp`)} alt={"The Oter Rim Bicycle Shop"} title='Orb Home'/></Link></NavbarBrand>
-            <NavbarToggler onClick={this.toggle} />
+            <NavbarToggler className='bg-secondary' onClick={this.toggle} />
             <Collapse isOpen={this.state.dropdownOpen} navbar>
               <Nav className="mr-auto navbar-margin-toggle" navbar>
                 <NavItem>
