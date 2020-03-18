@@ -10,15 +10,15 @@ const Footer = () => {
   return (
     <Row style={{background: "black", margin: '0', borderTop: '3px solid #343a40'}} className="text-center align-items-center">
       <Col className='mt-4'>
-        <Link className='text-light add-font' to='/'><p>About us</p></Link>
-        <Link className='text-light add-font' to='/'><p>Contact us</p></Link>
-        <Link className='text-light add-font' to='/'><p>Return policy</p></Link>
+        <Link className='text-secondary add-font' to='/about'><p style={{fontSize: '14px'}}>About us</p></Link>
+        <Link className='text-secondary add-font' to='/contact'><p style={{fontSize: '14px'}}>Contact us</p></Link>
+        <Link className='text-secondary add-font' to='/contact'><p style={{fontSize: '14px'}}>Return policy</p></Link>
       </Col>
 
       <Col className='mt-n5 footer-logo-toggle'>
         <img className="mb-n5" style={{height: '13rem'}} src={ require(`./../images/orb-logo-footer.webp`)} alt={"The Oter Rim Bicycle Shop"}/>
-        <p className="text-white add-font" style={{margin: '0', marginBottom: '5px'}}>(503) 278-3235</p>
-        <p className="text-white add-font">10625 NE Halsey. Portland, OR 97220</p>
+        <p className="text-secondary add-font" style={{margin: '0', marginBottom: '5px', fontSize: '14px'}}>(503) 278-3235</p>
+        <p className="text-secondary add-font" style={{fontSize: '14px'}}>10625 NE Halsey. Portland, OR 97220</p>
       </Col>
 
       <Col className='text-light mt-4 mb-2'>
