@@ -410,4 +410,11 @@ hr {
 .item-view-links:hover {
   font-weight: normal !important;
 }
+
+.empty-or-checkout-style {
+  box-shadow: 0px 0px 34px lightcoral;
+  text-shadow: 1px 1px 1px grey;
+  padding: 5px;
+  border-radius: 5px;
+}
 /* add less margin for shop item on hover / create own class */
