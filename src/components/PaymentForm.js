@@ -622,7 +622,6 @@ import { injectStripe, CardNumberElement,
         .then(response => {
           console.log(response)
           this.props.checkout(this.props.form.items)
-          window.scrollTo(0, 0)
           window.location.reload();
         })
         .catch(error => console.log(error))

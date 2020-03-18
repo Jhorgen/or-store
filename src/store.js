@@ -25,7 +25,7 @@ function configureStore(initialState = {}) {
     debug: true,
     storage,
     whitelist: ['auth'],
-  }, reducer), initialState, window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__(applyMiddleware(thunk)));
+  }, reducer), initialState, applyMiddleware(thunk));
 
 
 
