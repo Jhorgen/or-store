@@ -305,7 +305,7 @@ hr {
     display: none !important;
   }
 
-  .show-brand {
+  .mobile-nav {
    display: none !important;
   }
 }
@@ -325,7 +325,7 @@ hr {
     padding: 0 !important;
   }
 
-  .full-brand {
+  .full-nav {
     display: none !important;
   }
 
