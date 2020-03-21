@@ -35,7 +35,7 @@ class CategorySelect extends Component {
 
     setTimeout( () => {
       this.handleLoad()
-    }, 1000);
+    }, 500);
   }
 
   handleLoad = () => {
