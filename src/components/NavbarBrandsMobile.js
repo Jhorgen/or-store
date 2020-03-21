@@ -22,8 +22,8 @@ class NavbarBrandsMobile extends Component {
 
   render() {
     return (
-      <div>
-        <Col className='mb-2 show-brand'>
+      <div className='mobile-nav'>
+        <Col className='mb-2'>
           <Dropdown className="d-inline-block" isOpen={this.state.dropdownOpen} toggle={this.toggle}>
             <DropdownToggle
               tag="span"
@@ -31,7 +31,7 @@ class NavbarBrandsMobile extends Component {
               aria-expanded={this.state.dropdownOpen}
               style={{color: 'white'}}
               >
-              <Link to={'/'} className='navbar-font text-light' style={{textDecoration: 'none'}}>Brands</Link>
+              <Link className='navbar-font text-light' style={{textDecoration: 'none'}}>Brands</Link>
             </DropdownToggle>
             <DropdownMenu className='nav-toggle-padding bg-dark'>
               <div className='nav-dropdown-toggle-flex'>

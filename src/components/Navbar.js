@@ -6,6 +6,7 @@ import { StickyContainer, Sticky } from 'react-sticky';
 import NavbarCategories from './NavbarCategories'
 import NavbarBrands from './NavbarBrands'
 import NavbarBrandsMobile from './NavbarBrandsMobile'
+import NavbarCategoriesMobile from './NavbarCategoriesMobile'
 import {
   Collapse,
   Navbar,
@@ -94,10 +95,11 @@ class OrbNavbar extends Component {
               <Nav className="mr-auto navbar-margin-toggle" navbar>
                 <NavItem>
                   <NavbarCategories onClick={this.toggle} />
+                  <NavbarCategoriesMobile onClick={this.toggle} />
                 </NavItem>
                 <NavItem className='mr-2'>
                   <NavbarBrands onClick={this.toggle}/>
-                  <NavbarBrandsMobile />
+                  <NavbarBrandsMobile onClick={this.toggle} />
                 </NavItem>
                 <NavItem className='mr-2 mb-2'>
                   <Col>
