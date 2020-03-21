@@ -5,6 +5,7 @@ import { Row, Col, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from '
 import { StickyContainer, Sticky } from 'react-sticky';
 import NavbarCategories from './NavbarCategories'
 import NavbarBrands from './NavbarBrands'
+import NavbarBrandsMobile from './NavbarBrandsMobile'
 import {
   Collapse,
   Navbar,
@@ -96,6 +97,7 @@ class OrbNavbar extends Component {
                 </NavItem>
                 <NavItem className='mr-2'>
                   <NavbarBrands onClick={this.toggle}/>
+                  <NavbarBrandsMobile />
                 </NavItem>
                 <NavItem className='mr-2 mb-2'>
                   <Col>

@@ -304,6 +304,10 @@ hr {
   .nav-dropdown-hr {
     display: none !important;
   }
+
+  .show-brand {
+   display: none !important;
+  }
 }
 
 @media only screen and (max-width: 900px) {
@@ -311,6 +315,7 @@ hr {
     flex-direction: column !important;
     width: 60% !important;
   }
+
   .navbar-margin-toggle {
     margin-left: -15px;
     margin-top: 15px;
@@ -319,6 +324,11 @@ hr {
   .nav-toggle-padding {
     padding: 0 !important;
   }
+
+  .full-brand {
+    display: none !important;
+  }
+
 
   .spacer-toggle {
     display: none !important;

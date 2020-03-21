@@ -4,7 +4,7 @@ import { Row, Col, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from '
 import { Sticky } from 'react-sticky';
 
 
-class NavbarBrands extends Component {
+class NavbarBrandsMobile extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -13,29 +13,18 @@ class NavbarBrands extends Component {
     }
   }
 
-  tester = () => {
-    console.log(this.props.cartItems);
-  }
-
   toggle = () => {
     this.setState(prevState => ({
       dropdownOpen: !prevState.dropdownOpen
     }));
   }
 
-  onMouseEnter = () => {
-    this.setState({dropdownOpen: true});
-  }
-
-  onMouseLeave = () => {
-    this.setState({dropdownOpen: false});
-  }
 
   render() {
     return (
       <div>
-        <Col className='mb-2 full-brand'>
-          <Dropdown className="d-inline-block" onMouseOver={this.onMouseEnter} onMouseLeave={this.onMouseLeave} isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+        <Col className='mb-2 show-brand'>
+          <Dropdown className="d-inline-block" isOpen={this.state.dropdownOpen} toggle={this.toggle}>
             <DropdownToggle
               tag="span"
               data-toggle="dropdown"
@@ -93,4 +82,4 @@ class NavbarBrands extends Component {
   }
 }
 
-export default NavbarBrands;
+export default NavbarBrandsMobile;
