@@ -341,47 +341,7 @@ class Check extends Component {
       </Row>
     </Col>
 
-    <Col>
-      <Row className='m-1'>
-        <input className='input' name="image1" placeholder='Enter Image 1' value={this.state.value} onChange={this.handleInput} />
-      </Row>
 
-      <Row className='m-1'>
-        <input className='input' name="image2" placeholder='Enter Image 2' value={this.state.value} onChange={this.handleInput} />
-      </Row>
-
-      <Row className='m-1'>
-        <input className='input' name="image3" placeholder='Enter Image 3' value={this.state.value} onChange={this.handleInput} />
-      </Row>
-
-      <Row className='m-1'>
-        <input className='input' name="image4" placeholder='Enter Image 4' value={this.state.value} onChange={this.handleInput} />
-      </Row>
-
-      <Row className='m-1'>
-        <input className='input' name="image5" placeholder='Enter Image 5' value={this.state.value} onChange={this.handleInput} />
-      </Row>
-
-      <Row className='m-1'>
-        <input className='input' name="image6" placeholder='Enter Image 6' value={this.state.value} onChange={this.handleInput} />
-      </Row>
-
-      <Row className='m-1'>
-        <input className='input' name="image7" placeholder='Enter Image 7' value={this.state.value} onChange={this.handleInput} />
-      </Row>
-
-      <Row className='m-1'>
-        <input className='input' name="image8" placeholder='Enter Image 8' value={this.state.value} onChange={this.handleInput} />
-      </Row>
-
-      <Row className='m-1'>
-        <input className='input' name="image9" placeholder='Enter Image 9' value={this.state.value} onChange={this.handleInput} />
-      </Row>
-
-      <Row className='m-1'>
-        <input className='input' name="image10" placeholder='Enter Image 10' value={this.state.value} onChange={this.handleInput} />
-      </Row>
-    </Col>
 
 
   </Row>
@@ -395,7 +355,7 @@ class Check extends Component {
 
 addNewItem(e) {
   e.preventDefault()
-  if(this.state.image1 !== '' && this.state.category !== 'default') {
+  if(this.state.category !== 'default') {
   axios.post(
     'https://nameless-hollows-85718.herokuapp.com/api/v1/products/',
     { product:
@@ -437,7 +397,7 @@ addNewItem(e) {
         option10quantity: this.state.option10quantity,
         price: this.state.price,
         saleprice: this.state.saleprice,
-        image1: this.state.image1,
+        image1: 'coming-soon',
         image2: this.state.image2,
         image3: this.state.image3,
         image4: this.state.image4,
