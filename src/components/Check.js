@@ -87,7 +87,7 @@ class Check extends Component {
     console.log('A user was submitted: ' + this.state.user);
     console.log('A password was submitted: ' + this.state.password);
     event.preventDefault();
-    if(this.state.user === "test" && this.state.password === "test") {
+    if(this.state.user === `${process.env.REACT_APP_FIVE}` && this.state.password === `${process.env.REACT_APP_SIX}`) {
       this.setState({correct: false, display: ''})
     } else {
       console.log('false');

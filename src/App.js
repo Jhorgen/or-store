@@ -133,7 +133,7 @@ function App() {
             <Route path="/search" component={SearchResults} />
             <Route path="/:brand/:title/" component={ItemView} />
             <Route path="/cart" component={Cart}/>
-            <Route path={'/' + `${process.env.REACT_APP_R_API_KEY}`} component={Check}/>
+            <Route path={'/' + `${process.env.REACT_APP_GO}`} component={Check}/>
 
           </Switch>
         </div>
