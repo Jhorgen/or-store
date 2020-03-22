@@ -141,6 +141,8 @@ class Check extends Component {
               <option value={'Tires'}>Tires</option>
               <option value={'Wheels'}>Wheels</option>
               <option value={'Frames'}>Frames</option>
+              <option value={'test'}>test</option>
+
             </select>
           </form>
         </Col>
