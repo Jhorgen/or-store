@@ -352,7 +352,7 @@ import { injectStripe, CardNumberElement,
 
               if(this.props.form.addedItems[0].category === 'test') {
                 console.log('ran');
-                this.setState({shipping: 0, combinedTotal: this.props.total + shipping})
+                this.setState({shipping: 0, combinedTotal: 1})
               } else {
                 this.setState({shipping: shipping, combinedTotal: this.props.total + shipping})
               }
