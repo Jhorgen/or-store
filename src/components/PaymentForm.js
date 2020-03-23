@@ -345,14 +345,14 @@ import { injectStripe, CardNumberElement,
                     shipping = shipping + 10
                   }
                   if(n + 1 === wheels.length) {
-                    this.setState({shipping: shipping, combinedTotal: this.props.total + shipping})
+                    this.setState({shipping: shipping})
                   }
                 }
               }
 
               if(this.props.form.addedItems[0].category === 'test') {
                 console.log('ran');
-                this.setState({shipping: 0})
+                this.setState({shipping: 0, combinedTotal: this.props.total + shipping})
               } else {
                 this.setState({shipping: shipping, combinedTotal: this.props.total + shipping})
               }
