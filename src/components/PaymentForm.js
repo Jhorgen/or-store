@@ -349,8 +349,13 @@ import { injectStripe, CardNumberElement,
                   }
                 }
               }
-
-              this.setState({shipping: shipping, combinedTotal: this.props.total + shipping})
+              
+              if(this.props.form.addedItems[0].category === 'test') {
+                console.log('ran');
+                this.setState({shipping: 0})
+              } else {
+                this.setState({shipping: shipping, combinedTotal: this.props.total + shipping})
+              }
             }
 
           }

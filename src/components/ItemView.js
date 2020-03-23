@@ -44,6 +44,7 @@ class ItemView extends Component {
       spec9: '',
       spec10: '',
       price1: '',
+      fireModal: 'none !important'
     }
   }
 
@@ -181,6 +182,7 @@ class ItemView extends Component {
   }
 
   render() {
+    let none = 'none'
     let item = this.state.itemView.length && this.state.selectedImage !== '' ?
     (
       this.state.itemView.map(item => {
