@@ -643,7 +643,7 @@ import { injectStripe, CardNumberElement,
       render() {
         return (
           <div>
-            <div style={{background: "beige"}} className="checkout-form">
+            <div className="checkout-form">
               <p style={{display: this.state.paymentForm}}></p>
               <form onSubmit={(e) => this.toggleForm(e)}>
                 <Row className="flex-column" style={{display: this.state.shippingForm}}>
