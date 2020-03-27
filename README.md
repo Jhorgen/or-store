@@ -6,7 +6,7 @@ The Outer Rim Bike Shop is an e-commerce application that I've developed for a b
 
 * Each product has a number of options, prices for each option, quantity, images, etc. Using this logic required a lot of planning in order to decrement the correct option & option quantity when a purchase is made.
 
-* Ruby on Rails is used for manage product inventory, product creation, emails to customers post-checkout (action mailer), and create charges via Stripe's API.
+* Ruby on Rails is used with PostgreSQL for inventory, product creation, customer emails post-checkout (action mailer), and charge creation via the Stripe API.
 
 * Redux is used to mangage a user's cart & redux-persist is used to maintain their cart using local storage.
 
