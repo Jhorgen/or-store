@@ -1,68 +1,53 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Outer Rim Bike Shop
 
-## Available Scripts
+The Outer Rim Bike Shop is an e-commerce application that I've developed for a business in Portland, OR. I was contracted to create an online store that users could purchase products from, as well as a content mangement system that the shop could use to manage their inventory. 
 
-In the project directory, you can run:
+#Highlights
 
-### `npm start`
+* Each product has a number of options, prices for each option, quantity, images, etc. Using this logic required a lot of planning in order to decrement the correct option & option quantity when a purchase is made.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+* Ruby on Rails is used for manage product inventory, product creation, emails to customers post-checkout (action mailer), and create charges via Stripe's API.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+* Redux is used to mangage a user's cart & redux-persist is used to maintain their cart using local storage.
 
-### `npm test`
+* A number of checks are in place to prevent out of stock inventory from being added to a user's cart.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* Stripe is used for processing payments.
 
-### `npm run build`
+* Uses custom domain & ssl certificate in order to recieve payments.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## Getting Started
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Setup & Deployment
+You can view the live application here: https://outerrimbikeshop.com
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+or
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+To run this project locally, install it using npm.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```
+$cd or-store
+$npm i
+$npm start
+```
 
-## Learn More
+## Built With
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* [React](https://reactjs.org/)
+* [Create-react-app](https://www.npmjs.com/package/create-react-app)
+* [Redux](https://www.npmjs.com/package/redux)
+* [Redux persist](https://www.npmjs.com/package/redux-persist)
+* [Stripe API](https://stripe.com/)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+## Authors
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+* **Josh Horgen**
 
-### Analyzing the Bundle Size
+## License
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
