@@ -2,7 +2,7 @@
 
 The Outer Rim Bike Shop is an e-commerce application that I've developed for a business in Portland, OR. I was contracted to create an online store that users could purchase products from, as well as a content mangement system that the shop could use to manage their inventory. 
 
-#Highlights
+## Highlights
 
 * Each product has a number of options, prices for each option, quantity, images, etc. Using this logic required a lot of planning in order to decrement the correct option & option quantity when a purchase is made.
 
