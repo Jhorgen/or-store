@@ -1,6 +1,6 @@
 # Outer Rim Bike Shop
 
-The Outer Rim Bike Shop is an e-commerce application that I've developed for a business in Portland, OR. I was contracted to create an online store that users could purchase products from, as well as a content mangement system that the shop could use to manage their inventory. 
+The Outer Rim Bike Shop is an e-commerce application developed for a business in Portland, OR. I was contracted to create a full scale online store that users could purchase products from, as well as a content management system that the shop could use to manage their inventory. 
 
 ## Highlights
 
@@ -15,6 +15,8 @@ The Outer Rim Bike Shop is an e-commerce application that I've developed for a b
 * Stripe is used for processing payments.
 
 * Uses custom domain & ssl certificate in order to recieve payments.
+
+* Responsive format from desktop to mobile achived with media queries & reactstrap.
 
 
 ## Getting Started
