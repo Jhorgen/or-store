@@ -22,17 +22,10 @@ class CategorySelect extends Component {
     if(this.props.form.addedItems.length > 0) {
       let saveTotal = this.props.form.total;
       let check = this.props.form.addedItems;
-      console.log('category:', this.props.form.addedItems[0].checkoutquantity);
       this.props.loadItemDataCheck(check, saveTotal);
-      console.log('length');
-      console.log(this.props.form.addedItems);
     } else {
       this.props.loadItemData();
-      console.log('no length');
     }
-
-    console.log('check new action:', this.props.form.addedItems);
-
     setTimeout( () => {
       this.handleLoad()
     }, 500);
@@ -50,11 +43,12 @@ class CategorySelect extends Component {
           <Spinner color="info" />
         </div>
         <div className='d-flex justify-content-center' style={{position: 'relative', marginTop: '-19px'}}>
-        <h5 className='banner-text-position add-font' style={{background: '#0000009e', padding: '10px', borderRadius: '5px', color: '#ffffff91', textShadow: '.5px .5px .5px white', display: this.state.itemDisplay}}>Shipped from the USA</h5>
-        <img style={{width: '80%', height: '20rem', display: this.state.itemDisplay}} src={ require(`./../images/flag-banner.jpg`)} alt="Banner" title="Shipped from the USA."/>
+            <h5 className='banner-text-position-2 add-font' style={{background: '#0000009e', padding: '10px', borderRadius: '5px', color: '#ffffff91', textShadow: '.5px .5px .5px white', display: this.state.itemDisplay}}>The Outer Rim Bicycles</h5>
+          <h5 className='banner-text-position add-font' style={{background: '#0000009e', padding: '10px', borderRadius: '5px', color: '#ffffff91', textShadow: '.5px .5px .5px white', display: this.state.itemDisplay}}>Shipped from the USA</h5>
+          <img style={{width: '80%', height: '20rem', display: this.state.itemDisplay}} src={ require(`./../images/flag-banner.jpg`)} alt="Banner" title="Shipped from the USA."/>
         </div>
         <div className='container'>
-        <Row style={{display: this.state.itemDisplay}} className="justify-content-center m-3">
+          <Row style={{display: this.state.itemDisplay}} className="justify-content-center m-3">
 
             <div className='card m-3' style={{border: 'none'}}>
               <div className='test-hover'>
@@ -81,7 +75,7 @@ class CategorySelect extends Component {
             <div className='card m-3' style={{border: 'none'}}>
               <div className='test-hover'>
                 <h4 className="text-center cat-test category-select add-font" style={{textShadow: "1px 1px 1px #495057", fontSize: "35px", color: 'black'}}>Frames</h4>
-                  <img className='cat-img' style={{height: '13rem', width: '100%', opacity: '.75'}} src={ require(`./../images/testframe.jpg`)} alt="Bars" title="Bars"/>
+                <img className='cat-img' style={{height: '13rem', width: '100%', opacity: '.75'}} src={ require(`./../images/testframe.jpg`)} alt="Bars" title="Bars"/>
               </div>
             </div>
 
@@ -89,7 +83,7 @@ class CategorySelect extends Component {
             <div className='card m-3' style={{border: 'none'}}>
               <div className='test-hover'>
                 <h4 className="text-center cat-test category-select add-font" style={{textShadow: "1px 1px 1px #495057", fontSize: "35px", color: 'black'}}>Tires</h4>
-                  <img style={{height: '12rem', width: '100%', opacity: '.75'}} src={ require(`./../images/tires.jpg`)} alt="Bars" title="Bars"/>
+                <img style={{height: '12rem', width: '100%', opacity: '.75'}} src={ require(`./../images/tires.jpg`)} alt="Bars" title="Bars"/>
               </div>
             </div>
 
@@ -257,8 +251,8 @@ class CategorySelect extends Component {
               </div>
             </div>
 
-        </Row>
-      </div>
+          </Row>
+        </div>
         {this.state.footerDisplay}
       </div>
     )

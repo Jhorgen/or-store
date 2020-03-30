@@ -410,11 +410,27 @@ hr {
   top: 50%;
   left: 50%;
   color: black;
-  font-size: 28px;
-  transform: translate(-50%, 125%);
+  font-size: 22px;
+  transform: translate(-50%, 212%);
   font-family: Noto Sans;
   font-weight: bold;
   white-space: nowrap;
+  width: 20%;
+}
+
+.banner-text-position-2 {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  top: 50%;
+  left: 50%;
+  color: black;
+  font-size: 34px;
+  transform: translate(-50%, 47%);
+  font-family: Noto Sans;
+  font-weight: bold;
+  white-space: nowrap;
+  width: 80%;
 }
 
 .item-view-links:hover {
