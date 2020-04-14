@@ -13,10 +13,6 @@ class NavbarBrands extends Component {
     }
   }
 
-  tester = () => {
-    console.log(this.props.cartItems);
-  }
-
   toggle = () => {
     this.setState(prevState => ({
       dropdownOpen: !prevState.dropdownOpen

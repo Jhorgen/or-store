@@ -21,6 +21,7 @@ class SearchResults extends Component {
       data => {this.setState({results: data})
       console.log(data)}
     )
+    // timeout for 5~10 sec, display no results found / search again.
   }
 
   componentWillReceiveProps = (nextProps) => {
@@ -82,7 +83,6 @@ class SearchResults extends Component {
       </div>
     )
 
-
     return (
       <div className='footer-control'>
         <div>
@@ -94,6 +94,5 @@ class SearchResults extends Component {
     )
   }
 }
-
 
 export default SearchResults;
