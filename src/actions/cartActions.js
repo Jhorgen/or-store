@@ -36,20 +36,6 @@ export const addQuantity = (id, selectedIndex) => {
   }
 }
 
-export const addShipping=(id) => {
-  return{
-    type: ADD_SHIPPING,
-    id
-  }
-}
-
-export const subShipping = (id) => {
-  return{
-    type: SUB_SHIPPING,
-    id
-  }
-}
-
 export const checkout = (items) => {
   return {
     type: 'CHECKOUT_COMPLETE',
