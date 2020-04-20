@@ -416,6 +416,7 @@ hr {
   font-weight: bold;
   white-space: nowrap;
   width: 20%;
+  min-width: 296px;
 }
 
 .banner-text-position-2 {
