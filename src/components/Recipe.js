@@ -10,18 +10,23 @@ class Recipe extends Component {
     super(props)
     this.state = {
       checkout: '',
-      paymentInfo: "none"
+      paymentInfo: "none",
+      outOfOrder: ''
     }
   }
 
-  componentDidMount = () => {
-    let x = (this.props.form.total).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
-    console.log(x);
-  }
+  // componentDidMount = () => {
+  //   let x = (this.props.form.total).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+  //   console.log(x);
+  // }
 
   checkout = () => {
     this.setState({checkout: "none", paymentInfo: ''})
     this.props.onClick()
+  }
+
+  outOfOrder = () => {
+    this.setState({shopDown: <h2 className='text-center mt-2'>Shop is currently down, sorry!</h2>})
   }
 
 
@@ -37,9 +42,10 @@ class Recipe extends Component {
             <Row className="align-items-center float-right" style={{display: this.state.checkout}}>
               <div className='d-flex flex-column' style={{display: this.state.checkout}}>
                 <span className="mr-2"><b>Total: ${this.props.form.total.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</b></span>
-                <button onClick={() => this.checkout()} className="btn btn-info mt-1">Checkout</button>
+                <button onClick={() => this.outOfOrder()} className="btn btn-info mt-1">Checkout</button>
               </div>
             </Row>
+            {this.state.shopDown}
           </div>
         </Elements>
       </StripeProvider>
@@ -47,12 +53,4 @@ class Recipe extends Component {
   }
 }
 
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addShipping: () => {dispatch({type: 'ADD_SHIPPING'})},
-    substractShipping: () => {dispatch({type: 'SUB_SHIPPING'})}
-  }
-}
-
-export default connect((state) => state, mapDispatchToProps)(Recipe)
+export default connect((state) => state)(Recipe)
