@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import OrbNavbar from './components/Navbar'
 import Footer from './components/Footer'
@@ -10,7 +10,7 @@ import ShopByBrand from './components/ShopByBrand'
 import BrandSelect from './components/BrandSelect'
 import Check from './components/Check'
 import SearchResults from './components/SearchResults'
-import { StickyContainer, Sticky } from 'react-sticky';
+import { StickyContainer, Sticky } from 'react-sticky'
 import About from './components/About'
 import Contact from './components/Contact'
 
