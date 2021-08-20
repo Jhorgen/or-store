@@ -35,7 +35,7 @@ class CategorySelect extends Component {
     this.setState({spinner: 'none', itemDisplay: '', footerDisplay: <Footer/>})
   }
 
-  render () {
+  render() {
     return (
       <div className='text-center footer-control'>
         <br/>
