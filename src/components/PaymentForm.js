@@ -837,7 +837,7 @@ import { injectStripe, CardNumberElement,
                     <CardCVCElement />
                   </label>
                   <br/>
-                  <button className="btn btn-block btn-info"><b onClick={(e) => this.submit(e)} className='p-5'>Checkout (${this.state.combinedTotal.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')})</b></button>
+                  <button className="btn btn-block btn-info"><b className='p-5'>Checkout (${this.state.combinedTotal.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')})</b></button>
                   <p style={{display: this.state.cardInfoValidation, textAlign: 'center', fontWeight: 'bold'}}><span class='text-danger'>*</span>Please enter card info or use a different card.</p>
                 </Row>
               </form>
