@@ -11,24 +11,15 @@ class Recipe extends Component {
     this.state = {
       checkout: '',
       paymentInfo: "none",
-      outOfOrder: ''
+      outOfOrder: '',
+      shopDown: ''
     }
   }
 
-  // componentDidMount = () => {
-  //   let x = (this.props.form.total).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
-  //   console.log(x);
-  // }
-
   checkout = () => {
-    this.setState({checkout: "none", paymentInfo: ''})
+    this.setState({checkout: "none", paymentInfo: '', shopDown: <h2 className='text-center mt-2'>Shop is currently down, sorry! For viewing purposes only.</h2> })
     this.props.onClick()
   }
-
-  outOfOrder = () => {
-    this.setState({shopDown: <h2 className='text-center mt-2'>Shop is currently down, sorry!</h2>})
-  }
-
 
   render() {
     return (
