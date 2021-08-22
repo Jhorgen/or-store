@@ -824,7 +824,7 @@ import { injectStripe, CardNumberElement,
                   <hr style={{width: '35%'}}/>
                   <label className="pr-4 pb-2">
                     <b>Card details</b>
-                    <CardNumberElement onChange={(e) => this.handleChange(e, 'tester')} />
+                    <CardNumberElement />
                   </label>
                   <br/>
                   <label className="pr-3 pb-2">
