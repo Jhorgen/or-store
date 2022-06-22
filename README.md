@@ -25,7 +25,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 
 ### Setup & Deployment
-You can view the live application here: https://outerrimbikeshop.com
+You can view the live application here: https://sheltered-escarpment-22688.herokuapp.com/
 
 or
 
